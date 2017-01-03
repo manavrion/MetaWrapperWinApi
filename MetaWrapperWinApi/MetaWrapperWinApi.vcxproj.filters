@@ -13,9 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
+    <Filter Include="WrapperWinApi">
+      <UniqueIdentifier>{bcbf8881-af51-40e7-85d3-f770cde9630a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WrapperWinApiHeaders">
+      <UniqueIdentifier>{274b83a4-1071-4bbc-b4a1-9b6b9f3433d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,16 +30,32 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MetaWrapperWinApi.h">
+    <ClInclude Include="Main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeAbstructObject.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeButton.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeWindow.h">
+      <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MetaWrapperWinApi.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NativeAbstructObject.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeWindow.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeButton.cpp">
+      <Filter>WrapperWinApi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,5 +70,10 @@
     <Image Include="MetaWrapperWinApi.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
