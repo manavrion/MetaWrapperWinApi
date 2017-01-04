@@ -2,7 +2,9 @@
 
 
 namespace MetaFrame {
-    typedef char byte;
+
+    typedef unsigned char byte;
+
     struct Color {
         Color() : red(0), green(0), blue(0), alpha(255) {}
         Color(byte red, byte green, byte blue) : red(red), green(green), blue(blue), alpha(255) {}
@@ -16,6 +18,10 @@ namespace MetaFrame {
 
         bool operator==(const Color &color) const {
             return (red == color.red) && (green == color.green) && (blue == color.blue) && (alpha == color.alpha);
+        }
+
+        bool operator!=(const Color &color) const {
+            return (red != color.red) || (green != color.green) || (blue != color.blue) || (alpha != color.alpha);
         }
 
         //platform

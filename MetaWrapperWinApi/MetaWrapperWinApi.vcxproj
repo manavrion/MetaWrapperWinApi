@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstructFrameElement.h" />
+    <ClInclude Include="Alignment.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Margin.h" />

@@ -60,6 +60,9 @@
     <ClInclude Include="MFTafx.h">
       <Filter>MetaFrameTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Alignment.h">
+      <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
