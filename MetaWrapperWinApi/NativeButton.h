@@ -7,7 +7,8 @@ namespace MetaFrame {
         NativeButton() 
             : NativeAbstructObject(L"button")
         {
-
+            width = 73;
+            height = 21;
         };
 
 

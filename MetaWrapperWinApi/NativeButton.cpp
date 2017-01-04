@@ -18,7 +18,20 @@ namespace MetaFrame {
         }
 
         this->hWnd = CreateWindow(L"button", L"Text",
-                                  WS_CHILD | WS_VISIBLE, 10, 10, 100, 100, hWnd, (HMENU)i, GetModuleHandle(0), NULL);
+                                  WS_CHILD | WS_VISIBLE, x, y, width, height, hWnd, (HMENU)i, GetModuleHandle(0), NULL);
+
+        //setting standart font
+        NONCLIENTMETRICS ncm;
+        ncm.cbSize = sizeof(NONCLIENTMETRICS);
+        UINT uiParam = sizeof(NONCLIENTMETRICS);
+        SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
+
+        SendMessage(this->hWnd, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+
+
+        //SetWindowPos(this->hWnd, 0, x, y, 50, 14, 0);
+        //MoveWindow(this->hWnd, x, y, 73, 21, false);
+
     }
 
 }

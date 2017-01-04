@@ -25,7 +25,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Button *b = new Button();
 
-    ((AbstructFrameObject*)b)->setX(100);
+    b->setX(100)->setY(100);
 
     nativeWindow->add(b);
 

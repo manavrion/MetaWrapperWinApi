@@ -1,5 +1,6 @@
 #pragma once
 
+#include "AbstructFrameObject.h"
 #include "NativeButton.h"
 
 namespace MetaFrame {
