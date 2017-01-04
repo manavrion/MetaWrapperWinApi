@@ -19,10 +19,7 @@
 
 
 // TODO: reference additional headers your program requires here
-#include <string>
-typedef std::wstring String;
-#define null nullptr;
-
+#include "MFTafx.h"
 
 #include "NativeAbstructObject.h"
 #include "NativeWindow.h"

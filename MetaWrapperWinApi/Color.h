@@ -3,8 +3,6 @@
 
 namespace MetaFrame {
 
-    typedef unsigned char byte;
-
     struct Color {
         Color() : red(0), green(0), blue(0), alpha(255) {}
         Color(byte red, byte green, byte blue) : red(red), green(green), blue(blue), alpha(255) {}
