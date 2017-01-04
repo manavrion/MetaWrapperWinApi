@@ -3,38 +3,22 @@
 
 namespace MetaFrame {
 
+    static HashMap<HWND, NativeWindow*> nativeWindowMap;
+
     static LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-        switch (message) {
-            case WM_COMMAND:
-            {
-                switch (LOWORD(wParam)) {
-                    /*case IDC_:
-                    {
-                        editingMode = IDC_RADIOGROUP_EDIT;
-                        isselect = false;
-                        selectedElem = nullptr;
-                        select1.x = -100; select1.y = -100;
-                        select2.x = -100; select2.y = -100;
-                        graphics->update(store);
-                        break;
-                    }*/
-                }
-            }
-            /*case WM_PAINT:
-            {
-                PAINTSTRUCT ps;
-                HDC hdc = BeginPaint(hWnd, &ps);
-                // TODO: Add any drawing code that uses hdc here...
-                EndPaint(hWnd, &ps);
-            }
-            break;
-            case WM_DESTROY:
-                PostQuitMessage(0);
-                break;*/
-            default:
-                return DefWindowProc(hWnd, message, wParam, lParam);
+        if (message == WM_CREATE || message == WM_GETMINMAXINFO || message == WM_NCCREATE || message == WM_NCCALCSIZE) {
+            return DefWindowProc(hWnd, message, wParam, lParam);
         }
-        return 0;
+        return nativeWindowMap[hWnd]->windowProcLocal(hWnd, message, wParam, lParam);
+    }
+
+    void NativeWindow::init(HWND hWnd) {
+        this->hWnd = CreateWindow(className, title, WS_OVERLAPPEDWINDOW,
+                                  CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, hWnd, nullptr, hInstance, nullptr);
+        if (!this->hWnd) {
+            throw L"Error in creating window";
+        }
+        nativeWindowMap[this->hWnd] = this;
     }
 
     void NativeWindow::registerClass() {
@@ -55,6 +39,40 @@ namespace MetaFrame {
         wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
         RegisterClassExW(&wcex);
+    }
+
+    LRESULT NativeWindow::windowProcLocal(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+        switch (message) {
+            case WM_COMMAND:
+            {
+                /*switch (LOWORD(wParam)) {
+                    case IDC_:
+                    {
+                        editingMode = IDC_RADIOGROUP_EDIT;
+                        isselect = false;
+                        selectedElem = nullptr;
+                        select1.x = -100; select1.y = -100;
+                        select2.x = -100; select2.y = -100;
+                        graphics->update(store);
+                        break;
+                    }
+                }*/
+                break;
+            }
+            case WM_PAINT:
+            {
+                PAINTSTRUCT ps;
+                HDC hdc = BeginPaint(hWnd, &ps);
+                // TODO: Add any drawing code that uses hdc here...
+                EndPaint(hWnd, &ps);
+            }
+            break;
+            case WM_DESTROY:
+                PostQuitMessage(0);
+                break;
+            default:
+                return DefWindowProc(hWnd, message, wParam, lParam);
+        }
     }
 
 }

@@ -30,19 +30,14 @@ namespace MetaFrame {
             }
         }
 
-        virtual void init(HWND hWnd) {
-
-            this->hWnd = CreateWindow(className, title, WS_OVERLAPPEDWINDOW,
-                                CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, hWnd, nullptr, hInstance, nullptr);
-            if (!this->hWnd) {
-                throw L"Error in creating window";
-            }
-
-        };
+        virtual void init(HWND hWnd);;
     protected:
         HINSTANCE hInstance;
         String title;
         void registerClass();
+
+        static friend LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+        LRESULT windowProcLocal(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
     public:
         ~NativeWindow() {};
