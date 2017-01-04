@@ -1,44 +1,16 @@
 #pragma once
+#include "AbstructFramePositioning.h"
 
 namespace MetaFrame {
 
-    class AbstructFrameElement  {
+    class AbstructFrameElement : public AbstructFramePositioning {
 
     public:
         AbstructFrameElement() 
-            : x(), y() ,
-            width(), height(),
-            autoWidth(true), autoHeight(true),
-            minWidth(0),  maxWidth(0x7fffFFFF),
-            minHeight(0), maxHeight(0x7fffFFFF),
-            margin(),
-            horizontalAlignment(HorizontalAlignment::Absolute),
-            verticalAlignment(VerticalAlignment::Absolute),
-            parent(null)
+            : parent(null)
         {};
 
     protected:
-        /* fields */
-        int x;//location in parent
-        int y;//location in parent
-
-        int width;
-        int height;
-
-        bool autoWidth;
-        bool autoHeight;
-
-        int minWidth;
-        int maxWidth;
-        int minHeight;
-        int maxHeight;
-
-        Margin margin;
-
-        HorizontalAlignment horizontalAlignment;
-        VerticalAlignment verticalAlignment;
-
-
 
         AbstructFrameElement *parent;
         ArrayList<AbstructFrameElement*> childs;
@@ -51,10 +23,6 @@ namespace MetaFrame {
             }
         }
         virtual void initializationEvent(AbstructFrameElement *parent) = 0;
-
-
-
-
 
     public:
         AbstructFrameElement *add(AbstructFrameElement *child) {
