@@ -140,6 +140,8 @@
     <ClInclude Include="AbstructFrameElement.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Margin.h" />
+    <ClInclude Include="MFTafx.h" />
     <ClInclude Include="NativeAbstructObject.h" />
     <ClInclude Include="NativeButton.h" />
     <ClInclude Include="NativeWindow.h" />
