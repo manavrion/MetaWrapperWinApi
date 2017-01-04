@@ -51,12 +51,12 @@ namespace MetaFrame {
         }
 
         friend ByteString operator+(const ByteString &s1, const ByteString &s2) {
-            return ByteString(std::wByteString(s1.c_str()) + std::wByteString(s2.c_str()));
+            return ByteString(std::string(s1.c_str()) + std::string(s2.c_str()));
         }
-        friend ByteString operator+(const ByteString &s1, const wchar *a) {
+        friend ByteString operator+(const ByteString &s1, const char *a) {
             return s1 + ByteString(a);
         }
-        friend ByteString operator+(const wchar *a, const ByteString &s1) {
+        friend ByteString operator+(const char *a, const ByteString &s1) {
             return ByteString(a) + ByteString(s1);
         }
 
