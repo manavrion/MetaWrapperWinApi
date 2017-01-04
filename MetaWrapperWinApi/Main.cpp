@@ -23,7 +23,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Window *nativeWindow = new Window(L"Kek Microsystems");
 
-    nativeWindow->add((new Button())->setX(100));
+    Button *b = new Button();
+
+    ((AbstructFrameObject*)b)->setX(100);
+
+    nativeWindow->add(b);
 
 
     nativeWindow->run();

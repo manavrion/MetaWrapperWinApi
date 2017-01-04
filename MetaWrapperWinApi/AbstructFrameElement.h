@@ -25,9 +25,9 @@ namespace MetaFrame {
         virtual void initializationEvent(AbstructFrameElement *parent) = 0;
 
     public:
-        AbstructFrameElement *add(AbstructFrameElement *child) {
-            childs.push_back(child);
-            child->parent = this;
+        AbstructFrameElement *add(AbstructFrameObject *child) {
+            childs.push_back((AbstructFrameElement *)child);
+            ((AbstructFrameElement *)child)->parent = this;
             return this;
         };
 

@@ -11,6 +11,8 @@ namespace MetaFrame {
 
 
 
+        ADD_SET_OF_SETTERS(Button);
+
         ~Button() {};
     };
 
