@@ -20,4 +20,5 @@ namespace MetaFrame {
 #include "Alignment.h"
 #include "String.h"
 #include "Point.h"
+#include "Size.h"
 #define null nullptr
