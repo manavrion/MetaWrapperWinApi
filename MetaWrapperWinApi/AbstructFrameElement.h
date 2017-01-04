@@ -33,7 +33,11 @@ namespace MetaFrame {
 
 
     public:
-        ~AbstructFrameElement() {};
+        ~AbstructFrameElement() {
+            for (auto object : childs) {
+                delete object;
+            }
+        };
 
     };
 

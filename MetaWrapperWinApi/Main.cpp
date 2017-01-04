@@ -27,12 +27,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     b->setX(100)->setY(100);
 
-    nativeWindow->add(b);
+    Button *b2 = new Button();
+
+    b2->setX(100)->setY(140);
+
+    nativeWindow->add(b)->add(b2);
 
 
     nativeWindow->run();
 
-
+    delete nativeWindow;
 
 
     /*MyRegisterClass(hInstance);
