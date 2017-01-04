@@ -20,6 +20,7 @@
 
 // TODO: reference additional headers your program requires here
 #include "MFTafx.h"
+using namespace MetaFrame;
 
 #include "NativeAbstructObject.h"
 #include "NativeWindow.h"

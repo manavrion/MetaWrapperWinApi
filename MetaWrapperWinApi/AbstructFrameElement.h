@@ -1,14 +1,9 @@
 #pragma once
 
-
-
-
 class AbstructFrameElement {
 
 public:
     AbstructFrameElement() {};
-
-
 
 protected:
     //location in parent
@@ -25,10 +20,10 @@ protected:
     int minHeight;
     int maxHeight;
 
-    //Margin margin;
-    //
-    //HorizontalAlignment horizontalAlignment;
-    //VerticalAlignment verticalAlignment;
+    Margin margin;
+    
+    HorizontalAlignment horizontalAlignment;
+    VerticalAlignment verticalAlignment;
 
     ~AbstructFrameElement() {};
 
