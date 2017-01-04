@@ -1,8 +1,15 @@
 #pragma once
+
+#include "Alignment.h"
+#include "Point.h"
+#include "Rect.h"
+#include "Size.h"
+#include "Margin.h"
+
 namespace MetaFrame {
-    class AbstructFramePositioning {
+    class AbstructFrameObject {
     public:
-        AbstructFramePositioning() :
+        AbstructFrameObject() :
             x(), y(),
             width(), height(),
             autoWidth(true), autoHeight(true),
@@ -37,7 +44,7 @@ namespace MetaFrame {
 
     public:
         //setters
-        AbstructFramePositioning *setRect(Rect rect) {
+        AbstructFrameObject *setRect(Rect rect) {
             x = rect.x;
             y = rect.y;
             width = rect.width;
@@ -45,66 +52,66 @@ namespace MetaFrame {
             return this;
         };
 
-        AbstructFramePositioning *setX(int x) {
+        AbstructFrameObject *setX(int x) {
             this->x = x;
             return this;
         };
-        AbstructFramePositioning *setY(int y) {
+        AbstructFrameObject *setY(int y) {
             this->y = y;
             return this;
         };
-        AbstructFramePositioning *setSize(Size size) {
+        AbstructFrameObject *setSize(Size size) {
             height = size.height;
             width = size.width;
             return this;
         };
-        AbstructFramePositioning *setWidth(int width) {
+        AbstructFrameObject *setWidth(int width) {
             this->width = width;
             return this;
         };
-        AbstructFramePositioning *setHeight(int height) {
+        AbstructFrameObject *setHeight(int height) {
             this->height = height;
             return this;
         };
-        AbstructFramePositioning *setAutoWidth(bool autoWidth) {
+        AbstructFrameObject *setAutoWidth(bool autoWidth) {
             this->autoWidth = autoWidth;
             return this;
         };
-        AbstructFramePositioning *setAutoHeight(bool autoHeight){
+        AbstructFrameObject *setAutoHeight(bool autoHeight){
             this->autoHeight = autoHeight;
             return this;
         };
-        AbstructFramePositioning *setMinWidth(int minWidth){
+        AbstructFrameObject *setMinWidth(int minWidth){
             this->minWidth = minWidth;
             return this;
         };
-        AbstructFramePositioning *setMaxWidth(int maxWidth){
+        AbstructFrameObject *setMaxWidth(int maxWidth){
             this->maxWidth = maxWidth;
             return this;
         };
-        AbstructFramePositioning *setMinHeight(int minHeight){
+        AbstructFrameObject *setMinHeight(int minHeight){
             this->minHeight = minHeight;
             return this;
         };
-        AbstructFramePositioning *setMaxHeight(int maxHeight){
+        AbstructFrameObject *setMaxHeight(int maxHeight){
             this->maxHeight = maxHeight;
             return this;
         };
                                  
-        AbstructFramePositioning *setMargin(int left, int right, int top, int bottom) {
+        AbstructFrameObject *setMargin(int left, int right, int top, int bottom) {
             this->margin = Margin(left, right, top, bottom);
             return this;
         };
-        AbstructFramePositioning *setMargin(Margin margin) {
+        AbstructFrameObject *setMargin(Margin margin) {
             this->margin = margin;
             return this;
         };
                                  
-        AbstructFramePositioning *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+        AbstructFrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
             this->horizontalAlignment = horizontalAlignment;
             return this;
         };
-        AbstructFramePositioning *setVerticalAlignment(VerticalAlignment verticalAlignment) {
+        AbstructFrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
             this->verticalAlignment = verticalAlignment;
             return this;
         };
@@ -162,7 +169,7 @@ namespace MetaFrame {
         };
 
     public:
-        ~AbstructFramePositioning() {};
+        ~AbstructFrameObject() {};
 
     };
 

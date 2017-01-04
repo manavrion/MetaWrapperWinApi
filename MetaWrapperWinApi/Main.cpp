@@ -23,7 +23,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Window *nativeWindow = new Window(L"Kek Microsystems");
 
-    nativeWindow->add(new Button());
+    nativeWindow->add((new Button())->setX(100));
 
 
     nativeWindow->run();

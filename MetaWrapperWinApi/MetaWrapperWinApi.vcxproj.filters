@@ -69,9 +69,6 @@
     <ClInclude Include="Button.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="AbstructFramePositioning.h">
-      <Filter>WrapperWinApiHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>MetaFrameTypes</Filter>
     </ClInclude>
@@ -83,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="RectF.h">
       <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstructFrameObject.h">
+      <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
 #pragma once
-#include "AbstructFramePositioning.h"
+#include "AbstructFrameObject.h"
 
 namespace MetaFrame {
 
-    class AbstructFrameElement : public AbstructFramePositioning {
+    class AbstructFrameElement : public AbstructFrameObject {
 
     public:
         AbstructFrameElement() 
