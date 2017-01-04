@@ -72,6 +72,9 @@
     <ClInclude Include="AbstructFramePositioning.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

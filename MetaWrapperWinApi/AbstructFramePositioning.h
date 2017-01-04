@@ -35,6 +35,28 @@ namespace MetaFrame {
         HorizontalAlignment horizontalAlignment;
         VerticalAlignment verticalAlignment;
 
+        /*AbstructFramePositioning *setRect(Rect rect);
+
+        AbstructFramePositioning *setX(int x);
+        AbstructFramePositioning *setY(int y);
+        AbstructFramePositioning *setSize(Size size);
+        AbstructFramePositioning *setWidth(int width);
+        AbstructFramePositioning *setHeight(int height);
+        AbstructFramePositioning *setAutoWidth(bool autoWidth);
+        AbstructFramePositioning *setAutoHeight(bool autoHeight);
+        AbstructFramePositioning *setMinWidth(int minWidth);
+        AbstructFramePositioning *setMaxWidth(int maxWidth);
+        AbstructFramePositioning *setMinHeight(int minHeight);
+        AbstructFramePositioning *setMaxHeight(int maxHeight);
+                                 
+        AbstructFramePositioning *setMargin(int left, int right, int top, int bottom);
+        AbstructFramePositioning *setMargin(Margin margin);
+                                 
+        AbstructFramePositioning *setHorizontalAlignment(HorizontalAlignment horizontalAlignment);
+        AbstructFramePositioning *setVerticalAlignment(VerticalAlignment verticalAlignment);*/
+
+
+
     public:
         ~AbstructFramePositioning() {};
 

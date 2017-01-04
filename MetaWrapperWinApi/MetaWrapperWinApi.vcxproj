@@ -148,6 +148,7 @@
     <ClInclude Include="NativeAbstructObject.h" />
     <ClInclude Include="NativeButton.h" />
     <ClInclude Include="NativeWindow.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String.h" />
