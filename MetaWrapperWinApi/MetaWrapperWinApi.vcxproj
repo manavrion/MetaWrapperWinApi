@@ -149,6 +149,8 @@
     <ClInclude Include="NativeButton.h" />
     <ClInclude Include="NativeWindow.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="RectF.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Size.h" />
     <ClInclude Include="stdafx.h" />

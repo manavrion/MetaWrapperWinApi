@@ -78,6 +78,12 @@
     <ClInclude Include="Size.h">
       <Filter>MetaFrameTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="RectF.h">
+      <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
