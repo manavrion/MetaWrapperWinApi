@@ -2,11 +2,4 @@
 #include "NativeAbstructObject.h"
 
 
-NativeAbstructObject::NativeAbstructObject()
-{
-}
 
-
-NativeAbstructObject::~NativeAbstructObject()
-{
-}

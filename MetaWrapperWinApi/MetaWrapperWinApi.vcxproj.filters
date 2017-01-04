@@ -19,6 +19,9 @@
     <Filter Include="WrapperWinApiHeaders">
       <UniqueIdentifier>{274b83a4-1071-4bbc-b4a1-9b6b9f3433d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MetaFrameTypes">
+      <UniqueIdentifier>{a68ecc76-726d-4294-8835-ec64a0a7eba3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -42,6 +45,15 @@
     <ClInclude Include="NativeWindow.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstructFrameElement.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>MetaFrameTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -55,6 +67,12 @@
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
     <ClCompile Include="NativeButton.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstructFrameElement.cpp">
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
   </ItemGroup>

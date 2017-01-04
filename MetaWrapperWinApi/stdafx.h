@@ -19,3 +19,11 @@
 
 
 // TODO: reference additional headers your program requires here
+#include <string>
+typedef std::wstring String;
+#define null nullptr;
+
+
+#include "NativeAbstructObject.h"
+#include "NativeWindow.h"
+#include "NativeButton.h"
