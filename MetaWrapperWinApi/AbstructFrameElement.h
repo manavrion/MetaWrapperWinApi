@@ -1,31 +1,72 @@
 #pragma once
 
-class AbstructFrameElement {
+namespace MetaFrame {
 
-public:
-    AbstructFrameElement() {};
+    class AbstructFrameElement  {
 
-protected:
-    //location in parent
-    int x;
-    int y;
+    public:
+        AbstructFrameElement() 
+            : x(), y() ,
+            width(), height(),
+            autoWidth(true), autoHeight(true),
+            minWidth(0),  maxWidth(0x7fffFFFF),
+            minHeight(0), maxHeight(0x7fffFFFF),
+            margin(),
+            horizontalAlignment(HorizontalAlignment::Absolute),
+            verticalAlignment(VerticalAlignment::Absolute),
+            parent(null)
+        {};
 
-    int width;
-    int height;
-    bool autoWidth;
-    bool autoHeight;
+    protected:
+        /* fields */
+        int x;//location in parent
+        int y;//location in parent
 
-    int minWidth;
-    int maxWidth;
-    int minHeight;
-    int maxHeight;
+        int width;
+        int height;
 
-    Margin margin;
-    
-    HorizontalAlignment horizontalAlignment;
-    VerticalAlignment verticalAlignment;
+        bool autoWidth;
+        bool autoHeight;
 
-    ~AbstructFrameElement() {};
+        int minWidth;
+        int maxWidth;
+        int minHeight;
+        int maxHeight;
 
-};
+        Margin margin;
 
+        HorizontalAlignment horizontalAlignment;
+        VerticalAlignment verticalAlignment;
+
+
+
+        AbstructFrameElement *parent;
+        ArrayList<AbstructFrameElement*> childs;
+
+        void build(AbstructFrameElement *parent) {
+            this->parent = parent;
+            this->initializationEvent(parent);
+            for (auto object : childs) {
+                object->build(this);
+            }
+        }
+        virtual void initializationEvent(AbstructFrameElement *parent) = 0;
+
+
+
+
+
+    public:
+        AbstructFrameElement *add(AbstructFrameElement *child) {
+            childs.push_back(child);
+            child->parent = this;
+            return this;
+        };
+
+
+    public:
+        ~AbstructFrameElement() {};
+
+    };
+
+}

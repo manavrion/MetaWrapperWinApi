@@ -1,22 +1,27 @@
 #pragma once
 
-class Window : public NativeWindow {
+#include "NativeWindow.h"
 
-public:
-    Window() {
+namespace MetaFrame {
 
+    class Window : public NativeWindow {
+
+    public:
+        Window(String name) : NativeWindow(name) {
+
+        };
+
+
+
+        void run() {
+            build(null);
+            NativeWindow::run();
+        }
+
+
+
+
+        ~Window() {};
     };
 
-
-
-
-
-
-
-
-
-    ~Window() {
-
-    };
-};
-
+}

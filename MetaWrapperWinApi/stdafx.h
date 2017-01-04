@@ -22,6 +22,5 @@
 #include "MFTafx.h"
 using namespace MetaFrame;
 
-#include "NativeAbstructObject.h"
-#include "NativeWindow.h"
-#include "NativeButton.h"
+#include "Window.h"
+#include "Button.h"

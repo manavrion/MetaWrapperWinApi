@@ -1,38 +1,38 @@
 #pragma once
 
-class NativeAbstructObject {
+#include "AbstructFrameElement.h"
 
-public:
-    NativeAbstructObject() : 
-        x(), 
-        y(), 
-        width(), 
-        height(), 
-        hWnd() 
-    {
+namespace MetaFrame {
 
+    class NativeAbstructObject : public AbstructFrameElement {
+
+    public:
+        NativeAbstructObject(const String className) :
+            hWnd(), className(className)
+        {
+
+        };
+
+
+    protected:
+        
+        void initializationEvent(AbstructFrameElement *parent) {
+            if (parent != null) {
+                init(((NativeAbstructObject*)parent)->hWnd);
+            } else {
+                init(null);
+            }
+        };
+        virtual void init(HWND hWnd) = 0;
+
+    protected:
+        HWND hWnd;
+        String className;
+
+    public:
+        ~NativeAbstructObject() {
+
+        };
     };
 
-
-    virtual void add(NativeAbstructObject *nativeAbstructObject) = 0;
-
-protected:
-    virtual void init(HWND hWnd) = 0;
-
-    virtual void registerClass() = 0;
-
-protected:
-    HWND hWnd;
-    String className;
-
-    int x;
-    int y;
-    int width;
-    int height;
-
-public:
-    ~NativeAbstructObject() {
-
-    };
-};
-
+}

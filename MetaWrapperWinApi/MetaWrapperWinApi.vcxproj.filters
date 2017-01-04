@@ -66,6 +66,9 @@
     <ClInclude Include="String.h">
       <Filter>MetaFrameTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -87,6 +90,9 @@
     <ClCompile Include="AbstructFrameElement.cpp">
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">
@@ -105,5 +111,8 @@
     <Text Include="ReadMe.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="MetaWrapperWinApi.exe.manifest" />
   </ItemGroup>
 </Project>

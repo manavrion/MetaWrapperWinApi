@@ -21,8 +21,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    NativeWindow *nativeWindow = new NativeWindow();
+    Window *nativeWindow = new Window(L"Kek Microsystems");
+
+    nativeWindow->add(new Button());
+
+
     nativeWindow->run();
+
+
+
 
     /*MyRegisterClass(hInstance);
 

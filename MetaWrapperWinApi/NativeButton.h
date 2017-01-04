@@ -1,26 +1,25 @@
 #pragma once
 
+namespace MetaFrame {
+
+    class NativeButton : public NativeAbstructObject {
+    public:
+        NativeButton() 
+            : NativeAbstructObject(L"button")
+        {
+
+        };
 
 
-class NativeButton : public NativeAbstructObject {
-public:
-    NativeButton() {
 
 
+        virtual void init(HWND hWnd);
+    protected:
+
+        int IDC_OF_BUTTON;
+
+    public:
+        ~NativeButton() {};
     };
 
-
-    virtual void add(NativeAbstructObject *nativeAbstructObject) {
-
-    };
-
-    virtual void init(HWND hWnd);
-protected:
-    virtual void registerClass() {};
-
-    int IDC_OF_BUTTON;
-
-public:
-    ~NativeButton() {};
-};
-
+}
