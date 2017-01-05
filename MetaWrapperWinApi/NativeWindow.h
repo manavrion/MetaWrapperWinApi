@@ -17,6 +17,8 @@ namespace MetaFrame {
             registerClass();
         };
 
+    protected:
+
         void run() {
             
             int nCmdShow = 10;
@@ -34,7 +36,7 @@ namespace MetaFrame {
             }
         }
 
-    protected:
+    
 
         virtual void init(HWND hWnd);;
 

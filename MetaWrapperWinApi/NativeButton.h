@@ -20,7 +20,7 @@ namespace MetaFrame {
         virtual void init(HWND hWnd);
     
 
-        int IDC_OF_BUTTON;
+        //int IDC_OF_BUTTON;
 
         virtual void command(WPARAM wParam, LPARAM lParam) {
             runActionEvents();

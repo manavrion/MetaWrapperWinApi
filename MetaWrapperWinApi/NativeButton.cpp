@@ -3,11 +3,11 @@
 #include <set>
 
 namespace MetaFrame {
-    std::set<int> ids;
+    //std::set<int> ids;
 
     void NativeButton::init(HWND hWnd) {
         int i = 1;
-        while (true) {
+        /*while (true) {
             if (ids.count(i) == 0) {
                 ids.insert(i);
                 IDC_OF_BUTTON = i;
@@ -15,7 +15,7 @@ namespace MetaFrame {
             } else {
                 i++;
             }
-        }
+        }*/
 
         this->hWnd = CreateWindow(L"button", 
                                   text,
