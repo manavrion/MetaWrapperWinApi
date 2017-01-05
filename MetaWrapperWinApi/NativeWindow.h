@@ -39,6 +39,11 @@ namespace MetaFrame {
         static friend LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
         LRESULT windowProcLocal(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
+
+        virtual void command(WPARAM wParam, LPARAM lParam) {
+
+        };
+
     public:
         ~NativeWindow() {};
     };

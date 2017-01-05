@@ -41,6 +41,9 @@ namespace MetaFrame {
         HorizontalAlignment horizontalAlignment;
         VerticalAlignment verticalAlignment;
 
+        Color background;
+        Color foreground;
+
     public:
         //setters
         virtual AbstructFrameObject &setRect(Rect rect) {

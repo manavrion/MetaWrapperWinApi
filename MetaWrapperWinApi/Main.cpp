@@ -27,6 +27,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(Button()
              .setX(100)
              .setY(100)
+             .addActionListener([]() { exit(0); })
         )
         .add(Button()
              .setX(100)

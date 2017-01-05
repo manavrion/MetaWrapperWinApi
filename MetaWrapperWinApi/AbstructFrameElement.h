@@ -14,34 +14,27 @@ namespace MetaFrame {
 
     protected:
 
-        AbstructFrameElement *parent;
+        const AbstructFrameElement *parent;
         ArrayList<AbstructFrameElement*> childs;
 
-        void build(AbstructFrameElement *parent) {
+        void build(const AbstructFrameElement *parent) {
             this->parent = parent;
             this->initializationEvent(parent);
             for (auto object : childs) {
                 object->build(this);
             }
         }
-        virtual void initializationEvent(AbstructFrameElement *parent) = 0;
+        virtual void initializationEvent(const AbstructFrameElement *parent) = 0;
 
     public:
-        AbstructFrameElement &add(Button &child);;
-        /*template<class TemplateFrameElement>
-        AbstructFrameElement &add(TemplateFrameElement &child) {
-            TemplateFrameElement *newChild = new TemplateFrameElement(child);
-            newChild->parent = this;
-            childs.push_back(newChild);
-            return *this;
-        };*/
+        AbstructFrameElement &add(const Button &child);
 
     public:
         ~AbstructFrameElement() {
-            childs.clear();
-            /*for (auto object : childs) {
+            for (auto object : childs) {
                 delete object;
-            }*/
+            }
+            childs.clear();
         };
 
     };

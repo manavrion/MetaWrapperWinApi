@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "NativeWindow.h"
+#include <queue>
 
 namespace MetaFrame {
 
@@ -45,6 +46,28 @@ namespace MetaFrame {
         switch (message) {
             case WM_COMMAND:
             {
+                if (!wmCommand(wParam, lParam)) {
+                    return DefWindowProc(hWnd, message, wParam, lParam);
+                }
+                /*
+                HWND hwndTarget = (HWND)lParam;
+
+                std::queue<NativeAbstructObject*> q;
+
+                q.push(this);
+
+                //bfs
+                while (!q.empty()) {
+                    NativeAbstructObject *cur = q.front();
+                    q.pop();
+                    this->hWnd;
+                    if (cur->hWnd == hwndTarget) {
+
+                    }
+
+                }
+                */
+
                 /*switch (LOWORD(wParam)) {
                     case IDC_:
                     {

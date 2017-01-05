@@ -3,6 +3,7 @@
 //standart types
 #include <vector>
 #include <unordered_map>
+#include <queue>
 namespace MetaFrame {
     typedef unsigned char byte;
     typedef wchar_t wchar;
@@ -12,6 +13,9 @@ namespace MetaFrame {
 
     template<typename T>
     using ArrayList = std::vector<T>;
+
+    template<typename T>
+    using Queue = std::queue<T>;
 
 }
 

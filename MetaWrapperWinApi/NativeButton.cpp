@@ -17,8 +17,15 @@ namespace MetaFrame {
             }
         }
 
-        this->hWnd = CreateWindow(L"button", L"Text",
-                                  WS_CHILD | WS_VISIBLE, x, y, width, height, hWnd, (HMENU)i, GetModuleHandle(0), NULL);
+        this->hWnd = CreateWindow(L"button", 
+                                  L"Text",
+                                  WS_CHILD | WS_VISIBLE, 
+                                  x, y, 
+                                  width, height, 
+                                  hWnd, 
+                                  (HMENU)i, 
+                                  GetModuleHandle(0), 
+                                  NULL);
 
         //setting standart font
         NONCLIENTMETRICS ncm;
