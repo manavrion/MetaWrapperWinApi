@@ -41,7 +41,7 @@ namespace MetaFrame {
         wcex.hInstance = hInstance;
         wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_METAWRAPPERWINAPI));
         wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-        wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+        wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW);
         //wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_METAWRAPPERWINAPI);
         wcex.lpszMenuName = null;
         wcex.lpszClassName = className;

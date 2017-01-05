@@ -13,7 +13,7 @@ namespace MetaFrame {
     protected:
 
         const AbstructFrameElement *parent;
-        ArrayList<AbstructFrameElement*> childs;
+        mutable ArrayList<AbstructFrameElement*> childs;
 
         void build(const AbstructFrameElement *parent) {
             this->parent = parent;
@@ -25,6 +25,9 @@ namespace MetaFrame {
         virtual void initializationEvent(const AbstructFrameElement *parent) = 0;
 
         virtual AbstructFrameElement *copy() const = 0;
+        virtual void clearChilds() const {
+            childs.clear();
+        }
 
     public:
         AbstructFrameElement &add(const AbstructFrameElement &child) {

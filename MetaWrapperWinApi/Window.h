@@ -20,7 +20,9 @@ namespace MetaFrame {
 
     protected:
         virtual AbstructFrameElement *copy() const {
-            return new Window(*this);
+            Window *ret = new Window(*this);
+            this->clearChilds();
+            return ret;
         }
 
     public:

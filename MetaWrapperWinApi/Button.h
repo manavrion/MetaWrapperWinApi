@@ -21,7 +21,9 @@ namespace MetaFrame {
 
     protected:
         virtual AbstructFrameElement *copy() const {
-            return new Button(*this);
+            Button *ret = new Button(*this);
+            this->clearChilds();
+            return ret;
         }
 
         ArrayList<ButtonFunction> actionEventFunctions;

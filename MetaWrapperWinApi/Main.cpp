@@ -40,6 +40,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setX(100)
              .setY(130)
              .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); })
+        )
+        .add(Panel()
+             .setX(200)
+             .setY(200)
+             .setWidth(100)
+             .setHeight(100)
+             .add(Button()
+                  .setText(L"azzaza")
+                  .setX(10)
+                  .setY(10)
+             )
         );
     
 

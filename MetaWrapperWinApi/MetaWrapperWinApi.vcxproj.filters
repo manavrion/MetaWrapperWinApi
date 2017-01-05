@@ -90,6 +90,12 @@
     <ClInclude Include="AbstructFrameObject.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="NativePanel.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -112,6 +118,12 @@
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
     <ClCompile Include="AbstructFrameElement.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="NativePanel.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
   </ItemGroup>
