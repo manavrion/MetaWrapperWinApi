@@ -50,34 +50,45 @@ namespace MetaFrame {
         String text;
 
     public:
+
+
+        virtual void nativeSetRect(Rect &rect) = 0;
+
+
         //setters
         virtual AbstructFrameObject &setRect(Rect rect) {
             x = rect.x;
             y = rect.y;
             width = rect.width;
             height = rect.height;
+            nativeSetRect(rect);
             return *this;
         };
 
         virtual AbstructFrameObject &setX(int x) {
             this->x = x;
+            nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
         virtual AbstructFrameObject &setY(int y) {
             this->y = y;
+            nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
         virtual AbstructFrameObject &setSize(Size size) {
             height = size.height;
             width = size.width;
+            nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
         virtual AbstructFrameObject &setWidth(int width) {
             this->width = width;
+            nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
         virtual AbstructFrameObject &setHeight(int height) {
             this->height = height;
+            nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
         virtual AbstructFrameObject &setAutoWidth(bool autoWidth) {

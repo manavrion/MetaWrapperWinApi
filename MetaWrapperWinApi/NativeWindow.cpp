@@ -47,7 +47,7 @@ namespace MetaFrame {
         wcex.lpszClassName = className;
         wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
-        RegisterClassExW(&wcex);
+        RegisterClassEx(&wcex);
     }
 
     LRESULT NativeWindow::windowProcLocal(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {

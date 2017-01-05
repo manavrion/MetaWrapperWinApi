@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "NativeAbstructObject.h"
 
@@ -21,7 +21,7 @@ namespace MetaFrame {
             int i = 2;
             /*this->hWnd = CreateWindow(L"static",
                                       L"panel",
-                                      WS_CHILD | WS_VISIBLE | WS_BORDER,
+                                      WS_CHILD | WS_VISIBLE | WS_BORDER | SS_CENTER | SS_CENTERIMAGE | SS_SUNKEN,
                                       x, y,
                                       width, height,
                                       hWnd,
@@ -29,10 +29,22 @@ namespace MetaFrame {
                                       GetModuleHandle(0),
                                       NULL);*/
 
-            this->hWnd = CreateWindowEx(WS_EX_CLIENTEDGE | WS_EX_DLGMODALFRAME, 
-                                        _T("STATIC"), 
-                                        _T("Panel 1"),
-                                        WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | SS_SUNKEN, 
+            //WS_EX_CLIENTEDGE - Определяет, что окно имеет рамку с углубленным краем.
+            //WS_EX_DLGMODALFRAME - Создает окно, которое имеет двойную рамку; окно может быть создано (необязательно) со строкой заголовка, которую определяет стиль WS_CAPTION в параметре dwStyle.
+            //WS_EX_WINDOWEDGE - Определяет, что окно имеет рамку с выпуклым краем.
+            //WS_EX_STATICEDGE - Создает окно с трехмерным стилем рамки, предполагается использовать для элементов, которые не принимают вводимую информацию от пользователя.
+
+            /*static WNDCLASSEX wndclass;
+
+            GetClassInfoEx(GetModuleHandle(0), L"static", &wndclass);
+
+            wndclass.*/
+
+
+            this->hWnd = CreateWindowEx(0,
+                                        L"static", 
+                                        text,
+                                        WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | WS_BORDER /* | SS_SUNKEN | WS_BORDER*/,
                                         x, y,
                                         width, height,
                                         hWnd, 

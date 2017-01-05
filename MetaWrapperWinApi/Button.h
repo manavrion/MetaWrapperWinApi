@@ -5,7 +5,9 @@
 
 namespace MetaFrame {
 
-    typedef std::function<void()> ButtonFunction;
+    class Button;
+    typedef std::function<void()> ButtonFunctionVoid;
+    typedef std::function<void(Button &sender)> ButtonFunctionSender;
 
     class Button : public NativeButton {
     public:
@@ -14,9 +16,11 @@ namespace MetaFrame {
 
 
 
-        Button &addActionListener(ButtonFunction buttonFunction) {
-            actionEventFunctions.push_back(buttonFunction);
-            return *this;
+        Button &addActionListener(ButtonFunctionVoid buttonFunction) {
+            actionEventFunctionsVoid.push_back(buttonFunction); return *this;
+        }
+        Button &addActionListener(ButtonFunctionSender buttonFunction) {
+            actionEventFunctionsSender.push_back(buttonFunction); return *this;
         }
 
     protected:
@@ -26,10 +30,12 @@ namespace MetaFrame {
             return ret;
         }
 
-        ArrayList<ButtonFunction> actionEventFunctions;
+        ArrayList<ButtonFunctionVoid> actionEventFunctionsVoid;
+        ArrayList<ButtonFunctionSender> actionEventFunctionsSender;
 
         void runActionEvents() {
-            for (auto &f : actionEventFunctions) f();
+            for (auto &f : actionEventFunctionsVoid) f();
+            for (auto &f : actionEventFunctionsSender) f(*this);
         }
 
 

@@ -7,7 +7,7 @@ namespace MetaFrame {
 
     public:
         NativeAbstructObject(const String className) :
-            hWnd(), className(className)
+            hWnd(null), className(className)
         {
 
         };
@@ -44,6 +44,19 @@ namespace MetaFrame {
             return false;
         };
         virtual void command(WPARAM wParam, LPARAM lParam) = 0;
+
+
+
+        /* resize methods */
+        void nativeSetRect(Rect &rect) {
+            if (hWnd != null) {
+                MoveWindow(hWnd, rect.x, rect.y, rect.width, rect.height, true);
+            }
+        }
+
+
+
+
 
     protected:
         HWND hWnd;

@@ -24,16 +24,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Window nativeWindow(L"Kek Microsystems");
 
+    Button btn;
+
     nativeWindow
         .setX(400)
         .setY(400)
         .setWidth(800)
         .setHeight(400)
-        .add(Button()
+        .add(btn
              .setText(L"azaza")
              .setX(100)
              .setY(100)
-             .addActionListener([]() { exit(0); })
+             .addActionListener([&]() { 
+                btn.setX(btn.getX() + 10); 
+             })
         )
         .add(Button()
              .setText(L"ebal")
@@ -44,12 +48,23 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(Panel()
              .setX(200)
              .setY(200)
-             .setWidth(100)
-             .setHeight(100)
+             .setWidth(300)
+             .setHeight(300)
              .add(Button()
                   .setText(L"azzaza")
                   .setX(10)
                   .setY(10)
+             )
+             .add(Panel()
+                  .setX(50)
+                  .setY(50)
+                  .setWidth(100)
+                  .setHeight(100)
+                  .add(Button()
+                       .setText(L"eeeee")
+                       .setX(10)
+                       .setY(10)
+                  )
              )
         );
     
