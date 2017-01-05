@@ -14,7 +14,7 @@ namespace MetaFrame {
 
 
     protected:
-        
+
         void initializationEvent(const AbstructFrameElement *parent) {
             if (parent != null) {
                 init(((const NativeAbstructObject*)parent)->hWnd);

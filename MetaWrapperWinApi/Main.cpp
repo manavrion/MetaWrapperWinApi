@@ -24,14 +24,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Window nativeWindow(L"Kek Microsystems");
 
     nativeWindow
+        .setX(400)
+        .setY(400)
+        .setWidth(800)
+        .setHeight(400)
         .add(Button()
+             .setText(L"azaza")
              .setX(100)
              .setY(100)
              .addActionListener([]() { exit(0); })
         )
         .add(Button()
+             .setText(L"ebal")
              .setX(100)
              .setY(130)
+             .addActionListener([]() { exit(1); })
         );
     
 

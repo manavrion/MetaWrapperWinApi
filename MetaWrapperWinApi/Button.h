@@ -20,6 +20,10 @@ namespace MetaFrame {
         }
 
     protected:
+        virtual AbstructFrameElement *copy() const {
+            return new Button(*this);
+        }
+
         ArrayList<ButtonFunction> actionEventFunctions;
 
         void runActionEvents() {

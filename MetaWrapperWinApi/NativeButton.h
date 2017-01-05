@@ -7,15 +7,18 @@ namespace MetaFrame {
         NativeButton() 
             : NativeAbstructObject(L"button")
         {
+            x = 10;
+            y = 10;
             width = 73;
             height = 21;
         };
 
 
 
+    protected:
 
         virtual void init(HWND hWnd);
-    protected:
+    
 
         int IDC_OF_BUTTON;
 

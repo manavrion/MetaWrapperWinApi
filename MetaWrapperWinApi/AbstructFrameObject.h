@@ -17,7 +17,10 @@ namespace MetaFrame {
             minHeight(0), maxHeight(0x7fffFFFF),
             margin(),
             horizontalAlignment(HorizontalAlignment::Absolute),
-            verticalAlignment(VerticalAlignment::Absolute) 
+            verticalAlignment(VerticalAlignment::Absolute),
+            background(),
+            foreground(),
+            text()
         {};
 
     protected:
@@ -43,6 +46,8 @@ namespace MetaFrame {
 
         Color background;
         Color foreground;
+
+        String text;
 
     public:
         //setters
@@ -118,6 +123,20 @@ namespace MetaFrame {
             return *this;
         };
 
+        virtual AbstructFrameObject &setBackground(const Color &background){
+            this->background = background;
+            return *this;
+        }
+        virtual AbstructFrameObject &setForeground(const Color &foreground){
+            this->foreground = foreground;
+            return *this;
+        }
+
+        virtual AbstructFrameObject &setText(const String &text){
+            this->text = text;
+            return *this;
+        }
+
         //getters
         int getX() {
             return x;
@@ -169,6 +188,17 @@ namespace MetaFrame {
         VerticalAlignment getVerticalAlignment() {
             return verticalAlignment;
         };
+
+        Color getBackground() {
+            return background;
+        }
+        Color getForeground() {
+            return foreground;
+        }
+
+        String getText() {
+            return text;
+        }
 
     public:
         ~AbstructFrameObject() {};
@@ -244,8 +274,20 @@ namespace MetaFrame {
     virtual FrameType &setVerticalAlignment(VerticalAlignment verticalAlignment) {\
         AbstructFrameObject::setVerticalAlignment(verticalAlignment);\
         return *this;\
-    };
-
+    };\
+\
+    virtual FrameType &setBackground(const Color &background) {\
+        AbstructFrameObject::setBackground(background); \
+        return *this;\
+    }\
+    virtual FrameType &setForeground(const Color &foreground) {\
+        AbstructFrameObject::setForeground(foreground); \
+        return *this;\
+    }\
+    virtual FrameType &setText(const String &text) {\
+        AbstructFrameObject::setText(text); \
+        return *this;\
+    }
 
 
 }

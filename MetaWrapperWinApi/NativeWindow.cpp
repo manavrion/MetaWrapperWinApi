@@ -14,8 +14,16 @@ namespace MetaFrame {
     }
 
     void NativeWindow::init(HWND hWnd) {
-        this->hWnd = CreateWindow(className, title, WS_OVERLAPPEDWINDOW,
-                                  CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, hWnd, nullptr, hInstance, nullptr);
+        this->hWnd = CreateWindow(className, 
+                                  title, 
+                                  WS_OVERLAPPEDWINDOW, 
+                                  x, y, 
+                                  width + 16, height + 39,
+                                  hWnd, 
+                                  nullptr, 
+                                  hInstance, 
+                                  nullptr);
+
         if (!this->hWnd) {
             throw L"Error in creating window";
         }

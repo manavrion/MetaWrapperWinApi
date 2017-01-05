@@ -3,8 +3,6 @@
 
 namespace MetaFrame {
 
-    class Button;
-
     class AbstructFrameElement : public AbstructFrameObject {
 
     public:
@@ -26,8 +24,15 @@ namespace MetaFrame {
         }
         virtual void initializationEvent(const AbstructFrameElement *parent) = 0;
 
+        virtual AbstructFrameElement *copy() const = 0;
+
     public:
-        AbstructFrameElement &add(const Button &child);
+        AbstructFrameElement &add(const AbstructFrameElement &child) {
+            AbstructFrameElement *newChild = child.copy();
+            newChild->parent = this;
+            childs.push_back(newChild);
+            return *this;
+        };
 
     public:
         ~AbstructFrameElement() {

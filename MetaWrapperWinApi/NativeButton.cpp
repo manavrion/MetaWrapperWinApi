@@ -18,7 +18,7 @@ namespace MetaFrame {
         }
 
         this->hWnd = CreateWindow(L"button", 
-                                  L"Text",
+                                  text,
                                   WS_CHILD | WS_VISIBLE, 
                                   x, y, 
                                   width, height, 

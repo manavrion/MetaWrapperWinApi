@@ -18,9 +18,13 @@ namespace MetaFrame {
             NativeWindow::run();
         }
 
+    protected:
+        virtual AbstructFrameElement *copy() const {
+            return new Window(*this);
+        }
 
-
-
+    public:
+        ADD_SET_OF_SETTERS(Window);
         ~Window() {};
     };
 

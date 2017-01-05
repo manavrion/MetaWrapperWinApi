@@ -10,6 +10,10 @@ namespace MetaFrame {
         NativeWindow(const String &name)
             : hInstance(GetModuleHandle(0)), title(name), NativeAbstructObject(name)
         {
+            x = CW_USEDEFAULT;
+            y = 0;
+            width = CW_USEDEFAULT;
+            height = 0;
             registerClass();
         };
 
@@ -30,8 +34,10 @@ namespace MetaFrame {
             }
         }
 
-        virtual void init(HWND hWnd);;
     protected:
+
+        virtual void init(HWND hWnd);;
+
         HINSTANCE hInstance;
         String title;
         void registerClass();
