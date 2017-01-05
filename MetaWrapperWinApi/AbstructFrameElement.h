@@ -3,6 +3,8 @@
 
 namespace MetaFrame {
 
+    class Button;
+
     class AbstructFrameElement : public AbstructFrameObject {
 
     public:
@@ -25,18 +27,21 @@ namespace MetaFrame {
         virtual void initializationEvent(AbstructFrameElement *parent) = 0;
 
     public:
-        AbstructFrameElement *add(AbstructFrameObject *child) {
-            childs.push_back((AbstructFrameElement *)child);
-            ((AbstructFrameElement *)child)->parent = this;
-            return this;
-        };
-
+        AbstructFrameElement &add(Button &child);;
+        /*template<class TemplateFrameElement>
+        AbstructFrameElement &add(TemplateFrameElement &child) {
+            TemplateFrameElement *newChild = new TemplateFrameElement(child);
+            newChild->parent = this;
+            childs.push_back(newChild);
+            return *this;
+        };*/
 
     public:
         ~AbstructFrameElement() {
-            for (auto object : childs) {
+            childs.clear();
+            /*for (auto object : childs) {
                 delete object;
-            }
+            }*/
         };
 
     };

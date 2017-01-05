@@ -21,22 +21,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    Window *nativeWindow = new Window(L"Kek Microsystems");
+    Window nativeWindow(L"Kek Microsystems");
 
-    Button *b = new Button();
+    nativeWindow
+        .add(Button()
+             .setX(100)
+             .setY(100)
+        )
+        .add(Button()
+             .setX(100)
+             .setY(130)
+        );
+    
 
-    b->setX(100)->setY(100);
-
-    Button *b2 = new Button();
-
-    b2->setX(100)->setY(140);
-
-    nativeWindow->add(b)->add(b2);
-
-
-    nativeWindow->run();
-
-    delete nativeWindow;
+    nativeWindow.run();
 
 
     /*MyRegisterClass(hInstance);

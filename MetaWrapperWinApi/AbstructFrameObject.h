@@ -20,7 +20,6 @@ namespace MetaFrame {
             verticalAlignment(VerticalAlignment::Absolute) 
         {};
 
-
     protected:
         /* fields */
         int x;//location in parent
@@ -44,76 +43,76 @@ namespace MetaFrame {
 
     public:
         //setters
-        virtual AbstructFrameObject *setRect(Rect rect) {
+        virtual AbstructFrameObject &setRect(Rect rect) {
             x = rect.x;
             y = rect.y;
             width = rect.width;
             height = rect.height;
-            return this;
+            return *this;
         };
 
-        virtual AbstructFrameObject *setX(int x) {
+        virtual AbstructFrameObject &setX(int x) {
             this->x = x;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setY(int y) {
+        virtual AbstructFrameObject &setY(int y) {
             this->y = y;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setSize(Size size) {
+        virtual AbstructFrameObject &setSize(Size size) {
             height = size.height;
             width = size.width;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setWidth(int width) {
+        virtual AbstructFrameObject &setWidth(int width) {
             this->width = width;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setHeight(int height) {
+        virtual AbstructFrameObject &setHeight(int height) {
             this->height = height;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setAutoWidth(bool autoWidth) {
+        virtual AbstructFrameObject &setAutoWidth(bool autoWidth) {
             this->autoWidth = autoWidth;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setAutoHeight(bool autoHeight){
+        virtual AbstructFrameObject &setAutoHeight(bool autoHeight){
             this->autoHeight = autoHeight;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setMinWidth(int minWidth){
+        virtual AbstructFrameObject &setMinWidth(int minWidth){
             this->minWidth = minWidth;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setMaxWidth(int maxWidth){
+        virtual AbstructFrameObject &setMaxWidth(int maxWidth){
             this->maxWidth = maxWidth;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setMinHeight(int minHeight){
+        virtual AbstructFrameObject &setMinHeight(int minHeight){
             this->minHeight = minHeight;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setMaxHeight(int maxHeight){
+        virtual AbstructFrameObject &setMaxHeight(int maxHeight){
             this->maxHeight = maxHeight;
-            return this;
+            return *this;
         };
                                  
-        virtual AbstructFrameObject *setMargin(int left, int right, int top, int bottom) {
+        virtual AbstructFrameObject &setMargin(int left, int right, int top, int bottom) {
             this->margin = Margin(left, right, top, bottom);
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setMargin(Margin margin) {
+        virtual AbstructFrameObject &setMargin(Margin margin) {
             this->margin = margin;
-            return this;
+            return *this;
         };
                                  
-        virtual AbstructFrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+        virtual AbstructFrameObject &setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
             this->horizontalAlignment = horizontalAlignment;
-            return this;
+            return *this;
         };
-        virtual AbstructFrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
+        virtual AbstructFrameObject &setVerticalAlignment(VerticalAlignment verticalAlignment) {
             this->verticalAlignment = verticalAlignment;
-            return this;
+            return *this;
         };
 
         //getters
@@ -176,72 +175,72 @@ namespace MetaFrame {
     //big macro
 
 #define ADD_SET_OF_SETTERS(FrameType) \
-    virtual FrameType *setRect(Rect rect) {\
+    virtual FrameType &setRect(Rect rect) {\
         AbstructFrameObject::setRect(rect);\
-        return this;\
+        return *this;\
     };\
 \
-    virtual FrameType *setX(int x) {\
+    virtual FrameType &setX(int x) {\
         AbstructFrameObject::setX(x);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setY(int y) {\
+    virtual FrameType &setY(int y) {\
         AbstructFrameObject::setY(y);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setSize(Size size) {\
+    virtual FrameType &setSize(Size size) {\
         AbstructFrameObject::setSize(size);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setWidth(int width) {\
+    virtual FrameType &setWidth(int width) {\
         AbstructFrameObject::setWidth(width);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setHeight(int height) {\
+    virtual FrameType &setHeight(int height) {\
         AbstructFrameObject::setHeight(height);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setAutoWidth(bool autoWidth) {\
+    virtual FrameType &setAutoWidth(bool autoWidth) {\
         AbstructFrameObject::setAutoWidth(autoWidth);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setAutoHeight(bool autoHeight) {\
+    virtual FrameType &setAutoHeight(bool autoHeight) {\
         AbstructFrameObject::setAutoHeight(autoHeight);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setMinWidth(int minWidth) {\
+    virtual FrameType &setMinWidth(int minWidth) {\
         AbstructFrameObject::setMinWidth(minWidth);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setMaxWidth(int maxWidth) {\
+    virtual FrameType &setMaxWidth(int maxWidth) {\
         AbstructFrameObject::setMaxWidth(maxWidth);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setMinHeight(int minHeight) {\
+    virtual FrameType &setMinHeight(int minHeight) {\
         AbstructFrameObject::setMinHeight(minHeight);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setMaxHeight(int maxHeight) {\
+    virtual FrameType &setMaxHeight(int maxHeight) {\
         AbstructFrameObject::setMaxHeight(maxHeight);\
-        return this;\
+        return *this;\
     };\
 \
-    virtual FrameType *setMargin(int left, int right, int top, int bottom) {\
+    virtual FrameType &setMargin(int left, int right, int top, int bottom) {\
         AbstructFrameObject::setMargin(left, right, top, bottom);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setMargin(Margin margin) {\
+    virtual FrameType &setMargin(Margin margin) {\
         AbstructFrameObject::setMargin(margin);\
-        return this;\
+        return *this;\
     };\
 \
-    virtual FrameType *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {\
+    virtual FrameType &setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {\
         AbstructFrameObject::setHorizontalAlignment(horizontalAlignment);\
-        return this;\
+        return *this;\
     };\
-    virtual FrameType *setVerticalAlignment(VerticalAlignment verticalAlignment) {\
+    virtual FrameType &setVerticalAlignment(VerticalAlignment verticalAlignment) {\
         AbstructFrameObject::setVerticalAlignment(verticalAlignment);\
-        return this;\
+        return *this;\
     };
 
 
