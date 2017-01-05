@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "AbstructFrameElement.h"
 
 namespace MetaFrame {
@@ -7,7 +8,7 @@ namespace MetaFrame {
 
     public:
         NativeAbstructObject(const String className) :
-            hWnd(null), className(className)
+            hWindow(new HWND), className(className)
         {
 
         };
@@ -15,9 +16,14 @@ namespace MetaFrame {
 
     protected:
 
+        virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
+            ((NativeAbstructObject*)nw)->hWindow.reset();
+            ((NativeAbstructObject*)nw)->hWindow = ((const NativeAbstructObject*)&old)->hWindow;
+        };
+
         void initializationEvent(const AbstructFrameElement *parent) {
             if (parent != null) {
-                init(((const NativeAbstructObject*)parent)->hWnd);
+                init(*(((const NativeAbstructObject*)parent)->hWindow));
             } else {
                 init(null);
             }
@@ -33,7 +39,7 @@ namespace MetaFrame {
             while (!q.empty()) {
                 NativeAbstructObject *cur = q.front();
                 q.pop();
-                if (cur->hWnd == hwndTarget) {
+                if (*(cur->hWindow) == hwndTarget) {
                     cur->command(wParam, lParam);
                     return true;
                 }
@@ -49,8 +55,8 @@ namespace MetaFrame {
 
         /* resize methods */
         void nativeSetRect(Rect &rect) {
-            if (hWnd != null) {
-                MoveWindow(hWnd, rect.x, rect.y, rect.width, rect.height, true);
+            if (hWindow != null) {
+                MoveWindow(*hWindow, rect.x, rect.y, rect.width, rect.height, true);
             }
         }
 
@@ -59,7 +65,8 @@ namespace MetaFrame {
 
 
     protected:
-        HWND hWnd;
+        std::shared_ptr<HWND> hWindow;
+        //HWND hWnd;
         String className;
 
     public:

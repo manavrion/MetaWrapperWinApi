@@ -41,16 +41,16 @@ namespace MetaFrame {
             wndclass.*/
 
 
-            this->hWnd = CreateWindowEx(0,
-                                        L"static", 
-                                        text,
-                                        WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | WS_BORDER /* | SS_SUNKEN | WS_BORDER*/,
-                                        x, y,
-                                        width, height,
-                                        hWnd, 
-                                        (HMENU)NULL, 
-                                        GetModuleHandle(0), 
-                                        (LPVOID)NULL);
+            *(this->hWindow) = CreateWindowEx(0,
+                                     L"static",
+                                     text,
+                                     WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | WS_BORDER /* | SS_SUNKEN | WS_BORDER*/,
+                                     x, y,
+                                     width, height,
+                                     hWnd,
+                                     (HMENU)NULL,
+                                     GetModuleHandle(0),
+                                     (LPVOID)NULL);
 
 
         };

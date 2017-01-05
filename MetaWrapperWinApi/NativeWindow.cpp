@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "NativeWindow.h"
 #include <queue>
-
+#include <memory>
 namespace MetaFrame {
 
     static HashMap<HWND, NativeWindow*> nativeWindowMap;
@@ -14,20 +14,22 @@ namespace MetaFrame {
     }
 
     void NativeWindow::init(HWND hWnd) {
-        this->hWnd = CreateWindow(className, 
-                                  title, 
-                                  WS_OVERLAPPEDWINDOW, 
-                                  x, y, 
-                                  width + 16, height + 39,
-                                  hWnd, 
-                                  nullptr, 
-                                  hInstance, 
-                                  nullptr);
 
-        if (!this->hWnd) {
+        *(this->hWindow) = CreateWindow(className,
+                                title,
+                                WS_OVERLAPPEDWINDOW,
+                                x, y,
+                                width + 16, height + 39,
+                                hWnd,
+                                nullptr,
+                                hInstance,
+                                nullptr);
+
+
+        if (!*(this->hWindow)) {
             throw L"Error in creating window";
         }
-        nativeWindowMap[this->hWnd] = this;
+        nativeWindowMap[*(this->hWindow)] = this;
     }
 
     void NativeWindow::registerClass() {

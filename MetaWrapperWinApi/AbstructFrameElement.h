@@ -28,10 +28,12 @@ namespace MetaFrame {
         virtual void clearChilds() const {
             childs.clear();
         }
+        virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const = 0;
 
     public:
         AbstructFrameElement &add(const AbstructFrameElement &child) {
             AbstructFrameElement *newChild = child.copy();
+            //nativeCopy(newChild, child);
             newChild->parent = this;
             childs.push_back(newChild);
             return *this;

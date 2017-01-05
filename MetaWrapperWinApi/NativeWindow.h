@@ -22,8 +22,8 @@ namespace MetaFrame {
         void run() {
             
             int nCmdShow = 10;
-            ShowWindow(hWnd, nCmdShow);
-            UpdateWindow(hWnd);
+            ShowWindow(*hWindow, nCmdShow);
+            UpdateWindow(*hWindow);
 
             HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_METAWRAPPERWINAPI));
             MSG msg;

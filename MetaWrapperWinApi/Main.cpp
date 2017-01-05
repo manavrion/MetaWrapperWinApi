@@ -39,7 +39,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 btn.setX(btn.getX() + 10); 
              })
         )
-        .add(Button()
+        /*.add(Button()
              .setText(L"ebal")
              .setX(100)
              .setY(130)
@@ -66,7 +66,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                        .setY(10)
                   )
              )
-        );
+        )*/;
     
 
     nativeWindow.run();
