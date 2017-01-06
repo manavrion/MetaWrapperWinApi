@@ -12,39 +12,44 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 21;
+
+            dwExStyle = 0;
+            dwStyle = WS_BORDER;
         };
 
+
+        void nativeSetBorder(Border border) {
+            switch (border) {
+                case MetaFrame::Border::NO_BORDER:
+                    dwExStyle = 0;
+                    dwStyle = 0;
+                    break;
+                case MetaFrame::Border::BORDER:
+                    dwExStyle = 0;
+                    dwStyle = WS_BORDER;
+                    break;
+                case MetaFrame::Border::SOFT_BEVEL:
+                    dwExStyle = WS_EX_STATICEDGE; //WS_EX_STATICEDGE - Создает окно с трехмерным стилем рамки, предполагается использовать для элементов, которые не принимают вводимую информацию от пользователя.
+                    dwStyle = 0;
+                    break;
+                case MetaFrame::Border::BEVEL: //WS_EX_CLIENTEDGE - Определяет, что окно имеет рамку с углубленным краем.
+                    dwExStyle = WS_EX_CLIENTEDGE;
+                    dwStyle = 0;
+                    break;
+                default:
+                    break;
+            }
+            
+        }
 
     protected:
 
         virtual void init(HWND hWnd) {
-            int i = 2;
-            /*this->hWnd = CreateWindow(L"static",
-                                      L"panel",
-                                      WS_CHILD | WS_VISIBLE | WS_BORDER | SS_CENTER | SS_CENTERIMAGE | SS_SUNKEN,
-                                      x, y,
-                                      width, height,
-                                      hWnd,
-                                      (HMENU)i,
-                                      GetModuleHandle(0),
-                                      NULL);*/
 
-            //WS_EX_CLIENTEDGE - Определяет, что окно имеет рамку с углубленным краем.
-            //WS_EX_DLGMODALFRAME - Создает окно, которое имеет двойную рамку; окно может быть создано (необязательно) со строкой заголовка, которую определяет стиль WS_CAPTION в параметре dwStyle.
-            //WS_EX_WINDOWEDGE - Определяет, что окно имеет рамку с выпуклым краем.
-            //WS_EX_STATICEDGE - Создает окно с трехмерным стилем рамки, предполагается использовать для элементов, которые не принимают вводимую информацию от пользователя.
-
-            /*static WNDCLASSEX wndclass;
-
-            GetClassInfoEx(GetModuleHandle(0), L"static", &wndclass);
-
-            wndclass.*/
-
-
-            *(this->hWindow) = CreateWindowEx(0,
+            *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
                                      L"static",
                                      text,
-                                     WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | WS_BORDER /* | SS_SUNKEN | WS_BORDER*/,
+                                     WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | dwStyle /* | SS_SUNKEN | WS_BORDER*/,
                                      x, y,
                                      width, height,
                                      hWnd,

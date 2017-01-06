@@ -27,4 +27,5 @@ namespace MetaFrame {
 #include "Size.h"
 #include "Rect.h"
 #include "RectF.h"
+#include "Border.h"
 #define null nullptr

@@ -96,6 +96,9 @@
     <ClInclude Include="Panel.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Border.h">
+      <Filter>MetaTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

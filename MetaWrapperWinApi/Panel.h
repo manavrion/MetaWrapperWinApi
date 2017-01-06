@@ -1,14 +1,34 @@
 #pragma once
 
 #include "NativePanel.h"
+#include "Border.h"
 
 namespace MetaFrame {
 
     class Panel : public NativePanel {
     public:
-        Panel() {};
+        Panel() : border(Border::BORDER) {
+
+        };
+
+
+
+
+        Panel &setBorder(Border border) {
+            this->border = border;
+            nativeSetBorder(border);
+            return *this;
+        }
+
+        Border getBorder() {
+            return border;
+        }
 
     protected:
+        Border border;
+
+
+
         virtual AbstructFrameElement *copy() const {
             Panel *ret = new Panel(*this);
             this->clearChilds();

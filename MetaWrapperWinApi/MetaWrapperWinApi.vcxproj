@@ -140,6 +140,7 @@
     <ClInclude Include="AbstructFrameElement.h" />
     <ClInclude Include="AbstructFrameObject.h" />
     <ClInclude Include="Alignment.h" />
+    <ClInclude Include="Border.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Main.h" />

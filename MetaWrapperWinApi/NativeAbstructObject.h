@@ -8,7 +8,8 @@ namespace MetaFrame {
 
     public:
         NativeAbstructObject(const String className) :
-            hWindow(new HWND), className(className)
+            hWindow(new HWND), className(className),
+            dwExStyle(), dwStyle()
         {
 
         };
@@ -68,6 +69,12 @@ namespace MetaFrame {
         std::shared_ptr<HWND> hWindow;
         //HWND hWnd;
         String className;
+
+        //options
+        DWORD dwExStyle;
+        DWORD dwStyle;
+
+
 
     public:
         ~NativeAbstructObject() {
