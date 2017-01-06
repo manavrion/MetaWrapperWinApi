@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MetaFrame::AbstructFrameObject">
+    <Position X="6.75" Y="0.5" Width="4.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>4DQQFAAAAKAgAgwRQGBHCwOAgQCIQBkMABBiEGCQMgA=</HashCode>
+      <FileName>AbstructFrameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::AbstructFrameElement">
+    <Position X="7" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABAAAABAAACBAAAAAAAAAAIAIIAAAAACgAA=</HashCode>
+      <FileName>AbstructFrameElement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativeAbstructObject">
+    <Position X="9.75" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAABAAAAAAAAAAAICgACQAAAIAAAAAAAKAgEA=</HashCode>
+      <FileName>NativeAbstructObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativeButton">
+    <Position X="8" Y="11.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAQAAEIAAAAAAAAAEAA=</HashCode>
+      <FileName>NativeButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativePanel">
+    <Position X="10.75" Y="11.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAQQAAAAAAAAAAAQAAEIAAAAAAAAAAAA=</HashCode>
+      <FileName>NativePanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativeWindow">
+    <Position X="5.5" Y="11.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAwAAQBAAAAAAAAAAAAAAIAQAAAIAAAIAAABAAAA=</HashCode>
+      <FileName>NativeWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Panel">
+    <Position X="10.75" Y="15.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAABAAARgAAAAAEIBAAAAAAAAAAA=</HashCode>
+      <FileName>Panel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Button">
+    <Position X="8" Y="15.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAABAAAAAAAAAAABAAAgAAAAAEIAABAAAAEAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Window">
+    <Position X="5.5" Y="15.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAgAQAAAAIAAAAACAAAAAA=</HashCode>
+      <FileName>Window.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="MetaFrame::Point">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAQAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Point.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::PointF">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgIAAAAAAAQAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Point.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::Size">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAQAQAAAAQACAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Size.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::SizeF">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAgAAAQAQAAAAQACAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Size.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::String" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>String.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::Rect">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABKCCAAAAIIAAAwEQAAAEAgCBCAAAAIAAABgAABAAAA=</HashCode>
+      <FileName>Rect.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::ByteString" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACIAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>String.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::Color" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAQgAAAAgA=</HashCode>
+      <FileName>Color.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::Margin" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAgAAAAIAAEAAAAAAAAAgAA=</HashCode>
+      <FileName>Margin.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="MetaFrame::wchar" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>String.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::ButtonFunctionVoid" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::ButtonFunctionSender" Collapsed="true">
+    <Position X="2.25" Y="6.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Button.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::byte" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MFTafx.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="MetaFrame::HorizontalAlignment" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACQACAIAAA=</HashCode>
+      <FileName>Alignment.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MetaFrame::VerticalAlignment" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAIAAAAAAAQACAIAAA=</HashCode>
+      <FileName>Alignment.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MetaFrame::Border" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAhAAAAAAEAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Border.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

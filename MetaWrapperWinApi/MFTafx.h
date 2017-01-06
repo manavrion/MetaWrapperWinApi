@@ -4,7 +4,11 @@
 #include <vector>
 #include <unordered_map>
 #include <queue>
+#include <set>
 namespace MetaFrame {
+
+
+
     typedef unsigned char byte;
     typedef wchar_t wchar;
 
@@ -18,9 +22,11 @@ namespace MetaFrame {
     using ArrayList = std::vector<T>;
 
     template<typename T>
+    using Set = std::set<T>;
+
+    template<typename T>
     using Queue = std::queue<T>;
 
-    
 
 }
 
