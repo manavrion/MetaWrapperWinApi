@@ -54,6 +54,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                   .setText(L"azzaza")
                   .setX(10)
                   .setY(10)
+                  .addActionListener([](Button &btn) {
+                      btn.setX(btn.getX() + 10);
+                  })
              )
              .add(Panel()
                   .setX(50)
@@ -64,6 +67,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                        .setText(L"eeeee")
                        .setX(10)
                        .setY(10)
+                       .addActionListener([](Button &btn) {
+                      btn.setX(btn.getX() + 10);
+                  })
                   )
              )
         );

@@ -17,6 +17,7 @@ namespace MetaFrame {
             dwStyle = WS_BORDER;
         };
 
+        friend LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
         void nativeSetBorder(Border border) {
             switch (border) {
@@ -44,21 +45,7 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void init(HWND hWnd) {
-
-            *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
-                                     L"static",
-                                     text,
-                                     WS_CHILD | WS_VISIBLE | SS_CENTER | SS_CENTERIMAGE | dwStyle /* | SS_SUNKEN | WS_BORDER*/,
-                                     x, y,
-                                     width, height,
-                                     hWnd,
-                                     (HMENU)NULL,
-                                     GetModuleHandle(0),
-                                     (LPVOID)NULL);
-
-
-        };
+        virtual void init(HWND hWnd);;
 
 
         //int IDC_OF_BUTTON;

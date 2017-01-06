@@ -78,7 +78,11 @@ namespace MetaFrame {
 
     public:
         ~NativeAbstructObject() {
-
+            if (hWindow.use_count() == 1) {
+                //DestroyWindow(*hWindow);
+                //CloseHandle(*hWindow);
+            }
+            
         };
     };
 

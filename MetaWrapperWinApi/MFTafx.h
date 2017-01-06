@@ -9,6 +9,9 @@ namespace MetaFrame {
     typedef wchar_t wchar;
 
     template<typename T1, typename T2>
+    using Pair = std::pair<T1, T2>;
+
+    template<typename T1, typename T2>
     using HashMap = std::unordered_map<T1, T2>;
 
     template<typename T>
@@ -16,6 +19,8 @@ namespace MetaFrame {
 
     template<typename T>
     using Queue = std::queue<T>;
+
+    
 
 }
 
