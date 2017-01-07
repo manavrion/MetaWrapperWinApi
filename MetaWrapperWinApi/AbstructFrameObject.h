@@ -12,10 +12,10 @@ namespace MetaFrame {
         AbstructFrameObject() :
             x(), y(),
             width(), height(),
-            autoWidth(true), autoHeight(true),
+            autoWidth(false), autoHeight(false),
             minWidth(0), maxWidth(0x7fffFFFF),
             minHeight(0), maxHeight(0x7fffFFFF),
-            margin(),
+            margin(10, 10, 10, 10),
             horizontalAlignment(HorizontalAlignment::Absolute),
             verticalAlignment(VerticalAlignment::Absolute),
             background(),
@@ -162,6 +162,22 @@ namespace MetaFrame {
         };
         virtual AbstructFrameObject &setVerticalAlignment(VerticalAlignment verticalAlignment) {
             this->verticalAlignment = verticalAlignment;
+            return *this;
+        };
+
+        virtual AbstructFrameObject &setAlignment(Alignment alignment) {
+            switch (alignment) {
+                case MetaFrame::Alignment::Absolute:
+                    verticalAlignment = VerticalAlignment::Absolute;
+                    horizontalAlignment = HorizontalAlignment::Absolute;
+                    break;
+                case MetaFrame::Alignment::Center:
+                    verticalAlignment = VerticalAlignment::Center;
+                    horizontalAlignment = HorizontalAlignment::Center;
+                    break;
+                default:
+                    break;
+            }
             return *this;
         };
 
@@ -344,6 +360,11 @@ namespace MetaFrame {
         AbstructFrameObject::setVerticalAlignment(verticalAlignment);\
         return *this;\
     };\
+\
+    virtual FrameType &setAlignment(Alignment alignment) {\
+        AbstructFrameObject::setAlignment(alignment);\
+        return *this; \
+    }\
 \
     virtual FrameType &setBackground(const Color &background) {\
         AbstructFrameObject::setBackground(background); \

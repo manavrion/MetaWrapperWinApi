@@ -42,9 +42,15 @@ void MetaFrame::AbstructFrameElement::packEvent() {
                         break;
                     }
                     case MetaFrame::HorizontalAlignment::Center:
-                    //Its works
+                    {
+                        child->autoWidth = false;
+                        int freeSpace = width - child->width;
+                        child->setX(freeSpace / 2);
+                        break;
+                    }
                     case MetaFrame::HorizontalAlignment::Stretch:
                     {
+                        child->autoWidth = true;
                         if (child->autoWidth) {
                             int newWidth = width - child->margin.right - child->margin.left;
                             newWidth = max(newWidth, child->minWidth);
@@ -86,8 +92,16 @@ void MetaFrame::AbstructFrameElement::packEvent() {
                         break;
                     }
                     case MetaFrame::VerticalAlignment::Center:
+                    {
+                        child->autoHeight = false;
+                        int freeSpace = height - child->height;
+                        child->setY(freeSpace / 2);
+                        break;
+                    }
                     case MetaFrame::VerticalAlignment::Stretch:
                     {
+                        child->autoHeight = true;
+
                         if (child->autoHeight) {
                             int newHeight = height - child->margin.bottom - child->margin.top;
                             newHeight = max(newHeight, child->minHeight);

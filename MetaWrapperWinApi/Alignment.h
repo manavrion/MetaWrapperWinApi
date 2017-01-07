@@ -2,6 +2,11 @@
 
 namespace MetaFrame {
 
+    enum class Alignment {
+        Absolute,
+        Center
+    };
+
     enum class HorizontalAlignment {
         Absolute,
         Left,

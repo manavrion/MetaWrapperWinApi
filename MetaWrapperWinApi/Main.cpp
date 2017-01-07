@@ -29,19 +29,25 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Window nativeWindow(L"Kek Microsystems");
 
     nativeWindow
-        .setX(400)
-        .setY(400)
-        .setWidth(800)
-        .setHeight(400)
+        .setAlignment(Alignment::Center)
+        .setSize(800, 400)
         .add(Button()
              .setText(L"О программе")
-             .setX(100)
-             .setWidth(150)
-             .setY(130)
-             .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); })
-        )
+             .setWidth(100)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); }))
+        .add(Panel()
+             .setText(L"Починка")
+             .setHeight(80)
+             .setHorizontalAlignment(HorizontalAlignment::Stretch)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setMargin(10, 10, 10, 40)
+        );
 
-        ;
+
+
+
     
     nativeWindow.pack();
     nativeWindow.run();
