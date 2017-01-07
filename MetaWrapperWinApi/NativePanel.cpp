@@ -6,7 +6,7 @@ namespace MetaFrame {
 
     static HashMap<HWND, Pair<NativePanel*, WNDPROC>> nativePanel;
 
-    LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) {
+    static LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) {
         if (Message == WM_COMMAND && nativePanel.count(hwnd) != 0){
             nativePanel[hwnd].first->wmCommand(wParam, lParam);
         }

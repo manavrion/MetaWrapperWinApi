@@ -28,8 +28,10 @@ namespace MetaFrame {
             } else {
                 init(null);
             }
+            postInit();
         };
         virtual void init(HWND hWnd) = 0;
+        virtual void postInit();
 
         bool wmCommand(WPARAM wParam, LPARAM lParam) {
             HWND hwndTarget = (HWND)lParam;
@@ -61,7 +63,11 @@ namespace MetaFrame {
             }
         }
 
-
+        void nativeSetBackground(const Color &background) {
+            if (hWindow != null) {
+                //MoveWindow(*hWindow, rect.x, rect.y, rect.width, rect.height, true);
+            }
+        }
 
 
 
@@ -79,7 +85,7 @@ namespace MetaFrame {
     public:
         ~NativeAbstructObject() {
             if (hWindow.use_count() == 1) {
-                //DestroyWindow(*hWindow);
+                DestroyWindow(*hWindow);
                 //CloseHandle(*hWindow);
             }
             

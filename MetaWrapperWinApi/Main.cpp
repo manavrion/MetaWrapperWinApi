@@ -4,6 +4,10 @@
 #include "stdafx.h"
 #include "Main.h"
 
+
+
+
+
 // Global Variables:
 //HINSTANCE hInst;                                // current instance
 
@@ -21,10 +25,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+ 
     Window nativeWindow(L"Kek Microsystems");
 
-
+    Point t{1, 2};
 
     nativeWindow
         .setX(400)
@@ -100,3 +104,5 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
     }
     return (INT_PTR)FALSE;
 }
+
+
