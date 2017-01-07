@@ -1,4 +1,4 @@
-// MetaWrapperWinApi.cpp : Defines the entry point for the application.
+﻿// MetaWrapperWinApi.cpp : Defines the entry point for the application.
 //
 
 #include "stdafx.h"
@@ -28,45 +28,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
  
     Window nativeWindow(L"Kek Microsystems");
 
-    Point t{1, 2};
-
     nativeWindow
         .setX(400)
         .setY(400)
         .setWidth(800)
         .setHeight(400)
-        .add(Label()
-             .setText(L"ebanko")
-             .setX(2)
-             .setY(20)
-        )
         .add(Button()
-             .setText(L"azaza")
-             .setX(100)
-             .setY(100)
-             .addActionListener([](Button &btn) {
-                btn.setX(btn.getX() + 10); 
-             })
-        )
-        .add(Button()
-             .setText(L"color")
-             .setX(100)
-             .setY(160)
-             .addActionListener([&](Button &btn) {
-                 nativeWindow.setBackground(Color(128, 182, 128));
-             })
-        )
-        .add(Button()
-             .setText(L"ebal")
+             .setText(L"О программе")
              .setX(100)
              .setY(130)
              .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); })
         )
         .add(Panel()
-             .setX(200)
-             .setY(200)
-             .setWidth(300)
-             .setHeight(300)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
+             .setMaxWidth(600)
+             .setMinWidth(300)
+             .setWidth(500)
+             .setX(100)
+             .setAutoWidth(true)
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setMaxHeight(600)
+             .setMinHeight(300)
+             .setHeight(150)
+             .setY(100)
+             .setAutoHeight(true)
+             .setMargin(10, 10, 10, 10)
              .add(Button()
                   .setText(L"azzaza")
                   .setX(10)
@@ -80,6 +66,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                   .setY(50)
                   .setWidth(100)
                   .setHeight(100)
+                  .setHorizontalAlignment(HorizontalAlignment::Stretch)
+                  .setAutoWidth(false)
+                  .setMargin(20, 20, 20, 20)
                   .add(Button()
                        .setText(L"eeeee")
                        .setX(10)
@@ -91,7 +80,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              )
         );
     
-
+    nativeWindow.pack();
     nativeWindow.run();
 
 

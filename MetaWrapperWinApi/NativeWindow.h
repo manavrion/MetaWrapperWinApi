@@ -67,6 +67,13 @@ namespace MetaFrame {
 
         virtual LRESULT nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
             switch (message) {
+                case WM_SIZE:
+                {
+                    width = LOWORD(lParam);
+                    height = HIWORD(lParam);
+                    pack();
+                    break;
+                }
                 /*case WM_PAINT:
                 {
                     PAINTSTRUCT ps;
@@ -81,6 +88,7 @@ namespace MetaFrame {
                 default:
                     return DefWindowProc(hWnd, message, wParam, lParam);
             }
+            return 0;
         };
 
 
