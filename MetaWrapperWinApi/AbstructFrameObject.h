@@ -67,7 +67,14 @@ namespace MetaFrame {
             nativeSetRect(rect);
             return *this;
         };
-
+        virtual AbstructFrameObject &setRect(int x, int y, int width, int height) {
+            this->width = width;
+            this->height = height;
+            this->x = x;
+            this->y = y;
+            nativeSetRect(Rect(x, y, width, height));
+            return *this;
+        };
 
 
         virtual AbstructFrameObject &setX(int x) {
@@ -92,6 +99,7 @@ namespace MetaFrame {
             nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
+
         virtual AbstructFrameObject &setSize(Size size) {
             height = size.height;
             width = size.width;
@@ -257,6 +265,11 @@ namespace MetaFrame {
         return *this;\
     };\
 \
+    virtual AbstructFrameObject &setRect(int x, int y, int width, int height) {\
+        AbstructFrameObject::setRect(Rect(x, y, width, height));\
+        return *this;\
+    };\
+    \
     virtual FrameType &setX(int x) {\
         AbstructFrameObject::setX(x);\
         return *this;\
