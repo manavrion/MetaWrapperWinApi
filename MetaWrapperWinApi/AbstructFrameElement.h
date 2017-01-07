@@ -39,6 +39,30 @@ namespace MetaFrame {
             return *this;
         };
 
+
+
+
+
+
+
+
+
+        /* pack */
+    protected:
+        virtual void packEvent();
+
+        void runPackEvent() {
+            this->packEvent();
+            for (auto &ob : childs) {
+                ob->runPackEvent();
+            }
+        }
+
+    public:
+        virtual void pack() {
+            this->runPackEvent();
+        };
+
     public:
         ~AbstructFrameElement() {
             for (auto object : childs) {

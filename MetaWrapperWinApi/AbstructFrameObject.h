@@ -20,7 +20,8 @@ namespace MetaFrame {
             verticalAlignment(VerticalAlignment::Absolute),
             background(),
             foreground(),
-            text()
+            text(),
+            layout(Layout::Simple)
         {};
 
     protected:
@@ -48,6 +49,8 @@ namespace MetaFrame {
         Color foreground;
 
         String text;
+
+        Layout layout;
 
     public:
 
@@ -149,6 +152,11 @@ namespace MetaFrame {
             return *this;
         }
 
+        virtual AbstructFrameObject &setLayout(Layout layout) {
+            this->layout = layout;
+            return *this;
+        }
+
         //getters
         int getX() {
             return x;
@@ -210,6 +218,10 @@ namespace MetaFrame {
 
         String getText() {
             return text;
+        }
+
+        virtual Layout getLayout() {
+            return layout;
         }
 
     public:
@@ -299,7 +311,10 @@ namespace MetaFrame {
     virtual FrameType &setText(const String &text) {\
         AbstructFrameObject::setText(text); \
         return *this;\
-    }
-
+    }\
+    virtual FrameType &setLayout(Layout layout) {\
+        AbstructFrameObject::setLayout(layout);\
+        return *this;\
+    }\
 
 }

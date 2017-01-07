@@ -105,6 +105,9 @@
     <ClInclude Include="NativeLabel.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Layout.h">
+      <Filter>MetaTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
