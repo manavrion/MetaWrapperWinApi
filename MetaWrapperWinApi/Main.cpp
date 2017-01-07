@@ -4,7 +4,8 @@
 #include "stdafx.h"
 #include "Main.h"
 
-
+#include "Client.h"
+#include "Worker.h"
 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
@@ -53,9 +54,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setText(L"Автогенерация клиентов")
              .addActionListener([&](CheckBox &cb) { 
                  autoGenClients = cb.getState(); 
-             })
-        )
-        ;
+             }))
+        .add(Label()
+             .setText(L"Клиент:")
+             .setAlignment(Alignment::Absolute)
+             .setPosition(5, 60))
+        .add(TextField()
+             .setVerticalAlignment(VerticalAlignment::Absolute)
+             .setY(60)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true)
+             .setMargin(50, 5, 5, 5))
+
+
+    ;
 
     panelWorkersCreator.add(Label()
                             .setAlignment(Alignment::Stretch)

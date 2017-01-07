@@ -114,6 +114,17 @@
     <ClInclude Include="CheckBox.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="NativeTextField.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="TextField.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Worker.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -154,6 +165,12 @@
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
     <ClCompile Include="CheckBox.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeTextField.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="TextField.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
   </ItemGroup>

@@ -27,3 +27,4 @@ using namespace MetaFrame;
 #include "Panel.h"
 #include "Label.h"
 #include "CheckBox.h"
+#include "TextField.h"

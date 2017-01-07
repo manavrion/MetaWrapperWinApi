@@ -142,7 +142,9 @@
     <ClInclude Include="Alignment.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="CheckBox.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Layout.h" />
@@ -154,6 +156,7 @@
     <ClInclude Include="NativeCheckBox.h" />
     <ClInclude Include="NativeLabel.h" />
     <ClInclude Include="NativePanel.h" />
+    <ClInclude Include="NativeTextField.h" />
     <ClInclude Include="NativeWindow.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="Point.h" />
@@ -164,7 +167,9 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextField.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="Worker.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstructFrameElement.cpp" />
@@ -177,6 +182,7 @@
     <ClCompile Include="NativeCheckBox.cpp" />
     <ClCompile Include="NativeLabel.cpp" />
     <ClCompile Include="NativePanel.cpp" />
+    <ClCompile Include="NativeTextField.cpp" />
     <ClCompile Include="NativeWindow.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -185,6 +191,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextField.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
