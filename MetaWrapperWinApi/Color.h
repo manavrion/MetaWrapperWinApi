@@ -23,6 +23,12 @@ namespace MetaFrame {
         }
 
         //platform
+        operator const COLORREF() const {
+            return RGB(red, green, blue);
+            //return Gdiplus::Color(alpha, red, green, blue);
+        }
+
+        //platform
         /*operator const Gdiplus::Color() const {
             return Gdiplus::Color(alpha, red, green, blue);
         }*/

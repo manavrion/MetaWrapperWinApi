@@ -32,6 +32,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     nativeWindow
         .setX(400)
+        .setBackground(Color(255, 0, 0))
         .setY(400)
         .setWidth(800)
         .setHeight(400)
@@ -41,6 +42,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setY(100)
              .addActionListener([](Button &btn) {
                 btn.setX(btn.getX() + 10); 
+             })
+        )
+        .add(Button()
+             .setText(L"color")
+             .setX(100)
+             .setY(160)
+             .addActionListener([&](Button &btn) {
+                 nativeWindow.setBackground(Color(128, 182, 128));
              })
         )
         .add(Button()

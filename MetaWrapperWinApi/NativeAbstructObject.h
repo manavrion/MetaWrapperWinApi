@@ -9,7 +9,8 @@ namespace MetaFrame {
     public:
         NativeAbstructObject(const String className) :
             hWindow(new HWND), className(className),
-            dwExStyle(), dwStyle()
+            dwExStyle(), dwStyle(),
+            hbrBkgnd(null)
         {
 
         };
@@ -29,6 +30,9 @@ namespace MetaFrame {
                 init(null);
             }
             postInit();
+            //nativeSetBackground();
+            SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+            InvalidateRect(*hWindow, NULL, true);
         };
         virtual void init(HWND hWnd) = 0;
         virtual void postInit();
@@ -63,13 +67,17 @@ namespace MetaFrame {
             }
         }
 
+
         void nativeSetBackground(const Color &background) {
+            DeleteObject(hbrBkgnd);
+            hbrBkgnd = CreateSolidBrush(background);
             if (hWindow != null) {
-                //MoveWindow(*hWindow, rect.x, rect.y, rect.width, rect.height, true);
+                SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+                InvalidateRect(*hWindow, NULL, true);
             }
         }
 
-
+        friend static LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
     protected:
         std::shared_ptr<HWND> hWindow;
@@ -80,12 +88,13 @@ namespace MetaFrame {
         DWORD dwExStyle;
         DWORD dwStyle;
 
-
+        HBRUSH hbrBkgnd;
 
     public:
         ~NativeAbstructObject() {
             if (hWindow.use_count() == 1) {
                 DestroyWindow(*hWindow);
+                DeleteObject(hbrBkgnd);
                 //CloseHandle(*hWindow);
             }
             
