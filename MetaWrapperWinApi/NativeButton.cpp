@@ -38,10 +38,6 @@ namespace MetaFrame {
 
         SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
 
-
-        //SetWindowPos(this->hWnd, 0, x, y, 50, 14, 0);
-        //MoveWindow(this->hWnd, x, y, 73, 21, false);
-
     }
 
 }

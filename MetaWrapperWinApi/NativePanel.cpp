@@ -16,6 +16,14 @@ namespace MetaFrame {
                                            (HMENU)NULL,
                                            GetModuleHandle(0),
                                            (LPVOID)NULL);
+
+        //setting standart font
+        NONCLIENTMETRICS ncm;
+        ncm.cbSize = sizeof(NONCLIENTMETRICS);
+        UINT uiParam = sizeof(NONCLIENTMETRICS);
+        SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
+
+        SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
     }
 
 }

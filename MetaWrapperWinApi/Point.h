@@ -49,7 +49,6 @@ namespace MetaFrame {
         return !(a == b);
     };
 
-
     struct PointF {
         PointF() : x(), y() {}
         PointF(const PointF &pointF) : x(pointF.x), y(pointF.y) {}

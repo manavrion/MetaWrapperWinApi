@@ -175,6 +175,12 @@ namespace MetaFrame {
                     verticalAlignment = VerticalAlignment::Center;
                     horizontalAlignment = HorizontalAlignment::Center;
                     break;
+                case MetaFrame::Alignment::Stretch:
+                    autoWidth = true;
+                    horizontalAlignment = HorizontalAlignment::Stretch;
+                    autoHeight = true;
+                    verticalAlignment = VerticalAlignment::Stretch;
+                    break;
                 default:
                     break;
             }

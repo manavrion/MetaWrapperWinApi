@@ -6,17 +6,20 @@
 
 
 
-
-
-// Global Variables:
-//HINSTANCE hInst;                                // current instance
-
-// Forward declarations of functions included in this code module:
-/*ATOM                MyRegisterClass(HINSTANCE hInstance);
-BOOL                InitInstance(HINSTANCE, int);
-LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);*/
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+Window nativeWindow(L"Kek Microsystems");
+
+Panel panelQueue;
+Panel panelRepare;
+
+Panel panelController;
+
+Panel panelMenu;
+Panel panelUsersCreator;
+Panel panelWorkersCreator;
+Panel panelLogger;
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -25,28 +28,40 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
- 
-    Window nativeWindow(L"Kek Microsystems");
+
+    
 
     nativeWindow
         .setAlignment(Alignment::Center)
         .setSize(800, 400)
+        .add(panelController
+             .setHorizontalAlignment(HorizontalAlignment::Stretch)
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setMargin(10, 10, 10, 180)
+             .setAutoHeight(true)
+             .setLayout(Layout::HorizontalStack)
+             .add(panelMenu.setAlignment(Alignment::Stretch))
+             .add(panelUsersCreator.setAlignment(Alignment::Stretch))
+             .add(panelWorkersCreator.setAlignment(Alignment::Stretch))
+             .add(panelLogger.setAlignment(Alignment::Stretch)))
+        .add(panelRepare
+             .setText(L"Починка")
+             .setHeight(80)
+             .setHorizontalAlignment(HorizontalAlignment::Stretch)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setMargin(10, 10, 10, 40))
+        .add(panelQueue
+             .setText(L"Очередь")
+             .setHeight(40)
+             .setHorizontalAlignment(HorizontalAlignment::Stretch)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setMargin(10, 10, 10, 130))
         .add(Button()
              .setText(L"О программе")
              .setWidth(100)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); }))
-        .add(Panel()
-             .setText(L"Починка")
-             .setHeight(80)
-             .setHorizontalAlignment(HorizontalAlignment::Stretch)
-             .setVerticalAlignment(VerticalAlignment::Bottom)
-             .setMargin(10, 10, 10, 40)
-        );
-
-
-
+             .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); }));
 
     
     nativeWindow.pack();

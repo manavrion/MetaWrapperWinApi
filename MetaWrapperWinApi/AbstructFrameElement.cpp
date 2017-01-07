@@ -123,4 +123,105 @@ void MetaFrame::AbstructFrameElement::packEvent() {
     }
 
 
+    if (layout == MetaFrame::Layout::HorizontalStack && !childs.empty()) {
+
+        for (auto child : childs) {
+            child->autoHeight = true;
+
+            if (child->autoHeight) {
+                int newHeight = height - child->margin.bottom - child->margin.top;
+                newHeight = max(newHeight, child->minHeight);
+                newHeight = min(newHeight, child->maxHeight);
+
+                child->setHeight(newHeight);
+            }
+            int freeSpace = height - child->height;
+            child->setY(freeSpace / 2);
+        }
+
+        //scaling size
+        
+        int marginsSize = 0;
+        int widthSize = 0;
+        ArrayList<AbstructFrameElement*> resizeble;
+
+        auto it = childs.begin();
+        auto prev = childs.begin();
+
+        if ((*it)->autoWidth == true) {
+            resizeble.push_back(*it);
+        }
+        marginsSize += (*it)->margin.left;
+        widthSize += (*it)->width;
+        for (it++; it != childs.end(); it++) {
+            widthSize += (*it)->width;
+            if ((*it)->autoWidth == true) {
+                resizeble.push_back(*it);
+            }
+            marginsSize += max((*it)->margin.left, (*prev)->margin.right);
+
+            prev = it;
+        }
+
+        marginsSize += (*prev)->margin.right;
+
+        
+        //resize if possible
+        int need = width - marginsSize - widthSize;
+        ArrayList<AbstructFrameElement*> resizebleNew;
+        while (!resizeble.empty()) {
+
+            int dx = need / (int)resizeble.size();
+            if (dx == 0) {
+                break;
+            }
+            for (auto &child : childs) {
+                int oldW = child->width;
+                child->width += dx;
+                child->width = min(child->width, child->maxWidth);
+                child->width = max(child->width, child->minWidth);
+                int realDx = oldW - child->width;
+                need += realDx;
+                if (child->width != child->maxWidth && child->width != child->minWidth) {
+                    resizebleNew.push_back(child);
+                }
+            }
+
+            swap(resizeble, resizebleNew);
+        }
+
+        //resize proc
+        {
+            int sizePos = 0;
+
+            auto it = childs.begin();
+            auto prev = childs.begin();
+
+
+            sizePos += (*it)->margin.left;
+            (*it)->setX(sizePos);
+            (*it)->setWidth((*it)->width);
+            sizePos += (*it)->width;
+
+            for (it++; it != childs.end(); it++) {
+
+                if ((*it)->autoWidth == true) {
+                    sizePos += max((*it)->margin.left, (*prev)->margin.right);
+                    (*it)->setX(sizePos);
+                    (*it)->setWidth((*it)->width);
+                    sizePos += (*it)->width;
+                    prev = it;
+                }
+                
+            }
+
+
+        }
+
+
+    }
+
+
+
+
 }

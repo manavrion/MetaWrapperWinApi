@@ -4,7 +4,8 @@ namespace MetaFrame {
 
     enum class Layout {
         Absolute,
-        Simple
+        Simple,
+        HorizontalStack
     };
 
 }

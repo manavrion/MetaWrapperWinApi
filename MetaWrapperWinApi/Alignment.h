@@ -4,7 +4,8 @@ namespace MetaFrame {
 
     enum class Alignment {
         Absolute,
-        Center
+        Center,
+        Stretch
     };
 
     enum class HorizontalAlignment {
