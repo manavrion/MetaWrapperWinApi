@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "NativeAbstructObject.h"
-
+#include <Winuser.h>
 namespace MetaFrame {
 
     class NativePanel : public NativeAbstructObject {
@@ -49,7 +49,7 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void init(HWND hWnd);;
+        virtual void init(HWND hWnd) override;
 
 
         //int IDC_OF_BUTTON;
@@ -62,6 +62,7 @@ namespace MetaFrame {
 
 
         virtual LRESULT nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+
             return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
         }
 

@@ -21,6 +21,8 @@ Panel panelWorkersCreator;
 Panel panelLogger;
 
 
+bool autoGenClients = false;
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -30,6 +32,40 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     
+    panelMenu.add(Label()
+                  .setVerticalAlignment(VerticalAlignment::Top)
+                  .setHorizontalAlignment(HorizontalAlignment::Center)
+                  .setWidth(120)
+                  .setMargin(10, 10, 120, 10)
+                  .setText(L"Скорость симуляции:"));
+
+
+    panelUsersCreator
+        .add(Label()
+             .setAlignment(Alignment::Stretch)
+             .setMargin(5, 5, 5, 5)
+             .setText(L"Создание клиентов:"))
+        .add(CheckBox()
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
+             .setAutoWidth(true)
+             .setMargin(5, 5, 30, 5)
+             .setText(L"Автогенерация клиентов")
+             .addActionListener([&](CheckBox &cb) { 
+                 autoGenClients = cb.getState(); 
+             })
+        )
+        ;
+
+    panelWorkersCreator.add(Label()
+                            .setAlignment(Alignment::Stretch)
+                            .setMargin(5, 5, 5, 5)
+                          .setText(L"Создание работников:"));
+
+    panelLogger.add(Label()
+                    .setAlignment(Alignment::Stretch)
+                    .setMargin(5, 5, 5, 5)
+                    .setText(L"Логгер:"));
 
     nativeWindow
         .setAlignment(Alignment::Center)

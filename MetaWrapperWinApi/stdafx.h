@@ -26,3 +26,4 @@ using namespace MetaFrame;
 #include "Button.h"
 #include "Panel.h"
 #include "Label.h"
+#include "CheckBox.h"
