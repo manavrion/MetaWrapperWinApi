@@ -12,7 +12,15 @@ namespace MetaFrame {
         };
 
 
+        Panel &setBorderText(const String &text) {
+            this->borderText = text;
+            nativeSetBorderText(borderText);
+            return *this;
+        }
 
+        String getBorderText() {
+            return borderText;
+        }
 
         Panel &setBorder(Border border) {
             this->border = border;
@@ -26,7 +34,7 @@ namespace MetaFrame {
 
     protected:
         Border border;
-
+        String borderText;
 
 
         virtual AbstructFrameElement *copy() const {

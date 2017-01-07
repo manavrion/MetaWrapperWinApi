@@ -2,7 +2,7 @@
 
 #include "Resource.h"
 #include "NativeAbstructObject.h"
-
+#include "Panel.h"
 namespace MetaFrame {
 
     class NativeWindow : public NativeAbstructObject {
@@ -15,9 +15,12 @@ namespace MetaFrame {
             width = CW_USEDEFAULT;
             height = 0;
             registerClass();
+            
         };
 
     protected:
+
+        Panel panelbuf;
 
         void run() {
             
@@ -74,14 +77,18 @@ namespace MetaFrame {
                     pack();
                     break;
                 }
-                /*case WM_PAINT:
+                /*case WM_ERASEBKGND: {
+                    break;
+                }*/
+                case WM_PAINT:
                 {
+
                     PAINTSTRUCT ps;
                     HDC hdc = BeginPaint(hWnd, &ps);
                     // TODO: Add any drawing code that uses hdc here...
                     EndPaint(hWnd, &ps);
+                    break;
                 }
-                break;*/
                 case WM_DESTROY:
                     PostQuitMessage(0);
                     break;

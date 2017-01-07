@@ -35,6 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .setAlignment(Alignment::Center)
         .setSize(800, 400)
         .add(panelController
+             .setBorder(Border::SOFT_BEVEL)
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
              .setVerticalAlignment(VerticalAlignment::Top)
              .setMargin(10, 10, 10, 180)

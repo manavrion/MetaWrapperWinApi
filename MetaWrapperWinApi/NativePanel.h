@@ -41,6 +41,12 @@ namespace MetaFrame {
             
         }
 
+        void nativeSetBorderText(const String &text) {
+
+
+        }
+
+
     protected:
 
         virtual void init(HWND hWnd);;
