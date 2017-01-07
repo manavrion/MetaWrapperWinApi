@@ -68,6 +68,7 @@ namespace MetaFrame {
         void nativeSetRect(Rect &rect) {
             if (hWindow != null) {
                 MoveWindow(*hWindow, rect.x, rect.y, rect.width, rect.height, true);
+                //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
             }
         }
 

@@ -61,7 +61,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setWidth(100)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); }));
+             .addActionListener([](Button &btn) { /*DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About);*/  btn.setX(btn.getX() - 10); }));
 
     
     nativeWindow.pack();
