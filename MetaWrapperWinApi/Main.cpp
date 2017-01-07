@@ -32,10 +32,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     nativeWindow
         .setX(400)
-        .setBackground(Color(255, 0, 0))
         .setY(400)
         .setWidth(800)
         .setHeight(400)
+        .add(Label()
+             .setText(L"ebanko")
+             .setX(2)
+             .setY(20)
+        )
         .add(Button()
              .setText(L"azaza")
              .setX(100)

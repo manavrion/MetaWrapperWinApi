@@ -33,8 +33,10 @@ namespace MetaFrame {
             }
             postInit();
             //nativeSetBackground();
-            SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
-            InvalidateRect(*hWindow, NULL, true);
+            if (hbrBkgnd != null) {
+                SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+                InvalidateRect(*hWindow, NULL, true);
+            }
         };
         virtual void init(HWND hWnd) = 0;
         virtual void postInit();

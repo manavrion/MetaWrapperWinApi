@@ -99,6 +99,12 @@
     <ClInclude Include="Border.h">
       <Filter>MetaTypes</Filter>
     </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeLabel.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -128,6 +134,12 @@
     </ClCompile>
     <ClCompile Include="Panel.cpp">
       <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeLabel.cpp">
+      <Filter>WrapperWinApi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

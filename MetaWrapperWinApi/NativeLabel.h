@@ -1,11 +1,13 @@
 #pragma once
 
+#include "NativeAbstructObject.h"
+
 namespace MetaFrame {
 
-    class NativeButton : public NativeAbstructObject {
+    class NativeLabel : public NativeAbstructObject {
     public:
-        NativeButton() 
-            : NativeAbstructObject(L"button")
+        NativeLabel()
+            : NativeAbstructObject(L"button") 
         {
             x = 10;
             y = 10;
@@ -13,12 +15,10 @@ namespace MetaFrame {
             height = 21;
         };
 
-
-
     protected:
 
         virtual void init(HWND hWnd) override;
-    
+
 
         //int IDC_OF_BUTTON;
 
@@ -33,7 +33,9 @@ namespace MetaFrame {
         }
 
     public:
-        ~NativeButton() {};
+        ~NativeLabel() {};
     };
+
+
 
 }

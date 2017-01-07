@@ -25,3 +25,4 @@ using namespace MetaFrame;
 #include "Window.h"
 #include "Button.h"
 #include "Panel.h"
+#include "Label.h"
