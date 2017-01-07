@@ -4,15 +4,6 @@
 
 namespace MetaFrame {
 
-    static HashMap<HWND, Pair<NativePanel*, WNDPROC>> nativePanel;
-
-    static LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) {
-        if (Message == WM_COMMAND && nativePanel.count(hwnd) != 0){
-            nativePanel[hwnd].first->wmCommand(wParam, lParam);
-        }
-        return CallWindowProc(nativePanel[hwnd].second, hwnd, Message, wParam, lParam);
-    }
-
     void NativePanel::init(HWND hWnd) {
 
         *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
@@ -25,10 +16,6 @@ namespace MetaFrame {
                                            (HMENU)NULL,
                                            GetModuleHandle(0),
                                            (LPVOID)NULL);
-
-        nativePanel[*(this->hWindow)] = {this, (WNDPROC)SetWindowLong(*(this->hWindow), GWL_WNDPROC, (LONG)WndProc) };
-
-
     }
 
 }

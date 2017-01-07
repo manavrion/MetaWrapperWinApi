@@ -4,6 +4,8 @@
 
 namespace MetaFrame {
 
+    
+
     class NativeAbstructObject : public AbstructFrameElement {
 
     public:
@@ -77,7 +79,9 @@ namespace MetaFrame {
             }
         }
 
-        friend static LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
+        friend static LRESULT CALLBACK nativeAbstructWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
+
+        virtual LRESULT nativeWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) = 0;
 
     protected:
         std::shared_ptr<HWND> hWindow;
@@ -100,5 +104,16 @@ namespace MetaFrame {
             
         };
     };
+    extern HashMap<HWND, Pair<NativeAbstructObject*, WNDPROC>> nativeAbstructObject;
 
+    LRESULT CALLBACK nativeAbstructWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+        if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
+            nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
+        }
+        if (nativeAbstructObject.count(hWnd) != 0) {
+            return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
+        }
+        //return CallWindowProc(nativeAbstructObject[hwnd].second, hwnd, message, wParam, lParam);
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
 }

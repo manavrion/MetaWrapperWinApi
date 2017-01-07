@@ -17,8 +17,6 @@ namespace MetaFrame {
             dwStyle = WS_BORDER;
         };
 
-        friend LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
-
         void nativeSetBorder(Border border) {
             switch (border) {
                 case MetaFrame::Border::NO_BORDER:
@@ -55,6 +53,11 @@ namespace MetaFrame {
         };
 
         virtual void runActionEvents() = 0;
+
+
+        virtual LRESULT nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+            return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
+        }
 
     public:
 
