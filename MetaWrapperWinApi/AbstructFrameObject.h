@@ -68,6 +68,8 @@ namespace MetaFrame {
             return *this;
         };
 
+
+
         virtual AbstructFrameObject &setX(int x) {
             this->x = x;
             nativeSetRect(Rect(x, y, width, height));
@@ -78,9 +80,27 @@ namespace MetaFrame {
             nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
+        virtual AbstructFrameObject &setPosition(int x, int y) {
+            this->x = x;
+            this->y = y;
+            nativeSetRect(Rect(x, y, width, height));
+            return *this;
+        };
+        virtual AbstructFrameObject &setPosition(Point point) {
+            this->x = point.x;
+            this->y = point.y;
+            nativeSetRect(Rect(x, y, width, height));
+            return *this;
+        };
         virtual AbstructFrameObject &setSize(Size size) {
             height = size.height;
             width = size.width;
+            nativeSetRect(Rect(x, y, width, height));
+            return *this;
+        };
+        virtual AbstructFrameObject &setSize(int height, int width) {
+            this->height = height;
+            this->width = width;
             nativeSetRect(Rect(x, y, width, height));
             return *this;
         };
@@ -245,8 +265,24 @@ namespace MetaFrame {
         AbstructFrameObject::setY(y);\
         return *this;\
     };\
+    virtual FrameType &setPosition(int x, int y) {\
+        this->x = x;\
+        this->y = y;\
+        nativeSetRect(Rect(x, y, width, height));\
+        return *this;\
+    };\
+    virtual FrameType &setPosition(Point point) {\
+        this->x = point.x;\
+        this->y = point.y;\
+        nativeSetRect(Rect(x, y, width, height));\
+        return *this;\
+    };\
     virtual FrameType &setSize(Size size) {\
         AbstructFrameObject::setSize(size);\
+        return *this;\
+    };\
+    virtual FrameType &setSize(int width, int height) {\
+        AbstructFrameObject::setSize(width, height);\
         return *this;\
     };\
     virtual FrameType &setWidth(int width) {\

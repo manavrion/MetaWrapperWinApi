@@ -36,49 +36,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(Button()
              .setText(L"О программе")
              .setX(100)
+             .setWidth(150)
              .setY(130)
              .addActionListener([]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About); })
         )
-        .add(Panel()
-             .setHorizontalAlignment(HorizontalAlignment::Left)
-             .setMaxWidth(600)
-             .setMinWidth(300)
-             .setWidth(500)
-             .setX(100)
-             .setAutoWidth(true)
-             .setVerticalAlignment(VerticalAlignment::Top)
-             .setMaxHeight(600)
-             .setMinHeight(300)
-             .setHeight(150)
-             .setY(100)
-             .setAutoHeight(true)
-             .setMargin(10, 10, 10, 10)
-             .add(Button()
-                  .setText(L"azzaza")
-                  .setX(10)
-                  .setY(10)
-                  .addActionListener([](Button &btn) {
-                      btn.setX(btn.getX() + 10);
-                  })
-             )
-             .add(Panel()
-                  .setX(50)
-                  .setY(50)
-                  .setWidth(100)
-                  .setHeight(100)
-                  .setHorizontalAlignment(HorizontalAlignment::Stretch)
-                  .setAutoWidth(false)
-                  .setMargin(20, 20, 20, 20)
-                  .add(Button()
-                       .setText(L"eeeee")
-                       .setX(10)
-                       .setY(10)
-                       .addActionListener([](Button &btn) {
-                      btn.setX(btn.getX() + 10);
-                  })
-                  )
-             )
-        );
+
+        ;
     
     nativeWindow.pack();
     nativeWindow.run();
