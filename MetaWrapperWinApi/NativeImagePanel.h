@@ -6,7 +6,7 @@ namespace MetaFrame {
 
     class NativeImagePanel : public NativeAbstructObject {
     public:
-        NativeImagePanel(const Image &image)
+        NativeImagePanel(Image &image)
             : NativeAbstructObject(L"button"), image(image) 
         {
             x = 10;
@@ -21,7 +21,7 @@ namespace MetaFrame {
 
     protected:
 
-        Image image;
+        Image &image;
 
         virtual void init(HWND hWnd) override {
 

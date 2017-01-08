@@ -96,7 +96,7 @@ void PanelUsersCreator::spawnUser() {
             color = Color::White;
         }
 
-        Car car(carName.getText(), color, carWorkComplexity.getText().toValueInt());
+        Car car(carName.getText(), color, (carWorkComplexity.getText().toValueInt() % 100)/100.0 );
 
         User user(name.getText(), car);
         game.addUserToDeque(user);

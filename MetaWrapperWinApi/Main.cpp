@@ -12,13 +12,13 @@ INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 Window window(L"Kek Microsystems");
 
 Panel panelQueue;
-Panel panelRepare;
+PanelRepare panelRepare;
 
 Panel panelController;
 
 Logger logger;
 
-Game game(logger);
+Game game(logger, &panelRepare);
 
 Panel panelMenu;
 PanelUsersCreator panelUsersCreator(game);
@@ -89,8 +89,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(logger);
 
 
-
-
+    Image img1(L"greenlamb.bmp");
+    Image img2(L"yellowlamb.bmp");
     window
         .setAlignment(Alignment::Center)
         .setSize(820, 420)
@@ -111,21 +111,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setMargin(10, 10, 10, 150)
-             .add(ImagePanel(Image(L"greenlamb.bmp")))
-             .add(ImagePanel(Image(L"yellowlamb.bmp")).setX(128)))
-        .add(panelRepare
-             .setText(L"Починка")
-             .setHeight(64 + 32)
-             .setHorizontalAlignment(HorizontalAlignment::Stretch)
-             .setVerticalAlignment(VerticalAlignment::Bottom)
-             .setMargin(10, 10, 10, 40)
-             .add(Label().setPosition(0, 0).setWidth(128).setText(L"твой бухой батя").setCenter())
-             .add(Label().setPosition(0, 16).setWidth(128).setText(L"статус: 146%").setCenter())
-             .add(ImagePanel(Image(L"greenlamb.bmp")).setPosition(0, 32))
-             .add(ImagePanel(Image(L"worker_master.bmp")).setPosition(0, 32))
-
-        )
-        //worker_master.bmp
+             .add(ImagePanel(img1))
+             .add(ImagePanel(img2).setX(128)))
+        .add(panelRepare)
         .add(Button()
              .setText(L"О программе")
              .setWidth(100)
@@ -139,7 +127,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setHorizontalAlignment(HorizontalAlignment::Left));
 
     
-    window.pack();
+    //window.pack();
     window.run();
 
 

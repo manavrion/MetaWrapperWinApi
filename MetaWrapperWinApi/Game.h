@@ -3,6 +3,7 @@
 #include "TextField.h"
 #include "Worker.h"
 #include "User.h"
+#include "PanelRepare.h"
 #include <vector>
 #include <queue>
 using namespace std;
@@ -36,7 +37,7 @@ private:
 
 class Game {
 public:
-    Game(Logger &logger);
+    Game(Logger &logger, PanelRepare *panelRepare);
 
     void log(String str) {
         logger.print(str);
@@ -46,6 +47,9 @@ public:
 
 protected:
     Logger logger;
+
+    PanelRepare *panelRepare;
+
     vector<Worker> workers;
     queue<User> users;
 
@@ -57,9 +61,7 @@ public:
     void addWorker(Worker worker);
     void clearWorkers();
 
-    void addUserToDeque(User user) {
-        users.push(user);
-    }
+    void addUserToDeque(User user);
 
 
 

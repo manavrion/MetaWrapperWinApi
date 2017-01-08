@@ -144,6 +144,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CheckBox.h" />
+    <ClInclude Include="PanelRepare.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Game.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="TextField.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Worker.h" />
+    <ClInclude Include="WorkerCard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstructFrameElement.cpp" />
@@ -198,6 +200,7 @@
     <ClCompile Include="NativeTextField.cpp" />
     <ClCompile Include="NativeWindow.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="PanelRepare.cpp" />
     <ClCompile Include="PanelUsersCreator.cpp" />
     <ClCompile Include="PanelWorkersCreator.cpp" />
     <ClCompile Include="Slider.cpp" />
@@ -211,6 +214,7 @@
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Worker.cpp" />
+    <ClCompile Include="WorkerCard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc" />

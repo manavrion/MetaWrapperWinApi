@@ -10,6 +10,13 @@ namespace MetaFrame {
             : parent(null)
         {};
 
+        void build() {
+            this->initializationEvent(parent);
+            for (auto object : childs) {
+                object->build(this);
+            }
+        }
+
     protected:
 
         const AbstructFrameElement *parent;
@@ -31,7 +38,8 @@ namespace MetaFrame {
         virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const = 0;
 
     public:
-        virtual AbstructFrameElement &add(const AbstructFrameElement &child) {
+        virtual AbstructFrameElement &add(AbstructFrameElement &child) {
+            child.parent = this;
             AbstructFrameElement *newChild = child.copy();
             //nativeCopy(newChild, child);
             newChild->parent = this;

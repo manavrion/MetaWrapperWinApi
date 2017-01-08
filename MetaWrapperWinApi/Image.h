@@ -6,16 +6,22 @@ namespace MetaFrame {
     struct Image {
     public:
         //bmp
-        Image(String file) : file(file){
+        Image() :
+            hBitmap(nullptr),
+            hOldBitmap(nullptr),
+            hCompatibleDC(nullptr)
+        {
+
+        };
+        Image(String file)
+        {
             hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
             GetObject(hBitmap, sizeof(BITMAP), &bitmap);
             hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));
             hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
         };
-        Image(const Image &image) : Image(image.file) {
 
-        };
-
+        Image(const Image &image) = delete;
 
         Size getSize() const {
             return Size(bitmap.bmWidth, bitmap.bmHeight);
@@ -25,15 +31,21 @@ namespace MetaFrame {
             return hCompatibleDC;
         }
 
+        void setImage(String file) {
+            DeleteDC(hCompatibleDC);
+            DeleteObject(hBitmap);
+
+            hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+            GetObject(hBitmap, sizeof(BITMAP), &bitmap);
+            hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));
+            hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
+        }
+
     protected:
-        String file;
         HANDLE hBitmap;
         HANDLE hOldBitmap;
         BITMAP bitmap;
         HDC hCompatibleDC;
-
-
-
 
 
     public:

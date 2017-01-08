@@ -37,3 +37,5 @@ using namespace MetaFrame;
 #include "Game.h"
 #include "PanelWorkersCreator.h"
 #include "PanelUsersCreator.h"
+#include "PanelRepare.h"
+#include "WorkerCard.h"

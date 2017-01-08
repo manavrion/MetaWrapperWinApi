@@ -141,6 +141,8 @@
     <ClInclude Include="PanelWorkersCreator.h" />
     <ClInclude Include="PanelUsersCreator.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="WorkerCard.h" />
+    <ClInclude Include="PanelRepare.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +213,8 @@
     <ClCompile Include="Color.cpp">
       <Filter>MetaTypes</Filter>
     </ClCompile>
+    <ClCompile Include="WorkerCard.cpp" />
+    <ClCompile Include="PanelRepare.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

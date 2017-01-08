@@ -9,7 +9,7 @@ namespace MetaFrame {
         *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
                                            L"static",
                                            text,
-                                           WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
+                                           SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
                                            x, y,
                                            width, height,
                                            hWnd,

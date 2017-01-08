@@ -8,7 +8,7 @@ namespace MetaFrame {
 
     class ImagePanel : public NativeImagePanel {
     public:
-        ImagePanel(const Image &image) : NativeImagePanel(image){
+        ImagePanel(Image &image) : NativeImagePanel(image){
             x = 0;
             y = 0;
             width = image.getSize().width;
