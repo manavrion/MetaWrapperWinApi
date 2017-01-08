@@ -35,6 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
     Label *labelspeed = new Label;
+
     Label *labelSimulationTime = new Label;
 
     Slider *sliderspeed = new Slider;
