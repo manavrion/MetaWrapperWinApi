@@ -47,7 +47,7 @@ namespace MetaFrame {
 
         void nativeSetMultiLine(bool flag) {
             if (flag) {
-                this->dwStyle = ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL;
+                this->dwStyle = ES_MULTILINE | ES_AUTOVSCROLL ;
             } else {
                 this->dwStyle = 0;
             }

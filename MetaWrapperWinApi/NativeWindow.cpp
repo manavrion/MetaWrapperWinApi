@@ -18,7 +18,7 @@ namespace MetaFrame {
         *(this->hWindow) = CreateWindowEx(WS_EX_LAYERED,
                                 className,
                                 title,
-                                WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+                                WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE/*WS_OVERLAPPEDWINDOW*/ | WS_CLIPCHILDREN,
                                 x, y,
                                 width + 16, height + 39,
                                 hWnd,
