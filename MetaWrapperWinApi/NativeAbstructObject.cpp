@@ -3,7 +3,7 @@
 
 namespace MetaFrame {
 
-
+#define GWL_WNDPROC         (-4)
     HashMap<HWND, Pair<NativeAbstructObject*, WNDPROC>> nativeAbstructObject;
 
     void NativeAbstructObject::postInit() {

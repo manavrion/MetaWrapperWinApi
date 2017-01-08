@@ -63,6 +63,32 @@ namespace MetaFrame {
         virtual void command(WPARAM wParam, LPARAM lParam) = 0;
 
 
+        bool wmNotify(WPARAM wParam, LPARAM lParam) {
+            //NMHDR *pnmhdr = (NMHDR *)lParam;
+            //HWND hWndCtrl = pnmhdr->hwndFrom;
+            /*NMHDR *pnmhdr = (NMHDR *)lParam;
+            UINT uiCtrlID = pnmhdr->idFrom; //
+            HWND hWndCtrl = pnmhdr->hwndFrom; // */
+
+            HWND hwndTarget = (HWND)lParam;
+            //bfs
+            Queue<NativeAbstructObject*> q;
+            q.push(this);
+
+            while (!q.empty()) {
+                NativeAbstructObject *cur = q.front();
+                q.pop();
+                if (*(cur->hWindow) == hwndTarget) {
+                    cur->command(wParam, lParam);
+                    return true;
+                }
+                for (auto &obj : cur->childs) {
+                    q.push((NativeAbstructObject*)obj);
+                }
+            }
+            return false;
+        };
+
 
         /* resize methods */
         void nativeSetRect(Rect &rect) {
@@ -81,6 +107,14 @@ namespace MetaFrame {
                 InvalidateRect(*hWindow, NULL, true);
             }
         }
+
+        virtual void nativeSetText(const String &text) {
+            SendMessage(*(this->hWindow), WM_SETTEXT, 0, (LPARAM)text.c_str());
+
+        };
+
+
+
 
         friend static LRESULT CALLBACK nativeAbstructWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
 
@@ -110,6 +144,10 @@ namespace MetaFrame {
     extern HashMap<HWND, Pair<NativeAbstructObject*, WNDPROC>> nativeAbstructObject;
 
     LRESULT CALLBACK nativeAbstructWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+        if (message == WM_HSCROLL && nativeAbstructObject.count(hWnd) != 0) {
+            nativeAbstructObject[hWnd].first->wmNotify(wParam, lParam);
+        }
+        
         if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
         }

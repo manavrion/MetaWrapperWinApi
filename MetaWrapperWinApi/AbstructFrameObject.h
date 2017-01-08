@@ -57,6 +57,7 @@ namespace MetaFrame {
 
         virtual void nativeSetRect(Rect &rect) = 0;
         virtual void nativeSetBackground(const Color &rect) = 0;
+        virtual void nativeSetText(const String &text) = 0;
 
         //setters
         virtual AbstructFrameObject &setRect(Rect rect) {
@@ -199,6 +200,7 @@ namespace MetaFrame {
 
         virtual AbstructFrameObject &setText(const String &text){
             this->text = text;
+            nativeSetText(text);
             return *this;
         }
 

@@ -125,6 +125,12 @@
     <ClInclude Include="Worker.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="NativeSlider.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Slider.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -171,6 +177,12 @@
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
     <ClCompile Include="TextField.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeSlider.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="Slider.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
   </ItemGroup>

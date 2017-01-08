@@ -156,6 +156,7 @@
     <ClInclude Include="NativeCheckBox.h" />
     <ClInclude Include="NativeLabel.h" />
     <ClInclude Include="NativePanel.h" />
+    <ClInclude Include="NativeSlider.h" />
     <ClInclude Include="NativeTextField.h" />
     <ClInclude Include="NativeWindow.h" />
     <ClInclude Include="Panel.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="RectF.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Size.h" />
+    <ClInclude Include="Slider.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="targetver.h" />
@@ -182,9 +184,11 @@
     <ClCompile Include="NativeCheckBox.cpp" />
     <ClCompile Include="NativeLabel.cpp" />
     <ClCompile Include="NativePanel.cpp" />
+    <ClCompile Include="NativeSlider.cpp" />
     <ClCompile Include="NativeTextField.cpp" />
     <ClCompile Include="NativeWindow.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="Slider.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -4,9 +4,6 @@
 #include "stdafx.h"
 #include "Main.h"
 
-#include "Client.h"
-#include "Worker.h"
-
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 Window nativeWindow(L"Kek Microsystems");
@@ -32,13 +29,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    
+    Label labelspeed;
     panelMenu.add(Label()
                   .setVerticalAlignment(VerticalAlignment::Top)
-                  .setHorizontalAlignment(HorizontalAlignment::Center)
+                  .setHorizontalAlignment(HorizontalAlignment::Left)
                   .setWidth(120)
                   .setMargin(10, 10, 120, 10)
-                  .setText(L"Скорость симуляции:"));
+                  .setText(L"Скорость симуляции:"))
+        .add(labelspeed
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setWidth(20)
+             .setMargin(10, 10, 120, 10)
+             .setText(L"x0"))
+        .add(Slider()
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Center)
+             .setWidth(180)
+             .setHeight(50)
+             .setMargin(10, 10, 140, 10)
+             .addActionListener([&](Slider &sl) {
+                labelspeed.setText(String(L"x") + String(sl.getPos()));
+             })
+             //.setText(L"Скорость симуляции:")
+        )
+        ;
 
 
     panelUsersCreator
@@ -55,24 +70,50 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .addActionListener([&](CheckBox &cb) { 
                  autoGenClients = cb.getState(); 
              }))
-        .add(Label()
-             .setText(L"Клиент:")
-             .setAlignment(Alignment::Absolute)
-             .setPosition(5, 60))
-        .add(TextField()
-             .setVerticalAlignment(VerticalAlignment::Absolute)
-             .setY(60)
+        .add(Label().setText(L"Клиент:").setAlignment(Alignment::Absolute).setPosition(5, 60))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(60)
              .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(50, 5, 5, 5))
+        .add(Label().setText(L"Модель авто:").setAlignment(Alignment::Absolute).setPosition(5, 90))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(85, 5, 5, 5))
+        .add(Label().setText(L"Цвет авто:").setAlignment(Alignment::Absolute).setPosition(5, 120))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(120)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(80, 5, 5, 5))
+        .add(Label().setText(L"Сложность работы:").setAlignment(Alignment::Absolute).setPosition(5, 150).setWidth(120))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(150)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(120, 5, 5, 5));
+
+    panelWorkersCreator
+        .add(Label()
+             .setAlignment(Alignment::Stretch)
+             .setMargin(5, 5, 5, 5)
+             .setText(L"Создание работников:"))
+        .add(Button()
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
              .setAutoWidth(true)
-             .setMargin(50, 5, 5, 5))
+             .setMargin(5, 5, 30, 5)
+             .setText(L"Случайный набор работников")
+             .addActionListener([&](Button &cb) {
+                //autoGenClients = cb.getState();
+             }))
+        .add(Label().setText(L"Имя:").setAlignment(Alignment::Absolute).setPosition(5, 60))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(60)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(50, 5, 5, 5))
+        .add(Label().setText(L"Опыт:").setAlignment(Alignment::Absolute).setPosition(5, 90))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
+             .setHorizontalAlignment(HorizontalAlignment::Right)
+             .setAutoWidth(true).setMargin(50, 5, 5, 5))
+        ;
 
 
-    ;
 
-    panelWorkersCreator.add(Label()
-                            .setAlignment(Alignment::Stretch)
-                            .setMargin(5, 5, 5, 5)
-                          .setText(L"Создание работников:"));
+
 
     panelLogger.add(Label()
                     .setAlignment(Alignment::Stretch)
@@ -81,7 +122,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     nativeWindow
         .setAlignment(Alignment::Center)
-        .setSize(800, 400)
+        .setSize(820, 400)
         .add(panelController
              .setBorder(Border::SOFT_BEVEL)
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
@@ -110,7 +151,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setWidth(100)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .addActionListener([](Button &btn) { /*DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About);*/  btn.setX(btn.getX() - 10); }));
+             .addActionListener([](Button &btn) { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About);  btn.setX(btn.getX() - 10); }));
 
     
     nativeWindow.pack();

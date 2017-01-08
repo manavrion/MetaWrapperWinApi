@@ -28,3 +28,8 @@ using namespace MetaFrame;
 #include "Label.h"
 #include "CheckBox.h"
 #include "TextField.h"
+#include "Slider.h"
+
+#include "Car.h"
+#include "Client.h"
+#include "Worker.h"
