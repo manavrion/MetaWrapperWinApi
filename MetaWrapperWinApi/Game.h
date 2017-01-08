@@ -19,7 +19,11 @@ public:
     }
 
     void print(String str) {
-        setText(getText() + String({ 13, 10 }) + str);
+        String nw = getText() + String({ 13, 10 }) + str;
+        if (nw.size() > 200) {
+            nw.erase(0, nw.size() - 200);
+        }
+        setText(nw);
         setPageDown();
     }
 

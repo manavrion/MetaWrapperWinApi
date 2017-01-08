@@ -18,7 +18,8 @@ void Game::addWorker(Worker worker) {
 }
 
 void Game::clearWorkers() {
-    workers.clear();
+    workers.clear(); 
+    log(L"");
     log(L"All workers killed");
 }
 

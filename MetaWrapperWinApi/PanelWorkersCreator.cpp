@@ -70,19 +70,16 @@ void PanelWorkersCreator::createRandomWorkersSet() {
         String nm;
 
         while (true) {
-            nm = names[rand() % 5];
+            nm = names[rand() % 6];
             if (check.count(nm) != 1) {
                 check.insert(nm);
                 break;
             }
         }
 
-        Worker w(
-            nm,
-            float((rand() % 100) / 100.0)
-        );
+        Worker worker(nm, float((rand() % 100) / 100.0));
 
-        workers.push_back(w);
+        workers.push_back(worker);
     }
     game.addWorker(workers);
 }
