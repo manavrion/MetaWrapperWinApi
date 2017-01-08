@@ -6,21 +6,21 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>4DQQFACAIKIgAgwRQGBHC4OCgQiIQBkMABBiGGCQMgA=</HashCode>
+      <HashCode>4DQQFACAIKIiAgwRQGBHC4OCgQiIQBkMABBiGGCQMgA=</HashCode>
       <FileName>AbstructFrameObject.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::AbstructFrameElement">
-    <Position X="7" Y="6" Width="2" />
+    <Position X="6.75" Y="5.5" Width="4.5" />
     <TypeIdentifier>
       <HashCode>AAQABAAAABAAAABAAAiFAAAAAAAAAAIAIIAAAAACgAA=</HashCode>
       <FileName>AbstructFrameElement.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::NativeAbstructObject">
-    <Position X="9.75" Y="7" Width="2.75" />
+    <Position X="13" Y="6.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAACIACIBIAAAAAAQAAAICgACQAABIAAAAAAAKAgEA=</HashCode>
+      <HashCode>AAAACIACIBICAAAAAQAAAICgACQAABIAAAAAAAKAgEA=</HashCode>
       <FileName>NativeAbstructObject.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -108,25 +108,67 @@
       <FileName>TextField.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="PanelCreatorOfWorkers">
-    <Position X="14.25" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Worker.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Client">
-    <Position X="18.75" Y="6.25" Width="1.5" />
+    <Position X="10.5" Y="27.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAQ=</HashCode>
       <FileName>Client.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Car">
-    <Position X="16.25" Y="6.25" Width="1.5" />
+    <Position X="7" Y="27.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAEAACgAAAAAAAAAAI=</HashCode>
       <FileName>Car.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativeSlider">
+    <Position X="20.5" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAgAAAAEAAAAQAAAAAAAAYAAEIAAAAAAAAAABA=</HashCode>
+      <FileName>NativeSlider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::NativeImagePanel">
+    <Position X="18" Y="12.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAQAAAAAAEAQAAEIgAAAAAAAAAAA=</HashCode>
+      <FileName>NativeImagePanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Slider">
+    <Position X="20.5" Y="16.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACRAAAEAAAAAAABAQCgAAIJAEIEABAAAAAABAA=</HashCode>
+      <FileName>Slider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::ImagePanel">
+    <Position X="18" Y="16.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAACAAAAAgAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <FileName>ImagePanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Worker">
+    <Position X="8.75" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Worker.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game">
+    <Position X="9.25" Y="25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAEAAAAAAAAAAAAAAAAAiAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PanelWorkersCreator">
+    <Position X="14.75" Y="24.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAABAAAAAAAAAAAEAAAIBAAEAAAAAgA=</HashCode>
+      <FileName>PanelWorkersCreator.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="MetaFrame::Point">
@@ -207,6 +249,13 @@
       <FileName>Margin.h</FileName>
     </TypeIdentifier>
   </Struct>
+  <Struct Name="MetaFrame::Image" Collapsed="true">
+    <Position X="4.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAABAAAAABAAIAAAgABIADAAAAAAAAAA=</HashCode>
+      <FileName>Image.h</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Typedef Name="MetaFrame::wchar" Collapsed="true">
     <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
@@ -247,6 +296,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TextField.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::SliderFunctionVoid" Collapsed="true">
+    <Position X="2.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Slider.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::SliderFunctionSender" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Slider.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Enum Name="MetaFrame::HorizontalAlignment" Collapsed="true">
