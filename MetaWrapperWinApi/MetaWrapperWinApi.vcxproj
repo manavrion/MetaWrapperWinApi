@@ -146,6 +146,7 @@
     <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImagePanel.h" />
     <ClInclude Include="Label.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="NativeTextField.h" />
     <ClInclude Include="NativeWindow.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="PanelWorkersCreator.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RectF.h" />
@@ -180,6 +182,7 @@
     <ClCompile Include="AbstructFrameElement.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="ImagePanel.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -193,6 +196,7 @@
     <ClCompile Include="NativeTextField.cpp" />
     <ClCompile Include="NativeWindow.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="PanelWorkersCreator.cpp" />
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

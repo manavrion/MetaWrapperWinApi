@@ -12,7 +12,7 @@ namespace MetaFrame {
 
         *(this->hWindow) = CreateWindow(L"static",
                                         text,
-                                        WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                                        this->dwStyle  | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                         x, y,
                                         width, height,
                                         hWnd,

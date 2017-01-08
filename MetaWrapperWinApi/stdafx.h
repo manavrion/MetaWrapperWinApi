@@ -31,6 +31,8 @@ using namespace MetaFrame;
 #include "Slider.h"
 #include "ImagePanel.h"
 
+#include "Worker.h"
 #include "Car.h"
 #include "Client.h"
-#include "Worker.h"
+#include "Game.h"
+#include "PanelWorkersCreator.h"

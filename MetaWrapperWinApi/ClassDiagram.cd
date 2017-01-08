@@ -6,7 +6,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>4DQQFACAAKIgAgwRQGBHC4OCgQiIQBkMABBiGGCQMgA=</HashCode>
+      <HashCode>4DQQFACAIKIgAgwRQGBHC4OCgQiIQBkMABBiGGCQMgA=</HashCode>
       <FileName>AbstructFrameObject.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -20,7 +20,7 @@
   <Class Name="MetaFrame::NativeAbstructObject">
     <Position X="9.75" Y="7" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAACIACABIAAAAAAQAAAICgACQAAAIAAAAAAAKAgEA=</HashCode>
+      <HashCode>AAAACIACIBIAAAAAAQAAAICgACQAABIAAAAAAAKAgEA=</HashCode>
       <FileName>NativeAbstructObject.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -41,7 +41,7 @@
   <Class Name="MetaFrame::NativeWindow">
     <Position X="9.25" Y="12.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAwAAQBAAAAAAAQAAAAAAIAQAAAIAAAIgAAAAAAA=</HashCode>
+      <HashCode>AAAAAwAAQBAAAAAAAQAAAAAAJAQAAAIAAAIgAAAAAAA=</HashCode>
       <FileName>NativeWindow.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -69,14 +69,14 @@
   <Class Name="MetaFrame::NativeLabel">
     <Position X="6.75" Y="12.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAACAAAAAQAAAAAAAAQAAEIAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAACAAAAAQAAAAAAAAQAAEICQAAAAAAAAAA=</HashCode>
       <FileName>NativeLabel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::Label">
     <Position X="6.75" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAEAAAAAAAAAAAAAAgAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAEAAAAAAAAAAAAAAgAAACAEIAAAAAAAAAAAA=</HashCode>
       <FileName>Label.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -90,7 +90,7 @@
   <Class Name="MetaFrame::NativeTextField">
     <Position X="1" Y="12.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAQAAAAAAAAQAAEIAAAEAAAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAGAAAAAAAQAAAAAAAAQAAEIAAAEIAAAAAAQ=</HashCode>
       <FileName>NativeTextField.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -104,14 +104,14 @@
   <Class Name="MetaFrame::TextField">
     <Position X="1" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AEAAAAABAAAAQAAAAAABAAAgAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAAAAEBAACAQAAAAAABAgAgAAAAAEIAAAgAAAAAAAA=</HashCode>
       <FileName>TextField.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Worker">
+  <Class Name="PanelCreatorOfWorkers">
     <Position X="14.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Worker.h</FileName>
     </TypeIdentifier>
   </Class>

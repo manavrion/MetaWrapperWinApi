@@ -113,7 +113,13 @@ namespace MetaFrame {
 
         };
 
-
+        String nativeGetText() {
+            wchar *buf = new wchar[1024*16];
+            SendMessage(*(this->hWindow), WM_GETTEXT, 1024 * 16, (LPARAM)buf);
+            String s(buf);
+            delete buf;
+            return s;
+        }
 
 
         friend static LRESULT CALLBACK nativeAbstructWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);

@@ -6,6 +6,9 @@
 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+Game game;
+
+
 Window window(L"Kek Microsystems");
 
 Panel panelQueue;
@@ -15,7 +18,7 @@ Panel panelController;
 
 Panel panelMenu;
 Panel panelUsersCreator;
-Panel panelWorkersCreator;
+PanelWorkersCreator panelWorkersCreator(game);
 Panel panelLogger;
 
 
@@ -25,6 +28,7 @@ Label labelSimulationTime;
 
 Slider sliderspeed;
 TextField logTextField;
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -110,29 +114,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 
-    panelWorkersCreator
-        .add(Label()
-             .setAlignment(Alignment::Stretch)
-             .setMargin(5, 5, 5, 5)
-             .setText(L"Создание работников:"))
-        .add(Button()
-             .setVerticalAlignment(VerticalAlignment::Top)
-             .setHorizontalAlignment(HorizontalAlignment::Left)
-             .setAutoWidth(true)
-             .setMargin(5, 5, 30, 5)
-             .setText(L"Случайный набор работников")
-             .addActionListener([&](Button &cb) {
-                //autoGenClients = cb.getState();
-             }))
-        .add(Label().setText(L"Имя:").setAlignment(Alignment::Absolute).setPosition(5, 60))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(60)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        .add(Label().setText(L"Опыт:").setAlignment(Alignment::Absolute).setPosition(5, 90))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 130).setWidth(120));
+
 
 
 
@@ -183,17 +165,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setMargin(10, 10, 10, 40)
-             .add(ImagePanel(Image(L"greenlamb.bmp")).setPosition(0, 32)
-             )
-        
+             .add(Label().setPosition(0, 0).setWidth(128).setText(L"твой бухой батя").setCenter())
+             .add(Label().setPosition(0, 16).setWidth(128).setText(L"статус: 146%").setCenter())
+             .add(ImagePanel(Image(L"greenlamb.bmp")).setPosition(0, 32))
+             .add(ImagePanel(Image(L"worker_master.bmp")).setPosition(0, 32))
+
         )
-        
+        //worker_master.bmp
         .add(Button()
              .setText(L"О программе")
              .setWidth(100)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .addActionListener([&]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window.getHWindow(), About); }));
+             .addActionListener([&]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window.getHWindow(), About); }))
+        .add(Label()
+             .setText(L"Выручка: 2000$")
+             .setWidth(100)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setHorizontalAlignment(HorizontalAlignment::Left));
 
     
     window.pack();
