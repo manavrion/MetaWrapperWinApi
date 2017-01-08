@@ -108,15 +108,8 @@
       <FileName>TextField.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Client">
-    <Position X="10.5" Y="27.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAQ=</HashCode>
-      <FileName>Client.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Car">
-    <Position X="7" Y="27.5" Width="1.5" />
+    <Position X="5.25" Y="28.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAEAACgAAAAAAAAAAI=</HashCode>
       <FileName>Car.h</FileName>
@@ -151,16 +144,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Worker">
-    <Position X="8.75" Y="27.5" Width="1.5" />
+    <Position X="7.75" Y="28.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Worker.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game">
-    <Position X="9.25" Y="25" Width="2" />
+    <Position X="6.25" Y="24.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAEAAAAAAAAAAAAAAAAAiAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IIAAAAAAEAAAAAAAAEAAAAAAAUiAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -169,6 +162,27 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAABAAAAAAAAAAAEAAAIBAAEAAAAAgA=</HashCode>
       <FileName>PanelWorkersCreator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Color" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAASAAAAAAAAAgAAAAIAAQAABAAAAAAAAAAQgBAAAgA=</HashCode>
+      <FileName>Color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="User" Collapsed="true">
+    <Position X="10" Y="28.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABBAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PanelUsersCreator">
+    <Position X="11.75" Y="24.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAADABAAAAAAAAAAAAAAEAAApAAABAAAIAAA=</HashCode>
+      <FileName>PanelUsersCreator.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="MetaFrame::Point">
@@ -233,13 +247,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAACIAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>String.h</FileName>
-    </TypeIdentifier>
-  </Struct>
-  <Struct Name="MetaFrame::Color" Collapsed="true">
-    <Position X="0.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EAAQAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAAQgAAAAgA=</HashCode>
-      <FileName>Color.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="MetaFrame::Margin" Collapsed="true">
