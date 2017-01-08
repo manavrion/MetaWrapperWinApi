@@ -105,7 +105,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(Label().setText(L"Сложность работы:").setAlignment(Alignment::Absolute).setPosition(5, 150).setWidth(120))
         .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(150)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(120, 5, 5, 5));
+             .setAutoWidth(true).setMargin(120, 5, 5, 5))
+        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 180).setWidth(120));
 
 
 
@@ -131,7 +132,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        ;
+        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 120).setWidth(120));
 
 
 
@@ -156,7 +157,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     window
         .setAlignment(Alignment::Center)
-        .setSize(820, 400)
+        .setSize(820, 420)
         .add(panelController
              .setBorder(Border::SOFT_BEVEL)
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
