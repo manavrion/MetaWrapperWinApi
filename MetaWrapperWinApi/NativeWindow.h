@@ -18,6 +18,10 @@ namespace MetaFrame {
             
         };
 
+        HWND getHWindow() {
+            return *(hWindow);
+        }
+
     protected:
 
         Panel panelbuf;

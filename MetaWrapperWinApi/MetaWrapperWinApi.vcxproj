@@ -146,6 +146,8 @@
     <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Image.h" />
+    <ClInclude Include="ImagePanel.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Layout.h" />
     <ClInclude Include="Main.h" />
@@ -154,6 +156,7 @@
     <ClInclude Include="NativeAbstructObject.h" />
     <ClInclude Include="NativeButton.h" />
     <ClInclude Include="NativeCheckBox.h" />
+    <ClInclude Include="NativeImagePanel.h" />
     <ClInclude Include="NativeLabel.h" />
     <ClInclude Include="NativePanel.h" />
     <ClInclude Include="NativeSlider.h" />
@@ -177,11 +180,13 @@
     <ClCompile Include="AbstructFrameElement.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
+    <ClCompile Include="ImagePanel.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NativeAbstructObject.cpp" />
     <ClCompile Include="NativeButton.cpp" />
     <ClCompile Include="NativeCheckBox.cpp" />
+    <ClCompile Include="NativeImagePanel.cpp" />
     <ClCompile Include="NativeLabel.cpp" />
     <ClCompile Include="NativePanel.cpp" />
     <ClCompile Include="NativeSlider.cpp" />

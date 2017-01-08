@@ -29,6 +29,7 @@ using namespace MetaFrame;
 #include "CheckBox.h"
 #include "TextField.h"
 #include "Slider.h"
+#include "ImagePanel.h"
 
 #include "Car.h"
 #include "Client.h"

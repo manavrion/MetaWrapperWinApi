@@ -40,32 +40,32 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Left)
              .setWidth(120)
-             .setMargin(10, 10, 70, 10)
+             .setMargin(10, 10, 50, 10)
              .setText(L"Время в симуляции:"))
         .add(labelSimulationTime
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Left)
              .setWidth(120)
-             .setMargin(10, 10, 90, 10)
+             .setMargin(10, 10, 70, 10)
              .setText(L"0 месяц, 0 день, 00:00"))
         .add(Label()
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Left)
              .setWidth(120)
-             .setMargin(10, 10, 120, 10)
+             .setMargin(10, 10, 100, 10)
              .setText(L"Скорость симуляции:"))
         .add(labelspeed
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setWidth(20)
-             .setMargin(10, 10, 120, 10)
+             .setMargin(10, 10, 100, 10)
              .setText(L"x0"))
         .add(sliderspeed
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Center)
              .setWidth(180)
              .setHeight(50)
-             .setMargin(10, 10, 140, 10)
+             .setMargin(10, 10, 120, 10)
              .addActionListener([&](Slider &sl) {
                 labelspeed.setText(String(L"x") + String(sl.getPos()));
                 logTextField.setText(logTextField.getText() + String({ 13, 10 }) + labelspeed.getText());
@@ -85,28 +85,28 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Left)
              .setAutoWidth(true)
-             .setMargin(5, 5, 30, 5)
+             .setMargin(5, 5, 20, 5)
              .setText(L"Автогенерация клиентов")
              .addActionListener([&](CheckBox &cb) { 
                  autoGenClients = cb.getState(); 
              }))
-        .add(Label().setText(L"Клиент:").setAlignment(Alignment::Absolute).setPosition(5, 60))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(60)
+        .add(Label().setText(L"Клиент:").setAlignment(Alignment::Absolute).setPosition(5, 50))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(50)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        .add(Label().setText(L"Модель авто:").setAlignment(Alignment::Absolute).setPosition(5, 90))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
+        .add(Label().setText(L"Модель авто:").setAlignment(Alignment::Absolute).setPosition(5, 70))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(70)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(85, 5, 5, 5))
-        .add(Label().setText(L"Цвет авто:").setAlignment(Alignment::Absolute).setPosition(5, 120))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(120)
+        .add(Label().setText(L"Цвет авто:").setAlignment(Alignment::Absolute).setPosition(5, 90))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(80, 5, 5, 5))
-        .add(Label().setText(L"Сложность работы:").setAlignment(Alignment::Absolute).setPosition(5, 150).setWidth(120))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(150)
+        .add(Label().setText(L"Сложность работы:").setAlignment(Alignment::Absolute).setPosition(5, 110).setWidth(120))
+        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(110)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(120, 5, 5, 5))
-        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 180).setWidth(120));
+        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 130).setWidth(120));
 
 
 
@@ -132,7 +132,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 120).setWidth(120));
+        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 130).setWidth(120));
 
 
 
@@ -162,31 +162,38 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setBorder(Border::SOFT_BEVEL)
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
              .setVerticalAlignment(VerticalAlignment::Top)
-             .setMargin(10, 10, 10, 180)
-             .setAutoHeight(true)
+             //.setMargin(10, 10, 10, 220)
+             .setHeight(190)
              .setLayout(Layout::HorizontalStack)
              .add(panelMenu.setAlignment(Alignment::Stretch))
              .add(panelUsersCreator.setAlignment(Alignment::Stretch))
              .add(panelWorkersCreator.setAlignment(Alignment::Stretch))
              .add(panelLogger.setAlignment(Alignment::Stretch)))
-        .add(panelRepare
-             .setText(L"Починка")
-             .setHeight(80)
-             .setHorizontalAlignment(HorizontalAlignment::Stretch)
-             .setVerticalAlignment(VerticalAlignment::Bottom)
-             .setMargin(10, 10, 10, 40))
         .add(panelQueue
              .setText(L"Очередь")
-             .setHeight(40)
+             .setHeight(64)
              .setHorizontalAlignment(HorizontalAlignment::Stretch)
              .setVerticalAlignment(VerticalAlignment::Bottom)
-             .setMargin(10, 10, 10, 130))
+             .setMargin(10, 10, 10, 150)
+             .add(ImagePanel(Image(L"greenlamb.bmp")))
+             .add(ImagePanel(Image(L"yellowlamb.bmp")).setX(128)))
+        .add(panelRepare
+             .setText(L"Починка")
+             .setHeight(64 + 32)
+             .setHorizontalAlignment(HorizontalAlignment::Stretch)
+             .setVerticalAlignment(VerticalAlignment::Bottom)
+             .setMargin(10, 10, 10, 40)
+             .add(ImagePanel(Image(L"greenlamb.bmp")).setPosition(0, 32)
+             )
+        
+        )
+        
         .add(Button()
              .setText(L"О программе")
              .setWidth(100)
              .setVerticalAlignment(VerticalAlignment::Bottom)
              .setHorizontalAlignment(HorizontalAlignment::Right)
-             .addActionListener([](Button &btn) { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About);  btn.setX(btn.getX() - 10); }));
+             .addActionListener([&]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window.getHWindow(), About); }));
 
     
     window.pack();

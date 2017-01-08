@@ -131,6 +131,15 @@
     <ClInclude Include="Slider.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="NativeImagePanel.h">
+      <Filter>WrapperWinApiHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="ImagePanel.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>MetaTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -183,6 +192,12 @@
       <Filter>WrapperWinApi</Filter>
     </ClCompile>
     <ClCompile Include="Slider.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeImagePanel.cpp">
+      <Filter>WrapperWinApi</Filter>
+    </ClCompile>
+    <ClCompile Include="ImagePanel.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
   </ItemGroup>

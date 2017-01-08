@@ -40,4 +40,5 @@ namespace MetaFrame {
 #include "RectF.h"
 #include "Border.h"
 #include "Layout.h"
+#include "Image.h"
 #define null nullptr
