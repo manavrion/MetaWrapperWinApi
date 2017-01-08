@@ -17,12 +17,12 @@ Panel panelRepare;
 Panel panelController;
 
 Panel panelMenu;
-Panel panelUsersCreator;
+PanelUsersCreator panelUsersCreator(game);
 PanelWorkersCreator panelWorkersCreator(game);
 Panel panelLogger;
 
 
-bool autoGenClients = false;
+
 Label labelspeed;
 Label labelSimulationTime;
 
@@ -76,47 +76,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 logTextField.setPageDown();
              })
         );
-
-
-
-
-    panelUsersCreator
-        .add(Label()
-             .setAlignment(Alignment::Stretch)
-             .setMargin(5, 5, 5, 5)
-             .setText(L"Создание клиентов:"))
-        .add(CheckBox()
-             .setVerticalAlignment(VerticalAlignment::Top)
-             .setHorizontalAlignment(HorizontalAlignment::Left)
-             .setAutoWidth(true)
-             .setMargin(5, 5, 20, 5)
-             .setText(L"Автогенерация клиентов")
-             .addActionListener([&](CheckBox &cb) { 
-                 autoGenClients = cb.getState(); 
-             }))
-        .add(Label().setText(L"Клиент:").setAlignment(Alignment::Absolute).setPosition(5, 50))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(50)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(50, 5, 5, 5))
-        .add(Label().setText(L"Модель авто:").setAlignment(Alignment::Absolute).setPosition(5, 70))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(70)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(85, 5, 5, 5))
-        .add(Label().setText(L"Цвет авто:").setAlignment(Alignment::Absolute).setPosition(5, 90))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(90)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(80, 5, 5, 5))
-        .add(Label().setText(L"Сложность работы:").setAlignment(Alignment::Absolute).setPosition(5, 110).setWidth(120))
-        .add(TextField().setVerticalAlignment(VerticalAlignment::Absolute).setY(110)
-             .setHorizontalAlignment(HorizontalAlignment::Right)
-             .setAutoWidth(true).setMargin(120, 5, 5, 5))
-        .add(Button().setText(L"Спаун").setAlignment(Alignment::Absolute).setPosition(5, 130).setWidth(120));
-
-
-
-
-
-
 
 
 

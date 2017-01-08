@@ -33,6 +33,7 @@ using namespace MetaFrame;
 
 #include "Worker.h"
 #include "Car.h"
-#include "Client.h"
+#include "User.h"
 #include "Game.h"
 #include "PanelWorkersCreator.h"
+#include "PanelUsersCreator.h"

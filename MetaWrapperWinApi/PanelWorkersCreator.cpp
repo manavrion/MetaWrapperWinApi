@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 
-#include "Worker.h"
-#include "Game.h"
+#include "PanelWorkersCreator.h"
 
 PanelWorkersCreator::PanelWorkersCreator(Game & game) : game(game) {
 

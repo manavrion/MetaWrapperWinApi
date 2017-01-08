@@ -120,7 +120,6 @@
     <ClInclude Include="TextField.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="NativeSlider.h">
       <Filter>WrapperWinApiHeaders</Filter>
@@ -140,6 +139,8 @@
     <ClInclude Include="Worker.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="PanelWorkersCreator.h" />
+    <ClInclude Include="PanelUsersCreator.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +203,14 @@
     </ClCompile>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="PanelWorkersCreator.cpp" />
+    <ClCompile Include="PanelUsersCreator.cpp" />
+    <ClCompile Include="Worker.cpp" />
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>MetaTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">
