@@ -15,7 +15,7 @@ public:
 protected:
     vector<Worker*> workers;
 
-    vector<WorkerCard> workerCards;
+    vector<WorkerCard*> workerCards;
 
 
 public:
