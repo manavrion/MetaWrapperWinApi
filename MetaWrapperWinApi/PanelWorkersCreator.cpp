@@ -1,6 +1,8 @@
 ﻿#include "stdafx.h"
-
+#include <set>
 #include "PanelWorkersCreator.h"
+
+using namespace std;
 
 PanelWorkersCreator::PanelWorkersCreator(Game & game) : game(game) {
 
@@ -50,16 +52,35 @@ PanelWorkersCreator::PanelWorkersCreator(Game & game) : game(game) {
 
 void PanelWorkersCreator::createRandomWorkersSet() {
     game.clearWorkers();
-    String firstnames[] = { L"Вася",    L"Юрий",        L"Иван",    L"Илья",    L"Андрей" };
-    String secondnames[] = { L"Пупкин", L"Хованский",   L"Иванов",  L"Медисон", L"Нифёдов" };
+    String names[] = { 
+        L"Вася Пупкин", 
+        L"Юрий Хованский", 
+        L"Иван Иванов", 
+        L"Илья Медисон", 
+        L"Андрей Нифёдов",
+        L"BigRussianBoss",
+    };
+
+    set<String> check;
 
     vector<Worker> workers;
-    int n = 2 + rand() % 6;
+    int n = 2 + rand() % 5;
     while (n--) {
-        Worker w = {
-            firstnames[rand() % 5] + L" " + secondnames[rand() % 5],
+
+        String nm;
+
+        while (true) {
+            nm = names[rand() % 5];
+            if (check.count(nm) != 1) {
+                check.insert(nm);
+                break;
+            }
+        }
+
+        Worker w(
+            nm,
             float((rand() % 100) / 100.0)
-        };
+        );
 
         workers.push_back(w);
     }

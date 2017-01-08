@@ -6,7 +6,7 @@
 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-Game game;
+
 
 
 Window window(L"Kek Microsystems");
@@ -15,6 +15,10 @@ Panel panelQueue;
 Panel panelRepare;
 
 Panel panelController;
+
+Logger logger;
+
+Game game(logger);
 
 Panel panelMenu;
 PanelUsersCreator panelUsersCreator(game);
@@ -27,7 +31,7 @@ Label labelspeed;
 Label labelSimulationTime;
 
 Slider sliderspeed;
-TextField logTextField;
+
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -72,8 +76,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setMargin(10, 10, 120, 10)
              .addActionListener([&](Slider &sl) {
                 labelspeed.setText(String(L"x") + String(sl.getPos()));
-                logTextField.setText(logTextField.getText() + String({ 13, 10 }) + labelspeed.getText());
-                logTextField.setPageDown();
              })
         );
 
@@ -84,14 +86,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setAlignment(Alignment::Stretch)
              .setMargin(5, 5, 5, 5)
              .setText(L"Логгер:"))
-        .add(logTextField
-             .setAlignment(Alignment::Stretch)
-             .setMargin(5, 5, 35, 5)
-             .setBackground(Color(18, 18, 18))
-             .setText(L"")
-             .setMultiLine(true)
-             .setWritable(false)
-        );
+        .add(logger);
 
 
 
