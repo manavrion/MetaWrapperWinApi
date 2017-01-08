@@ -18,24 +18,24 @@ namespace MetaFrame {
 
 
 
-        Slider &setPos(int pos) {
-            return *this;
+        Slider *setPos(int pos) {
+            return this;
         }
-        Slider &setMinMax(int minPos, int maxPos) {
+        Slider *setMinMax(int minPos, int maxPos) {
             nativeSetMinMax(minPos, maxPos);
             this->minPos = minPos;
             this->maxPos = maxPos;
-            return *this;
+            return this;
         }
-        Slider &setMin(int minPos) {
+        Slider *setMin(int minPos) {
             nativeSetMinMax(minPos, maxPos);
             this->minPos = minPos;
-            return *this;
+            return this;
         }
-        Slider &setMax(int maxPos) {
+        Slider *setMax(int maxPos) {
             nativeSetMinMax(minPos, maxPos);
             this->maxPos = maxPos;
-            return *this;
+            return this;
         }
 
         int getPos() {
@@ -52,11 +52,11 @@ namespace MetaFrame {
 
 
 
-        Slider &addActionListener(SliderFunctionVoid sliderFunction) {
-            actionEventFunctionsVoid.push_back(sliderFunction); return *this;
+        Slider *addActionListener(SliderFunctionVoid sliderFunction) {
+            actionEventFunctionsVoid.push_back(sliderFunction); return this;
         }
-        Slider &addActionListener(SliderFunctionSender sliderFunction) {
-            actionEventFunctionsSender.push_back(sliderFunction); return *this;
+        Slider *addActionListener(SliderFunctionSender sliderFunction) {
+            actionEventFunctionsSender.push_back(sliderFunction); return this;
         }
 
     protected:
@@ -65,11 +65,11 @@ namespace MetaFrame {
         int minPos;
 
 
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             Slider *ret = new Slider(*this);
             this->clearChilds();
             return ret;
-        }
+        }*/
 
         ArrayList<SliderFunctionVoid> actionEventFunctionsVoid;
         ArrayList<SliderFunctionSender> actionEventFunctionsSender;

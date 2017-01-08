@@ -11,39 +11,39 @@ namespace MetaFrame {
     public:
         TextField() {};
 
-        TextField &setPageUp() {
+        TextField *setPageUp() {
             nativeSetPageUp();
-            return *this;
+            return this;
         }
 
-        TextField &setPageDown() {
+        TextField *setPageDown() {
             nativeSetPageDown();
-            return *this;
+            return this;
         }
 
 
-        TextField &setWritable(bool flag) {
+        TextField *setWritable(bool flag) {
             nativeSetWritable(flag);
-            return *this;
+            return this;
         }
 
-        TextField &setMultiLine(bool flag) {
+        TextField *setMultiLine(bool flag) {
             nativeSetMultiLine(flag);
-            return *this;
+            return this;
         }
 
 
 
-        TextField &addActionListener(TextFieldFunctionSender buttonFunction) {
-            actionEventFunctionsSender.push_back(buttonFunction); return *this;
+        TextField *addActionListener(TextFieldFunctionSender buttonFunction) {
+            actionEventFunctionsSender.push_back(buttonFunction); return this;
         }
 
     protected:
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             TextField *ret = new TextField(*this);
             this->clearChilds();
             return ret;
-        }
+        }*/
 
         ArrayList<TextFieldFunctionSender> actionEventFunctionsSender;
 

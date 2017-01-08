@@ -7,10 +7,12 @@ namespace MetaFrame {
     class Label : public NativeLabel {
     public:
         Label() {};
-        Label &setCenter() {
+
+        Label *setCenter() {
             nativeSetCenter();
-            return *this;
+            return this;
         }
+
     protected:
 
         void runActionEvents() {
@@ -18,11 +20,11 @@ namespace MetaFrame {
 
         
 
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             Label *ret = new Label(*this);
             this->clearChilds();
             return ret;
-        }
+        }*/
 
     public:
         ADD_SET_OF_SETTERS(Label);

@@ -5,7 +5,7 @@
 #include "PanelRepare.h"
 
 
-Game::Game(Logger &logger, PanelRepare *panelRepare) 
+Game::Game(Logger *logger, PanelRepare *panelRepare) 
     : autoGenClients(false), logger(logger), panelRepare(panelRepare)
 {}
 

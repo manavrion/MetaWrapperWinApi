@@ -25,11 +25,11 @@ void PanelRepare::update() {
     int i = 0;
     for (; i < workers.size(); i++) {
         if (workerCards.size() >= i) {
-            WorkerCard wcard = WorkerCard();
+            /*WorkerCard wcard = WorkerCard();
             wcard.setMargin(0, 0, 0, 0).setX(128 * i);
             workerCards.push_back(wcard);
             add(workerCards.back());
-            workerCards[i].build();
+            workerCards[i].build();*/
         }
 
         //workerCards[i].setText(workers[i]->name);

@@ -12,25 +12,25 @@ namespace MetaFrame {
 
 
 
-        CheckBox &setState(bool state) {
+        CheckBox *setState(bool state) {
             nativeSetState(state);
-            return *this;
+            return this;
         }
         bool getState() {
             return nativeGetState();
         }
 
 
-        CheckBox &addActionListener(CheckBoxFunctionSender checkBoxFunction) {
-            actionEventFunctionsSender.push_back(checkBoxFunction); return *this;
+        CheckBox *addActionListener(CheckBoxFunctionSender checkBoxFunction) {
+            actionEventFunctionsSender.push_back(checkBoxFunction); return this;
         }
 
     protected:
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             CheckBox *ret = new CheckBox(*this);
             this->clearChilds();
             return ret;
-        }
+        }*/
 
         ArrayList<CheckBoxFunctionSender> actionEventFunctionsSender;
 

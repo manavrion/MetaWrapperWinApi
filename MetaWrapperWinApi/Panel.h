@@ -12,20 +12,20 @@ namespace MetaFrame {
         };
 
 
-        Panel &setBorderText(const String &text) {
+        Panel *setBorderText(const String &text) {
             this->borderText = text;
             nativeSetBorderText(borderText);
-            return *this;
+            return this;
         }
 
         String getBorderText() {
             return borderText;
         }
 
-        Panel &setBorder(Border border) {
+        Panel *setBorder(Border border) {
             this->border = border;
             nativeSetBorder(border);
-            return *this;
+            return this;
         }
 
         Border getBorder() {
@@ -37,11 +37,11 @@ namespace MetaFrame {
         String borderText;
 
 
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             Panel *ret = new Panel(*this);
-            this->clearChilds();
+            //this->clearChilds();
             return ret;
-        }
+        }*/
 
         void runActionEvents() {
             //for (auto &f : actionEventFunctions) f();

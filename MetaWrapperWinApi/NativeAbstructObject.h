@@ -20,10 +20,10 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
+        /*virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
             ((NativeAbstructObject*)nw)->hWindow.reset();
             ((NativeAbstructObject*)nw)->hWindow = ((const NativeAbstructObject*)&old)->hWindow;
-        };
+        };*/
 
         void initializationEvent(const AbstructFrameElement *parent) {
             if (parent != null) {

@@ -6,19 +6,19 @@
 
 class PanelUsersCreator : public Panel{
 public:
-    PanelUsersCreator(Game &game);
+    PanelUsersCreator(Game *game);
 
     void setAutoGen(bool fl);
 
     void spawnUser();
 
 protected:
-    Game &game;
+    Game *game;
 
-    TextField name;
-    TextField carName;
-    TextField carColor;
-    TextField carWorkComplexity;
+    TextField *name;
+    TextField *carName;
+    TextField *carColor;
+    TextField *carWorkComplexity;
 
 public:
     ~PanelUsersCreator();

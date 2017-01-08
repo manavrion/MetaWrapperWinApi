@@ -4,14 +4,14 @@
 
 class PanelWorkersCreator : public Panel {
 public:
-    PanelWorkersCreator(Game &game);
+    PanelWorkersCreator(Game *game);
 
 protected:
 
-    TextField exp;
-    TextField name;
+    TextField *exp;
+    TextField *name;
 
-    Game &game;
+    Game *game;
 
     void createRandomWorkersSet();
 

@@ -10,6 +10,8 @@ namespace MetaFrame {
             : parent(null)
         {};
 
+        AbstructFrameElement(const AbstructFrameElement &abstructFrameElement) = delete;
+
         void build() {
             this->initializationEvent(parent);
             for (auto object : childs) {
@@ -31,20 +33,20 @@ namespace MetaFrame {
         }
         virtual void initializationEvent(const AbstructFrameElement *parent) = 0;
 
-        virtual AbstructFrameElement *copy() const = 0;
-        virtual void clearChilds() const {
+        //virtual AbstructFrameElement *copy() const = 0;
+        /*virtual void clearChilds() const {
             childs.clear();
-        }
-        virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const = 0;
+        }*/
+        //virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const = 0;
 
     public:
-        virtual AbstructFrameElement &add(AbstructFrameElement &child) {
-            child.parent = this;
-            AbstructFrameElement *newChild = child.copy();
+        virtual AbstructFrameElement *add(AbstructFrameElement *child) {
+            child->parent = this;
+            //AbstructFrameElement *newChild = child.copy();
             //nativeCopy(newChild, child);
-            newChild->parent = this;
-            childs.push_back(newChild);
-            return *this;
+            //newChild->parent = this;
+            childs.push_back(child);
+            return this;
         };
 
 

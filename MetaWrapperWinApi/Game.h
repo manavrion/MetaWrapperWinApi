@@ -37,16 +37,16 @@ private:
 
 class Game {
 public:
-    Game(Logger &logger, PanelRepare *panelRepare);
+    Game(Logger *logger, PanelRepare *panelRepare);
 
     void log(String str) {
-        logger.print(str);
+        logger->print(str);
     }
 
 
 
 protected:
-    Logger logger;
+    Logger *logger;
 
     PanelRepare *panelRepare;
 

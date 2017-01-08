@@ -20,11 +20,11 @@ namespace MetaFrame {
         }
 
     protected:
-        virtual AbstructFrameElement *copy() const {
+        /*virtual AbstructFrameElement *copy() const {
             Window *ret = new Window(*this);
             this->clearChilds();
             return ret;
-        }
+        }*/
 
     public:
         ADD_SET_OF_SETTERS(Window);
