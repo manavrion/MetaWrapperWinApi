@@ -19,6 +19,39 @@ namespace MetaFrame {
 
 
     protected:
+        bool flagWritable = true;
+
+
+
+        void nativeSetPageUp() {
+            while (SendMessage(*(this->hWindow), EM_SCROLL, SB_PAGEUP, 0)) {
+
+            }
+        }
+
+        void nativeSetPageDown() {
+            while (SendMessage(*(this->hWindow), EM_SCROLL, SB_PAGEDOWN, 0)) {
+
+            }
+        }
+
+        
+        void nativeSetWritable(bool flagWritable) {
+            if (!flagWritable) {
+                SendMessage(*(this->hWindow), EM_SETREADONLY, TRUE, 0);
+            } else {
+                SendMessage(*(this->hWindow), EM_SETREADONLY, FALSE, 0);
+            }
+            this->flagWritable = flagWritable;
+        };
+
+        void nativeSetMultiLine(bool flag) {
+            if (flag) {
+                this->dwStyle = ES_MULTILINE | ES_AUTOVSCROLL | WS_VSCROLL;
+            } else {
+                this->dwStyle = 0;
+            }
+        };
 
         virtual void init(HWND hWnd) override {
             int i = 1;
@@ -26,7 +59,7 @@ namespace MetaFrame {
 
             *(this->hWindow) = CreateWindow(L"edit",
                                             text,
-                                            ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                                            this->dwStyle | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                             x, y,
                                             width, height,
                                             hWnd,
@@ -34,7 +67,7 @@ namespace MetaFrame {
                                             GetModuleHandle(0),
                                             NULL);
 
-
+            nativeSetWritable(flagWritable);
 
             //setting standart font
             NONCLIENTMETRICS ncm;

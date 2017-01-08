@@ -6,7 +6,7 @@
 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-Window nativeWindow(L"Kek Microsystems");
+Window window(L"Kek Microsystems");
 
 Panel panelQueue;
 Panel panelRepare;
@@ -20,6 +20,11 @@ Panel panelLogger;
 
 
 bool autoGenClients = false;
+Label labelspeed;
+Label labelSimulationTime;
+
+Slider sliderspeed;
+TextField logTextField;
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -29,20 +34,33 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    Label labelspeed;
-    panelMenu.add(Label()
-                  .setVerticalAlignment(VerticalAlignment::Top)
-                  .setHorizontalAlignment(HorizontalAlignment::Left)
-                  .setWidth(120)
-                  .setMargin(10, 10, 120, 10)
-                  .setText(L"Скорость симуляции:"))
+    
+    panelMenu
+        .add(Label()
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
+             .setWidth(120)
+             .setMargin(10, 10, 70, 10)
+             .setText(L"Время в симуляции:"))
+        .add(labelSimulationTime
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
+             .setWidth(120)
+             .setMargin(10, 10, 90, 10)
+             .setText(L"0 месяц, 0 день, 00:00"))
+        .add(Label()
+             .setVerticalAlignment(VerticalAlignment::Top)
+             .setHorizontalAlignment(HorizontalAlignment::Left)
+             .setWidth(120)
+             .setMargin(10, 10, 120, 10)
+             .setText(L"Скорость симуляции:"))
         .add(labelspeed
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setWidth(20)
              .setMargin(10, 10, 120, 10)
              .setText(L"x0"))
-        .add(Slider()
+        .add(sliderspeed
              .setVerticalAlignment(VerticalAlignment::Top)
              .setHorizontalAlignment(HorizontalAlignment::Center)
              .setWidth(180)
@@ -50,10 +68,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setMargin(10, 10, 140, 10)
              .addActionListener([&](Slider &sl) {
                 labelspeed.setText(String(L"x") + String(sl.getPos()));
+                logTextField.setText(logTextField.getText() + String({ 13, 10 }) + labelspeed.getText());
+                logTextField.setPageDown();
              })
-             //.setText(L"Скорость симуляции:")
-        )
-        ;
+        );
+
+
 
 
     panelUsersCreator
@@ -87,6 +107,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .setHorizontalAlignment(HorizontalAlignment::Right)
              .setAutoWidth(true).setMargin(120, 5, 5, 5));
 
+
+
     panelWorkersCreator
         .add(Label()
              .setAlignment(Alignment::Stretch)
@@ -115,12 +137,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 
 
-    panelLogger.add(Label()
-                    .setAlignment(Alignment::Stretch)
-                    .setMargin(5, 5, 5, 5)
-                    .setText(L"Логгер:"));
+    panelLogger
+        .add(Label()
+             .setAlignment(Alignment::Stretch)
+             .setMargin(5, 5, 5, 5)
+             .setText(L"Логгер:"))
+        .add(logTextField
+             .setAlignment(Alignment::Stretch)
+             .setMargin(5, 5, 35, 5)
+             .setBackground(Color(18, 18, 18))
+             .setText(L"")
+             .setMultiLine(true)
+             .setWritable(false)
+        );
 
-    nativeWindow
+
+
+
+    window
         .setAlignment(Alignment::Center)
         .setSize(820, 400)
         .add(panelController
@@ -154,8 +188,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              .addActionListener([](Button &btn) { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), null, About);  btn.setX(btn.getX() - 10); }));
 
     
-    nativeWindow.pack();
-    nativeWindow.run();
+    window.pack();
+    window.run();
 
 
 

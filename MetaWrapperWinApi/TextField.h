@@ -11,6 +11,28 @@ namespace MetaFrame {
     public:
         TextField() {};
 
+        TextField &setPageUp() {
+            nativeSetPageUp();
+            return *this;
+        }
+
+        TextField &setPageDown() {
+            nativeSetPageDown();
+            return *this;
+        }
+
+
+        TextField &setWritable(bool flag) {
+            nativeSetWritable(flag);
+            return *this;
+        }
+
+        TextField &setMultiLine(bool flag) {
+            nativeSetMultiLine(flag);
+            return *this;
+        }
+
+
 
         TextField &addActionListener(TextFieldFunctionSender buttonFunction) {
             actionEventFunctionsSender.push_back(buttonFunction); return *this;
