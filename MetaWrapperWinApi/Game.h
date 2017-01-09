@@ -111,9 +111,8 @@ public:
 
 
 
-
         
-        Sleep(1000 / sliderPos);
+        Sleep(1000 / (max(sliderPos, 1)));
         return true;
     }
 

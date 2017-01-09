@@ -12,12 +12,30 @@ namespace MetaFrame {
 
         AbstructFrameElement(const AbstructFrameElement &abstructFrameElement) = delete;
 
+
+
+
+
         void build() {
             this->initializationEvent(parent);
             for (auto object : childs) {
                 object->build(this);
             }
         }
+
+        void buildFix() {
+            //this->initializationEvent(parent);
+            for (auto object : childs) {
+                object->build(this);
+            }
+        }
+
+        virtual void wmUpd() = 0;
+
+        void saveUpdate() {
+            wmUpd();
+        }
+
 
     protected:
 

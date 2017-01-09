@@ -34,6 +34,7 @@ namespace MetaFrame {
         void setImage(String file) {
             DeleteDC(hCompatibleDC);
             DeleteObject(hBitmap);
+            DeleteObject(hOldBitmap);
 
             hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
             GetObject(hBitmap, sizeof(BITMAP), &bitmap);

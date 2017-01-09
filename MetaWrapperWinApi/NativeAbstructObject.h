@@ -4,7 +4,7 @@
 
 namespace MetaFrame {
 
-    
+#define WM_UPDATETHREADADD (WM_USER + 1) 
 
     class NativeAbstructObject : public AbstructFrameElement {
 
@@ -17,6 +17,9 @@ namespace MetaFrame {
 
         };
 
+        void invalidateRect() {
+            InvalidateRect(*hWindow, NULL, true);
+        }
 
     protected:
 
@@ -137,6 +140,12 @@ namespace MetaFrame {
 
         HBRUSH hbrBkgnd;
 
+
+        void wmUpd() override {
+            SendMessage(*(this->hWindow), WM_UPDATETHREADADD, 0, 0);
+        }
+        
+
     public:
         ~NativeAbstructObject() {
             if (hWindow.use_count() == 1) {
@@ -153,7 +162,10 @@ namespace MetaFrame {
         if (message == WM_HSCROLL && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmNotify(wParam, lParam);
         }
-        
+        if (message == WM_UPDATETHREADADD && nativeAbstructObject.count(hWnd) != 0) {
+            //nativeAbstructObject[hWnd].first->
+            nativeAbstructObject[hWnd].first->buildFix();
+        }
         if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
         }

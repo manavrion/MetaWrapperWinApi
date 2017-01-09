@@ -6,7 +6,13 @@
 
 
 Game::Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed)
-    : autoGenClients(false), logger(logger), panelRepare(panelRepare), time(0), labelSimulationTime(labelSimulationTime), sliderspeed(sliderspeed), panelQueue(panelQueue)
+    : autoGenClients(false), 
+    logger(logger), 
+    panelRepare(panelRepare), 
+    time(0), 
+    labelSimulationTime(labelSimulationTime), 
+    sliderspeed(sliderspeed), 
+    panelQueue(panelQueue)
 {
     sliderspeed->addActionListener([&](Slider &sl) {this->sliderPos = sl.getPos(); });
     carsPanelQueue = panelQueue->cars;
@@ -90,10 +96,11 @@ void Game::spawnCar() {
 
     if ((*carsPanelQueue) != null) {
         (*carsPanelQueue)->push(user);
+        panelQueue->update();
         this->log(L"" );
         this->log(L"<" + user->name+ L">");
         this->log(String(L"пришел с ") + L"lamb " + carc);
-        panelQueue->update();
+        
     }
 
 }
