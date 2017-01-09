@@ -1,5 +1,5 @@
 #pragma once
-
+#include <map>
 
 namespace MetaFrame {
 
@@ -32,13 +32,23 @@ namespace MetaFrame {
         }
 
         void setImage(String file) {
-            DeleteDC(hCompatibleDC);
-            DeleteObject(hBitmap);
-            DeleteObject(hOldBitmap);
+
+            static std::map<String, HDC> mp;
+
+            if (mp.count(file) != 0) {
+                hCompatibleDC = mp[file];
+                return;
+            }
+
+
+            //DeleteDC(hCompatibleDC);
+            //DeleteObject(hBitmap);
+            //DeleteObject(hOldBitmap);
 
             hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
             GetObject(hBitmap, sizeof(BITMAP), &bitmap);
             hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));
+            mp[file] = hCompatibleDC;
             hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
         }
 
