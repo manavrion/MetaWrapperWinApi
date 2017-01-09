@@ -41,4 +41,5 @@ namespace MetaFrame {
 #include "Border.h"
 #include "Layout.h"
 #include "Image.h"
+#include "Time.h"
 #define null nullptr

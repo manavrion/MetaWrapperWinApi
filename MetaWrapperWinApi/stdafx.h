@@ -39,3 +39,4 @@ using namespace MetaFrame;
 #include "PanelUsersCreator.h"
 #include "PanelRepare.h"
 #include "WorkerCard.h"
+#include "PanelQueue.h"

@@ -143,6 +143,10 @@
     <ClInclude Include="User.h" />
     <ClInclude Include="WorkerCard.h" />
     <ClInclude Include="PanelRepare.h" />
+    <ClInclude Include="PanelQueue.h" />
+    <ClInclude Include="Time.h">
+      <Filter>MetaTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -215,6 +219,7 @@
     </ClCompile>
     <ClCompile Include="WorkerCard.cpp" />
     <ClCompile Include="PanelRepare.cpp" />
+    <ClCompile Include="PanelQueue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

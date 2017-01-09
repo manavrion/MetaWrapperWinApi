@@ -22,9 +22,9 @@ namespace MetaFrame {
         }
         void nativeSetMinMax(int minPos, int maxPos) {
             if (*(this->hWindow) != null) {
-            SendMessage(*(this->hWindow), TBM_SETRANGE,
-                (WPARAM)TRUE,                   // redraw flag 
-                        (LPARAM)MAKELONG(minPos, maxPos));  // min. & max. positions
+                SendMessage(*(this->hWindow), TBM_SETRANGE,
+                    (WPARAM)TRUE,                   // redraw flag 
+                            (LPARAM)MAKELONG(minPos, maxPos));  // min. & max. positions
             }
         }
 
@@ -61,10 +61,10 @@ namespace MetaFrame {
 
             SendMessage(*(this->hWindow), TBM_SETRANGE,
                 (WPARAM)TRUE,                   // redraw flag 
-                        (LPARAM)MAKELONG(0, 25));  // min. & max. positions
+                        (LPARAM)MAKELONG(0, 500));  // min. & max. positions
 
-            SendMessage(*(this->hWindow), TBM_SETPAGESIZE,
-                        0, (LPARAM)1);                  // new page size
+            /*SendMessage(*(this->hWindow), TBM_SETPAGESIZE,
+                        0, 5);                  // new page size*/
 
             //setting standart font
             NONCLIENTMETRICS ncm;

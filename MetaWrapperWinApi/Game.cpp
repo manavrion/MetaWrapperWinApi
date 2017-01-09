@@ -5,8 +5,8 @@
 #include "PanelRepare.h"
 
 
-Game::Game(Logger *logger, PanelRepare *panelRepare) 
-    : autoGenClients(false), logger(logger), panelRepare(panelRepare)
+Game::Game(Logger *logger, PanelRepare *panelRepare, Label *labelSimulationTime, Slider *sliderspeed)
+    : autoGenClients(false), logger(logger), panelRepare(panelRepare), time(0), labelSimulationTime(labelSimulationTime), sliderspeed(sliderspeed)
 {}
 
 void Game::addWorker(vector<Worker> workers) {

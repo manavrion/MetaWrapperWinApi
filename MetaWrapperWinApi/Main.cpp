@@ -6,7 +6,14 @@
 
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
+Game *game;
 
+DWORD WINAPI threadGame(LPVOID t) {
+    Sleep(500);
+    while (game->updateThread()) {  
+    }
+    return 0;
+};
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -18,14 +25,18 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Window *window = new Window(L"Kek Microsystems");
 
-    Panel *panelQueue = new Panel;
+    PanelQueue *panelQueue = new PanelQueue;
     PanelRepare *panelRepare = new PanelRepare;
 
     Panel *panelController = new Panel;
 
     Logger *logger = new Logger;
 
-    Game *game = new Game(logger, panelRepare);
+    Label *labelSimulationTime = new Label;
+
+    Slider *sliderspeed = new Slider;
+
+    game = new Game(logger, panelRepare, labelSimulationTime, sliderspeed);
 
     Panel *panelMenu = new Panel;
     PanelUsersCreator *panelUsersCreator = new PanelUsersCreator(game);
@@ -36,9 +47,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Label *labelspeed = new Label;
 
-    Label *labelSimulationTime = new Label;
 
-    Slider *sliderspeed = new Slider;
 
 
 
@@ -53,7 +62,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         ->add(labelSimulationTime
              ->setVerticalAlignment(VerticalAlignment::Top)
              ->setHorizontalAlignment(HorizontalAlignment::Left)
-             ->setWidth(120)
+             ->setAutoWidth(true)
              ->setMargin(10, 10, 70, 10)
              ->setText(L"0 месяц, 0 день, 00:00"))
         ->add((new Label())
@@ -65,7 +74,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         ->add(labelspeed
              ->setVerticalAlignment(VerticalAlignment::Top)
              ->setHorizontalAlignment(HorizontalAlignment::Right)
-             ->setWidth(20)
+             ->setWidth(30)
              ->setMargin(10, 10, 100, 10)
              ->setText(L"x0"))
         ->add(sliderspeed
@@ -88,9 +97,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              ->setText(L"Логгер:"))
         ->add(logger);
 
-
-    Image img1(L"greenlamb.bmp");
-    Image img2(L"yellowlamb.bmp");
     window
         ->setAlignment(Alignment::Center)
         ->setSize(820, 420)
@@ -105,14 +111,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              ->add(panelUsersCreator->setAlignment(Alignment::Stretch))
              ->add(panelWorkersCreator->setAlignment(Alignment::Stretch))
              ->add(panelLogger->setAlignment(Alignment::Stretch)))
-        ->add(panelQueue
-             ->setText(L"Очередь")
-             ->setHeight(64)
-             ->setHorizontalAlignment(HorizontalAlignment::Stretch)
-             ->setVerticalAlignment(VerticalAlignment::Bottom)
-             ->setMargin(10, 10, 10, 150)
-             ->add(new ImagePanel(img1))
-             ->add((new ImagePanel(img2))->setX(128)))
+        ->add(panelQueue)
         ->add(panelRepare)
         ->add((new Button())
              ->setText(L"О программе")
@@ -126,7 +125,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              ->setVerticalAlignment(VerticalAlignment::Bottom)
              ->setHorizontalAlignment(HorizontalAlignment::Left));
         ;
-    
+
+    HANDLE threadr = CreateThread(NULL, 0, threadGame, NULL, 0, NULL);
     //window.pack();
     window->run();
 

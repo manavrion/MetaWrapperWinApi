@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "TextField.h"
 #include "Worker.h"
@@ -37,7 +37,7 @@ private:
 
 class Game {
 public:
-    Game(Logger *logger, PanelRepare *panelRepare);
+    Game(Logger *logger, PanelRepare *panelRepare, Label *labelSimulationTime, Slider *sliderspeed);
 
     void log(String str) {
         logger->print(str);
@@ -48,13 +48,18 @@ public:
 protected:
     Logger *logger;
 
+    Label *labelSimulationTime;
+
     PanelRepare *panelRepare;
+
+    Slider *sliderspeed;
 
     vector<Worker> workers;
     queue<User> users;
 
     bool autoGenClients;
 
+    long long time;
 
 public:
     void addWorker(vector<Worker> workers);
@@ -66,6 +71,39 @@ public:
 
 
     void setAutoGenClients(bool autoGenClients);
+
+    int updateTime() {
+        int oldTime = time;
+
+        time += 1;
+
+        labelSimulationTime->setText(
+            //L"0 месяц, 0 день, 00:00"+
+            String((time / 24)/30) +
+            L" месяц, "+
+            String((time / 24)%30) +
+            L" день, "+
+            String(time%24)+
+            L":00"
+        );
+
+        return oldTime;
+    }
+
+
+    bool updateThread() {
+        if (sliderspeed->getPos() == 0) {
+            return true;
+        }
+
+        updateTime();
+        
+
+        
+        Sleep(1000 / sliderspeed->getPos());
+        return true;
+    }
+
 
     ~Game();
 };

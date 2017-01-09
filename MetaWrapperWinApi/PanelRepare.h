@@ -10,9 +10,9 @@ public:
 
     void addWorkers(vector<Worker> workers);
 
-    void update();
 
 protected:
+    void update();
     vector<Worker*> workers;
 
     vector<WorkerCard*> workerCards;
