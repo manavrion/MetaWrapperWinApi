@@ -6,7 +6,7 @@ namespace MetaFrame {
 
     void NativePanel::init(HWND hWnd) {
 
-        *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
+        hWindow = CreateWindowExW(0 | dwExStyle,
                                            L"static",
                                            text,
                                            SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
@@ -49,7 +49,7 @@ namespace MetaFrame {
         UINT uiParam = sizeof(NONCLIENTMETRICS);
         SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
-        SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+        SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         //SendMessage(tmohWnd, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
     }
 

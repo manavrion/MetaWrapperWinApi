@@ -19,11 +19,11 @@ namespace MetaFrame {
     protected:
 
         void nativeSetState(bool state) {
-            SendMessage(*(this->hWindow), BM_SETCHECK, state, 0);
+            SendMessage(hWindow, BM_SETCHECK, state, 0);
         }
 
         bool nativeGetState() {
-            return (int)SendMessage(*(this->hWindow), BM_GETCHECK, 0, 0);
+            return (int)SendMessage(hWindow, BM_GETCHECK, 0, 0);
         }
 
 
@@ -33,7 +33,7 @@ namespace MetaFrame {
         virtual void init(HWND hWnd) override {
             int i = 4;
 
-            *(this->hWindow) = CreateWindow(L"button",
+            hWindow = CreateWindow(L"button",
                                             text,
                                             BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                             x, y,
@@ -49,7 +49,7 @@ namespace MetaFrame {
             UINT uiParam = sizeof(NONCLIENTMETRICS);
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
-            SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+            SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         };
 
 

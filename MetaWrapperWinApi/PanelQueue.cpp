@@ -5,7 +5,7 @@ Image img1(L"greenlamb.bmp");
 Image img2(L"yellowlamb.bmp");
 
 PanelQueue::PanelQueue()
-    : cars(new queue<User*>*(new queue<User*>())) 
+    : cars(new queue<User>*(new queue<User>())) 
 {
 
     setText(L"Очередь");
@@ -25,26 +25,6 @@ PanelQueue::PanelQueue()
         imagePanel->setAlignment(Alignment::Absolute);
         imagePanels.push_back(imagePanel);
         add(imagePanel);
-        //imagePanels[i]->build();
-
-
-        /*Label *label = new Label();
-        label->setX(i * 128);
-        label->setWidth(128);
-        label->setY(20);
-
-        label->setText(L"");
-
-        labelPanels.push_back(label);
-        add(label);*/
-
-
-        //saveUpdate();
-        //imagePanels[i]->image->setImage(L"yellowlamb.bmp");
-
-        //imagePanels[i]->setWorker(cars[i]);
-
-        //workerCards[i]->setText(workers[i]->name);
     }
 
 }
@@ -54,21 +34,23 @@ void PanelQueue::update() {
     
     int i = 0;
 
-    queue<User*> tmpqueue = (**cars);
+
+
+    queue<User> tmpqueue = (**cars);
 
 
 
 
     for (; i < min(tmpqueue.size(), 6); i++) {
         
-        if (tmpqueue.front()->car.color == Color::Green) {
+        if (tmpqueue.front().car.color == Color::Green) {
             imagePanels[i]->image->setImage(L"greenlamb.bmp");
-        } else if (tmpqueue.front()->car.color == Color::Red) {
+        } else if (tmpqueue.front().car.color == Color::Red) {
             imagePanels[i]->image->setImage(L"redlamb.bmp");
-        } else if (tmpqueue.front()->car.color == Color::Blue) {
+        } else if (tmpqueue.front().car.color == Color::Blue) {
             imagePanels[i]->image->setImage(L"bluelamb.bmp");
         } else {
-            imagePanels[i]->image->setImage(L"greenlamb.bmp");
+            imagePanels[i]->image->setImage(L"nulllamb.bmp");
         }
         
 
@@ -82,7 +64,8 @@ void PanelQueue::update() {
     }
     //invalidateRect();
     for (; i < imagePanels.size(); i++) {
-        //imagePanels[i]->setWorker(nullptr);
+        imagePanels[i]->image->setImage(L"nulllamb.bmp");
+        imagePanels[i]->invalidateRect();
     }
 }
 

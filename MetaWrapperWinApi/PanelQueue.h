@@ -11,7 +11,7 @@ class PanelQueue : public Panel {
 public:
     PanelQueue();
 
-    queue<User*> **cars;
+    queue<User> **cars;
 
 
 

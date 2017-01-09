@@ -24,13 +24,13 @@ namespace MetaFrame {
 
 
         void nativeSetPageUp() {
-            while (SendMessage(*(this->hWindow), EM_SCROLL, SB_PAGEUP, 0)) {
+            while (SendMessage(this->hWindow, EM_SCROLL, SB_PAGEUP, 0)) {
 
             }
         }
 
         void nativeSetPageDown() {
-            while (SendMessage(*(this->hWindow), EM_SCROLL, SB_PAGEDOWN, 0)) {
+            while (SendMessage(this->hWindow, EM_SCROLL, SB_PAGEDOWN, 0)) {
 
             }
         }
@@ -38,9 +38,9 @@ namespace MetaFrame {
         
         void nativeSetWritable(bool flagWritable) {
             if (!flagWritable) {
-                SendMessage(*(this->hWindow), EM_SETREADONLY, TRUE, 0);
+                SendMessage(this->hWindow, EM_SETREADONLY, TRUE, 0);
             } else {
-                SendMessage(*(this->hWindow), EM_SETREADONLY, FALSE, 0);
+                SendMessage(this->hWindow, EM_SETREADONLY, FALSE, 0);
             }
             this->flagWritable = flagWritable;
         };
@@ -57,7 +57,7 @@ namespace MetaFrame {
             int i = 1;
 
 
-            *(this->hWindow) = CreateWindow(L"edit",
+            hWindow = CreateWindow(L"edit",
                                             text,
                                             this->dwStyle | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                             x, y,
@@ -75,7 +75,7 @@ namespace MetaFrame {
             UINT uiParam = sizeof(NONCLIENTMETRICS);
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
-            SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+            SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         };
 
 

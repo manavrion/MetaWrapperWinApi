@@ -1,12 +1,13 @@
 #include "stdafx.h"
+#include "Worker.h"
 #include "WorkerCard.h"
 #include "Margin.h"
 
 WorkerCard::WorkerCard() {
-    car = new Image(L"greenlamb.bmp");
+    car = new Image(L"nulllamb.bmp");
     carPanel = new ImagePanel(car);
 
-    worker = new Image(L"worker_master.bmp");
+    worker = new Image(L"master00.bmp");
     workerPanel = new ImagePanel(worker);
 
     name = new Label;
@@ -27,14 +28,15 @@ WorkerCard::WorkerCard() {
     add(exp
         ->setPosition(0, 16)
         ->setWidth(128)
+        ->setHeight(16)
         ->setText(L"146%")
         ->setCenter());
 
-    /*add(carPanel
+    add(carPanel
         ->setPosition(0, 32));
 
     add(workerPanel
-        ->setPosition(0, 32));*/
+        ->setPosition(0, 32));
 }
 
 void WorkerCard::setWorker(Worker *worker) {
@@ -43,8 +45,55 @@ void WorkerCard::setWorker(Worker *worker) {
         exp->setText(L"");
         return;
     }
-    name->setText(worker->name);
-    exp->setText(L"exp " + String(int(worker->exp*100)) + L"%");
+    if (name->getText() != worker->name) {
+        name->setText(worker->name);
+    }
+    String expStr = L"exp " + String(int(worker->exp * 100)) + L"." + String(int((worker->exp * 10000)) % 100) + L"%";
+    if (exp->getText() != expStr) {
+        exp->setText(expStr);
+    }
+
+
+    if (worker->user != null) {
+        String newCarImage;
+        if (worker->user->car.color == Color::Green) {
+            newCarImage = L"greenlamb.bmp";
+        } else if (worker->user->car.color == Color::Red) {
+            newCarImage = L"redlamb.bmp";
+        } else if (worker->user->car.color == Color::Blue) {
+            newCarImage = L"bluelamb.bmp";
+        } else {
+            newCarImage = L"nulllamb.bmp";
+        }
+        if (carPanel->image->file != newCarImage) {
+            carPanel->image->setImage(newCarImage);
+            carPanel->invalidateRect();
+        }
+        
+
+
+        if (worker->user->car.workComplexity < 0.25) {
+            workerPanel->image->setImage(L"master00.bmp");
+        } else if (worker->user->car.workComplexity < 0.50) {
+            workerPanel->image->setImage(L"master25.bmp");
+        } else if (worker->user->car.workComplexity < 0.75) {
+            workerPanel->image->setImage(L"master50.bmp");
+        } else if (worker->user->car.workComplexity < 0.95) {
+            workerPanel->image->setImage(L"master75.bmp");
+        } else {
+            workerPanel->image->setImage(L"master95.bmp");
+        }
+        workerPanel->invalidateRect();
+    } else {
+        if (carPanel->image->file != L"nulllamb.bmp") {
+            carPanel->image->setImage(L"nulllamb.bmp");
+            carPanel->invalidateRect();
+        }
+        
+        workerPanel->image->setImage(L"master00.bmp");
+        workerPanel->invalidateRect();
+    }
+
 }
 
 

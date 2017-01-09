@@ -10,7 +10,7 @@ namespace MetaFrame {
 
     public:
         NativeAbstructObject(const String className) :
-            hWindow(new HWND), className(className),
+            hWindow(NULL), className(className),
             dwExStyle(), dwStyle(),
             hbrBkgnd(null)
         {
@@ -18,7 +18,7 @@ namespace MetaFrame {
         };
 
         void invalidateRect() {
-            InvalidateRect(*hWindow, NULL, true);
+            InvalidateRect(hWindow, NULL, true);
         }
 
     protected:
@@ -30,15 +30,15 @@ namespace MetaFrame {
 
         void initializationEvent(const AbstructFrameElement *parent) {
             if (parent != null) {
-                init(*(((const NativeAbstructObject*)parent)->hWindow));
+                init((((const NativeAbstructObject*)parent)->hWindow));
             } else {
                 init(null);
             }
             postInit();
             //nativeSetBackground();
             if (hbrBkgnd != null) {
-                SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
-                InvalidateRect(*hWindow, NULL, true);
+                SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+                InvalidateRect(hWindow, NULL, true);
             }
         };
         virtual void init(HWND hWnd) = 0;
@@ -53,7 +53,7 @@ namespace MetaFrame {
             while (!q.empty()) {
                 NativeAbstructObject *cur = q.front();
                 q.pop();
-                if (*(cur->hWindow) == hwndTarget) {
+                if (cur->hWindow == hwndTarget) {
                     cur->command(wParam, lParam);
                     return true;
                 }
@@ -81,7 +81,7 @@ namespace MetaFrame {
             while (!q.empty()) {
                 NativeAbstructObject *cur = q.front();
                 q.pop();
-                if (*(cur->hWindow) == hwndTarget) {
+                if (cur->hWindow == hwndTarget) {
                     cur->command(wParam, lParam);
                     return true;
                 }
@@ -96,7 +96,7 @@ namespace MetaFrame {
         /* resize methods */
         void nativeSetRect(Rect &rect) {
             if (hWindow != null) {
-                MoveWindow(*hWindow, rect.x, rect.y, rect.width, rect.height, true);
+                MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
                 //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
             }
         }
@@ -106,19 +106,19 @@ namespace MetaFrame {
             DeleteObject(hbrBkgnd);
             hbrBkgnd = CreateSolidBrush(background);
             if (hWindow != null) {
-                SetClassLong(*hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
-                InvalidateRect(*hWindow, NULL, true);
+                SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+                InvalidateRect(hWindow, NULL, true);
             }
         }
 
         virtual void nativeSetText(const String &text) {
-            SendMessage(*(this->hWindow), WM_SETTEXT, 0, (LPARAM)text.c_str());
+            SendMessage(hWindow, WM_SETTEXT, 0, (LPARAM)text.c_str());
 
         };
 
         String nativeGetText() {
             wchar *buf = new wchar[1024*16];
-            SendMessage(*(this->hWindow), WM_GETTEXT, 1024 * 16, (LPARAM)buf);
+            SendMessage(hWindow, WM_GETTEXT, 1024 * 16, (LPARAM)buf);
             String s(buf);
             delete buf;
             return s;
@@ -130,7 +130,7 @@ namespace MetaFrame {
         virtual LRESULT nativeWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) = 0;
 
     protected:
-        std::shared_ptr<HWND> hWindow;
+        HWND hWindow;
         //HWND hWnd;
         String className;
 
@@ -142,14 +142,14 @@ namespace MetaFrame {
 
 
         void wmUpd() override {
-            SendMessage(*(this->hWindow), WM_UPDATETHREADADD, 0, 0);
+            SendMessage(hWindow, WM_UPDATETHREADADD, 0, 0);
         }
         
 
     public:
         ~NativeAbstructObject() {
-            if (hWindow.use_count() == 1) {
-                DestroyWindow(*hWindow);
+            if (hWindow != null) {
+                DestroyWindow(hWindow);
                 DeleteObject(hbrBkgnd);
                 //CloseHandle(*hWindow);
             }

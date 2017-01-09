@@ -54,7 +54,7 @@ protected:
     PanelRepare *panelRepare;
 
     PanelQueue *panelQueue;
-    queue<User*> **carsPanelQueue;
+    queue<User> **carsPanelQueue;
 
     Slider *sliderspeed;
 
@@ -103,11 +103,13 @@ public:
         }
         updateTime();
         //1 hour
-        if (rand()%10 == 0) {
-            spawnCar();
+        if (rand()%10 == 0) { //примерно один автомобиль раз в 10 часов
+            if (autoGenClients) {
+                spawnCar();
+            }
         }
         
-
+        goToWork();
 
 
 
@@ -119,7 +121,7 @@ public:
 
     void spawnCar();
 
-
+    void goToWork();
 
     ~Game();
 };

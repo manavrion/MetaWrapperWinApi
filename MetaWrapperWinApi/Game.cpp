@@ -92,17 +92,60 @@ void Game::spawnCar() {
     Car car(L"lamb", color, (rand() % 101)/100.0);
 
 
-    User *user = new User(names[(rand()*rand()) % 11], car);
+    User user(names[(rand()*rand()) % 11], car);
 
     if ((*carsPanelQueue) != null) {
         (*carsPanelQueue)->push(user);
         panelQueue->update();
         this->log(L"" );
-        this->log(L"<" + user->name+ L">");
+        this->log(L"<" + user.name+ L">");
         this->log(String(L"пришел с ") + L"lamb " + carc);
         
     }
 
+}
+
+void Game::goToWork() {
+    if ((*carsPanelQueue) == null) {
+        return;
+    }
+    //vector<Worker> workers;
+    //queue<User> users;
+
+    //рабочие берутся за работу
+    for (auto &worker : workers) {
+        if (worker.user == nullptr && (**carsPanelQueue).size()) {
+
+            worker.user = new User((**carsPanelQueue).front());
+            (**carsPanelQueue).pop();
+        }
+    }
+
+    //обновление статура ремонта
+    for (auto &worker : workers) {
+        if (worker.user != nullptr) {
+            worker.user->car.workComplexity += (worker.exp / 100.0);
+        }
+    }
+
+    //удаление отремонтированных машин, оплата за починку, увеличение опыта рабочего
+    for (auto &worker : workers) {
+        if (worker.user != nullptr) {
+            if (worker.user->car.workComplexity >= 1.0) {
+                //todo оплата
+                worker.exp = min(1.0, worker.exp + (worker.user->car.workComplexity - worker.user->car.oldWorkComplexity) / 10.0);
+
+                delete worker.user;
+                worker.user = nullptr;
+            }
+        }
+    }
+
+
+    //(*carsPanelQueue) = &users;
+    panelQueue->update();
+
+    panelRepare->updateWorkers(workers);
 }
 
 Game::~Game() {}

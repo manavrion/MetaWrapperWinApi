@@ -21,16 +21,16 @@ namespace MetaFrame {
 
         }
         void nativeSetMinMax(int minPos, int maxPos) {
-            if (*(this->hWindow) != null) {
-                SendMessage(*(this->hWindow), TBM_SETRANGE,
+            if (hWindow != null) {
+                SendMessage(this->hWindow, TBM_SETRANGE,
                     (WPARAM)TRUE,                   // redraw flag 
                             (LPARAM)MAKELONG(minPos, maxPos));  // min. & max. positions
             }
         }
 
         int nativeGetPos() {
-            if (*(this->hWindow) != null) {
-                return SendMessage(*(this->hWindow), TBM_GETPOS, 0, 0);
+            if (hWindow != null) {
+                return SendMessage(this->hWindow, TBM_GETPOS, 0, 0);
             } else {
                 return 0;
             } 
@@ -43,7 +43,7 @@ namespace MetaFrame {
         virtual void init(HWND hWnd) override {
             int i = 6;
 
-            *(this->hWindow) = CreateWindowEx(
+            hWindow = CreateWindowEx(
                 0,                               // no extended styles 
                 TRACKBAR_CLASS,                  // class name 
                 L"Trackbar Control",              // title (caption) 
@@ -59,7 +59,7 @@ namespace MetaFrame {
                 NULL                             // no WM_CREATE parameter 
             );;
 
-            SendMessage(*(this->hWindow), TBM_SETRANGE,
+            SendMessage(hWindow, TBM_SETRANGE,
                 (WPARAM)TRUE,                   // redraw flag 
                         (LPARAM)MAKELONG(0, 500));  // min. & max. positions
 
@@ -72,7 +72,7 @@ namespace MetaFrame {
             UINT uiParam = sizeof(NONCLIENTMETRICS);
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
-            SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+            SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         };
 
 

@@ -19,7 +19,7 @@ namespace MetaFrame {
         };
 
         HWND getHWindow() {
-            return *(hWindow);
+            return hWindow;
         }
 
     protected:
@@ -29,8 +29,8 @@ namespace MetaFrame {
         void run() {
             
             int nCmdShow = 10;
-            ShowWindow(*hWindow, nCmdShow);
-            UpdateWindow(*hWindow);
+            ShowWindow(hWindow, nCmdShow);
+            UpdateWindow(hWindow);
 
             HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_METAWRAPPERWINAPI));
             MSG msg;

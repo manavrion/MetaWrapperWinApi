@@ -19,6 +19,7 @@ namespace MetaFrame {
             GetObject(hBitmap, sizeof(BITMAP), &bitmap);
             hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));
             hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
+            this->file = file;
         };
 
         Image(const Image &image) = delete;
@@ -32,9 +33,13 @@ namespace MetaFrame {
         }
 
         void setImage(String file) {
-
+            this->file = file;
+            if (file == L"") {
+                hCompatibleDC = nullptr;
+                return;
+            }
             static std::map<String, std::pair<HDC, BITMAP>> mp;
-
+            
             if (mp.count(file) != 0) {
                 hCompatibleDC = mp[file].first;
                 bitmap = mp[file].second;
@@ -54,7 +59,9 @@ namespace MetaFrame {
             hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
         }
 
+        String file;
     protected:
+        
         HANDLE hBitmap;
         HANDLE hOldBitmap;
         BITMAP bitmap;

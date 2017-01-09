@@ -10,7 +10,7 @@ public:
 
     void addWorkers(vector<Worker> workers);
 
-
+    void updateWorkers(vector<Worker> workers);
 protected:
     void update();
     vector<Worker*> workers;

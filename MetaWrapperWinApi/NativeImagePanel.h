@@ -25,7 +25,7 @@ namespace MetaFrame {
 
         virtual void init(HWND hWnd) override {
 
-            *(this->hWindow) = CreateWindowExW(0 | dwExStyle,
+            this->hWindow = CreateWindowExW(0 | dwExStyle,
                                                L"static",
                                                text,
                                                WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,

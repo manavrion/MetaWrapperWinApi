@@ -118,7 +118,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              ->setWidth(100)
              ->setVerticalAlignment(VerticalAlignment::Bottom)
              ->setHorizontalAlignment(HorizontalAlignment::Right)
-             ->addActionListener([&]() { DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window->getHWindow(), About); }))
+             ->addActionListener([&]() { 
+        DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window->getHWindow(), About); 
+    }))
         ->add((new Label())
              ->setText(L"Выручка: 2000$")
              ->setWidth(100)

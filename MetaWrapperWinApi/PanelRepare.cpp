@@ -20,6 +20,14 @@ void PanelRepare::addWorkers(vector<Worker> workers) {
     update();
 }
 
+void PanelRepare::updateWorkers(vector<Worker> workers) {
+    this->workers.clear();
+    for (auto &worker : workers) {
+        this->workers.push_back(&worker);
+    }
+    update();
+}
+
 void PanelRepare::update() {
     //workerCards
     int i = 0;

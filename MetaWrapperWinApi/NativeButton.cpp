@@ -18,7 +18,7 @@ namespace MetaFrame {
         }
 
 
-        *(this->hWindow) = CreateWindow(L"button",
+        hWindow = CreateWindow(L"button",
                                text,
                                WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                x, y,
@@ -36,7 +36,7 @@ namespace MetaFrame {
         UINT uiParam = sizeof(NONCLIENTMETRICS);
         SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
-        SendMessage(*(this->hWindow), WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+        SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
 
     }
 
