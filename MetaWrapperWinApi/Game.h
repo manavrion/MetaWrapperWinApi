@@ -4,6 +4,7 @@
 #include "Worker.h"
 #include "User.h"
 #include "PanelRepare.h"
+#include "PanelQueue.h"
 #include <vector>
 #include <queue>
 using namespace std;
@@ -37,7 +38,7 @@ private:
 
 class Game {
 public:
-    Game(Logger *logger, PanelRepare *panelRepare, Label *labelSimulationTime, Slider *sliderspeed);
+    Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed);
 
     void log(String str) {
         logger->print(str);
@@ -51,6 +52,9 @@ protected:
     Label *labelSimulationTime;
 
     PanelRepare *panelRepare;
+
+    PanelQueue *panelQueue;
+    queue<User*> **carsPanelQueue;
 
     Slider *sliderspeed;
 
@@ -91,18 +95,31 @@ public:
     }
 
 
+    int sliderPos = 0;
+
     bool updateThread() {
-        if (sliderspeed->getPos() == 0) {
+        if (sliderPos == 0) {
             return true;
         }
-
         updateTime();
+        //1 hour
+        if (rand()%10 == 0) {
+            spawnCar();
+        }
         
 
+
+
+
+
         
-        Sleep(1000 / sliderspeed->getPos());
+        Sleep(1000 / sliderPos);
         return true;
     }
+
+
+    void spawnCar();
+
 
 
     ~Game();

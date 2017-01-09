@@ -36,7 +36,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Slider *sliderspeed = new Slider;
 
-    game = new Game(logger, panelRepare, labelSimulationTime, sliderspeed);
+    game = new Game(logger, panelRepare, panelQueue, labelSimulationTime, sliderspeed);
 
     Panel *panelMenu = new Panel;
     PanelUsersCreator *panelUsersCreator = new PanelUsersCreator(game);

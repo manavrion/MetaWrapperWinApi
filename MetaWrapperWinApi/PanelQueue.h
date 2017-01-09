@@ -11,28 +11,27 @@ class PanelQueue : public Panel {
 public:
     PanelQueue();
 
+    queue<User*> **cars;
 
-    void addCars(queue<Car*> cars) {
-        this->cars = cars;
-        update();
-    }
 
-protected:
+
+
 
     void update() {
-        //workerCards
-        int i = 0;
-        for (; i < cars.size(); i++) {
-            if (imagePanels.size() <= i) {
-                /*WorkerCard *wcard = new WorkerCard();
-                wcard
-                    ->setMargin(0, 0, 0, 0)
-                    ->setX(128 * i);
 
-                workerCards.push_back(wcard);
-                add(workerCards.back());
-                workerCards[i]->build();*/
+        int i = 0;
+        for (; i < min((*cars)->size(), 10); i++) {
+            if (imagePanels.size() <= i) {
+
+                ImagePanel *imagePanel = new ImagePanel(new Image(L"yellowlamb.bmp"));
+                imagePanel->setX(i*128);
+                imagePanel->setAlignment(Alignment::Absolute);
+                imagePanels.push_back(imagePanel);
+                add(imagePanel);
+                imagePanels[i]->build();
             }
+
+            //imagePanels[i]->image->setImage(L"yellowlamb.bmp");
 
             //imagePanels[i]->setWorker(cars[i]);
 
@@ -44,7 +43,7 @@ protected:
         }
     }
 
-    queue<Car*> cars;
+protected:
     vector<ImagePanel*> imagePanels;
 
 public:

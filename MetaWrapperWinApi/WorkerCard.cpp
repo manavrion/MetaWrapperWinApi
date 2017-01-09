@@ -4,10 +4,10 @@
 
 WorkerCard::WorkerCard() {
     car = new Image(L"greenlamb.bmp");
-    carPanel = new ImagePanel(*car);
+    carPanel = new ImagePanel(car);
 
     worker = new Image(L"worker_master.bmp");
-    workerPanel = new ImagePanel(*worker);
+    workerPanel = new ImagePanel(worker);
 
     name = new Label;
     exp = new Label;

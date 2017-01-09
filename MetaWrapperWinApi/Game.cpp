@@ -1,13 +1,16 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 #include "Worker.h"
 #include "Game.h"
 #include "PanelRepare.h"
 
 
-Game::Game(Logger *logger, PanelRepare *panelRepare, Label *labelSimulationTime, Slider *sliderspeed)
-    : autoGenClients(false), logger(logger), panelRepare(panelRepare), time(0), labelSimulationTime(labelSimulationTime), sliderspeed(sliderspeed)
-{}
+Game::Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed)
+    : autoGenClients(false), logger(logger), panelRepare(panelRepare), time(0), labelSimulationTime(labelSimulationTime), sliderspeed(sliderspeed), panelQueue(panelQueue)
+{
+    sliderspeed->addActionListener([&](Slider &sl) {this->sliderPos = sl.getPos(); });
+    carsPanelQueue = panelQueue->cars;
+}
 
 void Game::addWorker(vector<Worker> workers) {
     this->workers = workers;
@@ -36,6 +39,63 @@ void Game::addUserToDeque(User user) {
 
 void Game::setAutoGenClients(bool autoGenClients) {
     this->autoGenClients = autoGenClients;
+}
+
+
+void Game::spawnCar() {
+
+    if ((*carsPanelQueue) == null) {
+        return;
+    }
+
+    String names[] = {
+        L"Человек разумный",
+        L"Австралопитек",
+        L"Неандерталец",
+        L"Денисовец",
+        L"Человек умелый",
+        L"Человек рудольфский",
+        L"Человек грузинский",
+        L"Человек работающий",
+        L"Человек прямоходящий",
+        L"Питекантроп",
+        L"Кроманьонец "
+    };
+    String carc;
+    Color color;
+    switch (rand () % 3) {
+        case 0:
+            color = Color::Green;
+            carc = L"green";
+            break;
+        case 1:
+            color = Color::Red;
+            carc = L"red";
+            break;
+        case 2:
+            color = Color::Blue;
+            carc = L"blue";
+            break;
+        default:
+            color = Color::White;
+            carc = L"white";
+            break;
+    }
+
+
+    Car car(L"lamb", color, (rand() % 101)/100.0);
+
+
+    User *user = new User(names[(rand()*rand()) % 11], car);
+
+    if ((*carsPanelQueue) != null) {
+        (*carsPanelQueue)->push(user);
+        this->log(L"" );
+        this->log(L"<" + user->name+ L">");
+        this->log(String(L"пришел с ") + L"lamb " + carc);
+        panelQueue->update();
+    }
+
 }
 
 Game::~Game() {}
