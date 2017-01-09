@@ -36,7 +36,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     Slider *sliderspeed = new Slider;
 
-    game = new Game(logger, panelRepare, panelQueue, labelSimulationTime, sliderspeed);
+    Label *labelMoney = new Label;
+
+    game = new Game(logger, panelRepare, panelQueue, labelSimulationTime, sliderspeed, labelMoney);
 
     Panel *panelMenu = new Panel;
     PanelUsersCreator *panelUsersCreator = new PanelUsersCreator(game);
@@ -113,20 +115,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
              ->add(panelLogger->setAlignment(Alignment::Stretch)))
         ->add(panelQueue)
         ->add(panelRepare)
+        
+        ->add(labelMoney
+             ->setText(L"Выручка: 0$")
+             ->setAutoWidth(true)
+             ->setVerticalAlignment(VerticalAlignment::Bottom)
+             ->setHorizontalAlignment(HorizontalAlignment::Left))
         ->add((new Button())
-             ->setText(L"О программе")
-             ->setWidth(100)
-             ->setVerticalAlignment(VerticalAlignment::Bottom)
-             ->setHorizontalAlignment(HorizontalAlignment::Right)
-             ->addActionListener([&]() { 
-        DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window->getHWindow(), About); 
-    }))
-        ->add((new Label())
-             ->setText(L"Выручка: 2000$")
-             ->setWidth(100)
-             ->setVerticalAlignment(VerticalAlignment::Bottom)
-             ->setHorizontalAlignment(HorizontalAlignment::Left));
-        ;
+              ->setText(L"О программе")
+              ->setWidth(100)
+              ->setVerticalAlignment(VerticalAlignment::Bottom)
+              ->setHorizontalAlignment(HorizontalAlignment::Right)
+              ->addActionListener([&]() {
+                        DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), window->getHWindow(), About);
+               }));
+        
 
     HANDLE threadr = CreateThread(NULL, 0, threadGame, NULL, 0, NULL);
     //window.pack();

@@ -28,6 +28,12 @@
     <Filter Include="MetaTypes">
       <UniqueIdentifier>{a68ecc76-726d-4294-8835-ec64a0a7eba3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Auto Service Cpps">
+      <UniqueIdentifier>{36f2458a-714e-41ba-8a27-d2022bbd9b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Auto Service Headers">
+      <UniqueIdentifier>{f30c2099-e595-42e4-ac06-fe7b3c5c32a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -120,7 +126,6 @@
     <ClInclude Include="TextField.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="Car.h" />
     <ClInclude Include="NativeSlider.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
@@ -136,16 +141,35 @@
     <ClInclude Include="Image.h">
       <Filter>MetaTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Worker.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="PanelWorkersCreator.h" />
-    <ClInclude Include="PanelUsersCreator.h" />
-    <ClInclude Include="User.h" />
-    <ClInclude Include="WorkerCard.h" />
-    <ClInclude Include="PanelRepare.h" />
-    <ClInclude Include="PanelQueue.h" />
     <ClInclude Include="Time.h">
       <Filter>MetaTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkerCard.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Worker.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelWorkersCreator.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelUsersCreator.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelRepare.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PanelQueue.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Auto Service Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Auto Service Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -207,19 +231,33 @@
     <ClCompile Include="ImagePanel.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="PanelWorkersCreator.cpp" />
-    <ClCompile Include="PanelUsersCreator.cpp" />
-    <ClCompile Include="Worker.cpp" />
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>MetaTypes</Filter>
     </ClCompile>
-    <ClCompile Include="WorkerCard.cpp" />
-    <ClCompile Include="PanelRepare.cpp" />
-    <ClCompile Include="PanelQueue.cpp" />
+    <ClCompile Include="Game.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelQueue.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelRepare.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelUsersCreator.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="PanelWorkersCreator.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Worker.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkerCard.cpp">
+      <Filter>Auto Service Cpps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

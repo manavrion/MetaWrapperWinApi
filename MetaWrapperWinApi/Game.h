@@ -38,7 +38,7 @@ private:
 
 class Game {
 public:
-    Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed);
+    Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed, Label *labelMoney);
 
     void log(String str) {
         logger->print(str);
@@ -47,6 +47,8 @@ public:
 
 
 protected:
+    Label *labelMoney;
+
     Logger *logger;
 
     Label *labelSimulationTime;
@@ -62,6 +64,8 @@ protected:
     queue<User> users;
 
     bool autoGenClients;
+
+    long long moneyCount;
 
     long long time;
 

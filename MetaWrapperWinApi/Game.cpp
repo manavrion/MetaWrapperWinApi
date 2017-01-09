@@ -5,14 +5,16 @@
 #include "PanelRepare.h"
 
 
-Game::Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed)
+Game::Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Label *labelSimulationTime, Slider *sliderspeed, Label *labelMoney)
     : autoGenClients(false), 
     logger(logger), 
     panelRepare(panelRepare), 
     time(0), 
     labelSimulationTime(labelSimulationTime), 
     sliderspeed(sliderspeed), 
-    panelQueue(panelQueue)
+    panelQueue(panelQueue),
+    labelMoney(labelMoney),
+    moneyCount(0)
 {
     sliderspeed->addActionListener([&](Slider &sl) {this->sliderPos = sl.getPos(); });
     carsPanelQueue = panelQueue->cars;
@@ -132,8 +134,12 @@ void Game::goToWork() {
     for (auto &worker : workers) {
         if (worker.user != nullptr) {
             if (worker.user->car.workComplexity >= 1.0) {
-                //todo оплата
-                worker.exp = min(1.0, worker.exp + (worker.user->car.workComplexity - worker.user->car.oldWorkComplexity) / 10.0);
+                
+                float reparedPercent = (worker.user->car.workComplexity - worker.user->car.oldWorkComplexity);
+
+                worker.exp = min(1.0, worker.exp + reparedPercent / 10.0);
+
+                moneyCount += 500'000* reparedPercent;
 
                 delete worker.user;
                 worker.user = nullptr;
@@ -141,6 +147,8 @@ void Game::goToWork() {
         }
     }
 
+    //обновление выручки
+    labelMoney->setText(L"Выручка: " + String(moneyCount) + L"$");
 
     //(*carsPanelQueue) = &users;
     panelQueue->update();
