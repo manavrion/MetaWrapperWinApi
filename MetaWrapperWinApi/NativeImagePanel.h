@@ -52,6 +52,7 @@ namespace MetaFrame {
                 HDC hdc = BeginPaint(hWnd, &ps);
                 StretchBlt(hdc, 0, 0, image.getSize().width, image.getSize().height, image.getHDC(), 0, 0, image.getSize().width,
                            image.getSize().height, SRCCOPY);
+                DeleteDC(hdc);
                 EndPaint(hWnd, &ps);
 
             }

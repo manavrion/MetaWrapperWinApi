@@ -17,27 +17,27 @@ PanelQueue::PanelQueue()
     //->add((new ImagePanel(&img2))->setX(128));
 
     for (int i = 0; i < 6; i++) {
-        if (imagePanels.size() <= i) {
-
-            ImagePanel *imagePanel = new ImagePanel(new Image(L"yellowlamb.bmp"));
-            imagePanel->setX(i * 128);
-            imagePanel->setAlignment(Alignment::Absolute);
-            imagePanels.push_back(imagePanel);
-            add(imagePanel);
-            //imagePanels[i]->build();
 
 
-            /*Label *label = new Label();
-            label->setX(i * 128);
-            label->setWidth(128);
-            label->setY(20);
+        ImagePanel *imagePanel = new ImagePanel(new Image(L""));
+        imagePanel->setX(i * 128);
+        imagePanel->setSize(128, 64);
+        imagePanel->setAlignment(Alignment::Absolute);
+        imagePanels.push_back(imagePanel);
+        add(imagePanel);
+        //imagePanels[i]->build();
 
-            label->setText(L"azaza");
 
-            labelPanels.push_back(label);
-            add(label);
-            label->build();*/
-        }
+        /*Label *label = new Label();
+        label->setX(i * 128);
+        label->setWidth(128);
+        label->setY(20);
+
+        label->setText(L"");
+
+        labelPanels.push_back(label);
+        add(label);*/
+
 
         //saveUpdate();
         //imagePanels[i]->image->setImage(L"yellowlamb.bmp");
@@ -70,17 +70,17 @@ void PanelQueue::update() {
         } else {
             imagePanels[i]->image->setImage(L"greenlamb.bmp");
         }
-        tmpqueue.pop();
-
         
-        //imagePanels[i]->image->setImage(L"yellowlamb.bmp");
 
+        //imagePanels[i]->image->setImage(L"yellowlamb.bmp");
         //imagePanels[i]->setWorker(cars[i]);
 
         //workerCards[i]->setText(workers[i]->name);
         imagePanels[i]->invalidateRect();
+        //labelPanels[i]->setText(tmpqueue.front()->name);
+        tmpqueue.pop();
     }
-
+    //invalidateRect();
     for (; i < imagePanels.size(); i++) {
         //imagePanels[i]->setWorker(nullptr);
     }
