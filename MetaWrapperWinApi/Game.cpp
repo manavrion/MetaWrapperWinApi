@@ -42,6 +42,8 @@ void Game::clearWorkers() {
 
 void Game::addUserToDeque(User user) {
     users.push(user);
+    (*carsPanelQueue)->push(user);
+    panelQueue->update();
     log(L"added car " + user.car.name + L" [" + String(int(user.car.workComplexity * 100)) + L"%] ");
 }
 

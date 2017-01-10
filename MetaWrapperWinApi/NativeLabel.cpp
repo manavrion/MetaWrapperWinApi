@@ -10,16 +10,24 @@ namespace MetaFrame {
     void NativeLabel::init(HWND hWnd) {
         int i = 3;
 
-        hWindow = CreateWindow(L"static",
+        /*hWindow = CreateWindow(L"static",
                                         text,
-                                        this->dwStyle  | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                                        this->dwStyle  | WS_CHILD | WS_VISIBLE,
                                         x, y,
                                         width, height,
                                         hWnd,
                                         (HMENU)i,
                                         GetModuleHandle(0),
-                                        NULL);
-
+                                        NULL);*/
+        hWindow = CreateWindow(L"static",
+                               text,
+                               WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
+                               x, y,
+                               width, height,
+                               hWnd,
+                               (HMENU)i,
+                               GetModuleHandle(0),
+                               NULL);
 
 
         //setting standart font

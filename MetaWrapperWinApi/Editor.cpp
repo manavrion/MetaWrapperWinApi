@@ -100,6 +100,10 @@ namespace MetaFrame {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ((NativeAbstructObject*)element)->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
+            if (controlLeft == null) {
+                return;
+            }
+            
             sender.setX(event.xOnParent - sender.getWidth()/2);
             sender.setY(event.yOnParent - sender.getHeight()/2);
             Rect rect = element->getRect();
@@ -108,6 +112,7 @@ namespace MetaFrame {
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
             editorSpace->invalidateRect();
+            sender.invalidateRect();
         });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,8 +162,13 @@ namespace MetaFrame {
         controlLabelText->build();
         controlDeleteButton->build();
 
+        
+
     }
     void Editor::destroyControl() {
+        if (controlLeft == null) {
+            return;
+        }
         controlLeft->destroy();
         controlRight->destroy();
         controlTop->destroy();
@@ -178,5 +188,6 @@ namespace MetaFrame {
         controlLabelText = null;
 
         controlDeleteButton = null;
+
     }
 }

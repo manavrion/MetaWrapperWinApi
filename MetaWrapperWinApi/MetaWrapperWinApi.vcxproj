@@ -185,6 +185,7 @@
     <ClInclude Include="Window.h" />
     <ClInclude Include="Worker.h" />
     <ClInclude Include="WorkerCard.h" />
+    <ClInclude Include="EditorWrapped.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstructFrameElement.cpp" />

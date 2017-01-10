@@ -54,13 +54,15 @@ namespace MetaFrame {
 
         Layout layout;
 
-    public:
-
+    protected:
 
         virtual void nativeSetRect(Rect &rect) = 0;
         virtual void nativeSetBackground(const Color &rect) = 0;
+        virtual void nativeSetForeground(const Color &rect) = 0;
         virtual void nativeSetText(const String &text) = 0;
         virtual String nativeGetText() = 0;
+
+    public:
 
         //setters
         virtual AbstructFrameObject *setRect(Rect rect) {
@@ -198,6 +200,7 @@ namespace MetaFrame {
         }
         virtual AbstructFrameObject *setForeground(const Color &foreground){
             this->foreground = foreground;
+            nativeSetForeground(foreground);
             return this;
         }
 

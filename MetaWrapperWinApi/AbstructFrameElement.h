@@ -12,10 +12,6 @@ namespace MetaFrame {
 
         AbstructFrameElement(const AbstructFrameElement &abstructFrameElement) = delete;
 
-
-
-
-
         void build() {
             this->initializationEvent(parent);
             for (auto object : childs) {

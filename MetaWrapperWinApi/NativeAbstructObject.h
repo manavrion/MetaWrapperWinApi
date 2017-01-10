@@ -104,8 +104,8 @@ namespace MetaFrame {
         };
 
 
-        /* resize methods */
-        void nativeSetRect(Rect &rect) {
+        /* AbstructFrameObject declared methods */
+        virtual void nativeSetRect(Rect &rect) override {
             if (hWindow != null) {
                 MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
                 //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
@@ -113,7 +113,7 @@ namespace MetaFrame {
         }
 
 
-        void nativeSetBackground(const Color &background) {
+        virtual void nativeSetBackground(const Color &background) override {
             DeleteObject(hbrBkgnd);
             hbrBkgnd = CreateSolidBrush(background);
             if (hWindow != null) {
@@ -122,18 +122,20 @@ namespace MetaFrame {
             }
         }
 
-        virtual void nativeSetText(const String &text) {
+        virtual void nativeSetText(const String &text) override {
             SendMessage(hWindow, WM_SETTEXT, 0, (LPARAM)text.c_str());
 
         };
 
-        String nativeGetText() {
+        virtual String nativeGetText() override {
             wchar *buf = new wchar[1024*16];
             SendMessage(hWindow, WM_GETTEXT, 1024 * 16, (LPARAM)buf);
             String s(buf);
             delete buf;
             return s;
         }
+
+
 
 
         friend static LRESULT CALLBACK nativeAbstructWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);

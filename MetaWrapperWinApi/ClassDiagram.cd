@@ -13,14 +13,14 @@
   <Class Name="MetaFrame::AbstructFrameElement">
     <Position X="6.75" Y="5.5" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>AAQABAAAABAAAABAAAiFAAAAAAAAAAIAIIAAAAACgAA=</HashCode>
+      <HashCode>BAQABAAAAFAAAABAAAiEAEAAAAAAAAAAJIAAAAACAAA=</HashCode>
       <FileName>AbstructFrameElement.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::NativeAbstructObject">
     <Position X="13" Y="6.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAACIACIBICAAAAAQAAAICgACQAABIAAAAAAAKAgEA=</HashCode>
+      <HashCode>AFQUCIgCIFICAAAAAUACAICgAiQAABIAABAAAAKAAEg=</HashCode>
       <FileName>NativeAbstructObject.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -48,21 +48,21 @@
   <Class Name="MetaFrame::Panel">
     <Position X="14.5" Y="16.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAgCAIAAABAAARgAAAAAEIBAAAAAAAAAAA=</HashCode>
+      <HashCode>IAAAAAAAAAAgCAIAAABAAARgAAAAAEABAAAAAAAAAAA=</HashCode>
       <FileName>Panel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::Button">
     <Position X="11.75" Y="16.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAABAAAAAAAAAAABAAAgAAAAAEIAABAAAAEAAAA=</HashCode>
+      <HashCode>AEAAAAABAAAAAAAAAAABAAAgAAAAAEAAABAAAAEAAAA=</HashCode>
       <FileName>Button.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::Window">
     <Position X="9.25" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAgAQAAAAIAAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAgAQAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Window.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -76,7 +76,7 @@
   <Class Name="MetaFrame::Label">
     <Position X="6.75" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAEAAAAAAAAAAAAAAgAAACAEIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAEAAAAAAAAAAAAAAgAAACAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Label.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -97,21 +97,21 @@
   <Class Name="MetaFrame::CheckBox">
     <Position X="4.25" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QQAAAAABAAAAAAAAAAABAAAgAAAAAEYAAAAAAAAAAAQ=</HashCode>
+      <HashCode>QQAAAAABAAAAAAAAAAABAAAgAAAAAEQAAAAAAAAAAAQ=</HashCode>
       <FileName>CheckBox.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::TextField">
     <Position X="1" Y="16.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AEAAAAEBAACAQAAAAAABAgAgAAAAAEIAAAgAAAAAAAA=</HashCode>
+      <HashCode>AEAAAAEBAACAQAAAAAABAgAgAAAAAEAAAAgAAAAAAAA=</HashCode>
       <FileName>TextField.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Car">
     <Position X="5.25" Y="28.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAEAACgAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAQAAAAAAEAAAAAAAAAEAACgAAAAAAAAAAI=</HashCode>
       <FileName>Car.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -132,28 +132,28 @@
   <Class Name="MetaFrame::Slider">
     <Position X="20.5" Y="16.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAACRAAAEAAAAAAABAQCgAAIJAEIEABAAAAAABAA=</HashCode>
+      <HashCode>EAAAAACRAAAEAAAAAAABAQCgAAIJAEAEABAAAAAABAA=</HashCode>
       <FileName>Slider.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MetaFrame::ImagePanel">
     <Position X="18" Y="16.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAACAAAAAgAAAAAEIAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAACAAAAAgEAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>ImagePanel.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Worker">
     <Position X="7.75" Y="28.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <HashCode>AAAAABAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAwA=</HashCode>
       <FileName>Worker.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Game">
     <Position X="6.25" Y="24.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>IIAAAAAAEAAAAAAAAEAAAAAAAUiAACAAAAAAAAAAAAA=</HashCode>
+      <HashCode>MIAJAAAAEAAAAAgDAEACCAABEUmAASAAIgAAEAAAAAA=</HashCode>
       <FileName>Game.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -183,6 +183,83 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAADABAAAAAAAAAAAAAAEAAApAAABAAAIAAA=</HashCode>
       <FileName>PanelUsersCreator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MetaFrame::Editor" Collapsed="true">
+    <Position X="23.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEgAAAAQAFBKABARAAAAAQQAAAAAAAwAAAAAAABAAA=</HashCode>
+      <FileName>Editor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PanelQueue" Collapsed="true">
+    <Position X="7" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAEAgACAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>PanelQueue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PanelRepare" Collapsed="true">
+    <Position X="4.25" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAkAAASAAAAAAAAAGAAA=</HashCode>
+      <FileName>PanelRepare.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logger" Collapsed="true">
+    <Position X="0.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkerCard" Collapsed="true">
+    <Position X="28.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAQAAAAAQAAAAAAAAAEAAAAAABAkAAAAgA=</HashCode>
+      <FileName>WorkerCard.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoService" Collapsed="true">
+    <Position X="25.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABpAAAAAAAAAAADIAAAAAABAAAAAAAoIgAAAAAAIAI=</HashCode>
+      <FileName>AutoService.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditAbstructElement" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>EditorWrapped.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditPanel" Collapsed="true">
+    <Position X="14.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EditorWrapped.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditButton" Collapsed="true">
+    <Position X="12.25" Y="21" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>EditorWrapped.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditSlider" Collapsed="true">
+    <Position X="18" Y="21.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACBAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EditorWrapped.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EditLabel" Collapsed="true">
+    <Position X="9.75" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAA=</HashCode>
+      <FileName>EditorWrapped.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="MetaFrame::Point">
@@ -259,8 +336,15 @@
   <Struct Name="MetaFrame::Image" Collapsed="true">
     <Position X="4.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAABAAAAABAAIAAAgABIADAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAAAABAAQAABAAIAAAgABIADAAAAAAAAAA=</HashCode>
       <FileName>Image.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetaFrame::MouseEvent" Collapsed="true">
+    <Position X="31" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAABAAAAAAAAAAIAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>MouseEvent.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Typedef Name="MetaFrame::wchar" Collapsed="true">
@@ -317,6 +401,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Slider.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="MetaFrame::MouseFunction" Collapsed="true">
+    <Position X="31" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NativeAbstructObject.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Enum Name="MetaFrame::HorizontalAlignment" Collapsed="true">

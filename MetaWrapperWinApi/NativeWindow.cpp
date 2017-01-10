@@ -15,10 +15,10 @@ namespace MetaFrame {
 
     void NativeWindow::init(HWND hWnd) {
 
-        this->hWindow = CreateWindowEx(WS_EX_LAYERED,
+        this->hWindow = CreateWindowEx(/*WS_EX_LAYERED*/0,
                                 className,
                                 title,
-                                WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE/*WS_OVERLAPPEDWINDOW*/ | WS_CLIPCHILDREN,
+                                WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE/*WS_OVERLAPPEDWINDOW*/ /*| WS_CLIPCHILDREN*/,
                                 x, y,
                                 width + 16, height + 39,
                                 hWnd,
@@ -31,8 +31,8 @@ namespace MetaFrame {
             throw L"Error in creating window";
         }*/
         //nativeWindowMap[*(this->hWindow)] = this;
-        int transparency = 255;
-        SetLayeredWindowAttributes(this->hWindow, 0, transparency, LWA_ALPHA);
+        //int transparency = 255;
+        //SetLayeredWindowAttributes(this->hWindow, 0, transparency, LWA_ALPHA);
         /*int transparency = 100;
         long extstyle = ::GetWindowLong(*(this->hWindow), GWL_EXSTYLE);
         ::SetWindowLong(*(this->hWindow), GWL_EXSTYLE, extstyle | WS_EX_LAYERED);

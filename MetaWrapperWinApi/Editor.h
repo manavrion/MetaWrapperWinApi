@@ -2,6 +2,7 @@
 
 #include "Window.h"
 #include "Panel.h"
+#include "EditorWrapped.h"
 
 namespace MetaFrame {
 
@@ -30,7 +31,8 @@ namespace MetaFrame {
                       ->setVerticalAlignment(VerticalAlignment::Top))
                 ->add((new Label)
                       ->setText(L"Panel")
-                      ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+                      ->setWidth(100)
+                      ->setHorizontalAlignment(HorizontalAlignment::Left)
                       ->setVerticalAlignment(VerticalAlignment::Top)
                       ->setMargin(10, 10, 50, 10))
                 ->add((new Button)
@@ -41,7 +43,8 @@ namespace MetaFrame {
                       ->addActionListener([&]() {this->createPanel(); }))
                 ->add((new Label)
                       ->setText(L"Button")
-                      ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+                      ->setWidth(100)
+                      ->setHorizontalAlignment(HorizontalAlignment::Left)
                       ->setVerticalAlignment(VerticalAlignment::Top)
                       ->setMargin(10, 10, 90, 10))
                 ->add((new Button)
@@ -49,12 +52,38 @@ namespace MetaFrame {
                       ->setHorizontalAlignment(HorizontalAlignment::Right)
                       ->setVerticalAlignment(VerticalAlignment::Top)
                       ->setMargin(10, 10, 90, 10)
-                      ->addActionListener([&]() { this->createButton(); })));
+                      ->addActionListener([&]() { this->createButton(); }))
+                ->add((new Label)
+                      ->setText(L"Label")
+                      ->setWidth(100)
+                      ->setHorizontalAlignment(HorizontalAlignment::Left)
+                      ->setVerticalAlignment(VerticalAlignment::Top)
+                      ->setMargin(10, 10, 130, 10))
+                ->add((new Button)
+                      ->setText(L"Create")
+                      ->setHorizontalAlignment(HorizontalAlignment::Right)
+                      ->setVerticalAlignment(VerticalAlignment::Top)
+                      ->setMargin(10, 10, 130, 10)
+                      ->addActionListener([&]() { this->createLabel(); }))
+                ->add((new Label)
+                      ->setText(L"Slider")
+                      ->setWidth(100)
+                      ->setHorizontalAlignment(HorizontalAlignment::Left)
+                      ->setVerticalAlignment(VerticalAlignment::Top)
+                      ->setMargin(10, 10, 170, 10))
+                ->add((new Button)
+                      ->setText(L"Create")
+                      ->setHorizontalAlignment(HorizontalAlignment::Right)
+                      ->setVerticalAlignment(VerticalAlignment::Top)
+                      ->setMargin(10, 10, 170, 10)
+                      ->addActionListener([&]() { this->createSlider(); }))
+
+            );
         };
 
 
         void createPanel() {
-            Panel *panel = new Panel;
+            EditPanel *panel = new EditPanel;
 
             panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
                 this->destroyControl();
@@ -69,7 +98,7 @@ namespace MetaFrame {
         }
 
         void createButton() {
-            Button *button = new Button;
+            EditButton *button = new EditButton;
 
             button->addMouseReleasedListener([=](NativeAbstructObject &button, const MouseEvent &event) {
                 this->destroyControl();
@@ -82,6 +111,36 @@ namespace MetaFrame {
             button->build();
 
             bindControl(button->getRect(), button);
+        }
+
+        void createSlider() {
+            EditSlider *panel = new EditSlider;
+
+            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+                this->destroyControl();
+                this->bindControl(panel.getRect(), &panel);
+            });
+
+            editorSpace->add(panel);
+            panel->build();
+
+
+            bindControl(panel->getRect(), panel);
+        }
+
+        void createLabel() {
+            EditLabel *panel = new EditLabel;
+
+            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+                this->destroyControl();
+                this->bindControl(panel.getRect(), &panel);
+            });
+
+            editorSpace->add(panel);
+            panel->build();
+
+
+            bindControl(panel->getRect(), panel);
         }
 
         void destroyControl();
