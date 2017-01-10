@@ -10,7 +10,8 @@ PanelUsersCreator::PanelUsersCreator(Game *game) : game(game) {
     carWorkComplexity = new TextField;
     
     add((new Label())
-        ->setAlignment(Alignment::Stretch)
+        ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+        ->setVerticalAlignment(VerticalAlignment::Top)
         ->setMargin(5, 5, 5, 5)
         ->setText(L"Создание клиентов:"));
         add((new CheckBox())
@@ -26,6 +27,7 @@ PanelUsersCreator::PanelUsersCreator(Game *game) : game(game) {
         add((new Label())
             ->setText(L"Клиент:")
             ->setAlignment(Alignment::Absolute)
+            ->setWidth(45)
             ->setPosition(5, 50));
 
         add(name
@@ -63,7 +65,7 @@ PanelUsersCreator::PanelUsersCreator(Game *game) : game(game) {
             ->setText(L"Сложность работы:")
             ->setAlignment(Alignment::Absolute)
             ->setPosition(5, 110)
-            ->setWidth(120));
+            ->setWidth(115));
 
         add(carWorkComplexity
             ->setVerticalAlignment(VerticalAlignment::Absolute)

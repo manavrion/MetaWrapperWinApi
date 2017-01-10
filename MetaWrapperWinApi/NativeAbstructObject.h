@@ -122,6 +122,10 @@ namespace MetaFrame {
             }
         }
 
+        virtual void nativeSetForeground(const Color &background) override {
+            //todo
+        }
+
         virtual void nativeSetText(const String &text) override {
             SendMessage(hWindow, WM_SETTEXT, 0, (LPARAM)text.c_str());
 
@@ -258,6 +262,9 @@ namespace MetaFrame {
         if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
         } 
+        /*if (message == WM_NOTIFY && nativeAbstructObject.count(hWnd) != 0) {
+            nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
+        }*/
 
         if (message == WM_MOUSEMOVE && nativeAbstructObject.count(hWnd) != 0) {
             MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));

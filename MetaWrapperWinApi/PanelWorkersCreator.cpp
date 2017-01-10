@@ -10,7 +10,8 @@ PanelWorkersCreator::PanelWorkersCreator(Game *game) : game(game) {
     name= new TextField;
 
     add((new Label())
-        ->setAlignment(Alignment::Stretch)
+        ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+        ->setVerticalAlignment(VerticalAlignment::Top)
         ->setMargin(5, 5, 5, 5)
         ->setText(L"Создание работников:"))
         ->add((new Button())
@@ -24,6 +25,7 @@ PanelWorkersCreator::PanelWorkersCreator(Game *game) : game(game) {
     add((new Label())
         ->setText(L"Имя:")
         ->setAlignment(Alignment::Absolute)
+        ->setWidth(40)
         ->setPosition(5, 60));
 
     add(name
@@ -35,6 +37,7 @@ PanelWorkersCreator::PanelWorkersCreator(Game *game) : game(game) {
 
     add((new Label())
         ->setText(L"Опыт:")
+        ->setWidth(40)
         ->setAlignment(Alignment::Absolute)
         ->setPosition(5, 90));
 

@@ -53,7 +53,8 @@ AutoService::AutoService(String taxt) : Window(taxt) {
 
     panelLogger
         ->add((new Label())
-              ->setAlignment(Alignment::Stretch)
+              ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+              ->setVerticalAlignment(VerticalAlignment::Top)
               ->setMargin(5, 5, 5, 5)
               ->setText(L"Логгер:"))
         ->add(logger);
@@ -77,7 +78,7 @@ AutoService::AutoService(String taxt) : Window(taxt) {
      
     add(labelMoney
         ->setText(L"Выручка: 0$")
-        ->setAutoWidth(true)
+        ->setWidth(300)
         ->setVerticalAlignment(VerticalAlignment::Bottom)
         ->setHorizontalAlignment(HorizontalAlignment::Left));
      add((new Button())
