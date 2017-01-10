@@ -6,7 +6,7 @@ namespace MetaFrame {
 
 #define WM_UPDATETHREADADD (WM_USER + 1) 
 
-    typedef std::function<void(NativeAbstructObject&, MouseEvent&)> MouseFunction;
+    typedef std::function<void(NativeAbstructObject&, const MouseEvent&)> MouseFunction;
 
     class NativeAbstructObject : public AbstructFrameElement {
 
@@ -150,7 +150,24 @@ namespace MetaFrame {
 
 
     public:
-
+        /*
+        NativeAbstructObject *addKeyPressedListener(KeyFunction f);
+        NativeAbstructObject *addKeyReleasedListener(KeyFunction f);
+        NativeAbstructObject *addKeyTypedListener(KeyFunction f);
+        NativeAbstructObject *addMouseDoubleClickedListener(MouseFunction f);
+        NativeAbstructObject *addMouseEnteredListener(MouseFunction f);
+        NativeAbstructObject *addMouseExitedListener(MouseFunction f);*/
+        NativeAbstructObject *addMousePressedListener(MouseFunction f) {
+            mousePressedEvents.push_back(f);
+        };
+        NativeAbstructObject *addMouseReleasedListener(MouseFunction f) {
+            mouseReleasedEvents.push_back(f);
+        };
+        //NativeAbstructObject *addMouseDraggedListener(MouseFunction f);
+        NativeAbstructObject *addMouseMovedListener(MouseFunction f) {
+            mouseMovedEvents.push_back(f);
+        };
+        //NativeAbstructObject *addMouseWheelMovedListener(MouseFunction f);
 
     protected:
         /*ArrayList<KeyFunction>   keyPressedEvents;
@@ -167,6 +184,34 @@ namespace MetaFrame {
         ArrayList<MouseFunction> mouseMovedEvents;
 
         //ArrayList<MouseFunction> mouseWheelMovedEvents;
+
+        /*void runKeyPressedEvent(const KeyEvent &event);
+        void runKeyReleasedEvent(const KeyEvent &event);
+        void runKeyTypedEvent(const KeyEvent &event);
+
+        void runMouseDoubleClickedEvent(MouseEvent event);*/
+
+        /*void runMouseEnteredEvent(MouseEvent event);
+        void runMouseExitedEvent(MouseEvent event);*/
+
+        void runMousePressedEvent(MouseEvent event) {
+            for (auto &func : mousePressedEvents) {
+                func(*this, event);
+            }
+        };
+        void runMouseReleasedEvent(MouseEvent event) {
+            for (auto &func : mouseReleasedEvents) {
+                func(*this, event);
+            }
+        };
+        //void runMouseDraggedEvent(MouseEvent event){};
+        void runMouseMovedEvent(MouseEvent event) {
+            for (auto &func : mouseMovedEvents) {
+                func(*this, event);
+            }
+        };
+        //void runMouseWheelMovedEvent(MouseEvent event);
+
 
 
     public:
