@@ -4,7 +4,6 @@
 namespace MetaFrame {
     void Editor::bindControl(Rect rect, AbstructFrameElement * element) {
 
-
         if (controlLeft != null) {
             controlLeft->destroy();
         }
@@ -149,26 +148,7 @@ namespace MetaFrame {
 
         controlDeleteButton->addActionListener([=](Button &btn) {
             element->destroy();
-
-            controlLeft->destroy();
-            controlRight->destroy();
-            controlTop->destroy();
-            controlButtom->destroy();
-
-            controlText->destroy();
-            controlLabelText->destroy();
-
-            controlDeleteButton->destroy();
-
-            controlLeft = null;
-            controlRight = null;
-            controlTop = null;
-            controlButtom = null;
-
-            controlText = null;
-            controlLabelText = null;
-
-            controlDeleteButton = null;
+            this->destroyControl();
         });
 
 
@@ -177,5 +157,26 @@ namespace MetaFrame {
         controlLabelText->build();
         controlDeleteButton->build();
 
+    }
+    void Editor::destroyControl() {
+        controlLeft->destroy();
+        controlRight->destroy();
+        controlTop->destroy();
+        controlButtom->destroy();
+
+        controlText->destroy();
+        controlLabelText->destroy();
+
+        controlDeleteButton->destroy();
+
+        controlLeft = null;
+        controlRight = null;
+        controlTop = null;
+        controlButtom = null;
+
+        controlText = null;
+        controlLabelText = null;
+
+        controlDeleteButton = null;
     }
 }

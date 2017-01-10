@@ -56,16 +56,14 @@ namespace MetaFrame {
         void createPanel() {
             Panel *panel = new Panel;
 
-            /*panel->addMouseMovedListener([](NativeAbstructObject &panel, const MouseEvent &event) {
-                panel.setX(event.x);
-                panel.setY(event.y);
-            });*/
+            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+                this->destroyControl();
+                this->bindControl(panel.getRect(), &panel);
+            });
 
             editorSpace->add(panel);
             panel->build();
-           // saveUpdate();
 
-            //setBackground(Color(0, 0, 255));
 
             bindControl(panel->getRect(), panel);
         }
@@ -73,8 +71,9 @@ namespace MetaFrame {
         void createButton() {
             Button *button = new Button;
 
-            button->addActionListener([=]() {
-                button->setX(button->getX() + 2); 
+            button->addMouseReleasedListener([=](NativeAbstructObject &button, const MouseEvent &event) {
+                this->destroyControl();
+                this->bindControl(button.getRect(), &button);
             });
 
             button->setPosition(100, 100);
@@ -85,7 +84,7 @@ namespace MetaFrame {
             bindControl(button->getRect(), button);
         }
 
-        
+        void destroyControl();
     protected:
         Panel *editorSpace;
         Panel *panelTool;
@@ -103,6 +102,8 @@ namespace MetaFrame {
 
         void bindControl(Rect rect, AbstructFrameElement *element);
 
+
+        
 
     public:
         ~Editor() {
