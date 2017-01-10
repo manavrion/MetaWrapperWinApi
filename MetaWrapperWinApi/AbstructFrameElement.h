@@ -36,6 +36,21 @@ namespace MetaFrame {
             wmUpd();
         }
 
+        void destroy() {
+            bool fl = true;
+            for (auto it = parent->childs.begin(); it != parent->childs.end(); it++) {
+                if (*it == this) {
+                    parent->childs.erase(it);
+                    fl = false;
+                    break;
+                }
+            }
+            if (fl) {
+                return;
+            }
+            wmClose();
+            delete this;
+        }
 
     protected:
 
@@ -56,6 +71,10 @@ namespace MetaFrame {
             childs.clear();
         }*/
         //virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const = 0;
+
+        virtual void wmClose() = 0;
+
+
 
     public:
         virtual AbstructFrameElement *add(AbstructFrameElement *child) {

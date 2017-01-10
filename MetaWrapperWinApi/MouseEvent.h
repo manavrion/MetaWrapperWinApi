@@ -5,11 +5,11 @@ namespace MetaFrame {
     struct MouseEvent {
         MouseEvent(int x, int y)
             : x(x), y(y),
-            xOnScreen(xOnScreen), yOnScreen(yOnScreen) {}
+            xOnParent(x), yOnParent(y) {}
         int x;
         int y;
-        int xOnScreen;
-        int yOnScreen;
+        int xOnParent;
+        int yOnParent;
     };
 
 }

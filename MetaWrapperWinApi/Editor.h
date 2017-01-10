@@ -50,27 +50,16 @@ namespace MetaFrame {
                       ->setVerticalAlignment(VerticalAlignment::Top)
                       ->setMargin(10, 10, 90, 10)
                       ->addActionListener([&]() { this->createButton(); })));
-
-
-            editorSpace->add(controlLeft
-                ->setPosition(Point(5000, 5000))
-                ->setSize(5, 5));
-            editorSpace->add(controlRight
-                ->setPosition(Point(5000, 5000))
-                ->setSize(5, 5));
-            editorSpace->add(controlTop
-                ->setPosition(Point(5000, 5000))
-                ->setSize(5, 5));
-            editorSpace->add(controlButtom
-                             ->setPosition(Point(5000, 5000))
-                             ->setSize(5, 5));
-
-
         };
 
 
         void createPanel() {
             Panel *panel = new Panel;
+
+            /*panel->addMouseMovedListener([](NativeAbstructObject &panel, const MouseEvent &event) {
+                panel.setX(event.x);
+                panel.setY(event.y);
+            });*/
 
             editorSpace->add(panel);
             panel->build();
@@ -78,7 +67,7 @@ namespace MetaFrame {
 
             //setBackground(Color(0, 0, 255));
 
-            bindControl(panel->getRect());
+            bindControl(panel->getRect(), panel);
         }
 
         void createButton() {
@@ -92,35 +81,21 @@ namespace MetaFrame {
 
             editorSpace->add(button);
             button->build();
-            //saveUpdate();
 
-            //setBackground(Color(0, 0, 255));
-
-            bindControl(button->getRect());
+            bindControl(button->getRect(), button);
         }
 
         
     protected:
         Panel *editorSpace;
 
-        Panel *controlLeft = new Panel;
-        Panel *controlRight = new Panel;
-        Panel *controlTop = new Panel;
-        Panel *controlButtom = new Panel;
+        Panel *controlLeft = null;
+        Panel *controlRight = null;
+        Panel *controlTop = null;
+        Panel *controlButtom = null;
 
 
-        void bindControl(Rect rect) {
-            
-            controlLeft->setPosition(Point(rect.x - 2, rect.y + rect.height/2 - 2));
-
-            controlRight->setPosition(Point(rect.x + rect.width - 2, rect.y + rect.height / 2 - 3));
-
-            controlTop->setPosition(Point(rect.x + rect.width / 2 - 2, rect.y - 2));
-
-            controlButtom->setPosition(Point(rect.x + rect.width / 2 - 2, rect.y + rect.height - 2));
-            
-            //editorSpace->saveUpdate();
-        }
+        void bindControl(Rect rect, AbstructFrameElement *element);
 
 
     public:

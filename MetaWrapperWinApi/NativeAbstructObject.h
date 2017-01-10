@@ -29,6 +29,11 @@ namespace MetaFrame {
 
     protected:
 
+        void wmClose(){
+            DestroyWindow(hWindow);
+            ((NativeAbstructObject*)parent)->invalidateRect();
+        }
+
         /*virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
             ((NativeAbstructObject*)nw)->hWindow.reset();
             ((NativeAbstructObject*)nw)->hWindow = ((const NativeAbstructObject*)&old)->hWindow;
@@ -163,15 +168,19 @@ namespace MetaFrame {
         NativeAbstructObject *addMouseExitedListener(MouseFunction f);*/
         NativeAbstructObject *addMousePressedListener(MouseFunction f) {
             mousePressedEvents.push_back(f);
+            return this;
         };
         NativeAbstructObject *addMouseReleasedListener(MouseFunction f) {
             mouseReleasedEvents.push_back(f);
+            return this;
         };
         NativeAbstructObject *addMouseDraggedListener(MouseFunction f) {
             mouseDraggedEvents.push_back(f);
+            return this;
         };
         NativeAbstructObject *addMouseMovedListener(MouseFunction f) {
             mouseMovedEvents.push_back(f);
+            return this;
         };
         //NativeAbstructObject *addMouseWheelMovedListener(MouseFunction f);
 
@@ -246,14 +255,12 @@ namespace MetaFrame {
         }
         if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
-        }
-        if (nativeAbstructObject.count(hWnd) != 0) {
-            return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
-        }
+        } 
 
         if (message == WM_MOUSEMOVE && nativeAbstructObject.count(hWnd) != 0) {
             MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
-
+            event.xOnParent += nativeAbstructObject[hWnd].first->getX();
+            event.yOnParent += nativeAbstructObject[hWnd].first->getY();
             /*        MouseEvent event(GET_X_LPARAM(eventInfo.lParam), GET_Y_LPARAM(eventInfo.lParam));
                         if (eventInfo.wParam & MK_CONTROL) event.controlDown = true;
                         if (eventInfo.wParam & MK_LBUTTON) event.leftButtonDown = true;
@@ -272,22 +279,29 @@ namespace MetaFrame {
 
             nativeAbstructObject[hWnd].first->runMouseMovedEvent(event);
             //this->wmMouseMove(event);
-            return 0;
+            //return 0;
         }
 
         if(message == WM_LBUTTONDOWN && nativeAbstructObject.count(hWnd) != 0) {
             MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            event.xOnParent += nativeAbstructObject[hWnd].first->getX();
+            event.yOnParent += nativeAbstructObject[hWnd].first->getY();
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMousePressedEvent(event);
-            return 0;
+            //return 0;
         }
         if (message == WM_LBUTTONUP && nativeAbstructObject.count(hWnd) != 0) {
             MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            event.xOnParent += nativeAbstructObject[hWnd].first->getX();
+            event.yOnParent += nativeAbstructObject[hWnd].first->getY();
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMouseReleasedEvent(event);
-            return 0;
+            //return 0;
+        }
+        if (nativeAbstructObject.count(hWnd) != 0) {
+            return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
         }
         //return CallWindowProc(nativeAbstructObject[hwnd].second, hwnd, message, wParam, lParam);
         return DefWindowProc(hWnd, message, wParam, lParam);

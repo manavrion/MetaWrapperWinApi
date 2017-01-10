@@ -213,10 +213,10 @@ namespace MetaFrame {
         }
 
         //getters
-        int getX() {
+        int getX() const {
             return x;
         };
-        int getY() {
+        int getY() const {
             return y;
         };
 
