@@ -6,6 +6,8 @@ namespace MetaFrame {
 
 #define WM_UPDATETHREADADD (WM_USER + 1) 
 
+    typedef std::function<void(NativeAbstructObject&, MouseEvent&)> MouseFunction;
+
     class NativeAbstructObject : public AbstructFrameElement {
 
     public:
@@ -145,6 +147,27 @@ namespace MetaFrame {
             SendMessage(hWindow, WM_UPDATETHREADADD, 0, 0);
         }
         
+
+
+    public:
+
+
+    protected:
+        /*ArrayList<KeyFunction>   keyPressedEvents;
+        ArrayList<KeyFunction>   keyReleasedEvents;
+        ArrayList<KeyFunction>   keyTypedEvents;*/
+
+        //ArrayList<MouseFunction> mouseDoubleClickedEvents;
+        //ArrayList<MouseFunction> mouseEnteredEvents;
+        //ArrayList<MouseFunction> mouseExitedEvents;
+        ArrayList<MouseFunction> mousePressedEvents;
+        ArrayList<MouseFunction> mouseReleasedEvents;
+
+        //ArrayList<MouseFunction> mouseDraggedEvents;
+        ArrayList<MouseFunction> mouseMovedEvents;
+
+        //ArrayList<MouseFunction> mouseWheelMovedEvents;
+
 
     public:
         ~NativeAbstructObject() {

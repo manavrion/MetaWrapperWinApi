@@ -42,4 +42,5 @@ namespace MetaFrame {
 #include "Layout.h"
 #include "Image.h"
 #include "Time.h"
+#include "MouseEvent.h"
 #define null nullptr

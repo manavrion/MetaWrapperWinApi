@@ -145,6 +145,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="CheckBox.h" />
+    <ClInclude Include="Editor.h" />
+    <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="PanelQueue.h" />
     <ClInclude Include="PanelRepare.h" />
     <ClInclude Include="Time.h" />
@@ -190,6 +192,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="ImagePanel.cpp" />
     <ClCompile Include="Label.cpp" />

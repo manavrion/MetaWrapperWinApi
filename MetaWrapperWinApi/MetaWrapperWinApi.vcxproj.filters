@@ -172,6 +172,10 @@
       <Filter>Auto Service Headers</Filter>
     </ClInclude>
     <ClInclude Include="AutoService.h" />
+    <ClInclude Include="Editor.h" />
+    <ClInclude Include="MouseEvent.h">
+      <Filter>MetaTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -260,6 +264,7 @@
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
     <ClCompile Include="AutoService.cpp" />
+    <ClCompile Include="Editor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">
