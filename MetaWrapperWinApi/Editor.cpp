@@ -1,8 +1,10 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "Editor.h"
 
 namespace MetaFrame {
     void Editor::bindControl(Rect rect, AbstructFrameElement * element) {
+
+
         if (controlLeft != null) {
             controlLeft->destroy();
         }
@@ -95,5 +97,85 @@ namespace MetaFrame {
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        ((NativeAbstructObject*)element)->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
+            sender.setX(event.xOnParent - sender.getWidth()/2);
+            sender.setY(event.yOnParent - sender.getHeight()/2);
+            Rect rect = element->getRect();
+            controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
+            controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
+            controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
+            controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
+            editorSpace->invalidateRect();
+        });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //controlText
+
+        if (controlText != null) {
+            controlText->destroy();
+        }
+        if (controlLabelText != null) {
+            controlLabelText->destroy();
+        }
+        if (controlDeleteButton != null) {
+            controlDeleteButton->destroy();
+        }
+        controlText = new TextField;
+        controlLabelText = new Label;
+        controlDeleteButton = new Button;
+
+        panelTool->add(controlText
+                       ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+                       ->setVerticalAlignment(VerticalAlignment::Bottom));
+        panelTool->add(controlLabelText
+                       ->setText(L"Редактирование текста:")
+                       ->setMargin(10, 10, 10, 30)
+                       ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+                       ->setVerticalAlignment(VerticalAlignment::Bottom));
+
+        panelTool->add(controlDeleteButton
+                       ->setText(L"Удалить")
+                       ->setMargin(10, 10, 10, 60)
+                       ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+                       ->setVerticalAlignment(VerticalAlignment::Bottom));
+        
+
+        controlText->addActionListener([=](TextField &tf) {
+            element->setText(tf.getText());
+        });
+
+        controlDeleteButton->addActionListener([=](Button &btn) {
+            element->destroy();
+
+            controlLeft->destroy();
+            controlRight->destroy();
+            controlTop->destroy();
+            controlButtom->destroy();
+
+            controlText->destroy();
+            controlLabelText->destroy();
+
+            controlDeleteButton->destroy();
+
+            controlLeft = null;
+            controlRight = null;
+            controlTop = null;
+            controlButtom = null;
+
+            controlText = null;
+            controlLabelText = null;
+
+            controlDeleteButton = null;
+        });
+
+
+        panelTool->pack();
+        controlText->build();
+        controlLabelText->build();
+        controlDeleteButton->build();
+
     }
 }

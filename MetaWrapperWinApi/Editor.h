@@ -9,7 +9,7 @@ namespace MetaFrame {
 
 
     public:
-        Editor(String text) : Window(text), editorSpace(new Panel)
+        Editor(String text) : Window(text), editorSpace(new Panel), panelTool(new Panel)
         {
             setAlignment(Alignment::Center);
             setSize(820 + 230, 420 + 60); 
@@ -20,7 +20,7 @@ namespace MetaFrame {
                 ->setVerticalAlignment(VerticalAlignment::Center)
                 ->setMargin(10, 10, 30, 30));
 
-            add((new Panel)
+            add(panelTool
                 ->setWidth(200)
                 ->setVerticalAlignment(VerticalAlignment::Stretch)
                 ->setHorizontalAlignment(HorizontalAlignment::Right)
@@ -88,11 +88,17 @@ namespace MetaFrame {
         
     protected:
         Panel *editorSpace;
+        Panel *panelTool;
 
         Panel *controlLeft = null;
         Panel *controlRight = null;
         Panel *controlTop = null;
         Panel *controlButtom = null;
+
+        TextField *controlText = null;
+        Label *controlLabelText = null;
+
+        Button *controlDeleteButton = null;
 
 
         void bindControl(Rect rect, AbstructFrameElement *element);
