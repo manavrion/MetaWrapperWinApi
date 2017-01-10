@@ -61,11 +61,6 @@ namespace MetaFrame {
         virtual void runActionEvents() = 0;
 
 
-        virtual LRESULT nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-
-            return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
-        }
-
     public:
 
 

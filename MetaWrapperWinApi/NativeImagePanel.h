@@ -56,7 +56,8 @@ namespace MetaFrame {
                 EndPaint(hWnd, &ps);
 
             }
-            return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
+            //return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
+            return 0;
         }
 
     public:

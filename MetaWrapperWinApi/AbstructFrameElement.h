@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "AbstructFrameObject.h"
 
 namespace MetaFrame {
@@ -102,6 +102,7 @@ namespace MetaFrame {
         }
 
     public:
+        //рекурсивно задаёт элементам их положение и размер в соответствии с правилами, описывающими их
         virtual void pack() {
             this->runPackEvent();
         };
@@ -109,6 +110,7 @@ namespace MetaFrame {
     public:
         ~AbstructFrameElement() {
             for (auto object : childs) {
+                //object->destroy();
                 delete object;
             }
             childs.clear();
