@@ -171,6 +171,7 @@
     <ClInclude Include="Car.h">
       <Filter>Auto Service Headers</Filter>
     </ClInclude>
+    <ClInclude Include="AutoService.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -258,6 +259,7 @@
     <ClCompile Include="WorkerCard.cpp">
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
+    <ClCompile Include="AutoService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

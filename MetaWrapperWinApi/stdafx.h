@@ -31,12 +31,6 @@ using namespace MetaFrame;
 #include "Slider.h"
 #include "ImagePanel.h"
 
-#include "Worker.h"
-#include "Car.h"
-#include "User.h"
-#include "Game.h"
-#include "PanelWorkersCreator.h"
-#include "PanelUsersCreator.h"
-#include "PanelRepare.h"
-#include "WorkerCard.h"
-#include "PanelQueue.h"
+
+
+#include "AutoService.h"

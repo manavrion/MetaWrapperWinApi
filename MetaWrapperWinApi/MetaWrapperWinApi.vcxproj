@@ -140,6 +140,7 @@
     <ClInclude Include="AbstructFrameElement.h" />
     <ClInclude Include="AbstructFrameObject.h" />
     <ClInclude Include="Alignment.h" />
+    <ClInclude Include="AutoService.h" />
     <ClInclude Include="Border.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Car.h" />
@@ -185,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstructFrameElement.cpp" />
+    <ClCompile Include="AutoService.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Color.cpp" />
