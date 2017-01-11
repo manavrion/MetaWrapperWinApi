@@ -7,14 +7,16 @@ namespace MetaFrame {
     class NativePanel : public NativeAbstructObject {
     public:
         NativePanel()
-            : NativeAbstructObject(L"button") {
+            : NativeAbstructObject(L"static") {
             x = 10;
             y = 10;
             width = 73;
             height = 21;
 
-            extendedStyle = 0;
-            style = WS_BORDER;
+            className = L"static";
+            style = WS_BORDER | SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
+
+
         };
 
         void nativeSetBorder(Border border) {
@@ -49,7 +51,7 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void init(HWND hWnd) override;
+        virtual void init(HWND hWnd);
 
 
         //int IDC_OF_BUTTON;

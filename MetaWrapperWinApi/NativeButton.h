@@ -11,13 +11,18 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 21;
+
+            className = L"button";
+            style = WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
+
+
         };
 
 
 
     protected:
 
-        virtual void init(HWND hWnd) override;
+        virtual void init(HWND hWnd);
     
 
         //int IDC_OF_BUTTON;

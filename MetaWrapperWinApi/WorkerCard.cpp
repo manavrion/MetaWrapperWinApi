@@ -67,7 +67,7 @@ void WorkerCard::setWorker(Worker *worker) {
         }
         if (carPanel->image->file != newCarImage) {
             carPanel->image->setImage(newCarImage);
-            carPanel->invalidateRect();
+            carPanel->repaint();
         }
         
 
@@ -83,15 +83,15 @@ void WorkerCard::setWorker(Worker *worker) {
         } else {
             workerPanel->image->setImage(L"master95.bmp");
         }
-        workerPanel->invalidateRect();
+        workerPanel->repaint();
     } else {
         if (carPanel->image->file != L"nulllamb.bmp") {
             carPanel->image->setImage(L"nulllamb.bmp");
-            carPanel->invalidateRect();
+            carPanel->repaint();
         }
         
         workerPanel->image->setImage(L"master00.bmp");
-        workerPanel->invalidateRect();
+        workerPanel->repaint();
     }
 
 }

@@ -14,6 +14,9 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 21;
+
+            className = L"button";
+            style = BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
         };
 
     protected:
@@ -30,7 +33,7 @@ namespace MetaFrame {
 
 
 
-        virtual void init(HWND hWnd) override {
+        /*virtual void init(HWND hWnd) override {
             int i = 4;
 
             hWindow = CreateWindow(L"button",
@@ -50,7 +53,7 @@ namespace MetaFrame {
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
-        };
+        };*/
 
 
         //int IDC_OF_BUTTON;

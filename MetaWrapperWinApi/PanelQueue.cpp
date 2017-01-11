@@ -58,14 +58,14 @@ void PanelQueue::update() {
         //imagePanels[i]->setWorker(cars[i]);
 
         //workerCards[i]->setText(workers[i]->name);
-        imagePanels[i]->invalidateRect();
+        imagePanels[i]->repaint();
         //labelPanels[i]->setText(tmpqueue.front()->name);
         tmpqueue.pop();
     }
-    //invalidateRect();
+    //nativeRepaint();
     for (; i < imagePanels.size(); i++) {
         imagePanels[i]->image->setImage(L"nulllamb.bmp");
-        imagePanels[i]->invalidateRect();
+        imagePanels[i]->repaint();
     }
 }
 

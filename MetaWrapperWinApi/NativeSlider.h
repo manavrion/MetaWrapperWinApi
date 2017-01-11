@@ -13,6 +13,9 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 21;
+
+            className = TRACKBAR_CLASS;
+            style = WS_CHILD | WS_VISIBLE | TBS_AUTOTICKS | TBS_ENABLESELRANGE;
         };
 
     protected:
@@ -39,7 +42,7 @@ namespace MetaFrame {
 
 
 
-
+        /*
         virtual void init(HWND hWnd) override {
             int i = 6;
 
@@ -63,8 +66,8 @@ namespace MetaFrame {
                 (WPARAM)TRUE,                   // redraw flag 
                         (LPARAM)MAKELONG(0, 500));  // min. & max. positions
 
-            /*SendMessage(*(this->hWindow), TBM_SETPAGESIZE,
-                        0, 5);                  // new page size*/
+            //SendMessage(*(this->hWindow), TBM_SETPAGESIZE,
+             //           0, 5);                  // new page size
 
             //setting standart font
             NONCLIENTMETRICS ncm;
@@ -73,7 +76,7 @@ namespace MetaFrame {
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
-        };
+        };*/
 
 
         //int IDC_OF_BUTTON;

@@ -13,6 +13,9 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 21;
+
+            style = WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
+            className = L"static";
         };
 
     protected:
@@ -21,7 +24,7 @@ namespace MetaFrame {
             this->style = SS_CENTER;
         };
 
-        virtual void init(HWND hWnd) override;
+        virtual void init(HWND hWnd);
 
 
         //int IDC_OF_BUTTON;

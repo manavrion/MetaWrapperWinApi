@@ -14,6 +14,9 @@ namespace MetaFrame {
             y = 10;
             width = 73;
             height = 15;
+
+            className = L"edit";
+            style = ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
         };
 
 
@@ -53,7 +56,7 @@ namespace MetaFrame {
             }
         };
 
-        virtual void init(HWND hWnd) override {
+        /*virtual void init(HWND hWnd) override {
             int i = 1;
 
 
@@ -76,7 +79,7 @@ namespace MetaFrame {
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
-        };
+        };*/
 
 
         //int IDC_OF_BUTTON;

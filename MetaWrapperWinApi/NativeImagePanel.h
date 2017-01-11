@@ -14,8 +14,8 @@ namespace MetaFrame {
             width = 73;
             height = 21;
 
-            extendedStyle = 0;
-            style = 0;
+            className = L"static";
+            style = WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
         };
 
 
@@ -23,7 +23,7 @@ namespace MetaFrame {
 
         Image &image;
 
-        virtual void init(HWND hWnd) override {
+        /*virtual void init(HWND hWnd) override {
 
             this->hWindow = CreateWindowExW(0 | extendedStyle,
                                                L"static",
@@ -35,7 +35,7 @@ namespace MetaFrame {
                                                (HMENU)NULL,
                                                GetModuleHandle(0),
                                                (LPVOID)NULL);
-        };
+        };*/
 
 
         virtual void command(WPARAM wParam, LPARAM lParam) {

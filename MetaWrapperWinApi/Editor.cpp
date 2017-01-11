@@ -111,8 +111,8 @@ namespace MetaFrame {
             controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
-            editorSpace->invalidateRect();
-            sender.invalidateRect();
+            editorSpace->repaint();
+            sender.repaint();
         });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

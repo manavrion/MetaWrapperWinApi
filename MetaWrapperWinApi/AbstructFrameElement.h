@@ -20,6 +20,7 @@ namespace MetaFrame {
 
         virtual void nativeInit(AbstructFrameElement *parent) = 0;
         virtual void nativeDestroy() = 0;
+        virtual void nativeRepaint() = 0;
 
     protected:
         virtual void packImpl();
@@ -66,6 +67,10 @@ namespace MetaFrame {
         void destroy() {
             destroyImpl();
             delete this;
+        }
+
+        void repaint() {
+            nativeRepaint();
         }
 
     public:

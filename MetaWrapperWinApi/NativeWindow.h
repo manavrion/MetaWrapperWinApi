@@ -16,6 +16,10 @@ namespace MetaFrame {
             height = 0;
             registerClass();
             
+
+            style = WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE;
+            text = name;
+
         };
 
         HWND getHWindow() {
@@ -43,6 +47,21 @@ namespace MetaFrame {
             }
         }
 
+        virtual void createWindow(HWND hParentWindow) override {
+            hWindow = CreateWindowExW(
+                /*_In_ DWORD dwExStyle,         */ extendedStyle,
+                /*_In_opt_ LPCWSTR lpClassName, */ className,
+                /*_In_opt_ LPCWSTR lpWindowName,*/ text,
+                /*_In_ DWORD dwStyle,           */ style,
+                /*_In_ int X,                   */ x,
+                /*_In_ int Y,                   */ y,
+                /*_In_ int nWidth,              */ width + 16, 
+                /*_In_ int nHeight,             */ height + 39,
+                /*_In_opt_ HWND hWndParent,     */ hParentWindow,
+                /*_In_opt_ HMENU hMenu,         */ null,
+                /*_In_opt_ HINSTANCE hInstance, */ GetModuleHandle(0),
+                /*_In_opt_ LPVOID lpParam);     */ NULL);
+        }
     
 
         virtual void init(HWND hWnd);;
