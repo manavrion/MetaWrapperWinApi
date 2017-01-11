@@ -177,6 +177,9 @@
       <Filter>MetaTypes</Filter>
     </ClInclude>
     <ClInclude Include="EditorWrapped.h" />
+    <ClInclude Include="AbstructFrameAutoSettersAndGetters.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
