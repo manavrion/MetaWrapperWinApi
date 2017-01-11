@@ -50,36 +50,12 @@ namespace MetaFrame {
 
         void nativeSetMultiLine(bool flag) {
             if (flag) {
-                this->style = ES_MULTILINE | ES_AUTOVSCROLL ;
+                this->style |= ES_MULTILINE | ES_AUTOVSCROLL ;
             } else {
-                this->style = 0;
+                this->style |= 0;
             }
         };
 
-        virtual void init(HWND hWnd) override {
-            int i = 1;
-
-
-            hWindow = CreateWindow(L"edit",
-                                            text,
-                                            this->style | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-                                            x, y,
-                                            width, height,
-                                            hWnd,
-                                            (HMENU)i,
-                                            GetModuleHandle(0),
-                                            NULL);
-
-            nativeSetWritable(flagWritable);
-
-            //setting standart font
-            NONCLIENTMETRICS ncm;
-            ncm.cbSize = sizeof(NONCLIENTMETRICS);
-            UINT uiParam = sizeof(NONCLIENTMETRICS);
-            SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
-
-            SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
-        };
 
 
         //int IDC_OF_BUTTON;

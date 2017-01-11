@@ -23,20 +23,6 @@ namespace MetaFrame {
 
         Image &image;
 
-        virtual void init(HWND hWnd) override {
-
-            this->hWindow = CreateWindowExW(0 | extendedStyle,
-                                               L"static",
-                                               text,
-                                               WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | style | SS_NOTIFY,
-                                               x, y,
-                                               width, height,
-                                               hWnd,
-                                               (HMENU)NULL,
-                                               GetModuleHandle(0),
-                                               (LPVOID)NULL);
-        };
-
 
         virtual void command(WPARAM wParam, LPARAM lParam) {
             runActionEvents();

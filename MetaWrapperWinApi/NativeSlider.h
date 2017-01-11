@@ -43,39 +43,12 @@ namespace MetaFrame {
 
 
         
-        virtual void init(HWND hWnd) override {
-            int i = 6;
-
-            hWindow = CreateWindowEx(
-                0,                               // no extended styles 
-                TRACKBAR_CLASS,                  // class name 
-                L"Trackbar Control",              // title (caption) 
-                WS_CHILD |
-                WS_VISIBLE |
-                TBS_AUTOTICKS |
-                TBS_ENABLESELRANGE,// style 
-                x, y,                          // position 
-                width, height,                         // size 
-                hWnd,                         // parent window 
-                (HMENU)i,                     // control identifier 
-                GetModuleHandle(0),                         // instance 
-                NULL                             // no WM_CREATE parameter 
-            );;
+        virtual void createWindow(HWND hWnd) override {
+            NativeAbstructObject::createWindow(hWnd);
 
             SendMessage(hWindow, TBM_SETRANGE,
                 (WPARAM)TRUE,                   // redraw flag 
                         (LPARAM)MAKELONG(0, 500));  // min. & max. positions
-
-            //SendMessage(*(this->hWindow), TBM_SETPAGESIZE,
-             //           0, 5);                  // new page size
-
-            //setting standart font
-            NONCLIENTMETRICS ncm;
-            ncm.cbSize = sizeof(NONCLIENTMETRICS);
-            UINT uiParam = sizeof(NONCLIENTMETRICS);
-            SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
-
-            SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         };
 
 

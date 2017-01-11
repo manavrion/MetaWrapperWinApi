@@ -31,7 +31,7 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void init(HWND hWnd);
+
 
 
         //int IDC_OF_BUTTON;

@@ -136,8 +136,6 @@ namespace MetaFrame {
         }
         
 
-        virtual void init(HWND hParentWindow) = 0;
-
         virtual void createWindow(HWND hParentWindow) {
             hWindow = CreateWindowExW(
             /*_In_ DWORD dwExStyle,         */ extendedStyle,
