@@ -3,14 +3,13 @@
 
 namespace MetaFrame {
 
-#define GWL_WNDPROC         (-4)
 
 
 
     HashMap<HWND, Pair<NativeAbstructObject*, WNDPROC>> nativeAbstructObject;
 
     void NativeAbstructObject::postInit() {
-        nativeAbstructObject[this->hWindow] = { this, (WNDPROC)SetWindowLong(hWindow, GWL_WNDPROC, (LONG)nativeAbstructWindowProc) };
+        nativeAbstructObject[this->hWindow] = { this, (WNDPROC)SetWindowLong(hWindow, GWLP_WNDPROC, (LONG)nativeAbstructWindowProc) };
     }
 
     LRESULT NativeAbstructObject::nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
@@ -77,8 +76,8 @@ namespace MetaFrame {
         if (nativeAbstructObject.count(hWnd) != 0) {
             return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
         }
-        //return CallWindowProc(nativeAbstructObject[hwnd].second, hwnd, message, wParam, lParam);
-        return DefWindowProc(hWnd, message, wParam, lParam);
+        return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
+        //return DefWindowProc(hWnd, message, wParam, lParam);
     }
 
 

@@ -18,7 +18,7 @@ namespace MetaFrame {
     public:
         NativeAbstructObject(const String className) :
             hWindow(NULL), className(className),
-            extendedStyle(), style(),
+            extendedStyle(0), style(),
             hbrBkgnd(null)
         {
 

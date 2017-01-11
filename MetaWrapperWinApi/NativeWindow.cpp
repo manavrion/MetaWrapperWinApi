@@ -39,6 +39,34 @@ namespace MetaFrame {
         ::SetLayeredWindowAttributes(*(this->hWindow), 0, transparency, LWA_ALPHA);*/
     }
 
+
+    LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+        /*if (message == WM_CREATE || message == WM_GETMINMAXINFO || message == WM_NCCREATE || message == WM_NCCALCSIZE) {
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }*/
+        return DefWindowProc(hWnd, message, wParam, lParam);;
+    }
+
+    void NativeWindow::registerClass() {
+        WNDCLASSEXW wcex;
+
+        wcex.cbSize = sizeof(WNDCLASSEX);
+        wcex.style = CS_HREDRAW | CS_VREDRAW;
+        wcex.lpfnWndProc = WindowProc;
+        wcex.cbClsExtra = 0;
+        wcex.cbWndExtra = 0;
+        wcex.hInstance = hInstance;
+        wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_METAWRAPPERWINAPI));
+        wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+        wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW);
+        //wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_METAWRAPPERWINAPI);
+        wcex.lpszMenuName = null;
+        wcex.lpszClassName = className;
+        wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+        RegisterClassEx(&wcex);
+    }
+
     /*
     LRESULT NativeWindow::windowProcLocal(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
         switch (message) {

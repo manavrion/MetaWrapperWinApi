@@ -20,7 +20,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     /*Editor *window = new Editor(L"Kek Microsystems editor");
     window->run();*/
 
-
+   /* Window *w = new Window(L"azazazaza");
+    w->setSize(100, 100);
+    w->run();*/
 
     return 0;
 }
