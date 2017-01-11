@@ -19,15 +19,7 @@ namespace MetaFrame {
     protected:
 
 
-        /*virtual AbstructFrameElement *copy() const {
-            ImagePanel *ret = new ImagePanel(*this);
-            this->clearChilds();
-            return ret;
-        }*/
 
-        void runActionEvents() {
-            //for (auto &f : actionEventFunctions) f();
-        }
 
     public:
         ADD_SET_OF_SETTERS(ImagePanel);

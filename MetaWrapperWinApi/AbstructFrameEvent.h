@@ -16,6 +16,9 @@ namespace MetaFrame {
         AbstructFrameEvent() : isDestroyed(null) {};
 
         typedef std::function<void(FrameElementT*, const MouseEventInfo&)> MouseFunction;
+        
+        typedef std::function<void()> ActionFunctionVoid;
+        typedef std::function<void(FrameElementT *sender)> ActionFunction;
         /*
         AbstructFrameEvent *addKeyPressedListener(KeyFunction f);
         AbstructFrameEvent *addKeyReleasedListener(KeyFunction f);
@@ -40,7 +43,15 @@ namespace MetaFrame {
             return (FrameElementT*)this;
         };
         //NativeAbstructObject *addMouseWheelMovedListener(MouseFunction f);
-
+        
+        FrameElementT *addActionListener(ActionFunctionVoid buttonFunction) {
+            actionEventFunctionsVoid.push_back(buttonFunction);
+            return (FrameElementT*)this;
+        }
+        FrameElementT *addActionListener(ActionFunction buttonFunction) {
+            actionEventFunctionsSender.push_back(buttonFunction);
+            return (FrameElementT*)this;
+        }
 
 
         FrameElementT *clearMousePressedListeners(MouseFunction f) {
@@ -86,6 +97,9 @@ namespace MetaFrame {
         /*void runMouseEnteredEvent(MouseEventInfo event);
         void runMouseExitedEvent(MouseEventInfo event);*/
 
+        ArrayList<ActionFunctionVoid> actionEventFunctionsVoid;
+        ArrayList<ActionFunction> actionEventFunctionsSender;
+
     public:
         void runMousePressedEvent(MouseEventInfo event) {
             bool isDestr = false;
@@ -128,7 +142,21 @@ namespace MetaFrame {
             isDestroyed = null;
         };
 
-
+        virtual void runActionEvents() {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &f : actionEventFunctionsVoid) { 
+                if (isDestr) { return; }
+                f();
+                if (isDestr) { return; }
+            }
+            for (auto &f : actionEventFunctionsSender) { 
+                if (isDestr) { return; }
+                f((FrameElementT*)this);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        }
 
         virtual ~AbstructFrameEvent() {
             if (isDestroyed != null) {

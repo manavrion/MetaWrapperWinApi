@@ -15,16 +15,6 @@ namespace MetaFrame {
 
     protected:
 
-        void runActionEvents() {
-        }
-
-        
-
-        /*virtual AbstructFrameElement *copy() const {
-            Label *ret = new Label(*this);
-            this->clearChilds();
-            return ret;
-        }*/
 
     public:
         ADD_SET_OF_SETTERS(Label);

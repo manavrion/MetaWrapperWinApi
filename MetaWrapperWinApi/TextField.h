@@ -34,24 +34,6 @@ namespace MetaFrame {
 
 
 
-        TextField *addActionListener(TextFieldFunctionSender buttonFunction) {
-            actionEventFunctionsSender.push_back(buttonFunction); return this;
-        }
-
-    protected:
-        /*virtual AbstructFrameElement *copy() const {
-            TextField *ret = new TextField(*this);
-            this->clearChilds();
-            return ret;
-        }*/
-
-        ArrayList<TextFieldFunctionSender> actionEventFunctionsSender;
-
-
-        void runActionEvents() {
-            for (auto &f : actionEventFunctionsSender) f(*this);
-        }
-
     public:
         ADD_SET_OF_SETTERS(TextField);
         ~TextField() {};

@@ -52,12 +52,7 @@ namespace MetaFrame {
 
 
 
-        Slider *addActionListener(SliderFunctionVoid sliderFunction) {
-            actionEventFunctionsVoid.push_back(sliderFunction); return this;
-        }
-        Slider *addActionListener(SliderFunctionSender sliderFunction) {
-            actionEventFunctionsSender.push_back(sliderFunction); return this;
-        }
+
 
     protected:
 
@@ -65,19 +60,7 @@ namespace MetaFrame {
         int minPos;
 
 
-        /*virtual AbstructFrameElement *copy() const {
-            Slider *ret = new Slider(*this);
-            this->clearChilds();
-            return ret;
-        }*/
 
-        ArrayList<SliderFunctionVoid> actionEventFunctionsVoid;
-        ArrayList<SliderFunctionSender> actionEventFunctionsSender;
-
-        void runActionEvents() {
-            for (auto &f : actionEventFunctionsVoid) f();
-            for (auto &f : actionEventFunctionsSender) f(*this);
-        }
 
 
     public:

@@ -148,11 +148,11 @@ namespace MetaFrame {
                        ->setVerticalAlignment(VerticalAlignment::Bottom));
         
 
-        controlText->addActionListener([=](TextField &tf) {
-            element->setText(tf.getText());
+        controlText->addActionListener([=](NativeAbstructObject *tf) {
+            element->setText(tf->getText());
         });
 
-        controlDeleteButton->addActionListener([=](Button &btn) {
+        controlDeleteButton->addActionListener([=]() {
             element->destroy();
             this->destroyControl();
         });

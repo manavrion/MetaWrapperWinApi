@@ -20,7 +20,7 @@ PanelWorkersCreator::PanelWorkersCreator(Game *game) : game(game) {
              ->setAutoWidth(true)
              ->setMargin(5, 5, 30, 5)
              ->setText(L"Случайный набор работников")
-             ->addActionListener([&](Button &cb) { this->createRandomWorkersSet(); }));
+             ->addActionListener([&]() { this->createRandomWorkersSet(); }));
 
     add((new Label())
         ->setText(L"Имя:")
@@ -53,7 +53,7 @@ PanelWorkersCreator::PanelWorkersCreator(Game *game) : game(game) {
         ->setAlignment(Alignment::Absolute)
         ->setPosition(5, 130)
         ->setWidth(120)
-        ->addActionListener([&](Button &cb) { this->createWorker(); }));
+        ->addActionListener([&]() { this->createWorker(); }));
 }
 
 void PanelWorkersCreator::createRandomWorkersSet() {

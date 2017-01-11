@@ -30,15 +30,6 @@ namespace MetaFrame {
         String borderText;
 
 
-        /*virtual AbstructFrameElement *copy() const {
-            Panel *ret = new Panel(*this);
-            //this->clearChilds();
-            return ret;
-        }*/
-
-        void runActionEvents() {
-            //for (auto &f : actionEventFunctions) f();
-        }
 
     public:
         ADD_SET_OF_SETTERS(Panel);

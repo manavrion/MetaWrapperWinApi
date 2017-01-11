@@ -26,7 +26,6 @@ namespace MetaFrame {
             runActionEvents();
         };
 
-        virtual void runActionEvents() = 0;
 
 
     public:

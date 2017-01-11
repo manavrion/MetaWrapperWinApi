@@ -46,8 +46,8 @@ AutoService::AutoService(String taxt) : Window(taxt) {
               ->setWidth(180)
               ->setHeight(50)
               ->setMargin(10, 10, 120, 10)
-              ->addActionListener([&](Slider &sl) {
-                    labelspeed->setText(String(L"x") + String(sl.getPos()));
+              ->addActionListener([&](NativeAbstructObject *sl) {
+                    labelspeed->setText(String(L"x") + String(((Slider*)sl)->getPos()));
                 })
         );
 

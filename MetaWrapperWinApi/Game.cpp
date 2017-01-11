@@ -16,7 +16,8 @@ Game::Game(Logger *logger, PanelRepare *panelRepare, PanelQueue *panelQueue, Lab
     labelMoney(labelMoney),
     moneyCount(0)
 {
-    sliderspeed->addActionListener([&](Slider &sl) {this->sliderPos = sl.getPos(); });
+    sliderspeed->addActionListener([&](NativeAbstructObject *sl) {
+        this->sliderPos = ((Slider*)sl)->getPos(); });
     carsPanelQueue = panelQueue->cars;
 }
 

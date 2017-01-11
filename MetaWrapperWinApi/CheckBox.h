@@ -21,22 +21,7 @@ namespace MetaFrame {
         }
 
 
-        CheckBox *addActionListener(CheckBoxFunctionSender checkBoxFunction) {
-            actionEventFunctionsSender.push_back(checkBoxFunction); return this;
-        }
 
-    protected:
-        /*virtual AbstructFrameElement *copy() const {
-            CheckBox *ret = new CheckBox(*this);
-            this->clearChilds();
-            return ret;
-        }*/
-
-        ArrayList<CheckBoxFunctionSender> actionEventFunctionsSender;
-
-        void runActionEvents() override {
-            for (auto &f : actionEventFunctionsSender) f(*this);;
-        }
 
 
     public:

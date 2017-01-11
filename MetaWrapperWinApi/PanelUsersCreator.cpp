@@ -20,8 +20,8 @@ PanelUsersCreator::PanelUsersCreator(Game *game) : game(game) {
              ->setAutoWidth(true)
              ->setMargin(5, 5, 20, 5)
              ->setText(L"Автогенерация клиентов")
-             ->addActionListener([&](CheckBox &cb) {
-                 this->setAutoGen(cb.getState()); 
+             ->addActionListener([&](NativeAbstructObject *cb) {
+                 this->setAutoGen(((CheckBox*)cb)->getState()); 
              }));
 
         add((new Label())
