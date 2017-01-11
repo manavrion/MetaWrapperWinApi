@@ -14,6 +14,8 @@ class AutoService : public Window {
 public:
     AutoService(String taxt);
 
+    void destrThread();
+
 protected:
     Game *game;
 

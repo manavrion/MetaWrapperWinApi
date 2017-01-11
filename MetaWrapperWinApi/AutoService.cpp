@@ -94,6 +94,13 @@ AutoService::AutoService(String taxt) : Window(taxt) {
 
 }
 
+bool exitTh = false;
+
+void AutoService::destrThread() {
+    exitTh = true;
+    Sleep(20);
+}
+
 
 AutoService::~AutoService() {
 
@@ -106,6 +113,9 @@ DWORD WINAPI threadGame(LPVOID t) {
     Sleep(500);
     while (gamePtr->updateThread()) {
         Sleep(1);
+        if (exitTh) {
+            break;
+        }
     }
     return 0;
 };

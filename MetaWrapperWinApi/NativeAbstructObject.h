@@ -121,7 +121,7 @@ namespace MetaFrame {
                 DeleteObject(hbrBkgnd);
             }
             
-            ((NativeAbstructObject*)parent)->nativeRepaint();
+            //((NativeAbstructObject*)parent)->nativeRepaint();
         }
 
         void nativeRepaint() {

@@ -26,8 +26,8 @@ namespace MetaFrame {
         virtual void packImpl();
 
         void destroyImpl() {
-            for (auto object : childs) {
-                object->destroy();
+            while (!childs.empty()) {
+                childs.back()->destroy();
             }
             childs.clear();
             if (parent != null) {
