@@ -14,34 +14,14 @@ namespace MetaFrame {
             height = 21;
 
             className = L"static";
-            style = WS_BORDER | SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
+            style = SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
 
-
+            nativeSetBorder(Border::BORDER);
         };
 
-        void nativeSetBorder(Border border) {
-            switch (border) {
-                case MetaFrame::Border::NO_BORDER:
-                    extendedStyle = 0;
-                    style = 0;
-                    break;
-                case MetaFrame::Border::BORDER:
-                    extendedStyle = 0;
-                    style = WS_BORDER;
-                    break;
-                case MetaFrame::Border::SOFT_BEVEL:
-                    extendedStyle = WS_EX_STATICEDGE; //WS_EX_STATICEDGE - Создает окно с трехмерным стилем рамки, предполагается использовать для элементов, которые не принимают вводимую информацию от пользователя.
-                    style = 0;
-                    break;
-                case MetaFrame::Border::BEVEL: //WS_EX_CLIENTEDGE - Определяет, что окно имеет рамку с углубленным краем.
-                    extendedStyle = WS_EX_CLIENTEDGE;
-                    style = 0;
-                    break;
-                default:
-                    break;
-            }
-            
-        }
+        DWORD extendedStyleBorder = 0;
+        DWORD styleBorder = 0;
+        
 
         void nativeSetBorderText(const String &text) {
 

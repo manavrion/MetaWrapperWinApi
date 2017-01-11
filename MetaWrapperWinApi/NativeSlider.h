@@ -42,7 +42,7 @@ namespace MetaFrame {
 
 
 
-        /*
+        
         virtual void init(HWND hWnd) override {
             int i = 6;
 
@@ -76,7 +76,7 @@ namespace MetaFrame {
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
-        };*/
+        };
 
 
         //int IDC_OF_BUTTON;

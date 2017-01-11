@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <memory>
 #include <Windowsx.h>
 #include <functional>
@@ -68,6 +68,30 @@ namespace MetaFrame {
             return s;
         }
 
+        virtual void nativeSetBorder(Border border) override {
+            style &= ~WS_BORDER;
+            extendedStyle &= ~WS_EX_STATICEDGE;
+            extendedStyle &= ~WS_EX_CLIENTEDGE;
+            switch (border) {
+                case MetaFrame::Border::NO_BORDER:
+                    break;
+                case MetaFrame::Border::BORDER:
+                    style |= WS_BORDER;
+                    break;
+                case MetaFrame::Border::SOFT_BEVEL:
+                    extendedStyle |= WS_EX_STATICEDGE; //WS_EX_STATICEDGE - Создает окно с трехмерным стилем рамки, предполагается использовать для элементов, которые не принимают вводимую информацию от пользователя.
+                    break;
+                case MetaFrame::Border::BEVEL: //WS_EX_CLIENTEDGE - Определяет, что окно имеет рамку с углубленным краем.
+                    extendedStyle |= WS_EX_CLIENTEDGE;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+
+
         virtual bool nativeIsInitialzed() const override {
             if (hWindow == null) {
                 return false;
@@ -106,11 +130,13 @@ namespace MetaFrame {
             ((NativeAbstructObject*)parent)->nativeRepaint();
         }
 
-        void nativeRepaint() override {
+        void nativeRepaint() {
             if (!nativeIsInitialzed()) return;
             InvalidateRect(hWindow, NULL, true);
         }
         
+
+        virtual void init(HWND hParentWindow) = 0;
 
         virtual void createWindow(HWND hParentWindow) {
             hWindow = CreateWindowExW(
@@ -123,9 +149,9 @@ namespace MetaFrame {
             /*_In_ int nWidth,              */ width,
             /*_In_ int nHeight,             */ height,
             /*_In_opt_ HWND hWndParent,     */ hParentWindow,
-            /*_In_opt_ HMENU hMenu,         */ null,
+            /*_In_opt_ HMENU hMenu,         */ 0,
             /*_In_opt_ HINSTANCE hInstance, */ GetModuleHandle(0),
-            /*_In_opt_ LPVOID lpParam);     */ NULL);
+            /*_In_opt_ LPVOID lpParam);     */ 0);
 
             //setting standart font
             NONCLIENTMETRICS ncm;
@@ -198,7 +224,6 @@ namespace MetaFrame {
 
 
     protected:
-        HWND hWindow;
 
         DWORD extendedStyle;
         String className;
@@ -214,6 +239,7 @@ namespace MetaFrame {
 
         /*            events            */
     public:
+        HWND hWindow;
         /*
         NativeAbstructObject *addKeyPressedListener(KeyFunction f);
         NativeAbstructObject *addKeyReleasedListener(KeyFunction f);

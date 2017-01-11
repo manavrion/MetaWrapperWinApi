@@ -112,6 +112,10 @@ namespace MetaFrame {
         AbstructFrameObject::setLayout(layout);\
         return this;\
     }\
+    virtual FrameType *setBorder(Border border) {\
+            AbstructFrameObject::setBorder(border);\
+            return this;\
+    }
 
 
 }

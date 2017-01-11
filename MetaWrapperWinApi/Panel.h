@@ -7,7 +7,7 @@ namespace MetaFrame {
 
     class Panel : public NativePanel {
     public:
-        Panel() : border(Border::BORDER) {
+        Panel() {
 
         };
 
@@ -22,15 +22,8 @@ namespace MetaFrame {
             return borderText;
         }
 
-        Panel *setBorder(Border border) {
-            this->border = border;
-            nativeSetBorder(border);
-            return this;
-        }
 
-        Border getBorder() {
-            return border;
-        }
+        
 
     protected:
         Border border;

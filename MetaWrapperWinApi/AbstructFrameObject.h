@@ -55,6 +55,8 @@ namespace MetaFrame {
 
         Layout layout;
 
+        Border border;
+
     protected:
 
         virtual void nativeSetRect(const Rect &rect) = 0;
@@ -64,6 +66,7 @@ namespace MetaFrame {
         virtual String nativeGetText() const = 0;
         virtual bool nativeIsInitialzed() const = 0;
 
+        virtual void nativeSetBorder(Border border) = 0;
 
     public:
 
@@ -219,6 +222,12 @@ namespace MetaFrame {
             return this;
         }
 
+        virtual AbstructFrameObject *setBorder(Border border) {
+            this->border = border;
+            nativeSetBorder(border);
+            return this;
+        }
+
         //getters
         int getX() const {
             return x;
@@ -287,6 +296,10 @@ namespace MetaFrame {
 
         Layout getLayout() const {
             return layout;
+        }
+
+        Border getBorder() const {
+            return border;
         }
 
     public:
