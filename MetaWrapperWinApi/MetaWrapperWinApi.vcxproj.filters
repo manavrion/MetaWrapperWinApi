@@ -269,6 +269,9 @@
     <ClCompile Include="User.cpp">
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

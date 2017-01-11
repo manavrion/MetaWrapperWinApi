@@ -32,32 +32,7 @@ namespace MetaFrame {
             return hCompatibleDC;
         }
 
-        void setImage(String file) {
-            this->file = file;
-            if (file == L"") {
-                hCompatibleDC = nullptr;
-                return;
-            }
-            static std::map<String, std::pair<HDC, BITMAP>> mp;
-            
-            if (mp.count(file) != 0) {
-                hCompatibleDC = mp[file].first;
-                bitmap = mp[file].second;
-                return;
-            }
-
-
-            //DeleteDC(hCompatibleDC);
-            //DeleteObject(hBitmap);
-            //DeleteObject(hOldBitmap);
-
-            hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-            GetObject(hBitmap, sizeof(BITMAP), &bitmap);
-            hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));
-            mp[file].first = hCompatibleDC;
-            mp[file].second = bitmap;
-            hOldBitmap = SelectObject(hCompatibleDC, hBitmap);
-        }
+        void setImage(String file);
 
         String file;
     protected:

@@ -196,6 +196,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImagePanel.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
