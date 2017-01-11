@@ -2,8 +2,8 @@
 
 namespace MetaFrame {
 
-    struct MouseEvent {
-        MouseEvent(int x, int y)
+    struct MouseEventInfo {
+        MouseEventInfo(int x, int y)
             : x(x), y(y),
             xOnParent(x), yOnParent(y) {}
         int x;

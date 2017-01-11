@@ -8,7 +8,7 @@ namespace MetaFrame {
 
     HashMap<HWND, Pair<NativeAbstructObject*, WNDPROC>> nativeAbstructObject;
 
-    void NativeAbstructObject::postInit() {
+    void NativeAbstructObject::bindWindowProc() {
         nativeAbstructObject[this->hWindow] = { this, (WNDPROC)SetWindowLong(hWindow, GWLP_WNDPROC, (LONG)nativeAbstructWindowProc) };
     }
 
@@ -31,10 +31,10 @@ namespace MetaFrame {
         }*/
 
         if (message == WM_MOUSEMOVE && nativeAbstructObject.count(hWnd) != 0) {
-            MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
-            /*        MouseEvent event(GET_X_LPARAM(eventInfo.lParam), GET_Y_LPARAM(eventInfo.lParam));
+            /*        MouseEventInfo event(GET_X_LPARAM(eventInfo.lParam), GET_Y_LPARAM(eventInfo.lParam));
             if (eventInfo.wParam & MK_CONTROL) event.controlDown = true;
             if (eventInfo.wParam & MK_LBUTTON) event.leftButtonDown = true;
             if (eventInfo.wParam & MK_MBUTTON) event.midButtonDown = true;
@@ -56,7 +56,7 @@ namespace MetaFrame {
         }
 
         if (message == WM_LBUTTONDOWN && nativeAbstructObject.count(hWnd) != 0) {
-            MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
             //alt todo
@@ -65,7 +65,7 @@ namespace MetaFrame {
             //return 0;
         }
         if (message == WM_LBUTTONUP && nativeAbstructObject.count(hWnd) != 0) {
-            MouseEvent event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
             //alt todo

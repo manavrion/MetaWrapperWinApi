@@ -3,17 +3,11 @@
 #include <Windowsx.h>
 #include <functional>
 #include "AbstructFrameElement.h"
+#include "AbstructFrameEvent.h"
 
 namespace MetaFrame {
 
-    class NativeAbstructObject;
-
-    typedef std::function<void(NativeAbstructObject&, const MouseEvent&)> MouseFunction;
-
-
-
-
-    class NativeAbstructObject : public AbstructFrameElement {
+    class NativeAbstructObject : public AbstructFrameElement, public AbstructFrameEvent<NativeAbstructObject> {
 
     public:
         NativeAbstructObject(const String &className) :
@@ -111,7 +105,7 @@ namespace MetaFrame {
             } else {
                 createWindow(null);
             }
-            postInit();
+            bindWindowProc();
             //nativeSetBackground();
             if (hbrBkgnd != null) {
                 SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
@@ -135,6 +129,12 @@ namespace MetaFrame {
             InvalidateRect(hWindow, NULL, true);
         }
         
+
+
+
+
+
+
 
         virtual void createWindow(HWND hParentWindow) {
             hWindow = CreateWindowExW(
@@ -160,10 +160,11 @@ namespace MetaFrame {
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
         }
 
+        virtual void bindWindowProc();
 
 
 
-        virtual void postInit();
+
 
         bool wmCommand(WPARAM wParam, LPARAM lParam) {
             HWND hwndTarget = (HWND)lParam;
@@ -224,12 +225,14 @@ namespace MetaFrame {
     protected:
 
         DWORD extendedStyle;
+
         String className;
 
         DWORD style;
 
         HBRUSH hbrBkgnd;
         
+        HWND hWindow;
 
 
 
@@ -237,81 +240,6 @@ namespace MetaFrame {
 
         /*            events            */
     public:
-        HWND hWindow;
-        /*
-        NativeAbstructObject *addKeyPressedListener(KeyFunction f);
-        NativeAbstructObject *addKeyReleasedListener(KeyFunction f);
-        NativeAbstructObject *addKeyTypedListener(KeyFunction f);
-        NativeAbstructObject *addMouseDoubleClickedListener(MouseFunction f);
-        NativeAbstructObject *addMouseEnteredListener(MouseFunction f);
-        NativeAbstructObject *addMouseExitedListener(MouseFunction f);*/
-        NativeAbstructObject *addMousePressedListener(MouseFunction f) {
-            mousePressedEvents.push_back(f);
-            return this;
-        };
-        NativeAbstructObject *addMouseReleasedListener(MouseFunction f) {
-            mouseReleasedEvents.push_back(f);
-            return this;
-        };
-        NativeAbstructObject *addMouseDraggedListener(MouseFunction f) {
-            mouseDraggedEvents.push_back(f);
-            return this;
-        };
-        NativeAbstructObject *addMouseMovedListener(MouseFunction f) {
-            mouseMovedEvents.push_back(f);
-            return this;
-        };
-        //NativeAbstructObject *addMouseWheelMovedListener(MouseFunction f);
-
-    protected:
-        /*ArrayList<KeyFunction>   keyPressedEvents;
-        ArrayList<KeyFunction>   keyReleasedEvents;
-        ArrayList<KeyFunction>   keyTypedEvents;*/
-
-        //ArrayList<MouseFunction> mouseDoubleClickedEvents;
-        //ArrayList<MouseFunction> mouseEnteredEvents;
-        //ArrayList<MouseFunction> mouseExitedEvents;
-        ArrayList<MouseFunction> mousePressedEvents;
-        ArrayList<MouseFunction> mouseReleasedEvents;
-
-        ArrayList<MouseFunction> mouseDraggedEvents;
-        ArrayList<MouseFunction> mouseMovedEvents;
-
-        //ArrayList<MouseFunction> mouseWheelMovedEvents;
-
-        /*void runKeyPressedEvent(const KeyEvent &event);
-        void runKeyReleasedEvent(const KeyEvent &event);
-        void runKeyTypedEvent(const KeyEvent &event);
-
-        void runMouseDoubleClickedEvent(MouseEvent event);*/
-
-        /*void runMouseEnteredEvent(MouseEvent event);
-        void runMouseExitedEvent(MouseEvent event);*/
-
-        void runMousePressedEvent(MouseEvent event) {
-            for (auto &func : mousePressedEvents) {
-                func(*this, event);
-            }
-        };
-        void runMouseReleasedEvent(MouseEvent event) {
-            for (auto &func : mouseReleasedEvents) {
-                func(*this, event);
-            }
-        };
-        void runMouseDraggedEvent(MouseEvent event){
-            for (auto &func : mouseDraggedEvents) {
-                func(*this, event);
-            }
-        };
-        void runMouseMovedEvent(MouseEvent event) {
-            for (auto &func : mouseMovedEvents) {
-                func(*this, event);
-            }
-        };
-        //void runMouseWheelMovedEvent(MouseEvent event);
-
-
-
 
 
     protected:

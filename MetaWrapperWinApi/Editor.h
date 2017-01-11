@@ -85,9 +85,9 @@ namespace MetaFrame {
         void createPanel() {
             EditPanel *panel = new EditPanel;
 
-            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+            panel->addMouseReleasedListener([=](NativeAbstructObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel.getRect(), &panel);
+                this->bindControl(panel->getRect(), panel);
             });
 
             editorSpace->add(panel);
@@ -100,9 +100,9 @@ namespace MetaFrame {
         void createButton() {
             EditButton *button = new EditButton;
 
-            button->addMouseReleasedListener([=](NativeAbstructObject &button, const MouseEvent &event) {
+            button->addMouseReleasedListener([=](NativeAbstructObject *button, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(button.getRect(), &button);
+                this->bindControl(button->getRect(), button);
             });
 
             button->setPosition(100, 100);
@@ -116,9 +116,9 @@ namespace MetaFrame {
         void createSlider() {
             EditSlider *panel = new EditSlider;
 
-            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+            panel->addMouseReleasedListener([=](NativeAbstructObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel.getRect(), &panel);
+                this->bindControl(panel->getRect(), panel);
             });
 
             editorSpace->add(panel);
@@ -131,9 +131,9 @@ namespace MetaFrame {
         void createLabel() {
             EditLabel *panel = new EditLabel;
 
-            panel->addMouseReleasedListener([=](NativeAbstructObject &panel, const MouseEvent &event) {
+            panel->addMouseReleasedListener([=](NativeAbstructObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel.getRect(), &panel);
+                this->bindControl(panel->getRect(), panel);
             });
 
             editorSpace->add(panel);

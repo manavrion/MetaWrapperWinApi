@@ -47,9 +47,9 @@ namespace MetaFrame {
         controlButtom->build();
 
 
-        controlButtom->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
+        controlButtom->addMouseDraggedListener([=](NativeAbstructObject *sender, const MouseEventInfo &event) {
             //sender.setX(event.xOnParent - 4);
-            sender.setY(event.yOnParent - 2);
+            sender->setY(event.yOnParent - 2);
             element->setHeight(event.yOnParent - 2 - element->getY());
 
             Rect rect = element->getRect();
@@ -59,9 +59,9 @@ namespace MetaFrame {
             //controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
 
-        controlTop->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
-            sender.setY(event.yOnParent - 4);
-            element->setY(event.yOnParent - 4 + sender.getHeight());
+        controlTop->addMouseDraggedListener([=](NativeAbstructObject *sender, const MouseEventInfo &event) {
+            sender->setY(event.yOnParent - 4);
+            element->setY(event.yOnParent - 4 + sender->getHeight());
 
             element->setHeight(-element->getY() + controlButtom->getY());
 
@@ -72,9 +72,10 @@ namespace MetaFrame {
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
 
-        controlRight->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
+
+        controlRight->addMouseDraggedListener([=](NativeAbstructObject *sender, const MouseEventInfo &event) {
             //sender.setX(event.xOnParent - 4);
-            sender.setX(event.xOnParent - 2);
+            sender->setX(event.xOnParent - 2);
             element->setWidth(event.xOnParent - 2 - element->getX());
 
             Rect rect = element->getRect();
@@ -84,9 +85,9 @@ namespace MetaFrame {
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
 
-        controlLeft->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
-            sender.setX(event.xOnParent - 4);
-            element->setX(event.xOnParent - 4 + sender.getWidth());
+        controlLeft->addMouseDraggedListener([=](NativeAbstructObject *sender, const MouseEventInfo &event) {
+            sender->setX(event.xOnParent - 4);
+            element->setX(event.xOnParent - 4 + sender->getWidth());
 
             element->setWidth(-element->getX() + controlRight->getX());
 
@@ -99,20 +100,20 @@ namespace MetaFrame {
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        ((NativeAbstructObject*)element)->addMouseDraggedListener([=](NativeAbstructObject &sender, const MouseEvent &event) {
+        ((NativeAbstructObject*)element)->addMouseDraggedListener([=](NativeAbstructObject *sender, const MouseEventInfo &event) {
             if (controlLeft == null) {
                 return;
             }
             
-            sender.setX(event.xOnParent - sender.getWidth()/2);
-            sender.setY(event.yOnParent - sender.getHeight()/2);
+            sender->setX(event.xOnParent - sender->getWidth()/2);
+            sender->setY(event.yOnParent - sender->getHeight()/2);
             Rect rect = element->getRect();
             controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
             controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
             editorSpace->repaint();
-            sender.repaint();
+            sender->repaint();
         });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

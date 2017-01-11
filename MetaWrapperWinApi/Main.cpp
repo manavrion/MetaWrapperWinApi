@@ -13,11 +13,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    AutoService *autoService = new AutoService(L"Kek Microsystems");
-    autoService->run();
+    /*AutoService *autoService = new AutoService(L"Kek Microsystems");
+    autoService->run();*/
     
-    /*Editor *window = new Editor(L"Kek Microsystems editor");
-    window->run();*/
+    Editor *window = new Editor(L"Kek Microsystems editor");
+    window->run();
 
    /* Window *w = new Window(L"azazazaza");
     w->setSize(100, 100);
