@@ -15,7 +15,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     AutoService *autoService = new AutoService(L"Kek Microsystems");
     autoService->run();
-
     
     /*Editor *window = new Editor(L"Kek Microsystems editor");
     window->run();*/

@@ -255,11 +255,6 @@ namespace MetaFrame {
     protected:
         virtual ~NativeAbstructObject() {
             destroyImpl();
-            /*if (hWindow != null) {
-                DestroyWindow(hWindow);
-                DeleteObject(hbrBkgnd);
-                //CloseHandle(*hWindow);
-            }*/
             
         };
     };

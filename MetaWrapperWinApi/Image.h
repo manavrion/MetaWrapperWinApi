@@ -15,6 +15,7 @@ namespace MetaFrame {
         };
         Image(String file)
         {
+            file = L"res/" + file;
             hBitmap = LoadImage(NULL, file, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
             GetObject(hBitmap, sizeof(BITMAP), &bitmap);
             hCompatibleDC = CreateCompatibleDC(GetDC(nullptr));

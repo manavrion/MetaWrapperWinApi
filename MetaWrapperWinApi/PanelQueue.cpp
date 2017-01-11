@@ -16,7 +16,7 @@ PanelQueue::PanelQueue()
     //->add(new ImagePanel(&img1))
     //->add((new ImagePanel(&img2))->setX(128));
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
 
 
         ImagePanel *imagePanel = new ImagePanel(new Image(L""));
@@ -41,7 +41,7 @@ void PanelQueue::update() {
 
 
 
-    for (; i < min(tmpqueue.size(), 6); i++) {
+    for (; i < 7 && !tmpqueue.empty(); i++) {
         
         if (tmpqueue.front().car.color == Color::Green) {
             imagePanels[i]->image->setImage(L"greenlamb.bmp");

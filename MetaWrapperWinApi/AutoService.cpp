@@ -105,6 +105,7 @@ AutoService::~AutoService() {
 DWORD WINAPI threadGame(LPVOID t) {
     Sleep(500);
     while (gamePtr->updateThread()) {
+        Sleep(1);
     }
     return 0;
 };

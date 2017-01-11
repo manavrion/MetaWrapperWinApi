@@ -4,8 +4,9 @@
 static std::map<String, std::pair<HDC, BITMAP>> mp;
 
 void MetaFrame::Image::setImage(String file) {
+    file = L"res/" + file;
     this->file = file;
-    if (file == L"") {
+    if (file == L"res/") {
         hCompatibleDC = nullptr;
         return;
     }

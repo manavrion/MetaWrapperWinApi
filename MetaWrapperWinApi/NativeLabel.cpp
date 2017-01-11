@@ -21,7 +21,7 @@ namespace MetaFrame {
                                         NULL);*/
         hWindow = CreateWindow(L"static",
                                text,
-                               WS_BORDER | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | style | SS_NOTIFY,
+                               /*WS_BORDER | */WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | style | SS_NOTIFY,
                                x, y,
                                width, height,
                                hWnd,
