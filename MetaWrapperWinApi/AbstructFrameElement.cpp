@@ -3,7 +3,7 @@
 
 #include "Button.h"
 
-void MetaFrame::AbstructFrameElement::packEvent() {
+void MetaFrame::AbstructFrameElement::packImpl() {
 
     for (auto &child : childs) {
         switch (layout) {

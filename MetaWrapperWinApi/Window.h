@@ -15,7 +15,7 @@ namespace MetaFrame {
 
         void run() {
             pack();
-            build(null);
+            build();
             NativeWindow::run();
         }
 

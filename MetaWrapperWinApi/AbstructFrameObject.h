@@ -62,7 +62,7 @@ namespace MetaFrame {
         virtual void nativeSetForeground(const Color &rect) = 0;
         virtual void nativeSetText(const String &text) = 0;
         virtual String nativeGetText() const = 0;
-        virtual bool isInitialized() const = 0;
+        virtual bool nativeIsInitialzed() const = 0;
 
 
     public:
@@ -227,69 +227,69 @@ namespace MetaFrame {
             return y;
         };
 
-        Rect getRect() {
+        Rect getRect() const {
             return Rect(x, y, width, height);
         };
 
-        int getWidth() {
+        int getWidth() const {
             return width;
         };
-        int getHeight() {
+        int getHeight() const {
             return height;
         };
 
-        Size getSize() {
+        Size getSize() const {
             return Size(width, height);
         };
-        bool getAutoWidth() {
+        bool getAutoWidth() const {
             return autoWidth;
         };
-        bool getAutoHeight() {
+        bool getAutoHeight() const {
             return autoHeight;
         };
-        int getMinWidth() {
+        int getMinWidth() const {
             return minWidth;
         };
-        int getMaxWidth() {
+        int getMaxWidth() const {
             return maxWidth;
         };
-        int getMinHeight() {
+        int getMinHeight() const {
             return minHeight;
         };
-        int getMaxHeight() {
+        int getMaxHeight() const {
             return maxHeight;
         };
 
-        Margin getMargin() {
+        Margin getMargin() const {
             return margin;
         };
 
-        HorizontalAlignment getHorizontalAlignment() {
+        HorizontalAlignment getHorizontalAlignment() const {
             return horizontalAlignment;
         };
-        VerticalAlignment getVerticalAlignment() {
+        VerticalAlignment getVerticalAlignment() const {
             return verticalAlignment;
         };
 
-        Color getBackground() {
+        Color getBackground() const {
             return background;
         }
-        Color getForeground() {
+        Color getForeground() const {
             return foreground;
         }
 
         String getText() {
-            if (isInitialized()) {
+            if (nativeIsInitialzed()) {
                 text = nativeGetText();
             }
             return text;
         }
 
-        Layout getLayout() {
+        Layout getLayout() const {
             return layout;
         }
 
-    public:
+    protected:
         ~AbstructFrameObject() {};
 
     };

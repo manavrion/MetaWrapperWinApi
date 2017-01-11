@@ -24,10 +24,6 @@ namespace MetaFrame {
         if (message == WM_HSCROLL && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmNotify(wParam, lParam);
         }
-        if (message == WM_UPDATETHREADADD && nativeAbstructObject.count(hWnd) != 0) {
-            //nativeAbstructObject[hWnd].first->
-            nativeAbstructObject[hWnd].first->buildFix();
-        }
         if (message == WM_COMMAND && nativeAbstructObject.count(hWnd) != 0) {
             nativeAbstructObject[hWnd].first->wmCommand(wParam, lParam);
         }

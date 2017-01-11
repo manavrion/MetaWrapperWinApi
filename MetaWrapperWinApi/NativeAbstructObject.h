@@ -6,8 +6,6 @@
 
 namespace MetaFrame {
 
-#define WM_UPDATETHREADADD (WM_USER + 1) 
-
     class NativeAbstructObject;
 
     typedef std::function<void(NativeAbstructObject&, const MouseEvent&)> MouseFunction;
@@ -29,9 +27,11 @@ namespace MetaFrame {
 
     protected:
 
-        void wmClose(){
-            DestroyWindow(hWindow);
-            ((NativeAbstructObject*)parent)->invalidateRect();
+        void nativeDestroy(){
+            if (nativeIsInitialzed()) {
+                DestroyWindow(hWindow);
+                ((NativeAbstructObject*)parent)->invalidateRect();
+            };
         }
 
         /*virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
@@ -39,7 +39,10 @@ namespace MetaFrame {
             ((NativeAbstructObject*)nw)->hWindow = ((const NativeAbstructObject*)&old)->hWindow;
         };*/
 
-        void initializationEvent(const AbstructFrameElement *parent) {
+        void nativeInit(AbstructFrameElement *parent) override {
+            if (nativeIsInitialzed()) {
+                return;
+            }
             if (parent != null) {
                 init((((const NativeAbstructObject*)parent)->hWindow));
             } else {
@@ -106,7 +109,7 @@ namespace MetaFrame {
 
         /* AbstructFrameObject declared methods */
         virtual void nativeSetRect(const Rect &rect) override {
-            if (!isInitialized()) return;
+            if (!nativeIsInitialzed()) return;
 
             MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
             //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
@@ -119,23 +122,23 @@ namespace MetaFrame {
             }
             hbrBkgnd = CreateSolidBrush(background);
 
-            if (!isInitialized()) return;
+            if (!nativeIsInitialzed()) return;
             SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
             InvalidateRect(hWindow, NULL, true);
         }
 
         virtual void nativeSetForeground(const Color &background) override {
-            if (!isInitialized()) return;
+            if (!nativeIsInitialzed()) return;
             //todo
         }
 
         virtual void nativeSetText(const String &text) override {
-            if (!isInitialized()) return;
+            if (!nativeIsInitialzed()) return;
             SendMessage(hWindow, WM_SETTEXT, 0, (LPARAM)text.c_str());
         };
 
         virtual String nativeGetText() const override {
-            if (!isInitialized()) return String();
+            if (!nativeIsInitialzed()) return String();
 
             wchar *buf = new wchar[1024*16];
             SendMessage(hWindow, WM_GETTEXT, 1024 * 16, (LPARAM)buf);
@@ -144,7 +147,7 @@ namespace MetaFrame {
             return s;
         }
 
-        virtual bool isInitialized() const override {
+        virtual bool nativeIsInitialzed() const override {
             if (hWindow == null) {
                 return false;
             } else {
@@ -166,11 +169,6 @@ namespace MetaFrame {
         DWORD style;
 
         HBRUSH hbrBkgnd;
-
-
-        void wmUpd() override {
-            SendMessage(hWindow, WM_UPDATETHREADADD, 0, 0);
-        }
         
 
 
@@ -255,7 +253,7 @@ namespace MetaFrame {
 
 
 
-    public:
+    protected:
         ~NativeAbstructObject() {
             if (hWindow != null) {
                 DestroyWindow(hWindow);
