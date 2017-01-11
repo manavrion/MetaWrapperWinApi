@@ -10,6 +10,9 @@ namespace MetaFrame {
 
     typedef std::function<void(NativeAbstructObject&, const MouseEvent&)> MouseFunction;
 
+
+
+
     class NativeAbstructObject : public AbstructFrameElement {
 
     public:
@@ -30,14 +33,10 @@ namespace MetaFrame {
         void nativeDestroy(){
             if (nativeIsInitialzed()) {
                 DestroyWindow(hWindow);
+                DeleteObject(hbrBkgnd);
                 ((NativeAbstructObject*)parent)->invalidateRect();
             };
         }
-
-        /*virtual void nativeCopy(AbstructFrameElement *nw, const AbstructFrameElement &old) const {
-            ((NativeAbstructObject*)nw)->hWindow.reset();
-            ((NativeAbstructObject*)nw)->hWindow = ((const NativeAbstructObject*)&old)->hWindow;
-        };*/
 
         void nativeInit(AbstructFrameElement *parent) override {
             if (nativeIsInitialzed()) {
@@ -254,12 +253,13 @@ namespace MetaFrame {
 
 
     protected:
-        ~NativeAbstructObject() {
-            if (hWindow != null) {
+        virtual ~NativeAbstructObject() {
+            destroyImpl();
+            /*if (hWindow != null) {
                 DestroyWindow(hWindow);
                 DeleteObject(hbrBkgnd);
                 //CloseHandle(*hWindow);
-            }
+            }*/
             
         };
     };

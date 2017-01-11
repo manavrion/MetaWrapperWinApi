@@ -289,8 +289,8 @@ namespace MetaFrame {
             return layout;
         }
 
-    protected:
-        ~AbstructFrameObject() {};
+    public:
+        virtual ~AbstructFrameObject() {};
 
     };
 

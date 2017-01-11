@@ -4,6 +4,8 @@
 
 namespace MetaFrame {
 
+    class IncorrectDestroy {};
+
     class AbstructFrameElement : public AbstructFrameObject {
 
     public:
@@ -21,6 +23,22 @@ namespace MetaFrame {
 
     protected:
         virtual void packImpl();
+
+        void destroyImpl() {
+            for (auto object : childs) {
+                object->destroy();
+            }
+            childs.clear();
+            if (parent != null) {
+                for (auto it = parent->childs.begin(); it != parent->childs.end(); it++) {
+                    if (*it == this) {
+                        parent->childs.erase(it);
+                        break;
+                    }
+                }
+            }
+            nativeDestroy();
+        }
 
     public:
         //рекурсивно задаёт элементам их положение и размер в соответствии с правилами, описывающими их
@@ -45,32 +63,14 @@ namespace MetaFrame {
             return this;
         };
 
-
-    
         void destroy() {
-            for (auto object : childs) {
-                object->destroy();
-            }
-            childs.clear();
-            if (parent != null) {
-                for (auto it = parent->childs.begin(); it != parent->childs.end(); it++) {
-                    if (*it == this) {
-                        parent->childs.erase(it);
-                        break;
-                    }
-                }
-            }
-            nativeDestroy();
+            destroyImpl();
             delete this;
         }
 
-    protected:
+    public:
         ~AbstructFrameElement() {
-            /*for (auto object : childs) {
-                delete object;
-            }
-            childs.clear();
-            destroy();*/
+
         };
 
     };

@@ -169,7 +169,7 @@ namespace MetaFrame {
         if (controlLeft == null) {
             return;
         }
-        controlLeft->destroy();
+        /*controlLeft->destroy();
         controlRight->destroy();
         controlTop->destroy();
         controlButtom->destroy();
@@ -177,6 +177,17 @@ namespace MetaFrame {
         controlText->destroy();
         controlLabelText->destroy();
 
+        controlDeleteButton->destroy();*/
+
+        delete controlLeft;
+        delete controlRight;
+        delete controlTop;
+        delete controlButtom;
+
+        delete controlText;
+        delete controlLabelText;
+     
+        //delete controlDeleteButton;
         controlDeleteButton->destroy();
 
         controlLeft = null;
