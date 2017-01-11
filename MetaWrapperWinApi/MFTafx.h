@@ -7,8 +7,6 @@
 #include <set>
 namespace MetaFrame {
 
-
-
     typedef unsigned char byte;
     typedef wchar_t wchar;
 
@@ -27,20 +25,24 @@ namespace MetaFrame {
     template<typename T>
     using Queue = std::queue<T>;
 
-
 }
+#define null nullptr
 
-#include "Color.h"
-#include "Margin.h"
-#include "Alignment.h"
-#include "String.h"
 #include "Point.h"
 #include "Size.h"
 #include "Rect.h"
 #include "RectF.h"
+
+#include "Color.h"
+
+#include "String.h"
+
+#include "Margin.h"
+#include "Alignment.h"
 #include "Border.h"
 #include "Layout.h"
-#include "Image.h"
-#include "Time.h"
 #include "MouseEvent.h"
-#define null nullptr
+
+#include "Image.h"
+//#include "Time.h"
+

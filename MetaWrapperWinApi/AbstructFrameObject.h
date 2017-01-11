@@ -56,11 +56,13 @@ namespace MetaFrame {
 
     protected:
 
-        virtual void nativeSetRect(Rect &rect) = 0;
+        virtual void nativeSetRect(const Rect &rect) = 0;
         virtual void nativeSetBackground(const Color &rect) = 0;
         virtual void nativeSetForeground(const Color &rect) = 0;
         virtual void nativeSetText(const String &text) = 0;
-        virtual String nativeGetText() = 0;
+        virtual String nativeGetText() const = 0;
+        virtual bool isInitialized() const = 0;
+
 
     public:
 
@@ -275,11 +277,13 @@ namespace MetaFrame {
         }
 
         String getText() {
-            text = nativeGetText();
+            if (isInitialized()) {
+                text = nativeGetText();
+            }
             return text;
         }
 
-        virtual Layout getLayout() {
+        Layout getLayout() {
             return layout;
         }
 

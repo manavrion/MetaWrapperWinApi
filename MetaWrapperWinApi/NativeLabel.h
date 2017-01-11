@@ -18,7 +18,7 @@ namespace MetaFrame {
     protected:
 
         void nativeSetCenter() {
-            this->dwStyle = SS_CENTER;
+            this->style = SS_CENTER;
         };
 
         virtual void init(HWND hWnd) override;

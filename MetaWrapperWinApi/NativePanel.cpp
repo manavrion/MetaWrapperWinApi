@@ -6,10 +6,10 @@ namespace MetaFrame {
 
     void NativePanel::init(HWND hWnd) {
 
-        hWindow = CreateWindowExW(0 | dwExStyle,
+        hWindow = CreateWindowExW(0 | extendedStyle,
                                            L"static",
                                            text,
-                                           SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
+                                           SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | style | SS_NOTIFY,
                                            x, y,
                                            width, height,
                                            hWnd,

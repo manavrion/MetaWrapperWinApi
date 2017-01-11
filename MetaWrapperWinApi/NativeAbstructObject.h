@@ -17,7 +17,7 @@ namespace MetaFrame {
     public:
         NativeAbstructObject(const String className) :
             hWindow(NULL), className(className),
-            dwExStyle(), dwStyle(),
+            extendedStyle(), style(),
             hbrBkgnd(null)
         {
 
@@ -105,33 +105,38 @@ namespace MetaFrame {
 
 
         /* AbstructFrameObject declared methods */
-        virtual void nativeSetRect(Rect &rect) override {
-            if (hWindow != null) {
-                MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
-                //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
-            }
+        virtual void nativeSetRect(const Rect &rect) override {
+            if (!isInitialized()) return;
+
+            MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
+            //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
         }
 
 
         virtual void nativeSetBackground(const Color &background) override {
-            DeleteObject(hbrBkgnd);
-            hbrBkgnd = CreateSolidBrush(background);
-            if (hWindow != null) {
-                SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
-                InvalidateRect(hWindow, NULL, true);
+            if (hbrBkgnd != null) {
+                DeleteObject(hbrBkgnd);
             }
+            hbrBkgnd = CreateSolidBrush(background);
+
+            if (!isInitialized()) return;
+            SetClassLong(hWindow, GCLP_HBRBACKGROUND, (INT_PTR)hbrBkgnd);
+            InvalidateRect(hWindow, NULL, true);
         }
 
         virtual void nativeSetForeground(const Color &background) override {
+            if (!isInitialized()) return;
             //todo
         }
 
         virtual void nativeSetText(const String &text) override {
+            if (!isInitialized()) return;
             SendMessage(hWindow, WM_SETTEXT, 0, (LPARAM)text.c_str());
-
         };
 
-        virtual String nativeGetText() override {
+        virtual String nativeGetText() const override {
+            if (!isInitialized()) return String();
+
             wchar *buf = new wchar[1024*16];
             SendMessage(hWindow, WM_GETTEXT, 1024 * 16, (LPARAM)buf);
             String s(buf);
@@ -139,7 +144,13 @@ namespace MetaFrame {
             return s;
         }
 
-
+        virtual bool isInitialized() const override {
+            if (hWindow == null) {
+                return false;
+            } else {
+                return true;
+            }
+        };
 
 
         friend LRESULT CALLBACK nativeAbstructWindowProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam);
@@ -148,12 +159,11 @@ namespace MetaFrame {
 
     protected:
         HWND hWindow;
-        //HWND hWnd;
+
+        DWORD extendedStyle;
         String className;
 
-        //options
-        DWORD dwExStyle;
-        DWORD dwStyle;
+        DWORD style;
 
         HBRUSH hbrBkgnd;
 
@@ -164,6 +174,10 @@ namespace MetaFrame {
         
 
 
+
+
+
+        /* events */
     public:
         /*
         NativeAbstructObject *addKeyPressedListener(KeyFunction f);
@@ -236,6 +250,8 @@ namespace MetaFrame {
             }
         };
         //void runMouseWheelMovedEvent(MouseEvent event);
+
+
 
 
 

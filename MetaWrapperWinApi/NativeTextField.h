@@ -47,9 +47,9 @@ namespace MetaFrame {
 
         void nativeSetMultiLine(bool flag) {
             if (flag) {
-                this->dwStyle = ES_MULTILINE | ES_AUTOVSCROLL ;
+                this->style = ES_MULTILINE | ES_AUTOVSCROLL ;
             } else {
-                this->dwStyle = 0;
+                this->style = 0;
             }
         };
 
@@ -59,7 +59,7 @@ namespace MetaFrame {
 
             hWindow = CreateWindow(L"edit",
                                             text,
-                                            this->dwStyle | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+                                            this->style | ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
                                             x, y,
                                             width, height,
                                             hWnd,

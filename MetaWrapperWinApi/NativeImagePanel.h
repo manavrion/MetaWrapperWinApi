@@ -14,8 +14,8 @@ namespace MetaFrame {
             width = 73;
             height = 21;
 
-            dwExStyle = 0;
-            dwStyle = 0;
+            extendedStyle = 0;
+            style = 0;
         };
 
 
@@ -25,10 +25,10 @@ namespace MetaFrame {
 
         virtual void init(HWND hWnd) override {
 
-            this->hWindow = CreateWindowExW(0 | dwExStyle,
+            this->hWindow = CreateWindowExW(0 | extendedStyle,
                                                L"static",
                                                text,
-                                               WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | dwStyle | SS_NOTIFY,
+                                               WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | style | SS_NOTIFY,
                                                x, y,
                                                width, height,
                                                hWnd,
