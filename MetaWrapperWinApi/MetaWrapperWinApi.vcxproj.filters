@@ -180,6 +180,7 @@
     <ClInclude Include="FrameNode.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Controllers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -270,8 +271,9 @@
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>MetaTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Controllers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

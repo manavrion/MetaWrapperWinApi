@@ -17,7 +17,7 @@ namespace MetaFrame {
             style(0),
             hbrBkgnd(null)
         {
-            //style = WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
+
         };
 
 
@@ -28,7 +28,7 @@ namespace MetaFrame {
         virtual void nativeSetRect(const Rect &rect) override {
             if (!nativeIsInitialzed()) return;
             MoveWindow(hWindow, rect.x, rect.y, rect.width, rect.height, true);
-            //SetWindowPos(*hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
+            //SetWindowPos(hWindow, null,rect.x, rect.y, rect.width, rect.height, false);
         }
 
         virtual void nativeSetBackground(const Color &background) override {
@@ -93,8 +93,6 @@ namespace MetaFrame {
                 return true;
             }
         };
-
-        /* FrameNode declared methods */
         
         void nativeInit(FrameObject *parent) override {
             if (nativeIsInitialzed()) {

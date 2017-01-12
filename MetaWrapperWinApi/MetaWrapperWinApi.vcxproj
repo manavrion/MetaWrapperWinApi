@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h" />
+    <ClInclude Include="Controllers.h" />
     <ClInclude Include="FrameNode.h" />
     <ClInclude Include="FrameObject.h" />
     <ClInclude Include="Alignment.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Controllers.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Image.cpp" />

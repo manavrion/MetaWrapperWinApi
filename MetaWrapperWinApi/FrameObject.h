@@ -72,6 +72,7 @@ namespace MetaFrame {
         virtual void nativeDestroy() = 0;
         virtual void nativeRepaint() = 0;
 
+    public:
         //FrameNode must have
         virtual void pack() = 0;
         virtual void build() = 0;
