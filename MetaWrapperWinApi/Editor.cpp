@@ -47,7 +47,7 @@ namespace MetaFrame {
         controlButtom->build();
 
 
-        controlButtom->addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event) {
+        controlButtom->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             //sender.setX(event.xOnParent - 4);
             sender->setY(event.yOnParent - 2);
             element->setHeight(event.yOnParent - 2 - element->getY());
@@ -59,7 +59,7 @@ namespace MetaFrame {
             //controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
 
-        controlTop->addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event) {
+        controlTop->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             sender->setY(event.yOnParent - 4);
             element->setY(event.yOnParent - 4 + sender->getHeight());
 
@@ -73,7 +73,7 @@ namespace MetaFrame {
         });
 
 
-        controlRight->addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event) {
+        controlRight->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             //sender.setX(event.xOnParent - 4);
             sender->setX(event.xOnParent - 2);
             element->setWidth(event.xOnParent - 2 - element->getX());
@@ -85,7 +85,7 @@ namespace MetaFrame {
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
         });
 
-        controlLeft->addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event) {
+        controlLeft->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             sender->setX(event.xOnParent - 4);
             element->setX(event.xOnParent - 4 + sender->getWidth());
 
@@ -100,7 +100,7 @@ namespace MetaFrame {
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        ((NativeAbstructObject*)element)->addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event) {
+        ((NativeAbstructObject*)element)->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (controlLeft == null) {
                 return;
             }
@@ -148,7 +148,7 @@ namespace MetaFrame {
                        ->setVerticalAlignment(VerticalAlignment::Bottom));
         
 
-        controlText->addActionListener([=](AbstructFrameObject *tf) {
+        controlText->addActionListener([=](FrameObject *tf) {
             element->setText(tf->getText());
         });
 

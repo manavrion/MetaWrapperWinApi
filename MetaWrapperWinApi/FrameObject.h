@@ -8,9 +8,9 @@
 
 namespace MetaFrame {
 
-    class AbstructFrameObject {
+    class FrameObject {
     public:
-        AbstructFrameObject() :
+        FrameObject() :
             x(10), y(10),
             width(73), height(21),
             autoWidth(false), autoHeight(false),
@@ -26,7 +26,7 @@ namespace MetaFrame {
             isDestroyed(null)
         {};
 
-        AbstructFrameObject(const AbstructFrameObject &abstructFrameObject) = delete;
+        FrameObject(const FrameObject &abstructFrameObject) = delete;
 
     protected:
         /* fields */
@@ -73,7 +73,7 @@ namespace MetaFrame {
 
         //setters
 
-        virtual AbstructFrameObject *setRect(Rect rect) {
+        virtual FrameObject *setRect(Rect rect) {
             x = rect.x;
             y = rect.y;
             width = rect.width;
@@ -81,7 +81,7 @@ namespace MetaFrame {
             nativeSetRect(rect);
             return this;
         };
-        virtual AbstructFrameObject *setRect(int x, int y, int width, int height) {
+        virtual FrameObject *setRect(int x, int y, int width, int height) {
             this->width = width;
             this->height = height;
             this->x = x;
@@ -91,95 +91,95 @@ namespace MetaFrame {
         };
 
 
-        virtual AbstructFrameObject *setX(int x) {
+        virtual FrameObject *setX(int x) {
             this->x = x;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setY(int y) {
+        virtual FrameObject *setY(int y) {
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setPosition(int x, int y) {
+        virtual FrameObject *setPosition(int x, int y) {
             this->x = x;
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setPosition(Point point) {
+        virtual FrameObject *setPosition(Point point) {
             this->x = point.x;
             this->y = point.y;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
 
-        virtual AbstructFrameObject *setSize(Size size) {
+        virtual FrameObject *setSize(Size size) {
             height = size.height;
             width = size.width;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setSize(int width, int height) {
+        virtual FrameObject *setSize(int width, int height) {
             this->width = width;
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setWidth(int width) {
+        virtual FrameObject *setWidth(int width) {
             this->width = width;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setHeight(int height) {
+        virtual FrameObject *setHeight(int height) {
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
             return this;
         };
-        virtual AbstructFrameObject *setAutoWidth(bool autoWidth) {
+        virtual FrameObject *setAutoWidth(bool autoWidth) {
             this->autoWidth = autoWidth;
             return this;
         };
-        virtual AbstructFrameObject *setAutoHeight(bool autoHeight){
+        virtual FrameObject *setAutoHeight(bool autoHeight){
             this->autoHeight = autoHeight;
             return this;
         };
-        virtual AbstructFrameObject *setMinWidth(int minWidth){
+        virtual FrameObject *setMinWidth(int minWidth){
             this->minWidth = minWidth;
             return this;
         };
-        virtual AbstructFrameObject *setMaxWidth(int maxWidth){
+        virtual FrameObject *setMaxWidth(int maxWidth){
             this->maxWidth = maxWidth;
             return this;
         };
-        virtual AbstructFrameObject *setMinHeight(int minHeight){
+        virtual FrameObject *setMinHeight(int minHeight){
             this->minHeight = minHeight;
             return this;
         };
-        virtual AbstructFrameObject *setMaxHeight(int maxHeight){
+        virtual FrameObject *setMaxHeight(int maxHeight){
             this->maxHeight = maxHeight;
             return this;
         };
                                  
-        virtual AbstructFrameObject *setMargin(int left, int right, int top, int bottom) {
+        virtual FrameObject *setMargin(int left, int right, int top, int bottom) {
             this->margin = Margin(left, right, top, bottom);
             return this;
         };
-        virtual AbstructFrameObject *setMargin(Margin margin) {
+        virtual FrameObject *setMargin(Margin margin) {
             this->margin = margin;
             return this;
         };
                                  
-        virtual AbstructFrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+        virtual FrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
             this->horizontalAlignment = horizontalAlignment;
             return this;
         };
-        virtual AbstructFrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
+        virtual FrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
             this->verticalAlignment = verticalAlignment;
             return this;
         };
 
-        virtual AbstructFrameObject *setAlignment(Alignment alignment) {
+        virtual FrameObject *setAlignment(Alignment alignment) {
             switch (alignment) {
                 case MetaFrame::Alignment::Absolute:
                     verticalAlignment = VerticalAlignment::Absolute;
@@ -201,29 +201,29 @@ namespace MetaFrame {
             return this;
         };
 
-        virtual AbstructFrameObject *setBackground(const Color &background){
+        virtual FrameObject *setBackground(const Color &background){
             this->background = background;
             nativeSetBackground(background);
             return this;
         }
-        virtual AbstructFrameObject *setForeground(const Color &foreground){
+        virtual FrameObject *setForeground(const Color &foreground){
             this->foreground = foreground;
             nativeSetForeground(foreground);
             return this;
         }
 
-        virtual AbstructFrameObject *setText(const String &text){
+        virtual FrameObject *setText(const String &text){
             this->text = text;
             nativeSetText(text);
             return this;
         }
 
-        virtual AbstructFrameObject *setLayout(Layout layout) {
+        virtual FrameObject *setLayout(Layout layout) {
             this->layout = layout;
             return this;
         }
 
-        virtual AbstructFrameObject *setBorder(Border border) {
+        virtual FrameObject *setBorder(Border border) {
             this->border = border;
             nativeSetBorder(border);
             return this;
@@ -307,38 +307,38 @@ namespace MetaFrame {
 
 
 
-        typedef std::function<void(AbstructFrameObject*, const MouseEventInfo&)> MouseFunction;
+        typedef std::function<void(FrameObject*, const MouseEventInfo&)> MouseFunction;
 
         typedef std::function<void()> ActionFunctionVoid;
-        typedef std::function<void(AbstructFrameObject *sender)> ActionFunction;
+        typedef std::function<void(FrameObject *sender)> ActionFunction;
 
 
-        virtual AbstructFrameObject *addMousePressedListener(MouseFunction f) {
+        virtual FrameObject *addMousePressedListener(MouseFunction f) {
             mousePressedEvents.push_back(f);
             return this;
         };
 
-        virtual AbstructFrameObject *addMouseReleasedListener(MouseFunction f) {
+        virtual FrameObject *addMouseReleasedListener(MouseFunction f) {
             mouseReleasedEvents.push_back(f);
             return this;
         };
 
-        virtual AbstructFrameObject *addMouseDraggedListener(MouseFunction f) {
+        virtual FrameObject *addMouseDraggedListener(MouseFunction f) {
             mouseDraggedEvents.push_back(f);
             return this;
         };
 
-        virtual AbstructFrameObject *addMouseMovedListener(MouseFunction f) {
+        virtual FrameObject *addMouseMovedListener(MouseFunction f) {
             mouseMovedEvents.push_back(f);
             return this;
         };
 
 
-        virtual AbstructFrameObject *addActionListener(ActionFunctionVoid buttonFunction) {
+        virtual FrameObject *addActionListener(ActionFunctionVoid buttonFunction) {
             actionEventFunctionsVoid.push_back(buttonFunction);
             return this;
         }
-        virtual AbstructFrameObject *addActionListener(ActionFunction buttonFunction) {
+        virtual FrameObject *addActionListener(ActionFunction buttonFunction) {
             actionEventFunctionsSender.push_back(buttonFunction);
             return this;
         }
@@ -373,7 +373,7 @@ namespace MetaFrame {
             isDestroyed = &isDestr;
             for (auto &func : mousePressedEvents) {
                 if (isDestr) { return; }
-                func((AbstructFrameObject*)this, event);
+                func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
             isDestroyed = null;
@@ -383,7 +383,7 @@ namespace MetaFrame {
             isDestroyed = &isDestr;
             for (auto &func : mouseReleasedEvents) {
                 if (isDestr) { return; }
-                func((AbstructFrameObject*)this, event);
+                func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
             isDestroyed = null;
@@ -393,7 +393,7 @@ namespace MetaFrame {
             isDestroyed = &isDestr;
             for (auto &func : mouseDraggedEvents) {
                 if (isDestr) { return; }
-                func((AbstructFrameObject*)this, event);
+                func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
             isDestroyed = null;
@@ -403,7 +403,7 @@ namespace MetaFrame {
             isDestroyed = &isDestr;
             for (auto &func : mouseMovedEvents) {
                 if (isDestr) { return; }
-                func((AbstructFrameObject*)this, event);
+                func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
             isDestroyed = null;
@@ -419,7 +419,7 @@ namespace MetaFrame {
             }
             for (auto &f : actionEventFunctionsSender) {
                 if (isDestr) { return; }
-                f((AbstructFrameObject*)this);
+                f((FrameObject*)this);
                 if (isDestr) { return; }
             }
             isDestroyed = null;
@@ -429,7 +429,7 @@ namespace MetaFrame {
         bool *isDestroyed;
 
     public:
-        virtual ~AbstructFrameObject() {
+        virtual ~FrameObject() {
             if (isDestroyed != null) {
                 *isDestroyed = true;
             }

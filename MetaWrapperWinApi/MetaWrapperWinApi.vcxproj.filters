@@ -93,9 +93,6 @@
     <ClInclude Include="AbstructFrameElement.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="AbstructFrameObject.h">
-      <Filter>MetaFrameElementsHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="NativePanel.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
@@ -178,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="EditorWrapped.h" />
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameObject.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
   </ItemGroup>

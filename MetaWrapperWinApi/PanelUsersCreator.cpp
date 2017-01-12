@@ -20,7 +20,7 @@ PanelUsersCreator::PanelUsersCreator(Game *game) : game(game) {
              ->setAutoWidth(true)
              ->setMargin(5, 5, 20, 5)
              ->setText(L"Автогенерация клиентов")
-             ->addActionListener([&](AbstructFrameObject *cb) {
+             ->addActionListener([&](FrameObject *cb) {
                  this->setAutoGen(((CheckBox*)cb)->getState()); 
              }));
 

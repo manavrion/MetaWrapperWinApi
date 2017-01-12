@@ -85,7 +85,7 @@ namespace MetaFrame {
         void createPanel() {
             EditPanel *panel = new EditPanel;
 
-            panel->addMouseReleasedListener([=](AbstructFrameObject *panel, const MouseEventInfo &event) {
+            panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
                 this->bindControl(panel->getRect(), (AbstructFrameElement *)panel);
             });
@@ -100,7 +100,7 @@ namespace MetaFrame {
         void createButton() {
             EditButton *button = new EditButton;
 
-            button->addMouseReleasedListener([=](AbstructFrameObject *button, const MouseEventInfo &event) {
+            button->addMouseReleasedListener([=](FrameObject *button, const MouseEventInfo &event) {
                 this->destroyControl();
                 this->bindControl(button->getRect(), (AbstructFrameElement*)button);
             });
@@ -116,7 +116,7 @@ namespace MetaFrame {
         void createSlider() {
             EditSlider *panel = new EditSlider;
 
-            panel->addMouseReleasedListener([=](AbstructFrameObject *panel, const MouseEventInfo &event) {
+            panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
                 this->bindControl(panel->getRect(), (AbstructFrameElement*)panel);
             });
@@ -131,7 +131,7 @@ namespace MetaFrame {
         void createLabel() {
             EditLabel *panel = new EditLabel;
 
-            panel->addMouseReleasedListener([=](AbstructFrameObject *panel, const MouseEventInfo &event) {
+            panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
                 this->bindControl(panel->getRect(), (AbstructFrameElement*)panel);
             });

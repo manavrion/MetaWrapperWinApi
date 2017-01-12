@@ -1,12 +1,12 @@
 ﻿#pragma once
-#include "AbstructFrameObject.h"
+#include "FrameObject.h"
 #include "AbstructFrameAutoSettersAndGetters.h"
 
 namespace MetaFrame {
 
     class IncorrectDestroy {};
 
-    class AbstructFrameElement : public AbstructFrameObject {
+    class AbstructFrameElement : public FrameObject {
 
     public:
         AbstructFrameElement() : parent(null) {};

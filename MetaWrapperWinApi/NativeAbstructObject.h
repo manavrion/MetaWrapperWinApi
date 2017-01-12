@@ -23,7 +23,7 @@ namespace MetaFrame {
 
     protected:
 
-        /* AbstructFrameObject declared methods */
+        /* FrameObject declared methods */
 
         virtual void nativeSetRect(const Rect &rect) override {
             if (!nativeIsInitialzed()) return;
