@@ -87,7 +87,7 @@ namespace MetaFrame {
 
             panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel->getRect(), (AbstructFrameElement *)panel);
+                this->bindControl(panel->getRect(), (FrameNode *)panel);
             });
 
             editorSpace->add(panel);
@@ -102,7 +102,7 @@ namespace MetaFrame {
 
             button->addMouseReleasedListener([=](FrameObject *button, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(button->getRect(), (AbstructFrameElement*)button);
+                this->bindControl(button->getRect(), (FrameNode*)button);
             });
 
             button->setPosition(100, 100);
@@ -118,7 +118,7 @@ namespace MetaFrame {
 
             panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel->getRect(), (AbstructFrameElement*)panel);
+                this->bindControl(panel->getRect(), (FrameNode*)panel);
             });
 
             editorSpace->add(panel);
@@ -133,7 +133,7 @@ namespace MetaFrame {
 
             panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
                 this->destroyControl();
-                this->bindControl(panel->getRect(), (AbstructFrameElement*)panel);
+                this->bindControl(panel->getRect(), (FrameNode*)panel);
             });
 
             editorSpace->add(panel);
@@ -159,7 +159,7 @@ namespace MetaFrame {
         Button *controlDeleteButton = null;
 
 
-        void bindControl(Rect rect, AbstructFrameElement *element);
+        void bindControl(Rect rect, FrameNode *element);
 
 
         

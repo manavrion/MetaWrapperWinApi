@@ -2,12 +2,12 @@
 #include <memory>
 #include <Windowsx.h>
 #include <functional>
-#include "AbstructFrameElement.h"
+#include "FrameNode.h"
 
 
 namespace MetaFrame {
 
-    class NativeAbstructObject : public AbstructFrameElement {
+    class NativeAbstructObject : public FrameNode {
 
     public:
         NativeAbstructObject(const String &className) :
@@ -94,9 +94,9 @@ namespace MetaFrame {
             }
         };
 
-        /* AbstructFrameElement declared methods */
+        /* FrameNode declared methods */
         
-        void nativeInit(AbstructFrameElement *parent) override {
+        void nativeInit(FrameObject *parent) override {
             if (nativeIsInitialzed()) {
                 return;
             }

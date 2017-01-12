@@ -12,19 +12,19 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
+    /*
     AutoService *autoService = new AutoService(L"Kek Microsystems");
     autoService->run();
 
     autoService->destrThread();
     
     delete autoService;
-    
+    */
 
 
-    /*Editor *window = new Editor(L"Kek Microsystems editor");
+    Editor *window = new Editor(L"Kek Microsystems editor");
     window->run();
-    delete window;*/
+    delete window;
 
 
 

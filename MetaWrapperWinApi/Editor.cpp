@@ -2,7 +2,7 @@
 #include "Editor.h"
 
 namespace MetaFrame {
-    void Editor::bindControl(Rect rect, AbstructFrameElement * element) {
+    void Editor::bindControl(Rect rect, FrameNode * element) {
 
         if (controlLeft != null) {
             controlLeft->destroy();
@@ -113,7 +113,7 @@ namespace MetaFrame {
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
             editorSpace->repaint();
-            ((AbstructFrameElement*)sender)->repaint();
+            ((FrameNode*)sender)->repaint();
         });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

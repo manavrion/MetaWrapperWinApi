@@ -1,9 +1,9 @@
 #include "stdafx.h"
-#include "AbstructFrameElement.h"
+#include "FrameNode.h"
 
 #include "Button.h"
 
-void MetaFrame::AbstructFrameElement::packImpl() {
+void MetaFrame::FrameNode::packImpl() {
 
     for (auto &child : childs) {
         switch (layout) {
@@ -143,7 +143,7 @@ void MetaFrame::AbstructFrameElement::packImpl() {
         
         int marginsSize = 0;
         int widthSize = 0;
-        ArrayList<AbstructFrameElement*> resizeble;
+        ArrayList<FrameNode*> resizeble;
 
         auto it = childs.begin();
         auto prev = childs.begin();
@@ -168,7 +168,7 @@ void MetaFrame::AbstructFrameElement::packImpl() {
         
         //resize if possible
         int need = width - marginsSize - widthSize;
-        ArrayList<AbstructFrameElement*> resizebleNew;
+        ArrayList<FrameNode*> resizebleNew;
         while (!resizeble.empty()) {
 
             int dx = need / (int)resizeble.size();

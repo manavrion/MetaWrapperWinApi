@@ -65,9 +65,13 @@ namespace MetaFrame {
         virtual void nativeSetForeground(const Color &rect) = 0;
         virtual void nativeSetText(const String &text) = 0;
         virtual String nativeGetText() const = 0;
-        virtual bool nativeIsInitialzed() const = 0;
-
         virtual void nativeSetBorder(Border border) = 0;
+
+        virtual void nativeInit(FrameObject *parent) = 0;
+        virtual bool nativeIsInitialzed() const = 0;
+        virtual void nativeDestroy() = 0;
+        virtual void nativeRepaint() = 0;
+
 
     public:
 

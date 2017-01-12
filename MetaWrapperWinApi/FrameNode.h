@@ -6,21 +6,16 @@ namespace MetaFrame {
 
     class IncorrectDestroy {};
 
-    class AbstructFrameElement : public FrameObject {
+    class FrameNode : public FrameObject {
 
     public:
-        AbstructFrameElement() : parent(null) {};
+        FrameNode() : parent(null) {};
 
-        AbstructFrameElement(const AbstructFrameElement &abstructFrameElement) = delete;
+        FrameNode(const FrameNode &abstructFrameElement) = delete;
     protected:
 
-        AbstructFrameElement *parent;
-        ArrayList<AbstructFrameElement*> childs;
-
-
-        virtual void nativeInit(AbstructFrameElement *parent) = 0;
-        virtual void nativeDestroy() = 0;
-        virtual void nativeRepaint() = 0;
+        FrameNode *parent;
+        ArrayList<FrameNode*> childs;
 
     protected:
         virtual void packImpl();
@@ -58,7 +53,7 @@ namespace MetaFrame {
             }
         }
 
-        virtual AbstructFrameElement *add(AbstructFrameElement *child) {
+        virtual FrameNode *add(FrameNode *child) {
             child->parent = this;
             childs.push_back(child);
             return this;
@@ -74,7 +69,7 @@ namespace MetaFrame {
         }
 
     public:
-        ~AbstructFrameElement() {
+        virtual ~FrameNode() {
 
         };
 

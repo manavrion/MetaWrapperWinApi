@@ -90,9 +90,6 @@
     <ClInclude Include="Window.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="AbstructFrameElement.h">
-      <Filter>MetaFrameElementsHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="NativePanel.h">
       <Filter>WrapperWinApiHeaders</Filter>
     </ClInclude>
@@ -178,6 +175,9 @@
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
     <ClInclude Include="FrameObject.h">
+      <Filter>MetaFrameElementsHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameNode.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
   </ItemGroup>
