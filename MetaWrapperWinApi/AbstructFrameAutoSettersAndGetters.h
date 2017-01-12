@@ -116,36 +116,40 @@ namespace MetaFrame {
             AbstructFrameObject::setBorder(border);\
             return this;\
     }\
-        virtual FrameType *addMousePressedListener(MouseFunction f) {\
-            mousePressedEvents.push_back(f);\
+typedef std::function<void(FrameType*, const MouseEventInfo&)> MouseFunction ## FrameType;\
+\
+typedef std::function<void()> ActionFunctionVoid ## FrameType;\
+typedef std::function<void(FrameType *sender)> ActionFunction ## FrameType;\
+\
+        virtual FrameType *addMousePressedListener(MouseFunction ## FrameType f) {\
+            AbstructFrameObject::addMousePressedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event){ f((FrameType*)sender, event); });\
             return this;\
         };\
 \
-        virtual FrameType *addMouseReleasedListener(MouseFunction f) {\
-            mouseReleasedEvents.push_back(f);\
+        virtual FrameType *addMouseReleasedListener(MouseFunction ## FrameType f) {\
+            AbstructFrameObject::addMouseReleasedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event){ f((FrameType*)sender, event); });\
             return this;\
         };\
 \
-        virtual FrameType *addMouseDraggedListener(MouseFunction f) {\
-            mouseDraggedEvents.push_back(f);\
+        virtual FrameType *addMouseDraggedListener(MouseFunction ## FrameType f) {\
+            AbstructFrameObject::addMouseDraggedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event){ f((FrameType*)sender, event); });\
             return this;\
         };\
 \
-        virtual FrameType *addMouseMovedListener(MouseFunction f) {\
-            mouseMovedEvents.push_back(f);\
+        virtual FrameType *addMouseMovedListener(MouseFunction ## FrameType f) {\
+            AbstructFrameObject::addMouseMovedListener([=](AbstructFrameObject *sender, const MouseEventInfo &event){ f((FrameType*)sender, event); });\
             return this;\
         };\
 \
 \
         virtual FrameType *addActionListener(ActionFunctionVoid buttonFunction) {\
-            actionEventFunctionsVoid.push_back(buttonFunction);\
+            AbstructFrameObject::addActionListener(buttonFunction);\
             return this;\
         }\
-        typedef std::function<void(FrameType *sender)> ActionFunction ## FrameType;\
         virtual FrameType*addActionListener(ActionFunction ## FrameType buttonFunction) {\
-            actionEventFunctionsSender.push_back([=](AbstructFrameObject *sender){ buttonFunction((FrameType*)sender); });\
+            AbstructFrameObject::addActionListener([=](AbstructFrameObject *sender){ buttonFunction((FrameType*)sender); });\
             return this;\
         }
 
-
+        
 }

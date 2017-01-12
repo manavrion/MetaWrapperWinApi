@@ -180,9 +180,6 @@
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="AbstructFrameEvent.h">
-      <Filter>MetaFrameElementsHeaders</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

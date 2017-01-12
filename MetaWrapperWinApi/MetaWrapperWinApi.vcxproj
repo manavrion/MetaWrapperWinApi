@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h" />
     <ClInclude Include="AbstructFrameElement.h" />
-    <ClInclude Include="AbstructFrameEvent.h" />
     <ClInclude Include="AbstructFrameObject.h" />
     <ClInclude Include="Alignment.h" />
     <ClInclude Include="AutoService.h" />

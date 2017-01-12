@@ -3,7 +3,7 @@
 #include <Windowsx.h>
 #include <functional>
 #include "AbstructFrameElement.h"
-#include "AbstructFrameEvent.h"
+
 
 namespace MetaFrame {
 
