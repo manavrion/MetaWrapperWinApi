@@ -22,7 +22,8 @@ namespace MetaFrame {
             background(),
             foreground(),
             text(),
-            layout(Layout::Simple)
+            layout(Layout::Simple),
+            isDestroyed(null)
         {};
 
         AbstructFrameObject(const AbstructFrameObject &abstructFrameObject) = delete;
@@ -302,8 +303,137 @@ namespace MetaFrame {
             return border;
         }
 
+        /* EVENTS */
+
+
+
+        typedef std::function<void(AbstructFrameObject*, const MouseEventInfo&)> MouseFunction;
+
+        typedef std::function<void()> ActionFunctionVoid;
+        typedef std::function<void(AbstructFrameObject *sender)> ActionFunction;
+
+
+        virtual AbstructFrameObject *addMousePressedListener(MouseFunction f) {
+            mousePressedEvents.push_back(f);
+            return this;
+        };
+
+        virtual AbstructFrameObject *addMouseReleasedListener(MouseFunction f) {
+            mouseReleasedEvents.push_back(f);
+            return this;
+        };
+
+        virtual AbstructFrameObject *addMouseDraggedListener(MouseFunction f) {
+            mouseDraggedEvents.push_back(f);
+            return this;
+        };
+
+        virtual AbstructFrameObject *addMouseMovedListener(MouseFunction f) {
+            mouseMovedEvents.push_back(f);
+            return this;
+        };
+
+
+        virtual AbstructFrameObject *addActionListener(ActionFunctionVoid buttonFunction) {
+            actionEventFunctionsVoid.push_back(buttonFunction);
+            return this;
+        }
+        virtual AbstructFrameObject *addActionListener(ActionFunction buttonFunction) {
+            actionEventFunctionsSender.push_back(buttonFunction);
+            return this;
+        }
+
+        void clearMousePressedListeners() {
+            mousePressedEvents.clear();
+        };
+        void clearMouseReleasedListeners() {
+            mouseReleasedEvents.clear();            
+        };
+        void clearMouseDraggedListeners() {
+            mouseDraggedEvents.clear();            
+        };
+        void clearMouseMovedListeners() {
+            mouseMovedEvents.clear();            
+        };
+
+        protected:
+
+            ArrayList<MouseFunction> mousePressedEvents;
+            ArrayList<MouseFunction> mouseReleasedEvents;
+
+            ArrayList<MouseFunction> mouseDraggedEvents;
+            ArrayList<MouseFunction> mouseMovedEvents;
+
+            ArrayList<ActionFunctionVoid> actionEventFunctionsVoid;
+            ArrayList<ActionFunction> actionEventFunctionsSender;
+
+    protected:
+        void runMousePressedEvent(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &func : mousePressedEvents) {
+                if (isDestr) { return; }
+                func((AbstructFrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        };
+        void runMouseReleasedEvent(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &func : mouseReleasedEvents) {
+                if (isDestr) { return; }
+                func((AbstructFrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        };
+        void runMouseDraggedEvent(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &func : mouseDraggedEvents) {
+                if (isDestr) { return; }
+                func((AbstructFrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        };
+        void runMouseMovedEvent(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &func : mouseMovedEvents) {
+                if (isDestr) { return; }
+                func((AbstructFrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        };
+
+        virtual void runActionEvents() {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &f : actionEventFunctionsVoid) {
+                if (isDestr) { return; }
+                f();
+                if (isDestr) { return; }
+            }
+            for (auto &f : actionEventFunctionsSender) {
+                if (isDestr) { return; }
+                f((AbstructFrameObject*)this);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        }
+
+    private:
+        bool *isDestroyed;
+
     public:
-        virtual ~AbstructFrameObject() {};
+        virtual ~AbstructFrameObject() {
+            if (isDestroyed != null) {
+                *isDestroyed = true;
+            }
+        };
 
     };
 

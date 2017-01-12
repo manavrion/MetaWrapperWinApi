@@ -19,10 +19,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     autoService->destrThread();
     
     delete autoService;
+    
+
 
     /*Editor *window = new Editor(L"Kek Microsystems editor");
-    window->run();*/
-
+    window->run();
+    delete window;*/
 
 
 

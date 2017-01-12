@@ -8,7 +8,7 @@ namespace MetaFrame {
 
 
 
-    
+    /*
 
     template<class FrameElementT>
     class AbstructFrameEvent {
@@ -19,13 +19,13 @@ namespace MetaFrame {
         
         typedef std::function<void()> ActionFunctionVoid;
         typedef std::function<void(FrameElementT *sender)> ActionFunction;
-        /*
-        AbstructFrameEvent *addKeyPressedListener(KeyFunction f);
-        AbstructFrameEvent *addKeyReleasedListener(KeyFunction f);
-        AbstructFrameEvent *addKeyTypedListener(KeyFunction f);
-        AbstructFrameEvent *addMouseDoubleClickedListener(MouseFunction f);
-        AbstructFrameEvent *addMouseEnteredListener(MouseFunction f);
-        AbstructFrameEvent *addMouseExitedListener(MouseFunction f);*/
+        
+        //AbstructFrameEvent *addKeyPressedListener(KeyFunction f);
+        //AbstructFrameEvent *addKeyReleasedListener(KeyFunction f);
+        //AbstructFrameEvent *addKeyTypedListener(KeyFunction f);
+        //AbstructFrameEvent *addMouseDoubleClickedListener(MouseFunction f);
+        //AbstructFrameEvent *addMouseEnteredListener(MouseFunction f);
+        //AbstructFrameEvent *addMouseExitedListener(MouseFunction f);
         FrameElementT *addMousePressedListener(MouseFunction f) {
             mousePressedEvents.push_back(f);
             return (FrameElementT*)this;
@@ -73,9 +73,9 @@ namespace MetaFrame {
 
     protected:
         
-        /*ArrayList<KeyFunction>   keyPressedEvents;
-        ArrayList<KeyFunction>   keyReleasedEvents;
-        ArrayList<KeyFunction>   keyTypedEvents;*/
+        //ArrayList<KeyFunction>   keyPressedEvents;
+        //ArrayList<KeyFunction>   keyReleasedEvents;
+        //ArrayList<KeyFunction>   keyTypedEvents;
 
         //ArrayList<MouseFunction> mouseDoubleClickedEvents;
         //ArrayList<MouseFunction> mouseEnteredEvents;
@@ -88,14 +88,14 @@ namespace MetaFrame {
 
         //ArrayList<MouseFunction> mouseWheelMovedEvents;
 
-        /*void runKeyPressedEvent(const KeyEvent &event);
-        void runKeyReleasedEvent(const KeyEvent &event);
-        void runKeyTypedEvent(const KeyEvent &event);
+        //void runKeyPressedEvent(const KeyEvent &event);
+        //void runKeyReleasedEvent(const KeyEvent &event);
+        //void runKeyTypedEvent(const KeyEvent &event);
+        //
+        //void runMouseDoubleClickedEvent(MouseEventInfo event);
 
-        void runMouseDoubleClickedEvent(MouseEventInfo event);*/
-
-        /*void runMouseEnteredEvent(MouseEventInfo event);
-        void runMouseExitedEvent(MouseEventInfo event);*/
+        //void runMouseEnteredEvent(MouseEventInfo event);
+        //void runMouseExitedEvent(MouseEventInfo event);
 
         ArrayList<ActionFunctionVoid> actionEventFunctionsVoid;
         ArrayList<ActionFunction> actionEventFunctionsSender;
@@ -166,8 +166,10 @@ namespace MetaFrame {
 
     private:
         bool *isDestroyed;
-    };
+
+    };*/
 
 
 
 }
+

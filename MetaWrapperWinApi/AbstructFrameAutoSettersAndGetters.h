@@ -115,7 +115,37 @@ namespace MetaFrame {
     virtual FrameType *setBorder(Border border) {\
             AbstructFrameObject::setBorder(border);\
             return this;\
-    }
+    }\
+        virtual FrameType *addMousePressedListener(MouseFunction f) {\
+            mousePressedEvents.push_back(f);\
+            return this;\
+        };\
+\
+        virtual FrameType *addMouseReleasedListener(MouseFunction f) {\
+            mouseReleasedEvents.push_back(f);\
+            return this;\
+        };\
+\
+        virtual FrameType *addMouseDraggedListener(MouseFunction f) {\
+            mouseDraggedEvents.push_back(f);\
+            return this;\
+        };\
+\
+        virtual FrameType *addMouseMovedListener(MouseFunction f) {\
+            mouseMovedEvents.push_back(f);\
+            return this;\
+        };\
+\
+\
+        virtual FrameType *addActionListener(ActionFunctionVoid buttonFunction) {\
+            actionEventFunctionsVoid.push_back(buttonFunction);\
+            return this;\
+        }\
+        typedef std::function<void(FrameType *sender)> ActionFunction ## FrameType;\
+        virtual FrameType*addActionListener(ActionFunction ## FrameType buttonFunction) {\
+            actionEventFunctionsSender.push_back([=](AbstructFrameObject *sender){ buttonFunction((FrameType*)sender); });\
+            return this;\
+        }
 
 
 }

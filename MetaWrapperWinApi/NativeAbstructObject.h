@@ -7,7 +7,7 @@
 
 namespace MetaFrame {
 
-    class NativeAbstructObject : public AbstructFrameElement, public AbstructFrameEvent<NativeAbstructObject> {
+    class NativeAbstructObject : public AbstructFrameElement {
 
     public:
         NativeAbstructObject(const String &className) :
