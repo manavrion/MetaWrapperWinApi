@@ -59,7 +59,7 @@ namespace MetaFrame {
         Border border;
 
     protected:
-
+        //NativeObject must have
         virtual void nativeSetRect(const Rect &rect) = 0;
         virtual void nativeSetBackground(const Color &rect) = 0;
         virtual void nativeSetForeground(const Color &rect) = 0;
@@ -72,6 +72,11 @@ namespace MetaFrame {
         virtual void nativeDestroy() = 0;
         virtual void nativeRepaint() = 0;
 
+        //FrameNode must have
+        virtual void pack() = 0;
+        virtual void build() = 0;
+        virtual void repaint() = 0;
+        virtual void destroy() = 0;
 
     public:
 

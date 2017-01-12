@@ -4,8 +4,6 @@
 
 namespace MetaFrame {
 
-    class IncorrectDestroy {};
-
     class FrameNode : public FrameObject {
 
     public:
@@ -37,8 +35,16 @@ namespace MetaFrame {
         }
 
     public:
+        virtual FrameNode *add(FrameNode *child) {
+            child->parent = this;
+            childs.push_back(child);
+            return this;
+        };
+
+        /* FrameObject declared methods */
+
         //рекурсивно задаёт элементам их положение и размер в соответствии с правилами, описывающими их
-        void pack() {
+        void pack() override {
             this->packImpl();
             for (auto &ob : childs) {
                 ob->pack();
@@ -46,25 +52,20 @@ namespace MetaFrame {
         };
 
         //рекурсивно создаёт элементы на форме
-        void build() {
+        void build() override {
             this->nativeInit(parent);
             for (auto object : childs) {
                 object->build();
             }
         }
 
-        virtual FrameNode *add(FrameNode *child) {
-            child->parent = this;
-            childs.push_back(child);
-            return this;
-        };
 
-        void destroy() {
+        void destroy() override {
             destroyImpl();
             delete this;
         }
 
-        void repaint() {
+        void repaint() override  {
             nativeRepaint();
         }
 
