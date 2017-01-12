@@ -343,6 +343,11 @@ namespace MetaFrame {
             return this;
         };
 
+        virtual FrameObject *addMouseDoubleClickedListener(MouseFunction f) {
+            mouseDoubleClickedEvents.push_back(f);
+            return this;
+        };
+
 
         virtual FrameObject *addActionListener(ActionFunctionVoid buttonFunction) {
             actionEventFunctionsVoid.push_back(buttonFunction);
@@ -366,10 +371,21 @@ namespace MetaFrame {
             mouseMovedEvents.clear();            
         };
 
+        void clearMouseDoubleClickedListeners() {
+            mouseMovedEvents.clear();
+        };
+
+        void clearMouseActionListeners() {
+            actionEventFunctionsVoid.clear();
+            actionEventFunctionsSender.clear();
+        };
+
         protected:
 
             ArrayList<MouseFunction> mousePressedEvents;
             ArrayList<MouseFunction> mouseReleasedEvents;
+
+            ArrayList<MouseFunction> mouseDoubleClickedEvents;
 
             ArrayList<MouseFunction> mouseDraggedEvents;
             ArrayList<MouseFunction> mouseMovedEvents;
@@ -418,6 +434,18 @@ namespace MetaFrame {
             }
             isDestroyed = null;
         };
+
+        void runMouseDoubleClickedEvent(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (auto &func : mouseDoubleClickedEvents) {
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        };
+
 
         virtual void runActionEvents() {
             bool isDestr = false;

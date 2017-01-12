@@ -25,18 +25,31 @@ namespace MetaFrame {
             sender->repaint();
         });
 
-        
+        frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
+            clearBind();
+            controls.push_back(new Control(frameObject, editorSpace));
+        });
+
+        frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
+            if (!this->isBinded(sender)) {
+                return;
+            }
+            ((FrameNode*)sender)->add((new TextField)
+                                      ->setMargin(0, 0, 0, 0)
+                                      ->setAlignment(Alignment::Center)
+            );
+            sender->build();
+            sender->pack();
+        });
 
     }
 
     void Controllers::rebind(FrameObject * frameObject) {
         clearBind();
 
-        Control *control = new Control(frameObject, editorSpace);
-        controls.push_back(control);
+        controls.push_back(new Control(frameObject, editorSpace));
 
         addDragAndDropActions(frameObject);
-
     }
 
     void Controllers::bind(ArrayList<FrameObject> objects) {}
@@ -75,6 +88,7 @@ namespace MetaFrame {
             controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             //controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
+            captured->pack();
         });
 
         controlTop->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
@@ -88,6 +102,7 @@ namespace MetaFrame {
             controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             //controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
+            captured->pack();
         });
 
 
@@ -101,6 +116,7 @@ namespace MetaFrame {
             //controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
+            captured->pack();
         });
 
         controlLeft->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
@@ -114,6 +130,7 @@ namespace MetaFrame {
             controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
             controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
             controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
+            captured->pack();
         });
 
 

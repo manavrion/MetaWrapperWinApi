@@ -73,6 +73,15 @@ namespace MetaFrame {
             nativeAbstructObject[hWnd].first->runMouseReleasedEvent(event);
             //return 0;
         }
+        if ((message == WM_LBUTTONDBLCLK || message == WM_RBUTTONDBLCLK) && nativeAbstructObject.count(hWnd) != 0)
+        {
+            MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            event.xOnParent += nativeAbstructObject[hWnd].first->getX();
+            event.yOnParent += nativeAbstructObject[hWnd].first->getY();
+            //alt todo
+            //event.causedby = MouseButton::LEFT;
+            nativeAbstructObject[hWnd].first->runMouseDoubleClickedEvent(event);
+        }
         if (nativeAbstructObject.count(hWnd) != 0) {
             return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
         }
