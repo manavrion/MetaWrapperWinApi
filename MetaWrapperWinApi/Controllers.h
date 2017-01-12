@@ -55,6 +55,9 @@ namespace MetaFrame {
         
         ArrayList<Control*> controls;
 
+
+        TextField *dynamicTextField = null;
+
         bool isBinded(FrameObject *frameObject) {
             for (auto ob : controls) {
                 if (ob->isCaptured(frameObject)) {

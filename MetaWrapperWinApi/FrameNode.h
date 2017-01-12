@@ -41,6 +41,12 @@ namespace MetaFrame {
             return this;
         };
 
+        virtual void clearChilds() override {
+            while (!childs.empty()) {
+                delete childs.front();
+            }
+        };
+
         /* FrameObject declared methods */
 
         //рекурсивно задаёт элементам их положение и размер в соответствии с правилами, описывающими их

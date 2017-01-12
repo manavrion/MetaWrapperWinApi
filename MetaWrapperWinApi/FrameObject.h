@@ -78,6 +78,7 @@ namespace MetaFrame {
         virtual void build() = 0;
         virtual void repaint() = 0;
         virtual void destroy() = 0;
+        virtual void clearChilds() = 0;
 
     public:
 

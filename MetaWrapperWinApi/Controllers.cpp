@@ -34,12 +34,26 @@ namespace MetaFrame {
             if (!this->isBinded(sender)) {
                 return;
             }
-            ((FrameNode*)sender)->add((new TextField)
+
+            delete dynamicTextField;
+            dynamicTextField = new TextField();
+
+            dynamicTextField->setText(sender->getText());
+
+            editorSpace->add(dynamicTextField
+                             ->setPosition(sender->getX(), sender->getY() - 20)
+                             ->addActionListener([=](TextField *tf) {
+                                sender->setText(tf->getText());
+                             })
+            );
+
+
+            //editorSpace->add()
+            /*((FrameNode*)sender)->add((new TextField)
                                       ->setMargin(0, 0, 0, 0)
                                       ->setAlignment(Alignment::Center)
-            );
-            sender->build();
-            sender->pack();
+            );*/
+            editorSpace->build();
         });
 
     }
@@ -55,6 +69,8 @@ namespace MetaFrame {
     void Controllers::bind(ArrayList<FrameObject> objects) {}
 
     void Controllers::clearBind() {
+        delete dynamicTextField;
+        dynamicTextField = null;
         for (auto ob : controls) {
             delete ob;
         }
