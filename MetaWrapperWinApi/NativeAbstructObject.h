@@ -246,6 +246,7 @@ namespace MetaFrame {
         
         HWND hWindow;
 
+        Point mousePos;
 
         /*            events            */
     public:

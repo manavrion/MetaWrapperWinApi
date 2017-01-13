@@ -81,7 +81,7 @@ namespace MetaFrame {
             capturedZone = null;
 
             if (!captiredElements.empty()) {
-                bind(captiredElements);
+                rebind(captiredElements);
             }
             
 
@@ -90,31 +90,42 @@ namespace MetaFrame {
 
     }
 
-    void Controllers::addDragAndDropActions(FrameObject *frameObject) {
 
-        frameObject->clearMouseDraggedListeners();
-        frameObject->clearMousePressedListeners();
-        frameObject->clearMouseDoubleClickedListeners();
-        frameObject->clearPropertyChangedListeners();
+    void Controllers::addListenersToElement(FrameObject *frameObject) {
 
-        frameObject->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            if (!this->isBinded(sender) || capturedZone != null) {
+        frameObject->clearAllListeners();
+        
+        frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
+            if (!isBinded(sender)) {
+                rebind(sender);
+            }            
+        });
+
+        static Point pnt;
+
+        frameObject->addMouseReleasedListener([&](FrameObject *sender, const MouseEventInfo &event) {
+            pnt = Point(0, 0);
+        });
+
+        frameObject->addMouseDraggedListener([&](FrameObject *sender, const MouseEventInfo &event) {
+            if (!isBinded(sender) || capturedZone != null) {
                 return;
             }
-
-            sender->setX(event.xOnParent - sender->getWidth() / 2);
-            sender->setY(event.yOnParent - sender->getHeight() / 2);
+            if (pnt == Point(0, 0)) {
+                pnt = Point(event.xOnParent, event.yOnParent);
+                return;
+            }      
 
             for (auto &ob : controls) {
+                ob->captured->setX(ob->captured->getX() - (pnt.x - event.xOnParent));
+                ob->captured->setY(ob->captured->getY() - (pnt.y - event.yOnParent));
                 ob->updatePosition();
             }
             editorSpace->repaint();
             sender->repaint();
+            pnt = Point(event.xOnParent, event.yOnParent);
         });
 
-        frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            rebind(sender);
-        });
 
         frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (!this->isBinded(sender)) {
@@ -144,33 +155,19 @@ namespace MetaFrame {
 
     }
 
+
     void Controllers::rebind(FrameObject * frameObject) {
-        clearBind();
-
-        controls.push_back(new Control(frameObject, editorSpace));
-
-        addDragAndDropActions(frameObject);
-
-
-        panelProperty = new PanelProperty(frameObject);
-        panelTool->add(panelProperty);
-        panelProperty
-            ->setHorizontalAlignment(HorizontalAlignment::Stretch)
-            ->setVerticalAlignment(VerticalAlignment::Bottom)
-            ->setHeight(200);
-        panelTool->pack();
-        panelProperty->build();
-
+        rebind(ArrayList<FrameObject*>({ frameObject }));
     }
 
-    void Controllers::bind(ArrayList<FrameObject*> frameObjects) {
+
+    void Controllers::rebind(ArrayList<FrameObject*> frameObjects) {
         clearBind();
 
         for (auto frameObject : frameObjects) {
             controls.push_back(new Control(frameObject, editorSpace));
-            addDragAndDropActions(frameObject);
-        }
-        
+            addListenersToElement(frameObject);
+        }        
 
         panelProperty = new PanelProperty(frameObjects);
         panelTool->add(panelProperty);
@@ -182,6 +179,7 @@ namespace MetaFrame {
         panelProperty->build();
     }
 
+
     void Controllers::clearBind() {
         delete dynamicTextField;
         dynamicTextField = null;
@@ -192,6 +190,7 @@ namespace MetaFrame {
         }
         controls.clear();
     }
+
 
     Controllers::~Controllers() {}
 

@@ -48,18 +48,23 @@ namespace MetaFrame {
             if (eventInfo.wParam & MK_RBUTTON) event.rightButtonDown = true;
             if (eventInfo.wParam & MK_SHIFT)   event.shiftDown = true;*/
 
+            event.dx = nativeAbstructObject[hWnd].first->mousePos.x - event.x;
+            event.dy = nativeAbstructObject[hWnd].first->mousePos.y - event.y;
 
+            bool fl = true;
+            if (nativeAbstructObject[hWnd].first->mousePos.x == 0 && nativeAbstructObject[hWnd].first->mousePos.y == 0) {
+                fl = false;
+            }
 
-
-            if (wParam & MK_LBUTTON != 0) {
+            if (wParam & MK_LBUTTON != 0 && fl) {
                 nativeAbstructObject[hWnd].first->runMouseDraggedEvent(event);
             }
             //this->wmMouseEnter(event);
             //this->wmMouseExit(event);
 
             nativeAbstructObject[hWnd].first->runMouseMovedEvent(event);
-            //this->wmMouseMove(event);
-            //return 0;
+
+            nativeAbstructObject[hWnd].first->mousePos = Point(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
         }
 
         if (message == WM_LBUTTONDOWN && nativeAbstructObject.count(hWnd) != 0) {

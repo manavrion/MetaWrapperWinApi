@@ -41,12 +41,12 @@ namespace MetaFrame {
 
     public:
 
-        void addDragAndDropActions(FrameObject *frameObject);
+        void addListenersToElement(FrameObject *frameObject);
 
 
         void rebind(FrameObject *frameObject);
 
-        void bind(ArrayList<FrameObject*> objects);
+        void rebind(ArrayList<FrameObject*> objects);
 
         void clearBind();
 

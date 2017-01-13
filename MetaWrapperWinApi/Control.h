@@ -42,10 +42,10 @@ namespace MetaFrame {
             controlTop->repaint();
             controlButtom->repaint();
         }
+        FrameObject *captured;
     private:
         Panel *editorSpace;
 
-        FrameObject *captured;
 
         Panel *controlLeft = null;
         Panel *controlRight = null;
