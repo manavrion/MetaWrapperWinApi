@@ -128,9 +128,7 @@ namespace MetaFrame {
 
 
         frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            if (!this->isBinded(sender)) {
-                return;
-            }
+            rebind(sender);
 
             delete dynamicTextField;
             dynamicTextField = new TextField();
@@ -144,13 +142,13 @@ namespace MetaFrame {
                              })
             );
 
-
-            //editorSpace->add()
-            /*((FrameNode*)sender)->add((new TextField)
-                                      ->setMargin(0, 0, 0, 0)
-                                      ->setAlignment(Alignment::Center)
-            );*/
             editorSpace->build();
+        });
+
+        frameObject->addPropertyChangedListener([=](FrameObject *sender) {
+            if (dynamicTextField != null) {
+                dynamicTextField->setText(sender->getText());
+            }
         });
 
     }
