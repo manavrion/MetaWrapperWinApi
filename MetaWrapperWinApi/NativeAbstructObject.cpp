@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "NativeAbstructObject.h"
 
+#include "KeyEvent.h"
+
 namespace MetaFrame {
 
 
@@ -81,6 +83,33 @@ namespace MetaFrame {
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMouseDoubleClickedEvent(event);
+        }
+        if ((message == WM_KEYDOWN || message == WM_RBUTTONDBLCLK) && nativeAbstructObject.count(hWnd) != 0)
+        {
+            KeyEvent event;
+            event.code = KeyCodes(wParam); //Code
+
+            BYTE lpKeyState[256];
+            GetKeyboardState(lpKeyState);
+            ToUnicode(wParam, HIWORD(lParam) & 0xFF, lpKeyState, &event.key, 1, 0);
+
+            if (lParam && (0x1 << 30) == 0) {
+                //this->wmKeyDown(event);
+                nativeAbstructObject[hWnd].first->runKeyPressedEvent(event);
+            }
+            nativeAbstructObject[hWnd].first->runKeyTypedEvent(event);
+            //this->wmKeyTyped(event);            
+        }
+        if ((message == WM_KEYUP || message == WM_RBUTTONDBLCLK) && nativeAbstructObject.count(hWnd) != 0)
+        {
+            KeyEvent event;
+            event.code = KeyCodes(wParam); //Code
+
+            BYTE lpKeyState[256];
+            GetKeyboardState(lpKeyState);
+            ToUnicode(wParam, HIWORD(lParam) & 0xFF, lpKeyState, &event.key, 1, 0);
+            nativeAbstructObject[hWnd].first->runKeyReleasedEvent(event);
+            //this->wmKeyUp(event);
         }
         if (nativeAbstructObject.count(hWnd) != 0) {
             return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);

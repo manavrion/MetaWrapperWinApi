@@ -5,7 +5,7 @@
 #include "Rect.h"
 #include "Size.h"
 #include "Margin.h"
-
+#include "KeyEvent.h"
 #include "AbstructFrameAutoSettersAndGetters.h"
 
 namespace MetaFrame {
@@ -401,6 +401,7 @@ namespace MetaFrame {
         typedef std::function<void()> ActionFunctionVoid;
         typedef std::function<void(FrameObject *sender)> ActionFunction;
 
+        typedef std::function<void(FrameObject *sender, KeyEvent)> KeyFunction;
 
         virtual FrameObject *addMousePressedListener(MouseFunction f) {
             mousePressedEvents.push_back(f);
@@ -443,6 +444,20 @@ namespace MetaFrame {
         }
 
 
+        virtual FrameObject *addKeyPressedListener(KeyFunction buttonFunction) {
+            keyPressedEventFunctions.push_back(buttonFunction);
+            return this;
+        }
+        virtual FrameObject *addKeyReleasedListener(KeyFunction buttonFunction) {
+            keyReleasedEventFunctions.push_back(buttonFunction);
+            return this;
+        }
+        virtual FrameObject *addKeyTypedListener(KeyFunction buttonFunction) {
+            keyTypedEventFunctions.push_back(buttonFunction);
+            return this;
+        }
+
+
         void clearMousePressedListeners() {
             mousePressedEvents.clear();
         };
@@ -469,6 +484,32 @@ namespace MetaFrame {
             propertyChangedEventFunctions.clear();
         };
 
+
+        void clearKeyPressedListeners() {
+            keyPressedEventFunctions.clear();
+        };
+        void clearKeyReleasedListeners() {
+            keyReleasedEventFunctions.clear();
+        };
+        void clearKeyTypedListeners() {
+            keyTypedEventFunctions.clear();
+        };
+
+        void clearAllListeners() {
+            mousePressedEvents.clear();
+            mouseReleasedEvents.clear();
+            mouseDoubleClickedEvents.clear();
+            mouseDraggedEvents.clear();
+            mouseMovedEvents.clear();
+            actionEventFunctionsVoid.clear();
+            actionEventFunctionsSender.clear();
+            propertyChangedEventFunctions.clear();
+            keyPressedEventFunctions.clear();
+            keyReleasedEventFunctions.clear();
+            keyTypedEventFunctions.clear();
+        }
+
+
         protected:
 
             ArrayList<MouseFunction> mousePressedEvents;
@@ -483,6 +524,10 @@ namespace MetaFrame {
             ArrayList<ActionFunction> actionEventFunctionsSender;
 
             ArrayList<ActionFunction> propertyChangedEventFunctions;
+
+            ArrayList<KeyFunction> keyPressedEventFunctions;
+            ArrayList<KeyFunction> keyReleasedEventFunctions;
+            ArrayList<KeyFunction> keyTypedEventFunctions;
 
     protected:
         void runMousePressedEvent(MouseEventInfo event) {
@@ -594,6 +639,54 @@ namespace MetaFrame {
                 parent->runActionEvents();
             }
         }
+
+        void runKeyPressedEvent(KeyEvent event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < keyPressedEventFunctions.size(); i++) {
+                auto func = keyPressedEventFunctions[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
+            if (parent != null) {
+                parent->runKeyPressedEvent(event);
+            }
+        };
+
+        void runKeyReleasedEvent(KeyEvent event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < keyReleasedEventFunctions.size(); i++) {
+                auto func = keyReleasedEventFunctions[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
+            if (parent != null) {
+                parent->runKeyReleasedEvent(event);
+            }
+        };
+
+        void runKeyTypedEvent(KeyEvent event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < keyTypedEventFunctions.size(); i++) {
+                auto func = keyTypedEventFunctions[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
+            if (parent != null) {
+                parent->runKeyTypedEvent(event);
+            }
+        };
 
         virtual void runPropertyChangedEvents() {
             bool isDestr = false;

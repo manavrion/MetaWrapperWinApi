@@ -147,6 +147,7 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Editor.h" />
+    <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="PanelQueue.h" />
     <ClInclude Include="PanelRepare.h" />
