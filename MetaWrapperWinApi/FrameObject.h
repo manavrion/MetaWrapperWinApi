@@ -105,23 +105,27 @@ namespace MetaFrame {
         virtual FrameObject *setX(int x) {
             this->x = x;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setY(int y) {
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setPosition(int x, int y) {
             this->x = x;
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setPosition(Point point) {
             this->x = point.x;
             this->y = point.y;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
 
@@ -129,64 +133,78 @@ namespace MetaFrame {
             height = size.height;
             width = size.width;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setSize(int width, int height) {
             this->width = width;
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setWidth(int width) {
             this->width = width;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setHeight(int height) {
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setAutoWidth(bool autoWidth) {
             this->autoWidth = autoWidth;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setAutoHeight(bool autoHeight){
             this->autoHeight = autoHeight;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMinWidth(int minWidth){
             this->minWidth = minWidth;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMaxWidth(int maxWidth){
             this->maxWidth = maxWidth;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMinHeight(int minHeight){
             this->minHeight = minHeight;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMaxHeight(int maxHeight){
             this->maxHeight = maxHeight;
+            runPropertyChangedEvents();
             return this;
         };
                                  
         virtual FrameObject *setMargin(int left, int right, int top, int bottom) {
             this->margin = Margin(left, right, top, bottom);
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMargin(Margin margin) {
             this->margin = margin;
+            runPropertyChangedEvents();
             return this;
         };
                                  
         virtual FrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
             this->horizontalAlignment = horizontalAlignment;
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
             this->verticalAlignment = verticalAlignment;
+            runPropertyChangedEvents();
             return this;
         };
 
@@ -209,34 +227,40 @@ namespace MetaFrame {
                 default:
                     break;
             }
+            runPropertyChangedEvents();
             return this;
         };
 
         virtual FrameObject *setBackground(const Color &background){
             this->background = background;
             nativeSetBackground(background);
+            runPropertyChangedEvents();
             return this;
         }
         virtual FrameObject *setForeground(const Color &foreground){
             this->foreground = foreground;
             nativeSetForeground(foreground);
+            runPropertyChangedEvents();
             return this;
         }
 
         virtual FrameObject *setText(const String &text){
             this->text = text;
             nativeSetText(text);
+            runPropertyChangedEvents();
             return this;
         }
 
         virtual FrameObject *setLayout(Layout layout) {
             this->layout = layout;
+            runPropertyChangedEvents();
             return this;
         }
 
         virtual FrameObject *setBorder(Border border) {
             this->border = border;
             nativeSetBorder(border);
+            runPropertyChangedEvents();
             return this;
         }
 
@@ -359,6 +383,12 @@ namespace MetaFrame {
             return this;
         }
 
+        virtual FrameObject *addPropertyChangedListener(ActionFunction buttonFunction) {
+            propertyChangedEventFunctions.push_back(buttonFunction);
+            return this;
+        }
+
+
         void clearMousePressedListeners() {
             mousePressedEvents.clear();
         };
@@ -381,6 +411,10 @@ namespace MetaFrame {
             actionEventFunctionsSender.clear();
         };
 
+        void clearPropertyChangedListeners() {
+            propertyChangedEventFunctions.clear();
+        };
+
         protected:
 
             ArrayList<MouseFunction> mousePressedEvents;
@@ -393,6 +427,8 @@ namespace MetaFrame {
 
             ArrayList<ActionFunctionVoid> actionEventFunctionsVoid;
             ArrayList<ActionFunction> actionEventFunctionsSender;
+
+            ArrayList<ActionFunction> propertyChangedEventFunctions;
 
     protected:
         void runMousePressedEvent(MouseEventInfo event) {
@@ -443,7 +479,8 @@ namespace MetaFrame {
         void runMouseDoubleClickedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &func : mouseDoubleClickedEvents) {
+            for (int i = 0; i < mouseDoubleClickedEvents.size(); i++) {
+                auto func = mouseDoubleClickedEvents[i];
                 if (isDestr) { return; }
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
@@ -455,14 +492,28 @@ namespace MetaFrame {
         virtual void runActionEvents() {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &f : actionEventFunctionsVoid) {
+            for (int i = 0; i < actionEventFunctionsVoid.size(); i++) {
+                auto func = actionEventFunctionsVoid[i];
                 if (isDestr) { return; }
-                f();
+                func();
                 if (isDestr) { return; }
             }
-            for (auto &f : actionEventFunctionsSender) {
+            for (int i = 0; i < actionEventFunctionsSender.size(); i++) {
+                auto func = actionEventFunctionsSender[i];
                 if (isDestr) { return; }
-                f((FrameObject*)this);
+                func((FrameObject*)this);
+                if (isDestr) { return; }
+            }
+            isDestroyed = null;
+        }
+
+        virtual void runPropertyChangedEvents() {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < propertyChangedEventFunctions.size(); i++) {
+                auto func = propertyChangedEventFunctions[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this);
                 if (isDestr) { return; }
             }
             isDestroyed = null;

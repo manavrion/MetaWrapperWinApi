@@ -153,6 +153,10 @@ typedef std::function<void(FrameType *sender)> ActionFunction ## FrameType;\
         virtual FrameType*addMouseDoubleClickedListener(MouseFunction f) {\
             FrameObject::addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event){ f((FrameType*)sender, event); });\
             return this;\
-        }
+        }\
+        virtual FrameObject *addPropertyChangedListener(ActionFunction ## FrameType buttonFunction) {\
+            FrameObject::addActionListener([=](FrameObject *sender){ buttonFunction((FrameType*)sender); });\
+            return this;\
+        }\
         
 }
