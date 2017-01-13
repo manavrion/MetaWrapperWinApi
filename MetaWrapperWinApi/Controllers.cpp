@@ -15,6 +15,7 @@ namespace MetaFrame {
         frameObject->clearMouseDraggedListeners();
         frameObject->clearMousePressedListeners();
         frameObject->clearMouseDoubleClickedListeners();
+        frameObject->clearPropertyChangedListeners();
 
         frameObject->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (!this->isBinded(sender)) {

@@ -87,12 +87,7 @@ namespace MetaFrame {
                     }
                 })
             );
-            if (captures.size() == 1) {
-                captures.front()->addMouseDraggedListener([=](FrameObject *ob, const MouseEventInfo &m) {
-                    textFieldPosX->setText(ob->getX());
-                    textFieldPosY->setText(ob->getY());
-                });
-            }
+
             
 
 
