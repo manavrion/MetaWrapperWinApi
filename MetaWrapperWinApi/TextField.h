@@ -9,7 +9,9 @@ namespace MetaFrame {
 
     class TextField : public NativeTextField {
     public:
-        TextField() {};
+        TextField() {
+
+        };
 
         TextField *setPageUp() {
             nativeSetPageUp();

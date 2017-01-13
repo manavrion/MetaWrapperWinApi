@@ -2,13 +2,19 @@
 #include "Controllers.h"
 namespace MetaFrame {
 
-    Controllers::Controllers(Editor *editor, Panel *editorSpace)
-        : editor(editor), editorSpace(editorSpace)
+    Controllers::Controllers(Editor *editor, Panel *editorSpace, Panel *panelTool)
+        : editor(editor), editorSpace(editorSpace), panelTool(panelTool)
     {
-
+        editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
+            clearBind();
+        });
     }
 
     void Controllers::addDragAndDropActions(FrameObject *frameObject) {
+
+        frameObject->clearMouseDraggedListeners();
+        frameObject->clearMousePressedListeners();
+        frameObject->clearMouseDoubleClickedListeners();
 
         frameObject->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (!this->isBinded(sender)) {
@@ -26,8 +32,7 @@ namespace MetaFrame {
         });
 
         frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            clearBind();
-            controls.push_back(new Control(frameObject, editorSpace));
+            rebind(sender);
         });
 
         frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
@@ -64,6 +69,17 @@ namespace MetaFrame {
         controls.push_back(new Control(frameObject, editorSpace));
 
         addDragAndDropActions(frameObject);
+
+
+        panelProperty = new PanelProperty(frameObject);
+        panelTool->add(panelProperty);
+        panelProperty
+            ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+            ->setVerticalAlignment(VerticalAlignment::Bottom)
+            ->setHeight(200);
+        panelTool->pack();
+        panelProperty->build();
+
     }
 
     void Controllers::bind(ArrayList<FrameObject> objects) {}
@@ -71,6 +87,8 @@ namespace MetaFrame {
     void Controllers::clearBind() {
         delete dynamicTextField;
         dynamicTextField = null;
+        delete panelProperty;
+        panelProperty = null;
         for (auto ob : controls) {
             delete ob;
         }

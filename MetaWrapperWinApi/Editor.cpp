@@ -11,7 +11,7 @@ namespace MetaFrame {
         editorSpace(new Panel), 
         panelTool(new Panel) 
     {
-        control = new Controllers(this, editorSpace);
+        control = new Controllers(this, editorSpace, panelTool);
 
         setAlignment(Alignment::Center);
         setSize(820 + 230, 420 + 60);

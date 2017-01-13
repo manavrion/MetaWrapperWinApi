@@ -5,6 +5,8 @@
 #include "Label.h"
 #include "Editor.h"
 
+#include "PropertyMenu.h"
+
 namespace MetaFrame {
 
     class Control {
@@ -47,14 +49,17 @@ namespace MetaFrame {
 
     class Controllers {
     public:
-        Controllers(Editor *editor, Panel *editorSpace);
+        Controllers(Editor *editor, Panel *editorSpace, Panel *panelTool);
 
     protected:
         Editor *editor;
         Panel *editorSpace;
-        
+        Panel *panelTool;
+
         ArrayList<Control*> controls;
 
+
+        PanelProperty *panelProperty = null;
 
         TextField *dynamicTextField = null;
 

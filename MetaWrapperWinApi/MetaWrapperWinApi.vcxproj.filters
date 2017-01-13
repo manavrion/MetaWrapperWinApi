@@ -181,6 +181,7 @@
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
     <ClInclude Include="Controllers.h" />
+    <ClInclude Include="PropertyMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

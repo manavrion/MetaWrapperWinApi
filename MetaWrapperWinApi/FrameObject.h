@@ -398,7 +398,8 @@ namespace MetaFrame {
         void runMousePressedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &func : mousePressedEvents) {
+            for (int i = 0; i < mousePressedEvents.size(); i++) {
+                auto func = mousePressedEvents[i];
                 if (isDestr) { return; }
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
@@ -408,7 +409,8 @@ namespace MetaFrame {
         void runMouseReleasedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &func : mouseReleasedEvents) {
+            for (int i = 0; i < mouseReleasedEvents.size(); i++) {
+                auto func = mouseReleasedEvents[i];
                 if (isDestr) { return; }
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
@@ -418,7 +420,8 @@ namespace MetaFrame {
         void runMouseDraggedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &func : mouseDraggedEvents) {
+            for (int i = 0; i < mouseDraggedEvents.size(); i++) {
+                auto func = mouseDraggedEvents[i];
                 if (isDestr) { return; }
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
@@ -428,7 +431,8 @@ namespace MetaFrame {
         void runMouseMovedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
-            for (auto &func : mouseMovedEvents) {
+            for (int i = 0; i < mouseMovedEvents.size(); i++) {
+                auto func = mouseMovedEvents[i];
                 if (isDestr) { return; }
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }

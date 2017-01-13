@@ -14,8 +14,8 @@ namespace MetaFrame {
             height = 21;
 
             className = L"static";
-            style = SS_CENTER | SS_CENTERIMAGE | WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
-
+            style = SS_CENTER | SS_CENTERIMAGE  | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
+            //| WS_CLIPCHILDREN
             nativeSetBorder(Border::BORDER);
         };
 
