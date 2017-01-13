@@ -181,7 +181,6 @@
     <ClInclude Include="FrameObject.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="PropertyMenu.h" />
     <ClInclude Include="KeyEvent.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
@@ -195,6 +194,9 @@
       <Filter>EditorHeaders</Filter>
     </ClInclude>
     <ClInclude Include="Control.h">
+      <Filter>EditorHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="PropertyMenu.h">
       <Filter>EditorHeaders</Filter>
     </ClInclude>
   </ItemGroup>

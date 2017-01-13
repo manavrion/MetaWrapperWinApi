@@ -4,9 +4,10 @@
 
 namespace MetaFrame {
 
-    Control::Control(FrameObject * captured, Panel * editorSpace)
+    Control::Control(FrameObject * captured, Panel * editorSpace, ArrayList<Control*> *controls)
         : captured(captured),
-        editorSpace(editorSpace) 
+        editorSpace(editorSpace),
+        controls(controls)
     {
         Rect rect = captured->getRect();
 
@@ -17,64 +18,62 @@ namespace MetaFrame {
 
         updatePosition();
 
-        controlButtom->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            //sender.setX(event.xOnParent - 4);
-            sender->setY(event.yOnParent - 2);
-            captured->setHeight(event.yOnParent - 2 - captured->getY());
+        static Point pnt;
 
-            Rect rect = captured->getRect();
-            controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
-            controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
-            controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
-            //controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
-            captured->pack();
+        editorSpace->addMouseReleasedListener([&](FrameObject *sender, const MouseEventInfo &event) {
+            pnt = Point();
+        });
+
+        controlButtom->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
+            if (pnt == Point()) { pnt = Point(event.xOnParent, event.yOnParent); return;  }
+
+            for (auto capt : *controls) {
+                capt->captured->setHeight(capt->captured->getHeight() + (event.yOnParent - pnt.y));
+                capt->captured->pack();
+                capt->updatePosition();
+            }             
+
+            pnt = Point(event.xOnParent, event.yOnParent);
         });
 
         controlTop->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            sender->setY(event.yOnParent - 4);
-            captured->setY(event.yOnParent - 4 + sender->getHeight());
+            if (pnt == Point()) { pnt = Point(event.xOnParent, event.yOnParent); return; }
 
-            captured->setHeight(-captured->getY() + controlButtom->getY());
+            for (auto capt : *controls) {
+                capt->captured->setY(capt->captured->getY() + (event.yOnParent - pnt.y));
+                capt->captured->setHeight(capt->captured->getHeight() - (event.yOnParent - pnt.y));
+                capt->captured->pack();
+                capt->updatePosition();
+            }
 
-            Rect rect = captured->getRect();
-            controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
-            controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
-            //controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
-            controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
-            captured->pack();
+            pnt = Point(event.xOnParent, event.yOnParent);
         });
 
 
         controlRight->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            //sender.setX(event.xOnParent - 4);
-            sender->setX(event.xOnParent - 2);
-            captured->setWidth(event.xOnParent - 2 - captured->getX());
+            if (pnt == Point()) { pnt = Point(event.xOnParent, event.yOnParent); return; }
 
-            Rect rect = captured->getRect();
-            controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
-            //controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
-            controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
-            controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
-            captured->pack();
+            for (auto capt : *controls) {
+                capt->captured->setWidth(capt->captured->getWidth() + (event.xOnParent - pnt.x));
+                capt->captured->pack();
+                capt->updatePosition();
+            }
+
+            pnt = Point(event.xOnParent, event.yOnParent);
         });
 
         controlLeft->addMouseDraggedListener([=](FrameObject *sender, const MouseEventInfo &event) {
-            sender->setX(event.xOnParent - 4);
-            captured->setX(event.xOnParent - 4 + sender->getWidth());
+            if (pnt == Point()) { pnt = Point(event.xOnParent, event.yOnParent); return; }
 
-            captured->setWidth(-captured->getX() + controlRight->getX());
+            for (auto capt : *controls) {
+                capt->captured->setX(capt->captured->getX() + (event.xOnParent - pnt.x));
+                capt->captured->setWidth(capt->captured->getWidth() - (event.xOnParent - pnt.x));
+                capt->captured->pack();
+                capt->updatePosition();
+            }
 
-            Rect rect = captured->getRect();
-            //controlLeft->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4));
-            controlRight->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4));
-            controlTop->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8));
-            controlButtom->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height));
-            captured->pack();
+            pnt = Point(event.xOnParent, event.yOnParent);
         });
-
-
-
-
 
 
         editorSpace->add(controlLeft);
@@ -88,8 +87,6 @@ namespace MetaFrame {
 
         editorSpace->add(controlButtom);
         controlButtom->build();
-
-
 
     }
 

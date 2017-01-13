@@ -26,6 +26,7 @@ namespace MetaFrame {
             capturedZone->setPosition(event.x, event.y);
             editorSpace->add(capturedZone);
             capturedZone->setText(L"capture zone");
+            capturedZone->setSize(Size());
             capturedZone->build();
             *capturedPoint = {event.x, event.y};
         });
@@ -126,7 +127,6 @@ namespace MetaFrame {
             pnt = Point(event.xOnParent, event.yOnParent);
         });
 
-
         frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             rebind(sender);
 
@@ -163,11 +163,11 @@ namespace MetaFrame {
         clearBind();
 
         for (auto frameObject : frameObjects) {
-            controls.push_back(new Control(frameObject, editorSpace));
+            controls.push_back(new Control(frameObject, editorSpace, &controls));
             addListenersToElement(frameObject);
         }        
 
-        panelProperty = new PanelProperty(frameObjects);
+        panelProperty = new PanelProperty(&controls);
         panelTool->add(panelProperty);
         panelProperty
             ->setHorizontalAlignment(HorizontalAlignment::Stretch)

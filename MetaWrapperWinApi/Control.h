@@ -9,7 +9,7 @@ namespace MetaFrame {
 
     class Control {
     public:
-        Control(FrameObject * captured, Panel *editorSpace);
+        Control(FrameObject * captured, Panel *editorSpace, ArrayList<Control*> *controls);
 
         bool isCaptured(FrameObject *captured) {
             if (this->captured == captured) {
@@ -20,22 +20,24 @@ namespace MetaFrame {
         }
 
         void updatePosition() {
+            Size size(12, 12);
+
             Rect rect = captured->getRect();
             controlLeft
-                ->setPosition(Point(rect.x - 8, rect.y + rect.height / 2 - 4))
-                ->setSize(8, 8);
+                ->setPosition(Point(rect.x - size.width, rect.y + rect.height / 2 - size.width / 2))
+                ->setSize(size);
 
             controlRight
-                ->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - 4))
-                ->setSize(8, 8);
+                ->setPosition(Point(rect.x + rect.width, rect.y + rect.height / 2 - size.width / 2))
+                ->setSize(size);
 
             controlTop
-                ->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y - 8))
-                ->setSize(8, 8);
+                ->setPosition(Point(rect.x + rect.width / 2 - size.height / 2, rect.y - size.height))
+                ->setSize(size);
 
             controlButtom
-                ->setPosition(Point(rect.x + rect.width / 2 - 4, rect.y + rect.height))
-                ->setSize(8, 8);
+                ->setPosition(Point(rect.x + rect.width / 2 - size.height / 2, rect.y + rect.height))
+                ->setSize(size);
 
             controlLeft->repaint();
             controlRight->repaint();
@@ -45,6 +47,8 @@ namespace MetaFrame {
         FrameObject *captured;
     private:
         Panel *editorSpace;
+
+        ArrayList<Control*> *controls;
 
 
         Panel *controlLeft = null;
