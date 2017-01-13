@@ -1,10 +1,12 @@
-#pragma once
+﻿#pragma once
 
 #include "Alignment.h"
 #include "Point.h"
 #include "Rect.h"
 #include "Size.h"
 #include "Margin.h"
+
+#include "AbstructFrameAutoSettersAndGetters.h"
 
 namespace MetaFrame {
 
@@ -23,7 +25,8 @@ namespace MetaFrame {
             foreground(),
             text(),
             layout(Layout::Simple),
-            isDestroyed(null)
+            isDestroyed(null),
+            parent(null)
         {};
 
         FrameObject(const FrameObject &abstructFrameObject) = delete;
@@ -58,6 +61,53 @@ namespace MetaFrame {
 
         Border border;
 
+
+        FrameObject *parent;
+        ArrayList<FrameObject*> childs;
+
+        virtual void packImpl();
+
+        void destroyImpl();
+
+    public:
+        virtual FrameObject *add(FrameObject *child) {
+            child->parent = this;
+            childs.push_back(child);
+            return this;
+        };
+
+        virtual void clearChilds() {
+            while (!childs.empty()) {
+                delete childs.front();
+            }
+        };
+
+        //рекурсивно задаёт элементам их положение и размер в соответствии с правилами, описывающими их
+        void pack() {
+            this->packImpl();
+            for (auto &ob : childs) {
+                ob->pack();
+            };
+        };
+
+        //рекурсивно создаёт элементы на форме
+        void build() {
+            this->nativeInit(parent);
+            for (auto object : childs) {
+                object->build();
+            }
+        }
+
+
+        void destroy() {
+            destroyImpl();
+            delete this;
+        }
+
+        void repaint() {
+            nativeRepaint();
+        }
+
     protected:
         //NativeObject must have
         virtual void nativeSetRect(const Rect &rect) = 0;
@@ -71,14 +121,6 @@ namespace MetaFrame {
         virtual bool nativeIsInitialzed() const = 0;
         virtual void nativeDestroy() = 0;
         virtual void nativeRepaint() = 0;
-
-    public:
-        //FrameNode must have
-        virtual void pack() = 0;
-        virtual void build() = 0;
-        virtual void repaint() = 0;
-        virtual void destroy() = 0;
-        virtual void clearChilds() = 0;
 
     public:
 

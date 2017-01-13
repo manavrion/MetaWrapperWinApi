@@ -177,9 +177,6 @@
     <ClInclude Include="FrameObject.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="FrameNode.h">
-      <Filter>MetaFrameElementsHeaders</Filter>
-    </ClInclude>
     <ClInclude Include="Controllers.h" />
     <ClInclude Include="PropertyMenu.h" />
   </ItemGroup>
@@ -201,9 +198,6 @@
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
     <ClCompile Include="Button.cpp">
-      <Filter>MetaFrameElements</Filter>
-    </ClCompile>
-    <ClCompile Include="AbstructFrameElement.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
     <ClCompile Include="NativePanel.cpp">
@@ -275,6 +269,9 @@
       <Filter>MetaTypes</Filter>
     </ClCompile>
     <ClCompile Include="Controllers.cpp" />
+    <ClCompile Include="FrameObject.cpp">
+      <Filter>MetaFrameElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

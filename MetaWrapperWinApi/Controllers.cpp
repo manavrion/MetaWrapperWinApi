@@ -10,10 +10,10 @@ namespace MetaFrame {
         });
 
         editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
-            capturedZone = new Panel;
+            /*capturedZone = new Panel;
             capturedZone->setPosition(event.x, event.y);
             editorSpace->add(capturedZone);
-            capturedZone->build();
+            capturedZone->build();*/
         });
 
         editorSpace->addMouseDraggedListener([=](Panel *panel, const MouseEventInfo &event) {

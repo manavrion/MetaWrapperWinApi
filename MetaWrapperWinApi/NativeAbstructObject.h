@@ -2,12 +2,12 @@
 #include <memory>
 #include <Windowsx.h>
 #include <functional>
-#include "FrameNode.h"
+#include "FrameObject.h"
 
 
 namespace MetaFrame {
 
-    class NativeAbstructObject : public FrameNode {
+    class NativeAbstructObject : public FrameObject {
 
     public:
         NativeAbstructObject(const String &className) :

@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h" />
     <ClInclude Include="Controllers.h" />
-    <ClInclude Include="FrameNode.h" />
     <ClInclude Include="FrameObject.h" />
     <ClInclude Include="Alignment.h" />
     <ClInclude Include="AutoService.h" />
@@ -191,13 +190,13 @@
     <ClInclude Include="EditorWrapped.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AbstructFrameElement.cpp" />
     <ClCompile Include="AutoService.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Controllers.cpp" />
     <ClCompile Include="Editor.cpp" />
+    <ClCompile Include="FrameObject.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImagePanel.cpp" />
