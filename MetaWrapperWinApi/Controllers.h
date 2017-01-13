@@ -56,6 +56,8 @@ namespace MetaFrame {
         Panel *editorSpace;
         Panel *panelTool;
 
+        Panel *capturedZone = null;
+
         ArrayList<Control*> controls;
 
 

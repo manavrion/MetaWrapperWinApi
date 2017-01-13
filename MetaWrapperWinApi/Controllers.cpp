@@ -8,6 +8,40 @@ namespace MetaFrame {
         editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
             clearBind();
         });
+
+        editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
+            capturedZone = new Panel;
+            capturedZone->setPosition(event.x, event.y);
+            editorSpace->add(capturedZone);
+            capturedZone->build();
+        });
+
+        editorSpace->addMouseDraggedListener([=](Panel *panel, const MouseEventInfo &event) {
+
+            if (capturedZone != null) {
+                int dx = event.x - capturedZone->getX();
+                int dy = event.y - capturedZone->getY();
+
+                if (dx > 0) {
+                    capturedZone->setWidth(dx);
+                } else {
+                    capturedZone->setWidth(capturedZone->getWidth() -dx);
+                    capturedZone->setX(event.x);
+                }
+
+                if (dy > 0) {
+                    capturedZone->setHeight(dy);
+                } else {
+                    capturedZone->setHeight(capturedZone->getHeight() -dy);
+                    capturedZone->setY(event.y);
+                }
+            }  
+        });
+
+        editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
+            delete capturedZone;
+        });
+
     }
 
     void Controllers::addDragAndDropActions(FrameObject *frameObject) {
