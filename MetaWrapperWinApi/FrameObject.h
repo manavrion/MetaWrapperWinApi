@@ -146,6 +146,7 @@ namespace MetaFrame {
             width = rect.width;
             height = rect.height;
             nativeSetRect(rect);
+            runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setRect(int x, int y, int width, int height) {
@@ -157,6 +158,7 @@ namespace MetaFrame {
             this->x = x;
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
+            runPropertyChangedEvents();
             return this;
         };
 

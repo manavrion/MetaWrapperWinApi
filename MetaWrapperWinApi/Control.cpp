@@ -9,6 +9,8 @@ namespace MetaFrame {
         editorSpace(editorSpace),
         controls(controls)
     {
+        captured->clearAllListeners();
+
         Rect rect = captured->getRect();
 
         controlLeft = new Panel;
@@ -87,6 +89,10 @@ namespace MetaFrame {
 
         editorSpace->add(controlButtom);
         controlButtom->build();
+
+        captured->addPropertyChangedListener([&](FrameObject *object) {
+            this->updatePosition();
+        });
 
     }
 

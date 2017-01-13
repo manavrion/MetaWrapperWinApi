@@ -94,7 +94,7 @@ namespace MetaFrame {
 
     void Controllers::addListenersToElement(FrameObject *frameObject) {
 
-        frameObject->clearAllListeners();
+        //frameObject->clearAllListeners();
         
         frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (!isBinded(sender)) {
@@ -120,7 +120,7 @@ namespace MetaFrame {
             for (auto &ob : controls) {
                 ob->captured->setX(ob->captured->getX() - (pnt.x - event.xOnParent));
                 ob->captured->setY(ob->captured->getY() - (pnt.y - event.yOnParent));
-                ob->updatePosition();
+                //ob->updatePosition();
             }
             editorSpace->repaint();
             sender->repaint();

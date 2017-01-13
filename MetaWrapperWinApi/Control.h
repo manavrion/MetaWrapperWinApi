@@ -19,6 +19,8 @@ namespace MetaFrame {
             }
         }
 
+        FrameObject *captured;
+    private:
         void updatePosition() {
             Size size(12, 12);
 
@@ -44,8 +46,6 @@ namespace MetaFrame {
             controlTop->repaint();
             controlButtom->repaint();
         }
-        FrameObject *captured;
-    private:
         Panel *editorSpace;
 
         ArrayList<Control*> *controls;
