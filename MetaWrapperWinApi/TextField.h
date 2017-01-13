@@ -38,7 +38,7 @@ namespace MetaFrame {
 
     public:
         ADD_SET_OF_SETTERS(TextField);
-        ~TextField() {};
+        virtual ~TextField() {};
     };
 
 }

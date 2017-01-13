@@ -138,17 +138,17 @@ namespace MetaFrame {
             );
 
 
-            /*for (auto ob : captures) {
-                ob->addPropertyChangedListener([=](FrameObject *frameObject) {
-                    for (auto ob : captures) {
-                        if (frameObject->getWidth() != ob->getWidth()) {
+            for (auto ob : *controls) {
+                ob->captured->addPropertyChangedListener([=](FrameObject *frameObject) {
+                    for (auto ob : *controls) {
+                        if (frameObject->getWidth() != ob->captured->getWidth()) {
                             return;
                         }
                     }
-                    textFieldWidth->setText(ob->getWidth());
-                    textFieldHeight->setText(ob->getHeight());
+                    textFieldWidth->setText(ob->captured->getWidth());
+                    textFieldHeight->setText(ob->captured->getHeight());
                 });
-            }*/
+            }
 
             if (controls->size() == 1) {
                 controls->front()->captured->addPropertyChangedListener([=](FrameObject *ob) {

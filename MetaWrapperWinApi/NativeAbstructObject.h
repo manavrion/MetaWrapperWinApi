@@ -248,12 +248,9 @@ namespace MetaFrame {
 
         Point mousePos;
 
-        /*            events            */
-    public:
-
 
     protected:
-        virtual ~NativeAbstructObject();;
+        virtual ~NativeAbstructObject();
     };
 
 

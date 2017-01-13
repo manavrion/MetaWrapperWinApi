@@ -28,7 +28,7 @@ namespace MetaFrame {
 
     public:
         ADD_SET_OF_SETTERS(Window);
-        ~Window() {};
+        virtual ~Window() {};
     };
 
 }

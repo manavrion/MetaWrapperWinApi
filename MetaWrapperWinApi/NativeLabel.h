@@ -35,7 +35,7 @@ namespace MetaFrame {
 
 
     public:
-        ~NativeLabel() {};
+        virtual ~NativeLabel() {};
     };
 
 

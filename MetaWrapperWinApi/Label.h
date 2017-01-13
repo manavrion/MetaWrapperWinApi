@@ -19,7 +19,7 @@ namespace MetaFrame {
     public:
         ADD_SET_OF_SETTERS(Label);
 
-        ~Label() {};
+        virtual ~Label() {};
     };
 
 }

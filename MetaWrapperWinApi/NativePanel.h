@@ -46,7 +46,7 @@ namespace MetaFrame {
     public:
 
 
-        ~NativePanel() {};
+        virtual ~NativePanel() {};
     };
 
 }

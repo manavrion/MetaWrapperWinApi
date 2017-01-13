@@ -49,7 +49,7 @@ namespace MetaFrame {
     public:
 
 
-        ~NativeImagePanel() {};
+        virtual ~NativeImagePanel() {};
     };
 
 

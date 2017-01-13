@@ -109,7 +109,7 @@ namespace MetaFrame {
         };
 
     public:
-        ~NativeWindow() {};
+        virtual ~NativeWindow() {};
     };
 
 }

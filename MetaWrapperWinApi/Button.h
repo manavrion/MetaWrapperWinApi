@@ -18,7 +18,7 @@ namespace MetaFrame {
     public:
         ADD_SET_OF_SETTERS(Button);
 
-        ~Button() {};
+        virtual ~Button() {};
     };
 
 }

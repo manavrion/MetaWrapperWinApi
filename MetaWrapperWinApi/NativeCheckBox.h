@@ -41,7 +41,7 @@ namespace MetaFrame {
 
 
     public:
-        ~NativeCheckBox() {};
+        virtual ~NativeCheckBox() {};
     };
 
 

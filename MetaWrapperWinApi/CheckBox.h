@@ -26,7 +26,7 @@ namespace MetaFrame {
 
     public:
         ADD_SET_OF_SETTERS(CheckBox);
-        ~CheckBox() {};
+        virtual ~CheckBox() {};
     };
 
 

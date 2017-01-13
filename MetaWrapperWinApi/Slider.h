@@ -66,7 +66,7 @@ namespace MetaFrame {
     public:
         ADD_SET_OF_SETTERS(Slider);
 
-        ~Slider() {};
+        virtual ~Slider() {};
     };
 
 }

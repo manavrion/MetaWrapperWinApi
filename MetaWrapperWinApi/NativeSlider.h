@@ -63,7 +63,7 @@ namespace MetaFrame {
 
 
     public:
-        ~NativeSlider() {};
+        virtual ~NativeSlider() {};
     };
 
 }

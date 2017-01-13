@@ -23,7 +23,7 @@ namespace MetaFrame {
 
     public:
         ADD_SET_OF_SETTERS(ImagePanel);
-        ~ImagePanel() {};
+        virtual ~ImagePanel() {};
     };
 
 

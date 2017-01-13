@@ -68,7 +68,7 @@ namespace MetaFrame {
 
 
     public:
-        ~NativeTextField() {};
+        virtual ~NativeTextField() {};
     };
 
 }

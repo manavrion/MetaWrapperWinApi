@@ -29,7 +29,7 @@ namespace MetaFrame {
 
 
     public:
-        ~NativeButton() {};
+        virtual ~NativeButton() {};
     };
 
 }

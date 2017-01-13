@@ -33,7 +33,7 @@ namespace MetaFrame {
 
     public:
         ADD_SET_OF_SETTERS(Panel);
-        ~Panel() {};
+        virtual ~Panel() {};
     };
 
 
