@@ -21,6 +21,7 @@ namespace MetaFrame {
                 }
             }
             delete capturedZone;
+            capturedZone = null;
             capturedZone = new Panel;
             capturedZone->setPosition(event.x, event.y);
             editorSpace->add(capturedZone);
@@ -53,8 +54,38 @@ namespace MetaFrame {
         });
 
         editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
+            for (auto ob : editorSpace->getChilds()) {
+                if (ob == capturedZone) {
+                    continue;
+                }
+                if (ob->getRect().contains(event.x, event.y)) {
+                    return;
+                }
+            }
+            if (editorSpace == null) {
+                return;
+            }
+            
+            clearBind();
+
+            ArrayList<FrameObject*> captiredElements;
+
+           for (auto elem : editorSpace->getChilds()) {
+                if (elem != capturedZone) {
+                    if (capturedZone->getRect().contains(elem->getRect())) {
+                        captiredElements.push_back(elem);
+                    }
+                }
+            }
             delete capturedZone;
             capturedZone = null;
+
+            if (!captiredElements.empty()) {
+                bind(captiredElements);
+            }
+            
+
+
         });
 
     }
@@ -132,7 +163,24 @@ namespace MetaFrame {
 
     }
 
-    void Controllers::bind(ArrayList<FrameObject> objects) {}
+    void Controllers::bind(ArrayList<FrameObject*> frameObjects) {
+        clearBind();
+
+        for (auto frameObject : frameObjects) {
+            controls.push_back(new Control(frameObject, editorSpace));
+            addDragAndDropActions(frameObject);
+        }
+        
+
+        panelProperty = new PanelProperty(frameObjects);
+        panelTool->add(panelProperty);
+        panelProperty
+            ->setHorizontalAlignment(HorizontalAlignment::Stretch)
+            ->setVerticalAlignment(VerticalAlignment::Bottom)
+            ->setHeight(200);
+        panelTool->pack();
+        panelProperty->build();
+    }
 
     void Controllers::clearBind() {
         delete dynamicTextField;

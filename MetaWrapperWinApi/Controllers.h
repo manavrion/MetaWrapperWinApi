@@ -11,12 +11,6 @@
 
 namespace MetaFrame {
 
-    
-
-
-
-
-
     class Controllers {
     public:
         Controllers(Editor *editor, Panel *editorSpace, Panel *panelTool);
@@ -52,7 +46,7 @@ namespace MetaFrame {
 
         void rebind(FrameObject *frameObject);
 
-        void bind(ArrayList<FrameObject> objects);
+        void bind(ArrayList<FrameObject*> objects);
 
         void clearBind();
 

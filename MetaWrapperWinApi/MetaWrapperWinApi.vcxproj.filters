@@ -34,6 +34,12 @@
     <Filter Include="Auto Service Headers">
       <UniqueIdentifier>{f30c2099-e595-42e4-ac06-fe7b3c5c32a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="EditorHeaders">
+      <UniqueIdentifier>{47bb201b-d7ca-4186-82d0-9330b26ad868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorCpps">
+      <UniqueIdentifier>{73b39120-91fd-4948-b175-e91eb28d86c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -166,23 +172,31 @@
       <Filter>Auto Service Headers</Filter>
     </ClInclude>
     <ClInclude Include="AutoService.h" />
-    <ClInclude Include="Editor.h" />
     <ClInclude Include="MouseEvent.h">
       <Filter>MetaTypes</Filter>
     </ClInclude>
-    <ClInclude Include="EditorWrapped.h" />
     <ClInclude Include="AbstructFrameAutoSettersAndGetters.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
     <ClInclude Include="FrameObject.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="Controllers.h" />
     <ClInclude Include="PropertyMenu.h" />
     <ClInclude Include="KeyEvent.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
-    <ClInclude Include="Control.h" />
+    <ClInclude Include="Editor.h">
+      <Filter>EditorHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWrapped.h">
+      <Filter>EditorHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Controllers.h">
+      <Filter>EditorHeaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Control.h">
+      <Filter>EditorHeaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -265,18 +279,24 @@
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
     <ClCompile Include="AutoService.cpp" />
-    <ClCompile Include="Editor.cpp" />
     <ClCompile Include="User.cpp">
       <Filter>Auto Service Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>MetaTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Controllers.cpp" />
     <ClCompile Include="FrameObject.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
-    <ClCompile Include="Control.cpp" />
+    <ClCompile Include="Editor.cpp">
+      <Filter>EditorCpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Controllers.cpp">
+      <Filter>EditorCpps</Filter>
+    </ClCompile>
+    <ClCompile Include="Control.cpp">
+      <Filter>EditorCpps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">

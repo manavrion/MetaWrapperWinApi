@@ -415,6 +415,9 @@ namespace MetaFrame {
         }
 
         Rect getRect() const {
+            if (this == null) {
+                return Rect();
+            }
             return Rect(x, y, width, height);
         };
 
