@@ -7,15 +7,13 @@ namespace MetaFrame {
     class NativePanel : public NativeAbstructObject {
     public:
         NativePanel()
-            : NativeAbstructObject(L"static") {
+            : NativeAbstructObject(L"static", 
+              SS_CENTER | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE | SS_NOTIFY) 
+        {
             x = 10;
             y = 10;
             width = 73;
             height = 21;
-
-            className = L"static";
-            style = SS_CENTER | SS_CENTERIMAGE  | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
-            //| WS_CLIPCHILDREN
             nativeSetBorder(Border::BORDER);
         };
 

@@ -7,15 +7,13 @@ namespace MetaFrame {
     class NativeLabel : public NativeAbstructObject {
     public:
         NativeLabel()
-            : NativeAbstructObject(L"button") 
+            : NativeAbstructObject(L"static",
+              WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY) 
         {
             x = 10;
             y = 10;
             width = 73;
             height = 21;
-
-            style = WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
-            className = L"static";
         };
 
     protected:

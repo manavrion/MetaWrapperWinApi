@@ -10,16 +10,29 @@ namespace MetaFrame {
     class NativeAbstructObject : public FrameObject {
 
     public:
-        NativeAbstructObject(const String &className) :
-            hWindow(NULL), 
+        NativeAbstructObject(DWORD extendedStyle,
+                             const String &className,
+                             DWORD style) :
+            extendedStyle(extendedStyle),
             className(className),
-            extendedStyle(0), 
-            style(0),
-            hbrBkgnd(null)
+            style(style),
+            hbrBkgnd(null),
+            hWindow(null),
+            mousePos()
         {
 
         };
 
+        NativeAbstructObject(const String &className, DWORD style) :
+            extendedStyle(0),
+            className(className),
+            style(style),
+            hbrBkgnd(null),
+            hWindow(null),
+            mousePos() 
+        {
+
+        };
 
     protected:
 

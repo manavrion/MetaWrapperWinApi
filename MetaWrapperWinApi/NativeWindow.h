@@ -8,18 +8,16 @@ namespace MetaFrame {
     class NativeWindow : public NativeAbstructObject {
     public:
         NativeWindow(const String &name)
-            : hInstance(GetModuleHandle(0)), title(name), NativeAbstructObject(name)
+            : hInstance(GetModuleHandle(0)), 
+            title(name), 
+            NativeAbstructObject(name, 
+            WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE)
         {
             x = CW_USEDEFAULT;
             y = 0;
             width = CW_USEDEFAULT;
             height = 0;
             registerClass();
-            
-
-            style = WS_DLGFRAME | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZE;
-            text = name;
-
         };
 
         HWND getHWindow() {

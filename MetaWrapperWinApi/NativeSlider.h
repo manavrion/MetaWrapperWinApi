@@ -7,15 +7,13 @@ namespace MetaFrame {
     class NativeSlider : public NativeAbstructObject {
     public:
         NativeSlider()
-            : NativeAbstructObject(L"button") 
+            : NativeAbstructObject(TRACKBAR_CLASS, 
+              WS_CHILD | WS_VISIBLE | TBS_AUTOTICKS | TBS_ENABLESELRANGE)
         {
             x = 10;
             y = 10;
             width = 73;
             height = 21;
-
-            className = TRACKBAR_CLASS;
-            style = WS_CHILD | WS_VISIBLE | TBS_AUTOTICKS | TBS_ENABLESELRANGE;
         };
 
     protected:

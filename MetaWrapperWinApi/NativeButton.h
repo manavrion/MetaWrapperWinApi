@@ -5,17 +5,13 @@ namespace MetaFrame {
     class NativeButton : public NativeAbstructObject {
     public:
         NativeButton() 
-            : NativeAbstructObject(L"button")
+            : NativeAbstructObject(L"button", 
+              WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON)
         {
             x = 10;
             y = 10;
             width = 73;
             height = 21;
-
-            className = L"button";
-            style = WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
-
-
         };
 
 

@@ -7,15 +7,13 @@ namespace MetaFrame {
     class NativeImagePanel : public NativeAbstructObject {
     public:
         NativeImagePanel(Image &image)
-            : NativeAbstructObject(L"button"), image(image) 
+            : NativeAbstructObject(L"static",
+              WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY), image(image)
         {
             x = 10;
             y = 10;
             width = 73;
-            height = 21;
-
-            className = L"static";
-            style = WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | SS_NOTIFY;
+            height = 21;            
         };
 
 

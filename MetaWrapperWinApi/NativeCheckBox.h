@@ -8,15 +8,13 @@ namespace MetaFrame {
     class NativeCheckBox : public NativeAbstructObject {
     public:
         NativeCheckBox()
-            : NativeAbstructObject(L"button") 
+            : NativeAbstructObject(L"button",
+              BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON) 
         {
             x = 10;
             y = 10;
             width = 73;
-            height = 21;
-
-            className = L"button";
-            style = BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
+            height = 21;            
         };
 
     protected:

@@ -8,15 +8,13 @@ namespace MetaFrame {
     class NativeTextField : public NativeAbstructObject {
     public:
         NativeTextField()
-            : NativeAbstructObject(L"button") 
+            : NativeAbstructObject(L"edit",
+              ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON)
         {
             x = 10;
             y = 10;
             width = 73;
             height = 16;
-
-            className = L"edit";
-            style = ES_AUTOHSCROLL | WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON;
         };
 
 
