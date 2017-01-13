@@ -13,38 +13,40 @@ namespace MetaFrame {
             }
             clearBind();
         });
-
+        capturedZone = null;
         editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
-            /*capturedZone = new Panel;
+            capturedZone = new Panel;
             capturedZone->setPosition(event.x, event.y);
             editorSpace->add(capturedZone);
-            capturedZone->build();*/
+            capturedZone->build();
+            *capturedPoint = {event.x, event.y};
         });
 
         editorSpace->addMouseDraggedListener([=](Panel *panel, const MouseEventInfo &event) {
 
             if (capturedZone != null) {
-                int dx = event.x - capturedZone->getX();
-                int dy = event.y - capturedZone->getY();
+                int dx = event.x - capturedPoint->x;
+                int dy = event.y - capturedPoint->y;
 
-                if (dx > 0) {
+                if (dx >= 0) {
                     capturedZone->setWidth(dx);
                 } else {
-                    capturedZone->setWidth(capturedZone->getWidth() -dx);
+                    capturedZone->setWidth(capturedPoint->x - event.x);
                     capturedZone->setX(event.x);
                 }
 
-                if (dy > 0) {
+                if (dy >= 0) {
                     capturedZone->setHeight(dy);
                 } else {
-                    capturedZone->setHeight(capturedZone->getHeight() -dy);
+                    capturedZone->setHeight(capturedPoint->y - event.y);
                     capturedZone->setY(event.y);
                 }
             }  
         });
 
-        editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
+        editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
             delete capturedZone;
+            capturedZone = null;
         });
 
     }

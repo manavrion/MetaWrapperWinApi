@@ -57,6 +57,7 @@ namespace MetaFrame {
         Panel *panelTool;
 
         Panel *capturedZone = null;
+        Point *capturedPoint = new Point;
 
         ArrayList<Control*> controls;
 
