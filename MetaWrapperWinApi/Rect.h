@@ -122,6 +122,14 @@ namespace MetaFrame {
         }
 
 
+        friend bool operator==(const Rect &a, const Rect &b) {
+            return (a.x == b.x) && (a.y == b.y) && (a.width == b.width) && (a.height == b.height);
+        }
+
+        friend bool operator!=(const Rect &a, const Rect &b) {
+            return (a.x != b.x) || (a.y != b.y) || (a.width != b.width) || (a.height != b.height);
+        }
+
         //platform
         /*operator const Gdiplus::Rect() const;
         explicit operator const Gdiplus::RectF() const;*/

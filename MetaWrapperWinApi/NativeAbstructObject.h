@@ -138,6 +138,9 @@ namespace MetaFrame {
 
 
         virtual void createWindow(HWND hParentWindow) {
+            if (transparent != 255) {
+                extendedStyle |= WS_EX_LAYERED;
+            }
             hWindow = CreateWindowExW(
             /*_In_ DWORD dwExStyle,         */ extendedStyle,
             /*_In_opt_ LPCWSTR lpClassName, */ className,
@@ -159,6 +162,14 @@ namespace MetaFrame {
             SystemParametersInfo(SPI_GETNONCLIENTMETRICS, uiParam, &ncm, 0);
 
             SendMessage(hWindow, WM_SETFONT, (WPARAM)(CreateFontIndirect(&(ncm.lfMenuFont))), 0);
+
+            if (transparent != 255) {
+                //SetLayeredWindowAttributes(hWindow, 0, transparent, LWA_ALPHA);
+
+                long extstyle = GetWindowLong(hWindow, GWL_EXSTYLE);
+                SetWindowLong(hWindow, GWL_EXSTYLE, extstyle | WS_EX_LAYERED);
+                SetLayeredWindowAttributes(hWindow, 0, transparent, LWA_ALPHA);
+            }
         }
 
         virtual void bindWindowProc();

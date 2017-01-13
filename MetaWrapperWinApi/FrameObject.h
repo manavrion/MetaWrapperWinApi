@@ -138,6 +138,9 @@ namespace MetaFrame {
         //setters
 
         virtual FrameObject *setRect(Rect rect) {
+            if (Rect(x, y, width, height) == rect) {
+                return this;
+            }
             x = rect.x;
             y = rect.y;
             width = rect.width;
@@ -146,6 +149,9 @@ namespace MetaFrame {
             return this;
         };
         virtual FrameObject *setRect(int x, int y, int width, int height) {
+            if (Rect(this->x, this->y, this->width, this->height) == Rect(x, y, width, height)) {
+                return this;
+            }
             this->width = width;
             this->height = height;
             this->x = x;
@@ -156,18 +162,27 @@ namespace MetaFrame {
 
 
         virtual FrameObject *setX(int x) {
+            if (this->x == x) {
+                return this;
+            }
             this->x = x;
             nativeSetRect(Rect(x, y, width, height));
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setY(int y) {
+            if (this->y == y) {
+                return this;
+            }
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setPosition(int x, int y) {
+            if (this->x == x && this->y == y) {
+                return this;
+            }
             this->x = x;
             this->y = y;
             nativeSetRect(Rect(x, y, width, height));
@@ -175,6 +190,9 @@ namespace MetaFrame {
             return this;
         };
         virtual FrameObject *setPosition(Point point) {
+            if (Point(x, y) == point) {
+                return this;
+            }
             this->x = point.x;
             this->y = point.y;
             nativeSetRect(Rect(x, y, width, height));
@@ -183,6 +201,9 @@ namespace MetaFrame {
         };
 
         virtual FrameObject *setSize(Size size) {
+            if (Size(width, height) == size) {
+                return this;
+            }
             height = size.height;
             width = size.width;
             nativeSetRect(Rect(x, y, width, height));
@@ -190,6 +211,9 @@ namespace MetaFrame {
             return this;
         };
         virtual FrameObject *setSize(int width, int height) {
+            if (Size(this->width, this->height) == Size(width, height)) {
+                return this;
+            }
             this->width = width;
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
@@ -197,65 +221,101 @@ namespace MetaFrame {
             return this;
         };
         virtual FrameObject *setWidth(int width) {
+            if (this->width == width) {
+                return this;
+            }
             this->width = width;
             nativeSetRect(Rect(x, y, width, height));
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setHeight(int height) {
+            if (this->height == height) {
+                return this;
+            }
             this->height = height;
             nativeSetRect(Rect(x, y, width, height));
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setAutoWidth(bool autoWidth) {
+            if (this->autoWidth == autoWidth) {
+                return this;
+            }
             this->autoWidth = autoWidth;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setAutoHeight(bool autoHeight){
+            if (this->autoHeight == autoHeight) {
+                return this;
+            }
             this->autoHeight = autoHeight;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMinWidth(int minWidth){
+            if (this->minWidth == minWidth) {
+                return this;
+            }
             this->minWidth = minWidth;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMaxWidth(int maxWidth){
+            if (this->maxWidth == maxWidth) {
+                return this;
+            }
             this->maxWidth = maxWidth;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMinHeight(int minHeight){
+            if (this->minHeight == minHeight) {
+                return this;
+            }
             this->minHeight = minHeight;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMaxHeight(int maxHeight){
+            if (this->maxHeight == maxHeight) {
+                return this;
+            }
             this->maxHeight = maxHeight;
             runPropertyChangedEvents();
             return this;
         };
                                  
         virtual FrameObject *setMargin(int left, int right, int top, int bottom) {
+            if (this->margin == Margin(left, right, top, bottom)) {
+                return this;
+            }
             this->margin = Margin(left, right, top, bottom);
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setMargin(Margin margin) {
+            if (this->margin == margin) {
+                return this;
+            }
             this->margin = margin;
             runPropertyChangedEvents();
             return this;
         };
                                  
         virtual FrameObject *setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+            if (this->horizontalAlignment == horizontalAlignment) {
+                return this;
+            }
             this->horizontalAlignment = horizontalAlignment;
             runPropertyChangedEvents();
             return this;
         };
         virtual FrameObject *setVerticalAlignment(VerticalAlignment verticalAlignment) {
+            if (this->verticalAlignment == verticalAlignment) {
+                return this;
+            }
             this->verticalAlignment = verticalAlignment;
             runPropertyChangedEvents();
             return this;
@@ -285,12 +345,18 @@ namespace MetaFrame {
         };
 
         virtual FrameObject *setBackground(const Color &background){
+            if (this->background == background) {
+                return this;
+            }
             this->background = background;
             nativeSetBackground(background);
             runPropertyChangedEvents();
             return this;
         }
         virtual FrameObject *setForeground(const Color &foreground){
+            if (this->foreground == foreground) {
+                return this;
+            }
             this->foreground = foreground;
             nativeSetForeground(foreground);
             runPropertyChangedEvents();
@@ -298,6 +364,9 @@ namespace MetaFrame {
         }
 
         virtual FrameObject *setText(const String &text){
+            if (this->text == text) {
+                return this;
+            }
             this->text = text;
             nativeSetText(text);
             runPropertyChangedEvents();
@@ -305,12 +374,18 @@ namespace MetaFrame {
         }
 
         virtual FrameObject *setLayout(Layout layout) {
+            if (this->layout == layout) {
+                return this;
+            }
             this->layout = layout;
             runPropertyChangedEvents();
             return this;
         }
 
         virtual FrameObject *setBorder(Border border) {
+            if (this->border == border) {
+                return this;
+            }
             this->border = border;
             nativeSetBorder(border);
             runPropertyChangedEvents();
@@ -318,6 +393,9 @@ namespace MetaFrame {
         }
 
         virtual FrameObject *setTransparent(byte transparent) {
+            if (this->transparent == transparent) {
+                return this;
+            }
             this->transparent = transparent;
             nativeSetTransparent(transparent);
             runPropertyChangedEvents();

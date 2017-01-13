@@ -87,7 +87,12 @@ namespace MetaFrame {
                     }
                 })
             );
-
+            if (captures.size() == 1) {
+                captures.front()->addPropertyChangedListener([=](FrameObject *ob) {
+                    textFieldPosX->setText(ob->getX());
+                    textFieldPosY->setText(ob->getY());
+                });
+            }
             
 
 

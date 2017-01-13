@@ -7,41 +7,11 @@
 
 #include "PropertyMenu.h"
 
+#include "Control.h"
+
 namespace MetaFrame {
 
-    class Control {
-    public:
-        Control(FrameObject *captured, Panel *editorSpace);
-
-        bool isCaptured(FrameObject *captured) {
-            if (this->captured == captured) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        void updatePosition();
-    private:
-        Panel *editorSpace;
-
-        FrameObject *captured;
-
-        Panel *controlLeft = null;
-        Panel *controlRight = null;
-        Panel *controlTop = null;
-        Panel *controlButtom = null;
-        //TextField *controlText = null;
-        //Label *controlLabelText = null;
-        //Button *controlDeleteButton = null;
-    public:
-        ~Control() {
-            delete controlLeft;
-            delete controlRight;
-            delete controlTop;
-            delete controlButtom;
-        };
-    };
+    
 
 
 

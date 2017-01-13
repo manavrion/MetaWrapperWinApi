@@ -20,6 +20,16 @@ namespace MetaFrame {
             right(0),
             top(0),
             bottom(0) {};
+
+        friend bool operator==(const Margin &a, const Margin &b) {
+            return (a.left == b.left) && (a.right == b.right) && (a.top == b.top) && (a.bottom == b.bottom);
+        }
+
+        friend bool operator!=(const Margin &a, const Margin &b) {
+            return (a.left != b.left) || (a.right != b.right) || (a.top != b.top) || (a.bottom != b.bottom);
+        }
+
+
     };
 
 }

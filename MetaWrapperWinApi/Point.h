@@ -34,20 +34,22 @@ namespace MetaFrame {
         /*operator const Gdiplus::Point() const {
             return Gdiplus::Point(x, y);
         };*/
+        friend Point operator+(const Point &a, const Point &b) {
+            return Point(a.x + b.x, a.y + b.y);
+        };
+        friend Point operator-(const Point &a, const Point &b) {
+            return Point(a.x - b.x, a.y - b.y);
+        };
+        friend bool operator==(const Point &a, const Point &b) {
+            return (a.x == b.x) && (a.y == b.y);
+        };
+        friend bool operator!=(const Point &a, const Point &b) {
+            return !(a == b);
+        };
+
     };
 
-    Point operator+(const Point &a, const Point &b) {
-        return Point(a.x + b.x, a.y + b.y);
-    };
-    Point operator-(const Point &a, const Point &b) {
-        return Point(a.x - b.x, a.y - b.y);
-    };
-    bool operator==(const Point &a, const Point &b) {
-        return (a.x == b.x) && (a.y == b.y);
-    };
-    bool operator!=(const Point &a, const Point &b) {
-        return !(a == b);
-    };
+    
 
     struct PointF {
         PointF() : x(), y() {}
@@ -84,20 +86,20 @@ namespace MetaFrame {
         /*operator const Gdiplus::PointF() const {
             return Gdiplus::PointF(x, y);
         };*/
-
-    };
-
-    PointF operator+(const PointF &a, const PointF &b) {
+        friend PointF operator+(const PointF &a, const PointF &b) {
         return PointF(a.x + b.x, a.y + b.y);
     };
-    PointF operator-(const PointF &a, const PointF &b) {
+        friend PointF operator-(const PointF &a, const PointF &b) {
         return PointF(a.x - b.x, a.y - b.y);
     };
-    bool operator==(const PointF &a, const PointF &b) {
+        friend bool operator==(const PointF &a, const PointF &b) {
         return (abs(a.x - b.x) < 0.00001) && (abs(a.y - b.y) < 0.00001);
     };
-    bool operator!=(const PointF &a, const PointF &b) {
+        friend bool operator!=(const PointF &a, const PointF &b) {
         return !(a == b);
     };
+
+    };
+
 
 }

@@ -182,6 +182,7 @@
     <ClInclude Include="KeyEvent.h">
       <Filter>MetaFrameElementsHeaders</Filter>
     </ClInclude>
+    <ClInclude Include="Control.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -275,6 +276,7 @@
     <ClCompile Include="FrameObject.cpp">
       <Filter>MetaFrameElements</Filter>
     </ClCompile>
+    <ClCompile Include="Control.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MetaWrapperWinApi.rc">
