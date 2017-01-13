@@ -6,6 +6,11 @@ namespace MetaFrame {
         : editor(editor), editorSpace(editorSpace), panelTool(panelTool)
     {
         editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
+            for (auto ob : editorSpace->getChilds()) {
+                if (ob->getRect().contains(event.x, event.y)) {
+                    return;
+                }
+            }
             clearBind();
         });
 

@@ -72,6 +72,12 @@ namespace MetaFrame {
         void destroyImpl();
 
     public:
+
+        ArrayList<FrameObject*> &getChilds() {
+            return childs;
+        }
+
+
         virtual FrameObject *add(FrameObject *child) {
             child->parent = this;
             childs.push_back(child);
@@ -316,6 +322,10 @@ namespace MetaFrame {
             return y;
         };
 
+        Point getPosition() {
+            return Point(x, y);
+        }
+
         Rect getRect() const {
             return Rect(x, y, width, height);
         };
@@ -487,6 +497,8 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
+                event.x += x;
+                event.y += y;
                 parent->runMousePressedEvent(event);
             }
         };
@@ -502,6 +514,8 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
+                event.x += x;
+                event.y += y;
                 parent->runMouseReleasedEvent(event);
             }
         };
@@ -517,6 +531,8 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
+                event.x += x;
+                event.y += y;
                 parent->runMouseDraggedEvent(event);
             }
         };
@@ -532,6 +548,8 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
+                event.x += x;
+                event.y += y;
                 parent->runMouseMovedEvent(event);
             }
         };
@@ -548,6 +566,8 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
+                event.x += x;
+                event.y += y;
                 parent->runMouseDoubleClickedEvent(event);
             }
         };
