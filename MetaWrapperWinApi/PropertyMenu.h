@@ -27,14 +27,14 @@ namespace MetaFrame {
                 ->setHeight(14)
             );
 
-
+            TextField *textFieldText = new TextField;
             add((new Label)
                 ->setText(L"Текст:")
                 ->setHorizontalAlignment(HorizontalAlignment::Left)
                 ->setY(30)
                 ->setWidth(34)
             );
-            add((new TextField)
+            add(textFieldText
                 ->setHorizontalAlignment(HorizontalAlignment::Right)
                 ->setY(30)
                 ->setWidth(100)
@@ -49,6 +49,12 @@ namespace MetaFrame {
                     }
                 })
             );
+            if (captures.size() == 1) {
+                captures.front()->addPropertyChangedListener([=](FrameObject *ob) {
+                    textFieldText->setText(ob->getText());
+                });
+            }
+
 
 
             TextField *textFieldPosX = new TextField;
@@ -96,12 +102,15 @@ namespace MetaFrame {
             
 
 
+            TextField *textFieldWidth = new TextField;
+            TextField *textFieldHeight = new TextField;
+
             add((new Label)
                 ->setText(L"Размер:")
                 ->setHorizontalAlignment(HorizontalAlignment::Left)
                 ->setY(70)
             );
-            add((new TextField)
+            add(textFieldWidth
                 ->setPosition(100, 70)
                 ->setWidth(30)
                 ->setBorder(Border::SOFT_BEVEL)
@@ -115,7 +124,7 @@ namespace MetaFrame {
                     }
                 })
             );
-            add((new TextField)
+            add(textFieldHeight
                 ->setPosition(140, 70)
                 ->setWidth(30)
                 ->setBorder(Border::SOFT_BEVEL)
@@ -129,6 +138,13 @@ namespace MetaFrame {
                     }
                 })
             );
+
+            if (captures.size() == 1) {
+                captures.front()->addPropertyChangedListener([=](FrameObject *ob) {
+                    textFieldWidth->setText(ob->getWidth());
+                    textFieldHeight->setText(ob->getHeight());
+                });
+            }
 
 
 
