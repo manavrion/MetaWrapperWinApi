@@ -65,6 +65,8 @@ namespace MetaFrame {
         FrameObject *parent;
         ArrayList<FrameObject*> childs;
 
+
+    protected:
         virtual void packImpl();
 
         void destroyImpl();
@@ -482,7 +484,11 @@ namespace MetaFrame {
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runMousePressedEvent(event);
+            }
         };
         void runMouseReleasedEvent(MouseEventInfo event) {
             bool isDestr = false;
@@ -493,7 +499,11 @@ namespace MetaFrame {
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runMouseReleasedEvent(event);
+            }
         };
         void runMouseDraggedEvent(MouseEventInfo event) {
             bool isDestr = false;
@@ -504,7 +514,11 @@ namespace MetaFrame {
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runMouseDraggedEvent(event);
+            }
         };
         void runMouseMovedEvent(MouseEventInfo event) {
             bool isDestr = false;
@@ -515,7 +529,11 @@ namespace MetaFrame {
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runMouseMovedEvent(event);
+            }
         };
 
         void runMouseDoubleClickedEvent(MouseEventInfo event) {
@@ -527,7 +545,11 @@ namespace MetaFrame {
                 func((FrameObject*)this, event);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runMouseDoubleClickedEvent(event);
+            }
         };
 
 
@@ -546,7 +568,11 @@ namespace MetaFrame {
                 func((FrameObject*)this);
                 if (isDestr) { return; }
             }
+            if (isDestr) { return; }
             isDestroyed = null;
+            if (parent != null) {
+                parent->runActionEvents();
+            }
         }
 
         virtual void runPropertyChangedEvents() {
