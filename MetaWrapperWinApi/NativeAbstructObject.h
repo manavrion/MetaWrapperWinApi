@@ -84,6 +84,9 @@ namespace MetaFrame {
 
         }
 
+        void nativeSetTransparent(byte transparent)  override {
+            if (!nativeIsInitialzed()) return;
+        };
 
 
         virtual bool nativeIsInitialzed() const override {
@@ -233,18 +236,12 @@ namespace MetaFrame {
         HWND hWindow;
 
 
-
-
-
         /*            events            */
     public:
 
 
     protected:
-        virtual ~NativeAbstructObject() {
-            destroyImpl();
-            
-        };
+        virtual ~NativeAbstructObject();;
     };
 
 

@@ -61,6 +61,14 @@ namespace MetaFrame {
                 /*_In_opt_ HMENU hMenu,         */ null,
                 /*_In_opt_ HINSTANCE hInstance, */ GetModuleHandle(0),
                 /*_In_opt_ LPVOID lpParam);     */ NULL);
+
+            if (transparent != 255) {
+                SetLayeredWindowAttributes(hWindow, 0, transparent, LWA_ALPHA);
+
+                long extstyle = GetWindowLong(hWindow, GWL_EXSTYLE);
+                SetWindowLong(hWindow, GWL_EXSTYLE, extstyle | WS_EX_LAYERED);
+                SetLayeredWindowAttributes(hWindow, 0, transparent, LWA_ALPHA);
+            }
         }
     
 

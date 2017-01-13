@@ -26,7 +26,8 @@ namespace MetaFrame {
             text(),
             layout(Layout::Simple),
             isDestroyed(null),
-            parent(null)
+            parent(null),
+            transparent(255)
         {};
 
         FrameObject(const FrameObject &abstructFrameObject) = delete;
@@ -61,6 +62,7 @@ namespace MetaFrame {
 
         Border border;
 
+        byte transparent;
 
         FrameObject *parent;
         ArrayList<FrameObject*> childs;
@@ -129,6 +131,7 @@ namespace MetaFrame {
         virtual bool nativeIsInitialzed() const = 0;
         virtual void nativeDestroy() = 0;
         virtual void nativeRepaint() = 0;
+        virtual void nativeSetTransparent(byte transparent) = 0;
 
     public:
 
@@ -310,6 +313,13 @@ namespace MetaFrame {
         virtual FrameObject *setBorder(Border border) {
             this->border = border;
             nativeSetBorder(border);
+            runPropertyChangedEvents();
+            return this;
+        }
+
+        virtual FrameObject *setTransparent(byte transparent) {
+            this->transparent = transparent;
+            nativeSetTransparent(transparent);
             runPropertyChangedEvents();
             return this;
         }

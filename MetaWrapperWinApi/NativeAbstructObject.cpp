@@ -19,6 +19,11 @@ namespace MetaFrame {
         return CallWindowProc(nativeAbstructObject[hWnd].second, hWnd, message, wParam, lParam);
     }
 
+    NativeAbstructObject::~NativeAbstructObject() {
+        destroyImpl();
+        nativeAbstructObject.erase(hWindow);
+    }
+
 
 
     LRESULT CALLBACK nativeAbstructWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
