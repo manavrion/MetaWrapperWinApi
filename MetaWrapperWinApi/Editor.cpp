@@ -58,7 +58,9 @@ namespace MetaFrame {
                   ->setHorizontalAlignment(HorizontalAlignment::Right)
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 50, 10)
-                  ->addActionListener([&]() {this->createPanel(); }))
+                  ->addActionListener([&]() {
+                      createFrame(new EditPanel);
+                  }))
             ->add((new Label)
                   ->setText(L"Button")
                   ->setWidth(100)
@@ -70,7 +72,9 @@ namespace MetaFrame {
                   ->setHorizontalAlignment(HorizontalAlignment::Right)
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 90, 10)
-                  ->addActionListener([&]() { this->createButton(); }))
+                  ->addActionListener([&]() { 
+                      createFrame(new EditButton);
+                  }))
             ->add((new Label)
                   ->setText(L"Label")
                   ->setWidth(100)
@@ -82,7 +86,9 @@ namespace MetaFrame {
                   ->setHorizontalAlignment(HorizontalAlignment::Right)
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 130, 10)
-                  ->addActionListener([&]() { this->createLabel(); }))
+                  ->addActionListener([&]() { 
+                      createFrame(new EditLabel);
+                  }))
             ->add((new Label)
                   ->setText(L"Slider")
                   ->setWidth(100)
@@ -94,71 +100,22 @@ namespace MetaFrame {
                   ->setHorizontalAlignment(HorizontalAlignment::Right)
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 170, 10)
-                  ->addActionListener([&]() { this->createSlider(); }))
+                  ->addActionListener([&]() { 
+                      createFrame(new EditSlider);
+                  }))
 
         );
     }
 
+    void Editor::createFrame(FrameObject *frameObject) {
+        frameObject->setPosition(100, 100);
 
+        control->insertFrame->add(frameObject);
+        frameObject->build();
 
-     void Editor::createButton() {
-        EditButton *button = new EditButton;
+        control->rebind(frameObject);
 
-        button->addMouseReleasedListener([=](FrameObject *button, const MouseEventInfo &event) {
-            //control->clearBind();
-            //control->rebind(button);
-        });
-
-        button->setPosition(100, 100);
-
-        control->insertFrame->add(button);
-        button->build();
-
-        control->rebind(button);
-    }
-     void Editor::createSlider() {
-        EditSlider *panel = new EditSlider;
-
-        panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
-            //control->clearBind();
-            //control->rebind(panel);
-        });
-
-        control->insertFrame->add(panel);
-        panel->build();
-
-        control->rebind(panel);
-    }
-     void Editor::createLabel() {
-        EditLabel *panel = new EditLabel;
-
-        panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
-            //control->clearBind();
-            //control->rebind(panel);
-        });
-
-        control->insertFrame->add(panel);
-        panel->build();
-
-
-        control->rebind(panel);
-    }
-
-     
-     void Editor::createPanel() {
-        EditPanel *panel = new EditPanel;
-
-        panel->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
-            
-            //control->clearBind();
-            //control->rebind(panel);
-        });
-
-        control->insertFrame->add(panel);
-        panel->build();
-
-        control->rebind(panel);
-    }
+    }    
 
 
      Editor::~Editor() {

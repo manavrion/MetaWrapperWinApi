@@ -86,6 +86,11 @@ namespace MetaFrame {
             return this;
         };
 
+        virtual FrameObject *getParent() {
+            return parent;
+        };
+
+
         virtual void clearChilds() {
             while (!childs.empty()) {
                 delete childs.front();
@@ -637,7 +642,7 @@ namespace MetaFrame {
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                parent->runMousePressedEvent(event);
+                //parent->runMousePressedEvent(event);
             }
         };
         void runMouseReleasedEvent(MouseEventInfo event) {
@@ -654,7 +659,7 @@ namespace MetaFrame {
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                parent->runMouseReleasedEvent(event);
+                //parent->runMouseReleasedEvent(event);
             }
         };
         void runMouseDraggedEvent(MouseEventInfo event) {
@@ -671,7 +676,7 @@ namespace MetaFrame {
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                parent->runMouseDraggedEvent(event);
+                //parent->runMouseDraggedEvent(event);
             }
         };
         void runMouseMovedEvent(MouseEventInfo event) {
@@ -688,7 +693,7 @@ namespace MetaFrame {
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                parent->runMouseMovedEvent(event);
+                //parent->runMouseMovedEvent(event);
             }
         };
 
@@ -706,7 +711,7 @@ namespace MetaFrame {
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                parent->runMouseDoubleClickedEvent(event);
+                //parent->runMouseDoubleClickedEvent(event);
             }
         };
 
@@ -729,7 +734,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                parent->runActionEvents();
+                //parent->runActionEvents();
             }
         }
 
@@ -745,7 +750,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                parent->runKeyPressedEvent(event);
+                //parent->runKeyPressedEvent(event);
             }
         };
 
@@ -761,7 +766,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                parent->runKeyReleasedEvent(event);
+                //parent->runKeyReleasedEvent(event);
             }
         };
 
@@ -777,7 +782,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                parent->runKeyTypedEvent(event);
+                //parent->runKeyTypedEvent(event);
             }
         };
 

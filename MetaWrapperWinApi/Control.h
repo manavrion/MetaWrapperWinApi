@@ -9,7 +9,7 @@ namespace MetaFrame {
 
     class Control {
     public:
-        Control(FrameObject * captured, Panel *editorSpace, ArrayList<Control*> *controls);
+        Control(FrameObject * captured, FrameObject *editorSpace, ArrayList<Control*> *controls);
 
         bool isCaptured(FrameObject *captured) {
             if (this->captured == captured) {
@@ -20,6 +20,7 @@ namespace MetaFrame {
         }
 
         FrameObject *captured;
+        Point pnt;
     private:
         void updatePosition() {
             Size size(12, 12);
@@ -46,7 +47,7 @@ namespace MetaFrame {
             controlTop->repaint();
             controlButtom->repaint();
         }
-        Panel *editorSpace;
+        FrameObject *insertionSpace;
 
         ArrayList<Control*> *controls;
 

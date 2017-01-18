@@ -6,6 +6,13 @@ namespace MetaFrame {
         : editor(editor), editorSpace(editorSpace), panelTool(panelTool)
     {
 
+        
+        editor->addMouseReleasedListener([=](FrameObject *panel, const MouseEventInfo &event) {
+            clearBind();
+            insertFrame = editorSpace;
+        });
+
+
         insertFrame = editorSpace;
 
         editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
@@ -15,6 +22,8 @@ namespace MetaFrame {
                 }
             }
             clearBind();
+            insertFrame = editorSpace;
+            rebind(editorSpace);
         });
         capturedZone = null;
         editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
@@ -172,7 +181,7 @@ namespace MetaFrame {
         clearBind();
 
         for (auto frameObject : frameObjects) {
-            controls.push_back(new Control(frameObject, editorSpace, &controls));
+            controls.push_back(new Control(frameObject, insertFrame, &controls));
             addListenersToElement(frameObject);
         }    
 

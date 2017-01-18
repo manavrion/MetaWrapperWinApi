@@ -11,16 +11,9 @@ namespace MetaFrame {
     public:
         Editor(String text);
 
-        void createPanel();
+        void createFrame(FrameObject *frameObject);
 
-        void createButton();
-
-        void createSlider();
-
-        void createLabel();
-
-    protected:
-        
+    protected:        
 
         Panel *editorSpace;
         Panel *panelTool;        
