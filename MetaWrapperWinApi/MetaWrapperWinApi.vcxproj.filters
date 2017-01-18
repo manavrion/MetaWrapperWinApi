@@ -28,12 +28,6 @@
     <Filter Include="MetaTypes">
       <UniqueIdentifier>{a68ecc76-726d-4294-8835-ec64a0a7eba3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Auto Service Cpps">
-      <UniqueIdentifier>{36f2458a-714e-41ba-8a27-d2022bbd9b5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Auto Service Headers">
-      <UniqueIdentifier>{f30c2099-e595-42e4-ac06-fe7b3c5c32a7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="EditorHeaders">
       <UniqueIdentifier>{47bb201b-d7ca-4186-82d0-9330b26ad868}</UniqueIdentifier>
     </Filter>
@@ -144,34 +138,6 @@
     <ClInclude Include="Time.h">
       <Filter>MetaTypes</Filter>
     </ClInclude>
-    <ClInclude Include="WorkerCard.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Worker.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="PanelWorkersCreator.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="PanelUsersCreator.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="PanelRepare.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="PanelQueue.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Car.h">
-      <Filter>Auto Service Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="AutoService.h" />
     <ClInclude Include="MouseEvent.h">
       <Filter>MetaTypes</Filter>
     </ClInclude>
@@ -258,31 +224,6 @@
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>MetaTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="PanelQueue.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="PanelRepare.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="PanelUsersCreator.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="PanelWorkersCreator.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="Worker.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="WorkerCard.cpp">
-      <Filter>Auto Service Cpps</Filter>
-    </ClCompile>
-    <ClCompile Include="AutoService.cpp" />
-    <ClCompile Include="User.cpp">
-      <Filter>Auto Service Cpps</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>MetaTypes</Filter>

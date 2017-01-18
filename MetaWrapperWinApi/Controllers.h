@@ -15,10 +15,14 @@ namespace MetaFrame {
     public:
         Controllers(Editor *editor, Panel *editorSpace, Panel *panelTool);
 
+
+        FrameObject *insertFrame = null;
     protected:
         Editor *editor;
         Panel *editorSpace;
         Panel *panelTool;
+
+        
 
         Panel *capturedZone = null;
         Point *capturedPoint = new Point;
@@ -43,6 +47,7 @@ namespace MetaFrame {
 
         void addListenersToElement(FrameObject *frameObject);
 
+        void addListenersToInsert(FrameObject *frameObject);
 
         void rebind(FrameObject *frameObject);
 

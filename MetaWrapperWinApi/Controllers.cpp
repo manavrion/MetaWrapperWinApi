@@ -5,6 +5,9 @@ namespace MetaFrame {
     Controllers::Controllers(Editor *editor, Panel *editorSpace, Panel *panelTool)
         : editor(editor), editorSpace(editorSpace), panelTool(panelTool)
     {
+
+        insertFrame = editorSpace;
+
         editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
             for (auto ob : editorSpace->getChilds()) {
                 if (ob->getRect().contains(event.x, event.y)) {
@@ -153,6 +156,12 @@ namespace MetaFrame {
 
     }
 
+    void Controllers::addListenersToInsert(FrameObject *frameObject) {
+        frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
+            insertFrame = frameObject;
+        });        
+    }
+
 
     void Controllers::rebind(FrameObject * frameObject) {
         rebind(ArrayList<FrameObject*>({ frameObject }));
@@ -165,7 +174,11 @@ namespace MetaFrame {
         for (auto frameObject : frameObjects) {
             controls.push_back(new Control(frameObject, editorSpace, &controls));
             addListenersToElement(frameObject);
-        }        
+        }    
+
+        if (frameObjects.size() == 1) {
+            addListenersToInsert(frameObjects.front());
+        }
 
         panelProperty = new PanelProperty(&controls);
         panelTool->add(panelProperty);

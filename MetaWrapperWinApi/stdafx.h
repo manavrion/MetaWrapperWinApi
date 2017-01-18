@@ -31,6 +31,3 @@ using namespace MetaFrame;
 #include "Slider.h"
 #include "ImagePanel.h"
 
-
-
-#include "AutoService.h"

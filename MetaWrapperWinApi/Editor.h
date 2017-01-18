@@ -3,7 +3,6 @@
 #include "Window.h"
 #include "Panel.h"
 #include "EditorWrapped.h"
-//#include "Controllers.h"
 
 namespace MetaFrame {
 
@@ -20,17 +19,11 @@ namespace MetaFrame {
 
         void createLabel();
 
-        //void destroyControl();
     protected:
-
+        
 
         Panel *editorSpace;
-        Panel *panelTool;
-
-        //void rebind(Rect rect, FrameNode *element);
-
-
-        
+        Panel *panelTool;        
 
     public:
         ~Editor();
