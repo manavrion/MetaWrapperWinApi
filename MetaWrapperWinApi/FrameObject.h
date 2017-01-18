@@ -917,7 +917,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                //parent->runKeyPressedEvent(event);
+                parent->runKeyPressedEvent(event);
             }
         };
 
@@ -933,7 +933,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                //parent->runKeyReleasedEvent(event);
+                parent->runKeyReleasedEvent(event);
             }
         };
 
@@ -949,7 +949,7 @@ namespace MetaFrame {
             if (isDestr) { return; }
             isDestroyed = null;
             if (parent != null) {
-                //parent->runKeyTypedEvent(event);
+                parent->runKeyTypedEvent(event);
             }
         };
 

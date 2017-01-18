@@ -117,6 +117,23 @@ namespace MetaFrame {
 
         });
 
+
+        /*deleting elements*/
+        editor->addKeyTypedListener([=](FrameObject *sender, const KeyEvent &event) {
+            if (event.code == KeyCodes::KEY_DELETE) {
+
+                for (auto ob : controls) {
+                    if (editorSpace != ob->captured) {
+                        delete ob->captured;
+                    }
+                    delete ob;
+                }
+                controls.clear();
+
+                clearBind();
+            }
+        });
+
     }
 
 
@@ -167,6 +184,9 @@ namespace MetaFrame {
                 dynamicTextField->setText(sender->getText());
             }
         });
+
+        
+
 
     }
 

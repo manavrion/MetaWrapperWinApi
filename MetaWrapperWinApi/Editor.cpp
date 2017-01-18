@@ -108,7 +108,7 @@ namespace MetaFrame {
     }
 
     void Editor::createFrame(FrameObject *frameObject) {
-        frameObject->setPosition(100, 100);
+        frameObject->setPosition(control->insertFrame->getWidth()/2 - frameObject->getWidth()/2, control->insertFrame->getHeight()/2 - frameObject->getHeight() / 2);
 
         control->insertFrame->add(frameObject);
         frameObject->build();
