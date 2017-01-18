@@ -18,6 +18,7 @@ namespace MetaFrame {
             width = CW_USEDEFAULT;
             height = 0;
             registerClass();
+            text = name;
         };
 
         HWND getHWindow() {

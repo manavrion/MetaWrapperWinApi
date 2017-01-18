@@ -22,7 +22,7 @@ namespace MetaFrame {
                 }
             }
             clearBind();
-            insertFrame = editor;
+            insertFrame = editorSpace;
             rebind(editorSpace);
         });
 
