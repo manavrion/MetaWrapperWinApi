@@ -22,28 +22,33 @@ namespace MetaFrame {
                 }
             }
             clearBind();
-            insertFrame = editorSpace;
+            insertFrame = editor;
             rebind(editorSpace);
         });
+
+        /* capturedZone */
         capturedZone = null;
-        editorSpace->addMousePressedListener([=](Panel *panel, const MouseEventInfo &event) {
-            for (auto ob : editorSpace->getChilds()) {
-                if (ob->getRect().contains(event.x, event.y)) {
-                    return;
+        editor->addMousePressedRecListener([=](FrameObject *panel, const MouseEventInfo &event) {
+            if (event.isCtrlPressed == false) {
+                for (auto ob : editor->getChilds()) {
+                    if (ob->getRect().contains(event.x, event.y)) {
+                        return;
+                    }
                 }
             }
+            
             delete capturedZone;
             capturedZone = null;
             capturedZone = new Panel;
             capturedZone->setPosition(event.x, event.y);
-            editorSpace->add(capturedZone);
+            editor->add(capturedZone);
             capturedZone->setText(L"capture zone");
             capturedZone->setSize(Size());
             capturedZone->build();
             *capturedPoint = {event.x, event.y};
         });
 
-        editorSpace->addMouseDraggedListener([=](Panel *panel, const MouseEventInfo &event) {
+        editor->addMouseDraggedRecListener([=](FrameObject *panel, const MouseEventInfo &event) {
 
             if (capturedZone != null) {
                 int dx = event.x - capturedPoint->x;
@@ -66,16 +71,18 @@ namespace MetaFrame {
             }  
         });
 
-        editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
-            for (auto ob : editorSpace->getChilds()) {
+        editor->addMouseReleasedRecListener([=](FrameObject *panel, const MouseEventInfo &event) {
+            for (auto ob : editor->getChilds()) {
                 if (ob == capturedZone) {
                     continue;
                 }
                 if (ob->getRect().contains(event.x, event.y)) {
+                    /*delete capturedZone;
+                    capturedZone = null;*/
                     return;
                 }
             }
-            if (editorSpace == null) {
+            if (editor == null) {
                 return;
             }
             
@@ -83,7 +90,7 @@ namespace MetaFrame {
 
             ArrayList<FrameObject*> captiredElements;
 
-           for (auto elem : editorSpace->getChilds()) {
+           for (auto elem : editor->getChilds()) {
                 if (elem != capturedZone) {
                     if (capturedZone->getRect().contains(elem->getRect())) {
                         captiredElements.push_back(elem);
@@ -105,8 +112,6 @@ namespace MetaFrame {
 
 
     void Controllers::addListenersToElement(FrameObject *frameObject) {
-
-        //frameObject->clearAllListeners();
         
         frameObject->addMousePressedListener([=](FrameObject *sender, const MouseEventInfo &event) {
             if (!isBinded(sender)) {
@@ -114,29 +119,17 @@ namespace MetaFrame {
             }            
         });
 
-        static Point pnt;
 
-        frameObject->addMouseReleasedListener([&](FrameObject *sender, const MouseEventInfo &event) {
-            pnt = Point(0, 0);
-        });
-
-        frameObject->addMouseDraggedListener([&](FrameObject *sender, const MouseEventInfo &event) {
+        frameObject->addMouseDraggedListener([&](FrameObject *sender, const MouseEventInfo &event) {  
             if (!isBinded(sender) || capturedZone != null) {
                 return;
             }
-            if (pnt == Point(0, 0)) {
-                pnt = Point(event.xOnParent, event.yOnParent);
-                return;
-            }      
-
             for (auto &ob : controls) {
-                ob->captured->setX(ob->captured->getX() - (pnt.x - event.xOnParent));
-                ob->captured->setY(ob->captured->getY() - (pnt.y - event.yOnParent));
-                //ob->updatePosition();
+                ob->captured->setX(ob->captured->getX() - event.dx);
+                ob->captured->setY(ob->captured->getY() - event.dy);
             }
             editorSpace->repaint();
             sender->repaint();
-            pnt = Point(event.xOnParent, event.yOnParent);
         });
 
         frameObject->addMouseDoubleClickedListener([=](FrameObject *sender, const MouseEventInfo &event) {
@@ -181,6 +174,7 @@ namespace MetaFrame {
         clearBind();
 
         for (auto frameObject : frameObjects) {
+            frameObject->clearAllListeners();
             controls.push_back(new Control(frameObject, insertFrame, &controls));
             addListenersToElement(frameObject);
         }    
@@ -209,6 +203,18 @@ namespace MetaFrame {
             delete ob;
         }
         controls.clear();
+
+        editorSpace->clearAllListeners();
+        editorSpace->addMouseReleasedListener([=](Panel *panel, const MouseEventInfo &event) {
+            for (auto ob : editorSpace->getChilds()) {
+                if (ob->getRect().contains(event.x, event.y)) {
+                    return;
+                }
+            }
+            clearBind();
+            insertFrame = editor;
+            rebind(editorSpace);
+        });
     }
 
 

@@ -35,7 +35,7 @@ namespace MetaFrame {
         };
 
     protected:
-
+        Point mouseOldPos;
         /* FrameObject declared methods */
 
         virtual void nativeSetRect(const Rect &rect) override {

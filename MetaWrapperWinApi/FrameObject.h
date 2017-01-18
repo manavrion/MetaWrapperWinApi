@@ -527,6 +527,40 @@ namespace MetaFrame {
         };
 
 
+
+        virtual FrameObject *addMousePressedRecListener(MouseFunction f) {
+            mousePressedEventsRec.push_back(f);
+            return this;
+        };
+
+        virtual FrameObject *addMouseReleasedRecListener(MouseFunction f) {
+            mouseReleasedEventsRec.push_back(f);
+            return this;
+        };
+
+        virtual FrameObject *addMouseDraggedRecListener(MouseFunction f) {
+            mouseDraggedEventsRec.push_back(f);
+            return this;
+        };
+
+        virtual FrameObject *addMouseMovedRecListener(MouseFunction f) {
+            mouseMovedEventsRec.push_back(f);
+            return this;
+        };
+
+        virtual FrameObject *addMouseDoubleClickedRecListener(MouseFunction f) {
+            mouseDoubleClickedEventsRec.push_back(f);
+            return this;
+        };
+
+
+
+
+
+
+
+
+
         virtual FrameObject *addActionListener(ActionFunctionVoid buttonFunction) {
             actionEventFunctionsVoid.push_back(buttonFunction);
             return this;
@@ -578,6 +612,28 @@ namespace MetaFrame {
             actionEventFunctionsSender.clear();
         };
 
+
+        void clearMousePressedRecListeners() {
+            mousePressedEventsRec.clear();
+        };
+        void clearMouseReleasedRecListeners() {
+            mouseReleasedEventsRec.clear();
+        };
+        void clearMouseDraggedRecListeners() {
+            mouseDraggedEventsRec.clear();
+        };
+        void clearMouseMovedRecListeners() {
+            mouseMovedEventsRec.clear();
+        };
+
+        void clearMouseDoubleClickedRecListeners() {
+            mouseMovedEventsRec.clear();
+        };
+
+
+
+
+
         void clearPropertyChangedListeners() {
             propertyChangedEventFunctions.clear();
         };
@@ -599,6 +655,13 @@ namespace MetaFrame {
             mouseDoubleClickedEvents.clear();
             mouseDraggedEvents.clear();
             mouseMovedEvents.clear();
+
+            mousePressedEventsRec.clear();
+            mouseReleasedEventsRec.clear();
+            mouseDoubleClickedEventsRec.clear();
+            mouseDraggedEventsRec.clear();
+            mouseMovedEventsRec.clear();
+
             actionEventFunctionsVoid.clear();
             actionEventFunctionsSender.clear();
             propertyChangedEventFunctions.clear();
@@ -617,6 +680,18 @@ namespace MetaFrame {
 
             ArrayList<MouseFunction> mouseDraggedEvents;
             ArrayList<MouseFunction> mouseMovedEvents;
+
+            //rec
+            ArrayList<MouseFunction> mousePressedEventsRec;
+            ArrayList<MouseFunction> mouseReleasedEventsRec;
+
+            ArrayList<MouseFunction> mouseDoubleClickedEventsRec;
+
+            ArrayList<MouseFunction> mouseDraggedEventsRec;
+            ArrayList<MouseFunction> mouseMovedEventsRec;
+
+
+
 
             ArrayList<ActionFunctionVoid> actionEventFunctionsVoid;
             ArrayList<ActionFunction> actionEventFunctionsSender;
@@ -639,12 +714,30 @@ namespace MetaFrame {
             }
             if (isDestr) { return; }
             isDestroyed = null;
+            runMousePressedEventRec(event);
+        };
+
+        void runMousePressedEventRec(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < mousePressedEventsRec.size(); i++) {
+                auto func = mousePressedEventsRec[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                //parent->runMousePressedEvent(event);
+                parent->runMousePressedEventRec(event);
             }
         };
+
+
+
+
         void runMouseReleasedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
@@ -656,12 +749,30 @@ namespace MetaFrame {
             }
             if (isDestr) { return; }
             isDestroyed = null;
+            runMouseReleasedEventRec(event);
+        };
+
+        void runMouseReleasedEventRec(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < mouseReleasedEventsRec.size(); i++) {
+                auto func = mouseReleasedEventsRec[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                //parent->runMouseReleasedEvent(event);
+                parent->runMouseReleasedEventRec(event);
             }
         };
+
+
+
+
         void runMouseDraggedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
@@ -673,12 +784,29 @@ namespace MetaFrame {
             }
             if (isDestr) { return; }
             isDestroyed = null;
+            runMouseDraggedEventRec(event);
+        };
+
+        void runMouseDraggedEventRec(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < mouseDraggedEventsRec.size(); i++) {
+                auto func = mouseDraggedEventsRec[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                //parent->runMouseDraggedEvent(event);
+                parent->runMouseDraggedEventRec(event);
             }
         };
+
+
+
         void runMouseMovedEvent(MouseEventInfo event) {
             bool isDestr = false;
             isDestroyed = &isDestr;
@@ -690,12 +818,28 @@ namespace MetaFrame {
             }
             if (isDestr) { return; }
             isDestroyed = null;
+            runMouseMovedEventRec(event);
+        };
+
+        void runMouseMovedEventRec(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < mouseMovedEventsRec.size(); i++) {
+                auto func = mouseMovedEventsRec[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                //parent->runMouseMovedEvent(event);
+                parent->runMouseMovedEventRec(event);
             }
         };
+
+
 
         void runMouseDoubleClickedEvent(MouseEventInfo event) {
             bool isDestr = false;
@@ -708,12 +852,35 @@ namespace MetaFrame {
             }
             if (isDestr) { return; }
             isDestroyed = null;
+            runMouseDoubleClickedEventRec(event);
+        };
+
+        void runMouseDoubleClickedEventRec(MouseEventInfo event) {
+            bool isDestr = false;
+            isDestroyed = &isDestr;
+            for (int i = 0; i < mouseDoubleClickedEventsRec.size(); i++) {
+                auto func = mouseDoubleClickedEventsRec[i];
+                if (isDestr) { return; }
+                func((FrameObject*)this, event);
+                if (isDestr) { return; }
+            }
+            if (isDestr) { return; }
+            isDestroyed = null;
             if (parent != null) {
                 event.x += x;
                 event.y += y;
-                //parent->runMouseDoubleClickedEvent(event);
+                parent->runMouseDoubleClickedEventRec(event);
             }
         };
+
+
+
+
+
+
+
+
+
 
 
         virtual void runActionEvents() {

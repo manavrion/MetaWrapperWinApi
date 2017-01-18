@@ -41,6 +41,7 @@ namespace MetaFrame {
             MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
+            if (wParam & MK_CONTROL) event.isCtrlPressed = true;
             /*        MouseEventInfo event(GET_X_LPARAM(eventInfo.lParam), GET_Y_LPARAM(eventInfo.lParam));
             if (eventInfo.wParam & MK_CONTROL) event.controlDown = true;
             if (eventInfo.wParam & MK_LBUTTON) event.leftButtonDown = true;
@@ -48,8 +49,8 @@ namespace MetaFrame {
             if (eventInfo.wParam & MK_RBUTTON) event.rightButtonDown = true;
             if (eventInfo.wParam & MK_SHIFT)   event.shiftDown = true;*/
 
-            event.dx = nativeAbstructObject[hWnd].first->mousePos.x - event.x;
-            event.dy = nativeAbstructObject[hWnd].first->mousePos.y - event.y;
+            event.dx = nativeAbstructObject[hWnd].first->mousePos.x - event.xOnParent;
+            event.dy = nativeAbstructObject[hWnd].first->mousePos.y - event.yOnParent;
 
             bool fl = true;
             if (nativeAbstructObject[hWnd].first->mousePos.x == 0 && nativeAbstructObject[hWnd].first->mousePos.y == 0) {
@@ -64,13 +65,15 @@ namespace MetaFrame {
 
             nativeAbstructObject[hWnd].first->runMouseMovedEvent(event);
 
-            nativeAbstructObject[hWnd].first->mousePos = Point(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+            nativeAbstructObject[hWnd].first->mousePos = Point(event.xOnParent, event.yOnParent);
         }
 
         if (message == WM_LBUTTONDOWN && nativeAbstructObject.count(hWnd) != 0) {
             MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
+
+            if (wParam & MK_CONTROL) event.isCtrlPressed = true;
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMousePressedEvent(event);
@@ -80,6 +83,8 @@ namespace MetaFrame {
             MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
+
+            if (wParam & MK_CONTROL) event.isCtrlPressed = true;
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMouseReleasedEvent(event);
@@ -90,6 +95,8 @@ namespace MetaFrame {
             MouseEventInfo event(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
             event.xOnParent += nativeAbstructObject[hWnd].first->getX();
             event.yOnParent += nativeAbstructObject[hWnd].first->getY();
+
+            if (wParam & MK_CONTROL) event.isCtrlPressed = true;
             //alt todo
             //event.causedby = MouseButton::LEFT;
             nativeAbstructObject[hWnd].first->runMouseDoubleClickedEvent(event);

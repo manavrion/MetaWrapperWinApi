@@ -15,6 +15,7 @@ namespace MetaFrame {
         int yOnParent;
         int dx;
         int dy;
+        bool isCtrlPressed = false;
     };
 
 }

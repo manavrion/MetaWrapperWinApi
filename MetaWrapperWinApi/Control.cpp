@@ -10,7 +10,7 @@ namespace MetaFrame {
         controls(controls)
         , pnt()
     {
-        captured->clearAllListeners();
+        insertionSpace = captured->getParent();
 
         Rect rect = captured->getRect();
 
