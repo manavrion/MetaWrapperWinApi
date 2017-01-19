@@ -16,6 +16,7 @@
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
 #define IDC_STATIC				-1
+#define IDB_BITMAP2                     130
 #endif
 // Next default values for new objects
 //
