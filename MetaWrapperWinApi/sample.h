@@ -7,7 +7,7 @@ int tmain(){
 
 
     //begin auto gen
-    gnwindow->setProperty(10, 30, 820, 420, L"Generated kek window")->add((new Panel)->setProperty(79, 103, 166, 156, L"")->add((new Panel)->setProperty(47, 68, 73, 21, L"")))->add((new Button)->setProperty(384, 206, 73, 21, L""))->add((new Button)->setProperty(381, 133, 73, 21, L""));
+    gnwindow->setProperty(10, 30, 820, 420, L"Generated kek window")->add((new Panel)->setProperty(79, 103, 166, 156, L"")->add((new Panel)->setProperty(47, 68, 73, 21, L"")))->add((new Button)->setProperty(384, 206, 73, 21, L""))->add((new Button)->setProperty(569, 348, 73, 21, L""))->add((new Panel)->setProperty(279, 27, 301, 119, L"")->add((new Button)->setProperty(52, 26, 73, 21, L"")));
     //end auto gen
 
 

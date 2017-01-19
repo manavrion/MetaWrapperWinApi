@@ -254,6 +254,30 @@ namespace MetaFrame {
         });
     }
 
+    void Controllers::allBind() {
+        clearBind();
+
+        ArrayList<FrameObject*> b;
+
+        Queue<FrameObject*> q;
+
+        q.push(editorSpace);
+
+        while (!q.empty()) {
+
+            FrameObject *obj = q.front();
+            q.pop();
+
+            b.push_back(obj);
+            for (auto ob : obj->getChilds()) {
+                q.push(ob);
+            }
+        }
+
+        rebind(b);
+
+    }
+
 
     Controllers::~Controllers() {}
 

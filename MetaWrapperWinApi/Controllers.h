@@ -55,7 +55,7 @@ namespace MetaFrame {
 
         void clearBind();
 
-
+        void allBind();
     public:
         ~Controllers();
     };

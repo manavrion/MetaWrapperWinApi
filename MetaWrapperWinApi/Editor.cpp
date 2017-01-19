@@ -330,6 +330,9 @@ namespace MetaFrame {
         editorSpace->repaint();
 
         cin.close();
+
+
+        control->allBind();
     }
 
 
