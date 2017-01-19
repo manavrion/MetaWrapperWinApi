@@ -4,6 +4,9 @@
 #include "Panel.h"
 #include "EditorWrapped.h"
 
+
+
+
 namespace MetaFrame {
 
     class Editor : public Window {
@@ -30,3 +33,6 @@ namespace MetaFrame {
 
 
 }
+
+
+

@@ -4,6 +4,27 @@
 
 #include <fstream>
 
+// Message handler for about box.
+INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam) {
+    UNREFERENCED_PARAMETER(lParam);
+    switch (message) {
+        case WM_INITDIALOG:
+            return (INT_PTR)TRUE;
+
+        case WM_COMMAND:
+            if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL) {
+                EndDialog(hDlg, LOWORD(wParam));
+                return (INT_PTR)TRUE;
+            }
+            break;
+    }
+    return (INT_PTR)FALSE;
+}
+
+
+
+
+
 namespace MetaFrame {
 
     static Controllers *control;
@@ -28,6 +49,7 @@ namespace MetaFrame {
             ->setHorizontalAlignment(HorizontalAlignment::Left)
             ->setVerticalAlignment(VerticalAlignment::Center)
             ->setMargin(10, 10, 30, 30));
+
 
         add(panelTool
             ->setWidth(200)
@@ -114,6 +136,15 @@ namespace MetaFrame {
                       FrameObject *obj = new Slider;
                       obj->initString = L"(new Slider)";
                       createFrame(obj);
+                  }))
+            ->add((new Button)
+                  ->setText(L"О программе")
+                  ->setHorizontalAlignment(HorizontalAlignment::Right)
+                  ->setVerticalAlignment(VerticalAlignment::Top)
+                  ->setWidth(130)
+                  ->setMargin(10, 10, 220, 10)
+                  ->addActionListener([=]() { 
+                      DialogBox(GetModuleHandle(0), MAKEINTRESOURCE(IDD_ABOUTBOX), this->getHWindow(), About);
                   }))
 
         );
