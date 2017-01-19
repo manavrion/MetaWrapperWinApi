@@ -149,6 +149,7 @@
     <ClInclude Include="KeyEvent.h" />
     <ClInclude Include="MouseEvent.h" />
     <ClInclude Include="PropertyMenu.h" />
+    <ClInclude Include="sample.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Image.h" />

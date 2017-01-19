@@ -20,7 +20,7 @@ namespace MetaFrame {
             hWindow(null),
             mousePos()
         {
-
+            brush = CreateSolidBrush(RGB(background.red, background.green, background.blue));
         };
 
         NativeAbstructObject(const String &className, DWORD style) :
@@ -31,10 +31,13 @@ namespace MetaFrame {
             hWindow(null),
             mousePos() 
         {
-
+            brush = CreateSolidBrush(RGB(background.red, background.green, background.blue));
         };
 
     protected:
+        HBRUSH brush;
+
+
         Point mouseOldPos;
         /* FrameObject declared methods */
 

@@ -8,7 +8,7 @@ namespace MetaFrame {
 
     static Controllers *control;
 
-    std::ifstream cin("main.h");  std::ofstream cout("main.h");
+    
 
 
     Editor::Editor(String text) 
@@ -16,6 +16,7 @@ namespace MetaFrame {
         editorSpace(new Panel), 
         panelTool(new Panel) 
     {
+        
 
         control = new Controllers(this, editorSpace, panelTool);
 
@@ -39,8 +40,8 @@ namespace MetaFrame {
             ->add((new Button)
                   ->setText(L"Сохранить")
                   ->setPosition(10, 26)
-                  ->addActionListener([]() {
-                        
+                  ->addActionListener([=]() {
+                        save();
                   })
             )
             ->add((new Button)
@@ -59,7 +60,9 @@ namespace MetaFrame {
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 50, 10)
                   ->addActionListener([&]() {
-                      createFrame(new EditPanel);
+                      FrameObject *obj = new Panel;
+                      obj->initString = L"(new Panel)";
+                      createFrame(obj);
                   }))
             ->add((new Label)
                   ->setText(L"Button")
@@ -73,7 +76,9 @@ namespace MetaFrame {
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 90, 10)
                   ->addActionListener([&]() { 
-                      createFrame(new EditButton);
+                      FrameObject *obj = new Button;
+                      obj->initString = L"(new Button)";
+                      createFrame(obj);
                   }))
             ->add((new Label)
                   ->setText(L"Label")
@@ -87,7 +92,9 @@ namespace MetaFrame {
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 130, 10)
                   ->addActionListener([&]() { 
-                      createFrame(new EditLabel);
+                      FrameObject *obj = new Label;
+                      obj->initString = L"(new Label)";
+                      createFrame(obj);
                   }))
             ->add((new Label)
                   ->setText(L"Slider")
@@ -101,7 +108,9 @@ namespace MetaFrame {
                   ->setVerticalAlignment(VerticalAlignment::Top)
                   ->setMargin(10, 10, 170, 10)
                   ->addActionListener([&]() { 
-                      createFrame(new EditSlider);
+                      FrameObject *obj = new Slider;
+                      obj->initString = L"(new Slider)";
+                      createFrame(obj);
                   }))
 
         );
@@ -118,7 +127,55 @@ namespace MetaFrame {
     }    
 
 
-     Editor::~Editor() {
+    void Editor::save() {
+        editorSpace->setText(L"Generated kek window");
+        //std::ifstream cin("sample.h");  
+        std::ofstream cout("sample.h");
+
+        control->clearBind();
+
+        //cout.clear();
+        String ret;
+
+        ret += L"#include \"MFTafx.h\"\n";
+
+        ret += L"\n";
+        ret += L"\n";
+        ret += L"\n";
+        ret += L"int tmain(){\n";
+
+        ret += L"    Window *gnwindow = new Window(L\"Generated kek window\");\n";
+
+        ret += L"\n";
+        ret += L"\n";
+
+        ret += L"    //begin auto gen\n";
+        ret += L"    gnwindow" + editorSpace->getInit() + L";\n";
+        ret += L"    //end auto gen\n";
+
+
+        ret += L"\n";
+        ret += L"\n";
+
+        ret += L"    gnwindow->run();\n";
+        ret += L"    delete gnwindow;\n";
+        
+
+        ret += L"\n";
+        ret += L"\n";
+        ret += L"    return 0;\n";
+
+        ret += L"}\n";
+
+        cout << (std::string)ret;
+
+        cout.close();
+
+        editorSpace->setText(L"");
+        editorSpace->repaint();
+    }
+
+    Editor::~Editor() {
 
      }
 

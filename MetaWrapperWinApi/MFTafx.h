@@ -46,3 +46,15 @@ namespace MetaFrame {
 #include "Image.h"
 //#include "Time.h"
 
+
+
+#include "Window.h"
+#include "Button.h"
+#include "Panel.h"
+#include "Label.h"
+#include "CheckBox.h"
+#include "TextField.h"
+#include "Slider.h"
+#include "ImagePanel.h"
+
+using namespace MetaFrame;

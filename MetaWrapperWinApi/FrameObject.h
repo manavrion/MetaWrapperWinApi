@@ -21,7 +21,7 @@ namespace MetaFrame {
             margin(10, 10, 10, 10),
             horizontalAlignment(HorizontalAlignment::Absolute),
             verticalAlignment(VerticalAlignment::Absolute),
-            background(),
+            background(240, 240,240),
             foreground(),
             text(),
             layout(Layout::Simple),
@@ -141,6 +141,13 @@ namespace MetaFrame {
     public:
 
         //setters
+
+        virtual FrameObject *setProperty(int x, int y, int width, int height, String text) {
+            setRect(x, y, width, height);
+            setText(text);
+            return this;
+        }
+
 
         virtual FrameObject *setRect(Rect rect) {
             if (Rect(x, y, width, height) == rect) {
@@ -409,6 +416,30 @@ namespace MetaFrame {
             return this;
         }
 
+
+        Rect getRealRect() {
+            Rect rect = getRect();
+            rect.x -= x;
+            rect.y -= y;
+            if (parent != null) {
+                return parent->getRealRect(getRect());
+            } else {
+                return getRect();
+            }
+        }
+
+        protected:
+        Rect getRealRect(Rect rect) {            
+            if (parent != null) {
+                rect.x += x;
+                rect.y += y;
+                return parent->getRealRect(rect);
+            } else {
+                return rect;
+            }
+        }
+
+        public:
         //getters
         int getX() const {
             return x;
@@ -965,6 +996,43 @@ namespace MetaFrame {
             isDestroyed = null;
         }
 
+
+        /*editor added*/
+        public:
+        String initString;
+
+        virtual String getInit() {
+            String ret;
+
+            ret += initString;
+
+            ret += getProp();
+
+            ret += getChls();
+            return ret;
+        };
+
+        virtual String getProp() {
+            String s = L"->setProperty(" +
+                String(getX()) + L", " +
+                String(getY()) + L", " +
+                String(getWidth()) + L", " +
+                String(getHeight()) + 
+                (getText() != L"" ? L", L\"" + getText() + L"\"" : L", L\"\"")
+                + L")";
+            return s;
+        };
+
+        virtual String getChls() {
+            String ret;
+            for (auto child : getChilds()) {
+                ret += L"->add(" + child->getInit() + L")";
+            }
+            return ret;
+        };
+
+
+        //////////////////
     private:
         bool *isDestroyed;
 

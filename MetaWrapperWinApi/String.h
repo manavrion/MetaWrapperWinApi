@@ -20,6 +20,14 @@ namespace MetaFrame {
             return this->c_str();
         }
 
+        explicit operator const std::string()const {
+            std::string ret;
+            for (auto ch : *this) {
+                ret.push_back((char)ch);
+            }
+            return ret;
+        }
+
         friend String operator+(const String &s1, const String &s2) {
             return String(std::wstring(s1.c_str()) + std::wstring(s2.c_str()));
         }

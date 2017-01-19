@@ -5,6 +5,8 @@
 #include "Main.h"
 #include "Editor.h"
 
+#include "sample.h"
+
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
@@ -20,7 +22,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     
     delete autoService;
     */
-
+    tmain();
 
     Editor *window = new Editor(L"Kek Microsystems editor");
     window->run();

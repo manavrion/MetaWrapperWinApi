@@ -18,6 +18,11 @@ namespace MetaFrame {
         Panel *editorSpace;
         Panel *panelTool;        
 
+
+        void save();
+
+
+
     public:
         ~Editor();
     };

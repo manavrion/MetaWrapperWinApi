@@ -20,6 +20,7 @@ namespace MetaFrame {
     }
 
     NativeAbstructObject::~NativeAbstructObject() {
+        DeleteBrush(brush);
         destroyImpl();
         nativeAbstructObject.erase(hWindow);
     }
@@ -128,6 +129,11 @@ namespace MetaFrame {
             nativeAbstructObject[hWnd].first->runKeyReleasedEvent(event);
             //this->wmKeyUp(event);
         }
+        /*if ((message >= 0x0132 && message <= 0x0138) && nativeAbstructObject.count(hWnd) != 0) {
+            SetBkColor((HDC)wParam, (COLORREF)RGB(nativeAbstructObject[hWnd].first->background.red, nativeAbstructObject[hWnd].first->background.green, nativeAbstructObject[hWnd].first->background.blue));
+            SetTextColor((HDC)wParam, (COLORREF)RGB(nativeAbstructObject[hWnd].first->foreground.red, nativeAbstructObject[hWnd].first->foreground.green, nativeAbstructObject[hWnd].first->foreground.blue));
+            return (LRESULT)nativeAbstructObject[hWnd].first->brush;
+        }*/
         if (nativeAbstructObject.count(hWnd) != 0) {
             return nativeAbstructObject[hWnd].first->nativeWindowProc(hWnd, message, wParam, lParam);
         }

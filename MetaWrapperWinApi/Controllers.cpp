@@ -99,7 +99,7 @@ namespace MetaFrame {
                 FrameObject *obj = q.front();
                 q.pop();
 
-                if (rect.contains(obj->getRect())) {
+                if (rect.contains(obj->getRealRect())) {
                     captiredElements.push_back(obj);
                 }
 
@@ -131,6 +131,7 @@ namespace MetaFrame {
                 controls.clear();
 
                 clearBind();
+                insertFrame = editorSpace;
             }
         });
 

@@ -20,14 +20,5 @@
 
 // TODO: reference additional headers your program requires here
 #include "MFTafx.h"
-using namespace MetaFrame;
 
-#include "Window.h"
-#include "Button.h"
-#include "Panel.h"
-#include "Label.h"
-#include "CheckBox.h"
-#include "TextField.h"
-#include "Slider.h"
-#include "ImagePanel.h"
 
