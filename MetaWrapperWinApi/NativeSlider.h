@@ -50,7 +50,7 @@ namespace MetaFrame {
         };
 
 
-        //int IDC_OF_BUTTON;
+
 
         virtual void command(WPARAM wParam, LPARAM lParam) override {
             runActionEvents();

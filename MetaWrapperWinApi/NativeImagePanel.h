@@ -15,18 +15,10 @@ namespace MetaFrame {
             width = 73;
             height = 21;            
         };
-
-
+        
     protected:
 
         Image &image;
-
-
-        virtual void command(WPARAM wParam, LPARAM lParam) {
-            runActionEvents();
-        };
-
-
 
 
         virtual LRESULT nativeWindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {

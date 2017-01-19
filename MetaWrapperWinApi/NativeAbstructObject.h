@@ -213,7 +213,9 @@ namespace MetaFrame {
             }
             return false;
         };
-        virtual void command(WPARAM wParam, LPARAM lParam) = 0;
+        virtual void command(WPARAM wParam, LPARAM lParam) {
+
+        };
 
 
         bool wmNotify(WPARAM wParam, LPARAM lParam) {

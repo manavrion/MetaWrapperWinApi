@@ -27,9 +27,6 @@ namespace MetaFrame {
             return (int)SendMessage(hWindow, BM_GETCHECK, 0, 0);
         }
 
-
-        //int IDC_OF_BUTTON;
-
         virtual void command(WPARAM wParam, LPARAM lParam) override {
             runActionEvents();
         };

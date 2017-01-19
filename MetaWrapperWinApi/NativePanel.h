@@ -17,32 +17,6 @@ namespace MetaFrame {
             nativeSetBorder(Border::BORDER);
         };
 
-        DWORD extendedStyleBorder = 0;
-        DWORD styleBorder = 0;
-        
-
-        void nativeSetBorderText(const String &text) {
-
-
-        }
-
-
-    protected:
-
-
-
-
-        //int IDC_OF_BUTTON;
-
-        virtual void command(WPARAM wParam, LPARAM lParam) {
-            runActionEvents();
-        };
-
-
-
-
-    public:
-
 
         virtual ~NativePanel() {};
     };

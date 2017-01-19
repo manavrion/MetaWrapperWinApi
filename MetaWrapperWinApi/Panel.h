@@ -9,26 +9,7 @@ namespace MetaFrame {
     public:
         Panel() {
 
-        };
-
-
-        Panel *setBorderText(const String &text) {
-            this->borderText = text;
-            nativeSetBorderText(borderText);
-            return this;
-        }
-
-        String getBorderText() {
-            return borderText;
-        }
-
-
-        
-
-    protected:
-        Border border;
-        String borderText;
-
+        };   
 
 
     public:

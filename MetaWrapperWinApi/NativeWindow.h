@@ -62,7 +62,7 @@ namespace MetaFrame {
                 /*_In_opt_ LPVOID lpParam);     */ NULL);
         }
     
-
+        //not used
         virtual void init(HWND hWnd);;
 
         HINSTANCE hInstance;
