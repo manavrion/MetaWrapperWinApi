@@ -47,6 +47,9 @@ namespace MetaFrame {
             ->add((new Button)
                   ->setText(L"Загрузить")
                   ->setPosition(90, 26)
+                  ->addActionListener([=]() {
+                      load();
+                  })
             )
             ->add((new Label)
                   ->setText(L"Panel")
@@ -173,6 +176,22 @@ namespace MetaFrame {
 
         editorSpace->setText(L"");
         editorSpace->repaint();
+    }
+
+    void Editor::load() {
+        control->clearBind();
+        while (!editorSpace->getChilds().empty()) {
+            delete editorSpace->getChilds().front();
+        }
+
+        std::ifstream cin("sample.h");
+
+
+
+
+
+
+        cin.close();
     }
 
     Editor::~Editor() {
